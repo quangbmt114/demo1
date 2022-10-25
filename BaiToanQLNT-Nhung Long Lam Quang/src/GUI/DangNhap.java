@@ -38,7 +38,9 @@ public class DangNhap extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel2 = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
+        panelForgot = new javax.swing.JPanel();
+        panelLogin = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -50,28 +52,44 @@ public class DangNhap extends javax.swing.JFrame {
         remember = new javax.swing.JCheckBox();
         btnDangNhap = new javax.swing.JButton();
         btnThoat = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel1.setLayout(new java.awt.CardLayout());
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/DangNhap.png"))); // NOI18N
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, -1, 128));
+        javax.swing.GroupLayout panelForgotLayout = new javax.swing.GroupLayout(panelForgot);
+        panelForgot.setLayout(panelForgotLayout);
+        panelForgotLayout.setHorizontalGroup(
+            panelForgotLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 527, Short.MAX_VALUE)
+        );
+        panelForgotLayout.setVerticalGroup(
+            panelForgotLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 310, Short.MAX_VALUE)
+        );
+
+        jPanel1.add(panelForgot, "card3");
+
+        panelLogin.setBackground(new java.awt.Color(255, 255, 255));
+        panelLogin.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/profile-128px.png"))); // NOI18N
+        panelLogin.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, -1, 140));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(51, 51, 51));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("ĐĂNG NHẬP");
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(194, 26, 186, 28));
+        panelLogin.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(194, 26, 186, 28));
 
         jLabel3.setText("Tài khoản");
-        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 72, 232, -1));
+        panelLogin.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 72, 232, -1));
 
         jLabel4.setText("Mật khẩu");
-        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 130, 232, -1));
-        jPanel2.add(txtusername, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 94, 232, -1));
-        jPanel2.add(txtpassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 155, 232, -1));
+        panelLogin.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 130, 232, -1));
+        panelLogin.add(txtusername, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 94, 232, -1));
+        panelLogin.add(txtpassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 155, 232, -1));
 
         disable.setForeground(new java.awt.Color(51, 51, 51));
         disable.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -83,7 +101,7 @@ public class DangNhap extends javax.swing.JFrame {
                 disableMouseClicked(evt);
             }
         });
-        jPanel2.add(disable, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 150, 34, 40));
+        panelLogin.add(disable, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 150, 34, 40));
 
         show.setForeground(new java.awt.Color(51, 51, 51));
         show.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -95,10 +113,10 @@ public class DangNhap extends javax.swing.JFrame {
                 showMouseClicked(evt);
             }
         });
-        jPanel2.add(show, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 150, 34, 40));
+        panelLogin.add(show, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 150, 34, 40));
 
         remember.setText("Ghi nhớ mật khẩu");
-        jPanel2.add(remember, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 190, 232, -1));
+        panelLogin.add(remember, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 190, 232, -1));
 
         btnDangNhap.setText("Đăng nhập");
         btnDangNhap.addActionListener(new java.awt.event.ActionListener() {
@@ -106,7 +124,7 @@ public class DangNhap extends javax.swing.JFrame {
                 btnDangNhapActionPerformed(evt);
             }
         });
-        jPanel2.add(btnDangNhap, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 230, 91, 34));
+        panelLogin.add(btnDangNhap, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 230, 91, 34));
 
         btnThoat.setText("Thoát");
         btnThoat.addActionListener(new java.awt.event.ActionListener() {
@@ -114,17 +132,25 @@ public class DangNhap extends javax.swing.JFrame {
                 btnThoatActionPerformed(evt);
             }
         });
-        jPanel2.add(btnThoat, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 230, 89, 34));
+        panelLogin.add(btnThoat, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 230, 89, 34));
+
+        jLabel5.setText("Forgot Username/ Password");
+        jLabel5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        panelLogin.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 276, 170, 20));
+
+        jPanel1.add(panelLogin, "card2");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 583, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
@@ -249,7 +275,10 @@ public class DangNhap extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JPanel jPanel2;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel panelForgot;
+    private javax.swing.JPanel panelLogin;
     private javax.swing.JCheckBox remember;
     private javax.swing.JLabel show;
     private javax.swing.JPasswordField txtpassword;
