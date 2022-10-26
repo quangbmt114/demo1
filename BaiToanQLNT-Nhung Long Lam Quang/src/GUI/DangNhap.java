@@ -4,6 +4,7 @@
  */
 package GUI;
 
+import java.awt.CardLayout;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -18,6 +19,7 @@ import javax.swing.ImageIcon;
  */
 public class DangNhap extends javax.swing.JFrame {
     File file = new File(System.getProperty("user.home")+"/Desktop/save.txt");
+    
     /**
      * Creates new form NewJFrame
      */
@@ -27,6 +29,9 @@ public class DangNhap extends javax.swing.JFrame {
         ImageIcon icon = new ImageIcon("src/images/blue-home-icon.png");
         setIconImage(icon.getImage());
         UPDATE();
+        panelForm.add(panelLogin,"login");
+        panelForm.add(panelForgot, "forgot");
+        panelForm.add(panelChangePassword,"changed");
     }
 
     /**
@@ -38,8 +43,7 @@ public class DangNhap extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        panelForgot = new javax.swing.JPanel();
+        panelForm = new javax.swing.JPanel();
         panelLogin = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -51,25 +55,29 @@ public class DangNhap extends javax.swing.JFrame {
         show = new javax.swing.JLabel();
         remember = new javax.swing.JCheckBox();
         btnDangNhap = new javax.swing.JButton();
-        btnThoat = new javax.swing.JButton();
+        labelForgot = new javax.swing.JLabel();
+        panelForgot = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jLabel9 = new javax.swing.JLabel();
+        jTextField2 = new javax.swing.JTextField();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        panelChangePassword = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        txtNewPassword = new javax.swing.JTextField();
+        txtVeritfyPassword = new javax.swing.JTextField();
+        jButton4 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setLayout(new java.awt.CardLayout());
-
-        javax.swing.GroupLayout panelForgotLayout = new javax.swing.GroupLayout(panelForgot);
-        panelForgot.setLayout(panelForgotLayout);
-        panelForgotLayout.setHorizontalGroup(
-            panelForgotLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 527, Short.MAX_VALUE)
-        );
-        panelForgotLayout.setVerticalGroup(
-            panelForgotLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 310, Short.MAX_VALUE)
-        );
-
-        jPanel1.add(panelForgot, "card3");
+        panelForm.setLayout(new java.awt.CardLayout());
 
         panelLogin.setBackground(new java.awt.Color(255, 255, 255));
         panelLogin.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -83,9 +91,11 @@ public class DangNhap extends javax.swing.JFrame {
         jLabel2.setText("ĐĂNG NHẬP");
         panelLogin.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(194, 26, 186, 28));
 
+        jLabel3.setBackground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Tài khoản");
         panelLogin.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 72, 232, -1));
 
+        jLabel4.setBackground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Mật khẩu");
         panelLogin.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 130, 232, -1));
         panelLogin.add(txtusername, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 94, 232, -1));
@@ -118,39 +128,196 @@ public class DangNhap extends javax.swing.JFrame {
         remember.setText("Ghi nhớ mật khẩu");
         panelLogin.add(remember, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 190, 232, -1));
 
-        btnDangNhap.setText("Đăng nhập");
+        btnDangNhap.setBackground(new java.awt.Color(51, 204, 0));
+        btnDangNhap.setForeground(new java.awt.Color(255, 255, 255));
+        btnDangNhap.setText("LOGIN");
         btnDangNhap.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDangNhapActionPerformed(evt);
             }
         });
-        panelLogin.add(btnDangNhap, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 230, 91, 34));
+        panelLogin.add(btnDangNhap, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 230, 230, 34));
 
-        btnThoat.setText("Thoát");
-        btnThoat.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnThoatActionPerformed(evt);
+        labelForgot.setText("Forgot Username/ Password ?");
+        labelForgot.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        labelForgot.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                labelForgotMouseClicked(evt);
             }
         });
-        panelLogin.add(btnThoat, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 230, 89, 34));
+        panelLogin.add(labelForgot, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 276, 170, 20));
 
-        jLabel5.setText("Forgot Username/ Password");
-        jLabel5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        panelLogin.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 276, 170, 20));
+        panelForm.add(panelLogin, "card2");
 
-        jPanel1.add(panelLogin, "card2");
+        panelForgot.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel6.setText("Enter-Email");
+
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel7.setText("FORGOT USERNAME/PASSWORD");
+
+        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/security-128px.png"))); // NOI18N
+
+        jButton1.setText("Send");
+
+        jLabel9.setText("Verify-Code");
+
+        jButton2.setText("Verify Code");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/back.png"))); // NOI18N
+        jButton3.setText("Back");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelForgotLayout = new javax.swing.GroupLayout(panelForgot);
+        panelForgot.setLayout(panelForgotLayout);
+        panelForgotLayout.setHorizontalGroup(
+            panelForgotLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelForgotLayout.createSequentialGroup()
+                .addGroup(panelForgotLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelForgotLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, 545, Short.MAX_VALUE))
+                    .addGroup(panelForgotLayout.createSequentialGroup()
+                        .addGap(19, 19, 19)
+                        .addGroup(panelForgotLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(panelForgotLayout.createSequentialGroup()
+                                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addGroup(panelForgotLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(panelForgotLayout.createSequentialGroup()
+                                        .addGroup(panelForgotLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel6)
+                                            .addComponent(jLabel9))
+                                        .addGap(49, 49, 49)
+                                        .addGroup(panelForgotLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE)
+                                            .addComponent(jTextField2)))
+                                    .addComponent(jButton2)
+                                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        panelForgotLayout.setVerticalGroup(
+            panelForgotLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelForgotLayout.createSequentialGroup()
+                .addGap(11, 11, 11)
+                .addComponent(jLabel7)
+                .addGroup(panelForgotLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelForgotLayout.createSequentialGroup()
+                        .addGap(54, 54, 54)
+                        .addGroup(panelForgotLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel6)
+                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton1)
+                        .addGap(31, 31, 31)
+                        .addGroup(panelForgotLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel9))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton2))
+                    .addGroup(panelForgotLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(63, 66, Short.MAX_VALUE))
+        );
+
+        panelForm.add(panelForgot, "card3");
+
+        panelChangePassword.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/security-128px.png"))); // NOI18N
+
+        jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel10.setText("RESET PASSWORD");
+
+        jLabel11.setText("New Passowrd");
+
+        jLabel12.setText("Veritfy Password");
+
+        jButton4.setText("RESET PASSWORD");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelChangePasswordLayout = new javax.swing.GroupLayout(panelChangePassword);
+        panelChangePassword.setLayout(panelChangePasswordLayout);
+        panelChangePasswordLayout.setHorizontalGroup(
+            panelChangePasswordLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelChangePasswordLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(panelChangePasswordLayout.createSequentialGroup()
+                .addGap(35, 35, 35)
+                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(48, 48, 48)
+                .addGroup(panelChangePasswordLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(panelChangePasswordLayout.createSequentialGroup()
+                        .addGroup(panelChangePasswordLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel11)
+                            .addComponent(jLabel12))
+                        .addGap(18, 18, 18)
+                        .addGroup(panelChangePasswordLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(txtNewPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtVeritfyPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(47, Short.MAX_VALUE))
+        );
+        panelChangePasswordLayout.setVerticalGroup(
+            panelChangePasswordLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelChangePasswordLayout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(panelChangePasswordLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelChangePasswordLayout.createSequentialGroup()
+                        .addGap(42, 42, 42)
+                        .addGroup(panelChangePasswordLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel11)
+                            .addComponent(txtNewPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(49, 49, 49)
+                        .addGroup(panelChangePasswordLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel12)
+                            .addComponent(txtVeritfyPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(48, 48, 48)
+                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelChangePasswordLayout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(39, Short.MAX_VALUE))
+        );
+
+        panelForm.add(panelChangePassword, "card4");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(panelForm, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(panelForm, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
@@ -174,11 +341,6 @@ public class DangNhap extends javax.swing.JFrame {
         show.setEnabled(false);
     }//GEN-LAST:event_showMouseClicked
 
-    private void btnThoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThoatActionPerformed
-        // TODO add your handling code here:
-        System.exit(0);
-    }//GEN-LAST:event_btnThoatActionPerformed
-
     private void btnDangNhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangNhapActionPerformed
         // TODO add your handling code here:
         String password = String.valueOf(txtpassword.getPassword()) ;
@@ -193,6 +355,30 @@ public class DangNhap extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_btnDangNhapActionPerformed
+
+    private void labelForgotMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelForgotMouseClicked
+        // TODO add your handling code here:
+        CardLayout layout = (CardLayout) panelForm.getLayout();
+        layout.show(panelForm, "forgot");
+    }//GEN-LAST:event_labelForgotMouseClicked
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        CardLayout layout = (CardLayout) panelForm.getLayout();
+        layout.show(panelForm, "login");
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        CardLayout layout = (CardLayout) panelForm.getLayout();
+        layout.show(panelForm, "changed");
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        CardLayout layout = (CardLayout) panelForm.getLayout();
+        layout.show(panelForm, "login");
+    }//GEN-LAST:event_jButton4ActionPerformed
     public void SAVE(){      //Save the UserName and Password (for one user)
 
 
@@ -269,18 +455,34 @@ public class DangNhap extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDangNhap;
-    private javax.swing.JButton btnThoat;
     private javax.swing.JLabel disable;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
+    private javax.swing.JLabel labelForgot;
+    private javax.swing.JPanel panelChangePassword;
     private javax.swing.JPanel panelForgot;
+    private javax.swing.JPanel panelForm;
     private javax.swing.JPanel panelLogin;
     private javax.swing.JCheckBox remember;
     private javax.swing.JLabel show;
+    private javax.swing.JTextField txtNewPassword;
+    private javax.swing.JTextField txtVeritfyPassword;
     private javax.swing.JPasswordField txtpassword;
     private javax.swing.JTextField txtusername;
     // End of variables declaration//GEN-END:variables
