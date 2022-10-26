@@ -5,13 +5,26 @@
 package GUI;
 
 import java.awt.CardLayout;
+import java.awt.HeadlessException;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Date;
+import java.util.Properties;
+import java.util.Random;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.mail.Message;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -23,6 +36,8 @@ public class DangNhap extends javax.swing.JFrame {
     /**
      * Creates new form NewJFrame
      */
+     Random ram = new Random();
+    int Code = ram.nextInt(999999);
     public DangNhap() {
         initComponents();
         setLocationRelativeTo(null);
@@ -58,14 +73,15 @@ public class DangNhap extends javax.swing.JFrame {
         labelForgot = new javax.swing.JLabel();
         panelForgot = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txtEmail = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        btnSendEmail = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        txtCodeEmail = new javax.swing.JTextField();
+        btnVeriftyCode = new javax.swing.JButton();
+        btnBackLogin = new javax.swing.JButton();
+        txthour = new javax.swing.JLabel();
         panelChangePassword = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
@@ -160,24 +176,31 @@ public class DangNhap extends javax.swing.JFrame {
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/security-128px.png"))); // NOI18N
 
-        jButton1.setText("Send");
+        btnSendEmail.setText("Send");
+        btnSendEmail.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSendEmailActionPerformed(evt);
+            }
+        });
 
         jLabel9.setText("Verify-Code");
 
-        jButton2.setText("Verify Code");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnVeriftyCode.setText("Verify Code");
+        btnVeriftyCode.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnVeriftyCodeActionPerformed(evt);
             }
         });
 
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/back.png"))); // NOI18N
-        jButton3.setText("Back");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        btnBackLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/back.png"))); // NOI18N
+        btnBackLogin.setText("Back");
+        btnBackLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                btnBackLoginActionPerformed(evt);
             }
         });
+
+        txthour.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
         javax.swing.GroupLayout panelForgotLayout = new javax.swing.GroupLayout(panelForgot);
         panelForgot.setLayout(panelForgotLayout);
@@ -191,7 +214,7 @@ public class DangNhap extends javax.swing.JFrame {
                     .addGroup(panelForgotLayout.createSequentialGroup()
                         .addGap(19, 19, 19)
                         .addGroup(panelForgotLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnBackLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(panelForgotLayout.createSequentialGroup()
                                 .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
@@ -202,10 +225,13 @@ public class DangNhap extends javax.swing.JFrame {
                                             .addComponent(jLabel9))
                                         .addGap(49, 49, 49)
                                         .addGroup(panelForgotLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE)
-                                            .addComponent(jTextField2)))
-                                    .addComponent(jButton2)
-                                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                            .addComponent(txtEmail, javax.swing.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE)
+                                            .addComponent(txtCodeEmail)))
+                                    .addComponent(btnVeriftyCode)
+                                    .addGroup(panelForgotLayout.createSequentialGroup()
+                                        .addComponent(txthour, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(btnSendEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -219,18 +245,20 @@ public class DangNhap extends javax.swing.JFrame {
                         .addGap(54, 54, 54)
                         .addGroup(panelForgotLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel6)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton1)
-                        .addGap(31, 31, 31)
+                            .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(panelForgotLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnSendEmail, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txthour, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(37, 37, 37)
                         .addGroup(panelForgotLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtCodeEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel9))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton2))
+                        .addComponent(btnVeriftyCode))
                     .addGroup(panelForgotLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton3)
+                        .addComponent(btnBackLogin)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(63, 66, Short.MAX_VALUE))
@@ -362,23 +390,117 @@ public class DangNhap extends javax.swing.JFrame {
         layout.show(panelForm, "forgot");
     }//GEN-LAST:event_labelForgotMouseClicked
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void btnBackLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackLoginActionPerformed
         // TODO add your handling code here:
         CardLayout layout = (CardLayout) panelForm.getLayout();
         layout.show(panelForm, "login");
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_btnBackLoginActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnVeriftyCodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVeriftyCodeActionPerformed
         // TODO add your handling code here:
-        CardLayout layout = (CardLayout) panelForm.getLayout();
-        layout.show(panelForm, "changed");
-    }//GEN-LAST:event_jButton2ActionPerformed
-
+        if(txtCodeEmail.getText().equals("")){
+            JOptionPane.showMessageDialog(this, "Ô nhập không được để trống !!");
+        }else if(txtCodeEmail.getText().equals(String.valueOf(Code))){
+            CardLayout layout = (CardLayout) panelForm.getLayout();
+            layout.show(panelForm, "changed");
+        }else{
+            JOptionPane.showMessageDialog(this, "Mã Code không hợp lệ, vui lòng nhập lại !!");
+        }
+        
+    }//GEN-LAST:event_btnVeriftyCodeActionPerformed
+    
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
         CardLayout layout = (CardLayout) panelForm.getLayout();
         layout.show(panelForm, "login");
     }//GEN-LAST:event_jButton4ActionPerformed
+   
+    private void btnSendEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendEmailActionPerformed
+       
+        String  Email = txtEmail.getText();
+        if (Email.equals("")) {
+            JOptionPane.showMessageDialog(this, "Ô nhập không được để trống !!");
+        }else{
+            String checkEmail = "\\w+@\\w+\\.\\w+";
+        if(!Email.matches(checkEmail)){
+            JOptionPane.showMessageDialog(this, "Không đúng định dạng email");
+        }else{
+            SendVeriftyCode(Email);
+            txtCodeEmail.setText("");
+        }
+        
+        }
+        
+        
+    }//GEN-LAST:event_btnSendEmailActionPerformed
+    
+    public void SendVeriftyCode(String x) throws HeadlessException {
+        // TODO add your handling code here:
+        int Verifty_Code = ram.nextInt(999999);
+        Code = Verifty_Code;
+        System.out.println(Code);
+        System.out.println(Verifty_Code);
+        final String username = "quangnvpk02150@fpt.edu.vn";
+        final String password = "Quang01255215639";
+        
+        Properties prop = new Properties();
+        prop.put("mail.smtp.host", "smtp.gmail.com");
+        prop.put("mail.smtp.port", "587");
+        prop.put("mail.smtp.auth", "true");
+        prop.put("mail.smtp.starttls.enable", "true"); //TLS
+        
+        Session session = Session.getInstance(prop,
+                new javax.mail.Authenticator() {
+                    protected PasswordAuthentication getPasswordAuthentication() {
+                        return new PasswordAuthentication(username, password);
+                    }
+                });
+        try {
+            Message message = new MimeMessage(session);
+            message.setFrom(new InternetAddress("LAMHOUSE"));
+            message.setRecipients(
+                    Message.RecipientType.TO,
+                    InternetAddress.parse(x)
+            );
+            message.setSubject("DEMO TITLE");
+            message.setText(String.valueOf(Verifty_Code));
+            
+            Transport.send(message);
+            JOptionPane.showMessageDialog(this, "Mã Code đã được gửi đến email của bạn,Vui lòng check email !!");
+            Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                int time = 45;
+                    btnSendEmail.setEnabled(false);
+                    
+                
+                    try {
+                        for (int i = 0; i <= 45; i++) {
+                     txthour.setText("00:"+String.valueOf(time)+"s");
+                     time--;
+                      Thread.sleep(1000);
+                }
+                       
+                    } catch (InterruptedException ex) {
+                        Logger.getLogger(Gioithieu.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                
+                card();
+            }
+        });
+        thread.start();
+       
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+            
+        }
+        
+    }
+    public void card(){
+        btnSendEmail.setEnabled(true);
+        txthour.setText("");
+    }
     public void SAVE(){      //Save the UserName and Password (for one user)
 
 
@@ -454,11 +576,11 @@ public class DangNhap extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBackLogin;
     private javax.swing.JButton btnDangNhap;
+    private javax.swing.JButton btnSendEmail;
+    private javax.swing.JButton btnVeriftyCode;
     private javax.swing.JLabel disable;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -472,8 +594,6 @@ public class DangNhap extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JLabel labelForgot;
     private javax.swing.JPanel panelChangePassword;
     private javax.swing.JPanel panelForgot;
@@ -481,8 +601,11 @@ public class DangNhap extends javax.swing.JFrame {
     private javax.swing.JPanel panelLogin;
     private javax.swing.JCheckBox remember;
     private javax.swing.JLabel show;
+    private javax.swing.JTextField txtCodeEmail;
+    private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtNewPassword;
     private javax.swing.JTextField txtVeritfyPassword;
+    private javax.swing.JLabel txthour;
     private javax.swing.JPasswordField txtpassword;
     private javax.swing.JTextField txtusername;
     // End of variables declaration//GEN-END:variables
