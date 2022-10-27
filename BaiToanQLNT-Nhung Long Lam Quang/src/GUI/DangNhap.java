@@ -439,8 +439,6 @@ public class DangNhap extends javax.swing.JFrame {
         // TODO add your handling code here:
         int Verifty_Code = ram.nextInt(999999);
         Code = Verifty_Code;
-        System.out.println(Code);
-        System.out.println(Verifty_Code);
         final String username = "quangnvpk02150@fpt.edu.vn";
         final String password = "Quang01255215639";
         
