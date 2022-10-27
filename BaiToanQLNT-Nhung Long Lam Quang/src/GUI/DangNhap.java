@@ -512,6 +512,7 @@ public class DangNhap extends javax.swing.JFrame {
                 bw.newLine(); //leave a new Line
                 bw.write(txtpassword.getPassword()); //write the password
                 //close the BufferdWriter
+                //123123
             } //write the name
 
         } catch (IOException e) { e.printStackTrace(); }        
