@@ -413,6 +413,7 @@ public class DangNhap extends javax.swing.JFrame {
         // TODO add your handling code here:
         CardLayout layout = (CardLayout) panelForm.getLayout();
         layout.show(panelForm, "login");
+        
     }//GEN-LAST:event_jButton4ActionPerformed
    
     private void btnSendEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendEmailActionPerformed
@@ -428,7 +429,7 @@ public class DangNhap extends javax.swing.JFrame {
             SendVeriftyCode(Email);
             txtCodeEmail.setText("");
         }
-        
+        //123123
         }
         
         
