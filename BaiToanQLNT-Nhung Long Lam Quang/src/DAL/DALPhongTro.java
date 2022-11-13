@@ -29,11 +29,9 @@ public class DALPhongTro {
 "           ,[Ban]" +
 "           ,[BongDen]" +
 "           ,[KinhCua]" +
-"           ,[Anh]" +
 "           ,[TrangThai])" +
 "     VALUES" +
 "           (?" +
-"           ,?" +
 "           ,?" +
 "           ,?" +
 "           ,?" +
@@ -61,7 +59,6 @@ public class DALPhongTro {
 "      ,[Ban] = ?" +
 "      ,[BongDen] = ?" +
 "      ,[KinhCua] = ?" +
-"      ,[Anh] = ?" +
 "      ,[TrangThai] = ?" +
 " WHERE MaPhong=?";
         helper.sqlHelper.executeUpdate(sql,pt.getTenPhong(),pt.getMaLoaiPhong()
