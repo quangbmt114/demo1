@@ -9,12 +9,12 @@ package DTO;
  * @author quang nguyen
  */
 public class LoaiPhong {
-    private String MaLoaiPhong,TenLoaiPhong;
-    private float GiaPhong;
-    private float GiaDien;
-    private float GiaNuoc;
+     String MaLoaiPhong,TenLoaiPhong;
+     double GiaPhong;
+     double GiaDien;
+     double GiaNuoc;
 
-    public LoaiPhong(String MaLoaiPhong, String TenLoaiPhong, float GiaPhong, float GiaDien, float GiaNuoc) {
+    public LoaiPhong(String MaLoaiPhong, String TenLoaiPhong, double GiaPhong, double GiaDien, double GiaNuoc) {
         this.MaLoaiPhong = MaLoaiPhong;
         this.TenLoaiPhong = TenLoaiPhong;
         this.GiaPhong = GiaPhong;
@@ -42,7 +42,7 @@ public class LoaiPhong {
         this.TenLoaiPhong = TenLoaiPhong;
     }
 
-    public float getGiaPhong() {
+    public double getGiaPhong() {
         return GiaPhong;
     }
 
@@ -50,7 +50,7 @@ public class LoaiPhong {
         this.GiaPhong = GiaPhong;
     }
 
-    public float getGiaDien() {
+    public double getGiaDien() {
         return GiaDien;
     }
 
@@ -58,7 +58,7 @@ public class LoaiPhong {
         this.GiaDien = GiaDien;
     }
 
-    public float getGiaNuoc() {
+    public double getGiaNuoc() {
         return GiaNuoc;
     }
 

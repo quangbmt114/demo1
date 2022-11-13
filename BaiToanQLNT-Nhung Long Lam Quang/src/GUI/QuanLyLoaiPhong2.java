@@ -5,8 +5,12 @@
 package GUI;
 
 import DTO.LoaiPhong;
+import helper.ChuyenDoi;
+import helper.MyCombobox;
 import helper.ThongBao;
 import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -55,7 +59,6 @@ public class QuanLyLoaiPhong2 extends javax.swing.JDialog {
         btnXoa = new javax.swing.JButton();
         btnSua = new javax.swing.JButton();
         btnLamMoi = new javax.swing.JButton();
-        btnBack = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -94,16 +97,34 @@ public class QuanLyLoaiPhong2 extends javax.swing.JDialog {
         jPanel2.add(txtTenLoaiPhong, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 70, 214, -1));
 
         jLabel4.setText("Giá tiền");
-        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, -1, -1));
-        jPanel2.add(txtGiaTien, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 110, 214, -1));
+        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, -1, -1));
+
+        txtGiaTien.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtGiaTienKeyReleased(evt);
+            }
+        });
+        jPanel2.add(txtGiaTien, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 120, 214, -1));
 
         jLabel5.setText("Giá điện");
-        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, -1, -1));
-        jPanel2.add(txtGiaDien, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 150, 214, -1));
+        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, -1, -1));
+
+        txtGiaDien.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtGiaDienKeyReleased(evt);
+            }
+        });
+        jPanel2.add(txtGiaDien, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 160, 214, -1));
 
         jLabel7.setText("Giá nước");
-        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, -1, -1));
-        jPanel2.add(txtGiaNuoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 190, 214, -1));
+        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, -1, -1));
+
+        txtGiaNuoc.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtGiaNuocKeyReleased(evt);
+            }
+        });
+        jPanel2.add(txtGiaNuoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 200, 214, -1));
 
         btnThem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/add.png"))); // NOI18N
         btnThem.setText("Thêm");
@@ -144,13 +165,6 @@ public class QuanLyLoaiPhong2 extends javax.swing.JDialog {
         });
         jPanel2.add(btnLamMoi, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 320, 100, 30));
 
-        btnBack.setText("Quay xe");
-        btnBack.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBackActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -160,19 +174,13 @@ public class QuanLyLoaiPhong2 extends javax.swing.JDialog {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 344, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 683, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(21, 21, 21)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10)
+                .addGap(45, 45, 45)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 398, Short.MAX_VALUE)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
@@ -195,40 +203,12 @@ public class QuanLyLoaiPhong2 extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     public boolean validateform() {
-
         if (txtMaLoaiPhong.getText().equals("") || txtTenLoaiPhong.getText().equals("") || txtGiaTien.getText().equals("") || txtGiaDien.getText().equals("") || txtGiaNuoc.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Vui lòng nhập ĐẦY ĐỦ THÔNG TIN!");
             return false;
         }
         return true;
-
     }
-
-    private void txtGiaTienKeyTyped(java.awt.event.KeyEvent evt) {
-        char a = evt.getKeyChar();
-        if (!Character.isDigit(a)) {
-            evt.consume();
-        }
-    }
-
-    private void txtGiaDienKeyTyped(java.awt.event.KeyEvent evt) {
-        char c = evt.getKeyChar();
-        if (!Character.isDigit(c)) {
-            evt.consume();
-        }
-    }
-
-    private void txtGiaNuocKeyTyped(java.awt.event.KeyEvent evt) {
-        char b = evt.getKeyChar();
-        if (!Character.isDigit(b)) {
-            evt.consume();
-        }
-    }
-    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-        // TODO add your handling code here:
-        setVisible(false);
-    }//GEN-LAST:event_btnBackActionPerformed
-
     private void tblLoaiPhongMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblLoaiPhongMouseClicked
         // TODO add your handling code here:
         txtMaLoaiPhong.setEnabled(true);
@@ -248,55 +228,101 @@ public class QuanLyLoaiPhong2 extends javax.swing.JDialog {
         txtGiaTien.setText("");
         txtGiaDien.setText("");
         txtGiaNuoc.setText("");
-        JOptionPane.showMessageDialog(this, "Làm mới thành công !!");
         btnSua.setEnabled(false);
     }//GEN-LAST:event_btnLamMoiActionPerformed
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
         // TODO add your handling code here:
-        try {
-            if(validateform()){
-            System.out.println("okie");
-        DTO.LoaiPhong lp = new LoaiPhong(txtMaLoaiPhong.getText(), txtTenLoaiPhong.getText(),
-                Float.parseFloat(txtGiaTien.getText()), Float.parseFloat(txtGiaDien.getText()), Float.parseFloat(txtGiaNuoc.getText()));
-        DAL.DALLoaiPhong.Create(lp);
-        JOptionPane.showMessageDialog(this, "Thêm Thành Công !!");
-        ArrayList<DTO.LoaiPhong> listLP = BLL.BLLLoaiPhong.GetAll();
-        BLL.BLLLoaiPhong.DoVaoTable(listLP, tblLoaiPhong);
+        String MaLoaiPhong, TenLoaiPhong;
+        double GiaPhong;
+        double GiaDien;
+        double GiaNuoc;
+        if (validateform()) {
+            MaLoaiPhong = txtMaLoaiPhong.getText();
+            TenLoaiPhong = txtTenLoaiPhong.getText();
+            GiaPhong = ChuyenDoi.SoDouble(txtGiaTien.getText());
+            GiaDien = ChuyenDoi.SoDouble(txtGiaDien.getText());
+            GiaNuoc = ChuyenDoi.SoDouble(txtGiaNuoc.getText());
+            LoaiPhong lp = new LoaiPhong(MaLoaiPhong, TenLoaiPhong, GiaPhong, GiaDien, GiaNuoc);
+            BLL.BLLLoaiPhong.Add(lp);
+            ArrayList<LoaiPhong> arr = BLL.BLLLoaiPhong.GetAll();
+            BLL.BLLLoaiPhong.DoVaoTable(arr, tblLoaiPhong);
         }
-        } catch (Exception e) {
-        JOptionPane.showMessageDialog(this, "Vui lòng xem lại dữ liệu!!");
-        }
-         
+
     }//GEN-LAST:event_btnThemActionPerformed
 
     private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
-        // TODO add your handling code here:
-//        DTO.LoaiPhong lp = new LoaiPhong(txtMaLoaiPhong.getText(), txtTenLoaiPhong.getText(),
-//                Float.parseFloat(txtGiaTien.getText()), Float.parseFloat(txtGiaDien.getText()), Float.parseFloat(txtGiaNuoc.getText()));
-//        int count = JOptionPane.YES_OPTION;
-//        if (JOptionPane.showConfirmDialog(this, "Bạn có Muốn xóa", "Xóa", JOptionPane.YES_NO_OPTION) == count) {
-//            DAL.DALLoaiPhong.Delete(lp);
-//            ArrayList<DTO.LoaiPhong> listLP = BLL.BLLLoaiPhong.GetAll();
-//            BLL.BLLLoaiPhong.DoVaoTable(listLP, tblLoaiPhong);
-//        }
-        ThongBao.ThongBaoDonGian("Thông báo", "Hiện không thế xóa!");
-
+        int dongDangChon = tblLoaiPhong.getSelectedRow();
+        if (dongDangChon < 0) {
+            ThongBao.ThongBaoDonGian("Thông Báo", "Bạn chưa chọn loại phòng cần xóa");
+        } else {
+            int XacNhan = JOptionPane.showConfirmDialog(null, "Bạn có chắc xóa không?", "Thông báo xác nhận", JOptionPane.OK_CANCEL_OPTION);
+            if (XacNhan == JOptionPane.CANCEL_OPTION) {
+                return;
+            }
+        }
+        //Lấy danh sách các sp  cần xóa
+        int dongCanXoa[] = tblLoaiPhong.getSelectedRows();
+        for (int i = 0; i < dongCanXoa.length; i++) {
+            String MaLoaiPhong = tblLoaiPhong.getValueAt(dongCanXoa[i], 0).toString();
+            BLL.BLLLoaiPhong.Delete(MaLoaiPhong);
+        }
+        ArrayList<LoaiPhong> arr = BLL.BLLLoaiPhong.GetAll();
+        BLL.BLLLoaiPhong.DoVaoTable(arr, tblLoaiPhong);
     }//GEN-LAST:event_btnXoaActionPerformed
 
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
         // TODO add your handling code here:
-        if(validateform()){
-        DTO.LoaiPhong lp = new LoaiPhong(txtMaLoaiPhong.getText(), txtTenLoaiPhong.getText(), Float.parseFloat(txtGiaTien.getText()),
-                Float.parseFloat(txtGiaDien.getText()), Float.parseFloat(txtGiaNuoc.getText()));
-        int count = JOptionPane.YES_OPTION;
-        if (JOptionPane.showConfirmDialog(this, "Bạn có Muốn Cập nhật loại phòng", "Cập nhật", JOptionPane.YES_NO_OPTION) == count) {
-            DAL.DALLoaiPhong.Update(lp);
-            ArrayList<DTO.LoaiPhong> listLP = BLL.BLLLoaiPhong.GetAll();
-            BLL.BLLLoaiPhong.DoVaoTable(listLP, tblLoaiPhong);
-            }
+        String TenLoaiPhong;
+        double GiaPhong;
+        double GiaDien;
+        double GiaNuoc;
+        if (validateform()) {
+            TenLoaiPhong = txtTenLoaiPhong.getText();
+            GiaPhong = ChuyenDoi.SoDouble(txtGiaTien.getText());
+            GiaDien = ChuyenDoi.SoDouble(txtGiaDien.getText());
+            GiaNuoc = ChuyenDoi.SoDouble(txtGiaNuoc.getText());
+            int dongDangChon = tblLoaiPhong.getSelectedRow();
+            String MaLoaiPhong = tblLoaiPhong.getValueAt(dongDangChon, 0).toString();
+            LoaiPhong lp = new LoaiPhong(MaLoaiPhong, TenLoaiPhong, GiaPhong, GiaDien, GiaNuoc);
+            BLL.BLLLoaiPhong.Update(lp);
+            ArrayList<LoaiPhong> arr = BLL.BLLLoaiPhong.GetAll();
+            BLL.BLLLoaiPhong.DoVaoTable(arr, tblLoaiPhong);
         }
     }//GEN-LAST:event_btnSuaActionPerformed
+
+    private void txtGiaTienKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtGiaTienKeyReleased
+        String txtGiaPhong = txtGiaTien.getText();
+        double tienPhong = ChuyenDoi.SoDouble(txtGiaPhong);
+        txtGiaTien.setText(ChuyenDoi.SoString(tienPhong));
+        
+        char a = evt.getKeyChar();
+        if (!Character.isDigit(a)) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtGiaTienKeyReleased
+
+    private void txtGiaDienKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtGiaDienKeyReleased
+        String txtGiaD = txtGiaDien.getText();
+        double tienDien = ChuyenDoi.SoDouble(txtGiaD);
+        txtGiaDien.setText(ChuyenDoi.SoString(tienDien));
+        
+        char a = evt.getKeyChar();
+        if (!Character.isDigit(a)) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtGiaDienKeyReleased
+
+    private void txtGiaNuocKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtGiaNuocKeyReleased
+        String txtGiaN = txtGiaNuoc.getText();
+        double tienNuoc = ChuyenDoi.SoDouble(txtGiaN);
+        txtGiaNuoc.setText(ChuyenDoi.SoString(tienNuoc));
+
+        char a = evt.getKeyChar();
+        if (!Character.isDigit(a)) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtGiaNuocKeyReleased
 
     /**
      * @param args the command line arguments
@@ -342,7 +368,6 @@ public class QuanLyLoaiPhong2 extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnBack;
     private javax.swing.JButton btnLamMoi;
     private javax.swing.JButton btnSua;
     private javax.swing.JButton btnThem;
