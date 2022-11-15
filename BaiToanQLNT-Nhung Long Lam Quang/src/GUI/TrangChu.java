@@ -12,7 +12,11 @@ import DTO.PhongTro;
 import helper.ChuyenDoi;
 import helper.ThongBao;
 import java.awt.CardLayout;
+import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Image;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -22,10 +26,13 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.mail.event.ConnectionEvent;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
+import javax.swing.border.Border;
+import javax.swing.border.LineBorder;
 
 /**
  *
@@ -65,6 +72,7 @@ public class TrangChu extends javax.swing.JFrame {
                 PhongDaThue++;
             }
         }
+        FillPhong();
         // set số liệu cho Bảng thống kê
         txtPhongTrong.setText(String.valueOf(PhongDaThue));
         txtPhongDaThue.setText(String.valueOf(PhongTrong));
@@ -88,6 +96,44 @@ public class TrangChu extends javax.swing.JFrame {
         }
         return true;
 
+    }
+    public void FillPhong(){
+        ArrayList<PhongTro> ListPhong = BLL.BLLPhongTro.GetAll();
+        
+        if(ListPhong != null){
+            panelDsPhongTro.removeAll();
+            JButton[] btn = new JButton[ListPhong.size()];
+            for(int i = 0; i < ListPhong.size(); i++){
+                btn[i] = new JButton();
+                btn[i].setName(String.valueOf(ListPhong.get(i).getMaPhong()));
+                String[] mb = ListPhong.get(i).getTenPhong().split(" ");
+                btn[i].setText(mb[0] +" "+ mb[1]);
+                btn[i].setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/house.png")));
+                Border thickBorder = new LineBorder(Color.WHITE,4);
+                btn[i].setBorder(thickBorder);
+                btn[i].setBackground(Color.decode("#8080ff"));
+                btn[i].setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
+                btn[i].setForeground(new java.awt.Color(51, 51, 51));
+                System.out.println("Bàn"+i);
+//                if(arrBan.get(i).getGhiChu().equals("Trống")){
+//                    btn[i].setBackground(Color.decode("#ff6699"));
+//                }
+//                if(arrBan.get(i).isTrangThai()){
+//                    btn[i].setBackground(Color.decode("#ff6699"));
+//                } 
+
+                btn[i].setPreferredSize(new Dimension(350, 250));
+                btn[i].addMouseListener(new MouseAdapter() {
+                    @Override
+                        public void mousePressed(MouseEvent e) {
+                          
+                        }                   
+                });
+
+                                panelDsPhongTro.add(btn[i]);
+                panelDsPhongTro.updateUI();
+            }
+        }
     }
     public void DongHo() {
         SimpleDateFormat sdf = new SimpleDateFormat("hh:mm:ss aa");
@@ -190,6 +236,7 @@ public class TrangChu extends javax.swing.JFrame {
         txtPhongTrong = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblPhongTro = new javax.swing.JTable();
+        panelDsPhongTro = new javax.swing.JPanel();
         panelLoaiPhong = new javax.swing.JPanel();
         jPanel8 = new javax.swing.JPanel();
         jLabel16 = new javax.swing.JLabel();
@@ -884,19 +931,30 @@ public class TrangChu extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tblPhongTro);
 
+        panelDsPhongTro.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder(""), "Quản lý phòng"));
+        panelDsPhongTro.setAutoscrolls(true);
+        panelDsPhongTro.setComponentPopupMenu(jPopupMenu1);
+        panelDsPhongTro.setInheritsPopupMenu(true);
+
         javax.swing.GroupLayout panelTrangChuLayout = new javax.swing.GroupLayout(panelTrangChu);
         panelTrangChu.setLayout(panelTrangChuLayout);
         panelTrangChuLayout.setHorizontalGroup(
             panelTrangChuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel20, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(jPanel20, javax.swing.GroupLayout.DEFAULT_SIZE, 1124, Short.MAX_VALUE)
+            .addComponent(panelDsPhongTro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(panelTrangChuLayout.createSequentialGroup()
+                .addGap(100, 100, 100)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 665, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panelTrangChuLayout.setVerticalGroup(
             panelTrangChuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelTrangChuLayout.createSequentialGroup()
                 .addComponent(jPanel20, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 726, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(29, 29, 29)
+                .addComponent(panelDsPhongTro, javax.swing.GroupLayout.DEFAULT_SIZE, 730, Short.MAX_VALUE))
         );
 
         panelMain.add(panelTrangChu, "card3");
@@ -2857,6 +2915,7 @@ public class TrangChu extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField8;
     private javax.swing.JTextField jTextField9;
     private javax.swing.JPanel panelDichVu;
+    private javax.swing.JPanel panelDsPhongTro;
     private javax.swing.JPanel panelFormDichVu;
     private javax.swing.JPanel panelFormHoaDon;
     private javax.swing.JPanel panelHoaDon;
