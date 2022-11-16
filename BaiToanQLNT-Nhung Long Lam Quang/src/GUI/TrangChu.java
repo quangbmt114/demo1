@@ -50,7 +50,8 @@ public class TrangChu extends javax.swing.JFrame {
     
     public TrangChu() {
         initComponents();
-        
+        ArrayList<LoaiPhong> listLP = BLL.BLLLoaiPhong.GetAll();
+        BLL.BLLLoaiPhong.DoVaoTable(listLP, tblLoaiPhong);
         ImageIcon icon = new ImageIcon("src/images/blue-home-icon.png");
         setIconImage(icon.getImage());
         setLocationRelativeTo(null);
@@ -2235,46 +2236,61 @@ public class TrangChu extends javax.swing.JFrame {
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
         // TODO add your handling code here:
-        try {
-            if(validateform()){
-                System.out.println("okie");
-                DTO.LoaiPhong lp = new LoaiPhong(txtMaLoaiPhong.getText(), txtTenLoaiPhong.getText(),
-                    Float.parseFloat(txtGiaTien.getText()), Float.parseFloat(txtGiaDien.getText()), Float.parseFloat(txtGiaNuoc.getText()));
-                DAL.DALLoaiPhong.Create(lp);
-                JOptionPane.showMessageDialog(this, "Thêm Thành Công !!");
-                ArrayList<DTO.LoaiPhong> listLP = BLL.BLLLoaiPhong.GetAll();
-                BLL.BLLLoaiPhong.DoVaoTable(listLP, tblLoaiPhong);
-            }
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Vui lòng xem lại dữ liệu!!");
+       String MaLoaiPhong, TenLoaiPhong;
+        double GiaPhong;
+        double GiaDien;
+        double GiaNuoc;
+        if (validateform()) {
+            MaLoaiPhong = txtMaLoaiPhong.getText();
+            TenLoaiPhong = txtTenLoaiPhong.getText();
+            GiaPhong = ChuyenDoi.SoDouble(txtGiaTien.getText());
+            GiaDien = ChuyenDoi.SoDouble(txtGiaDien.getText());
+            GiaNuoc = ChuyenDoi.SoDouble(txtGiaNuoc.getText());
+            LoaiPhong lp = new LoaiPhong(MaLoaiPhong, TenLoaiPhong, GiaPhong, GiaDien, GiaNuoc);
+            BLL.BLLLoaiPhong.Add(lp);
+            ArrayList<LoaiPhong> arr = BLL.BLLLoaiPhong.GetAll();
+            BLL.BLLLoaiPhong.DoVaoTable(arr, tblLoaiPhong);
         }
 
     }//GEN-LAST:event_btnThemActionPerformed
 
     private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
-        // TODO add your handling code here:
-        //        DTO.LoaiPhong lp = new LoaiPhong(txtMaLoaiPhong.getText(), txtTenLoaiPhong.getText(),
-            //                Float.parseFloat(txtGiaTien.getText()), Float.parseFloat(txtGiaDien.getText()), Float.parseFloat(txtGiaNuoc.getText()));
-        //        int count = JOptionPane.YES_OPTION;
-        //        if (JOptionPane.showConfirmDialog(this, "Bạn có Muốn xóa", "Xóa", JOptionPane.YES_NO_OPTION) == count) {
-            //            DAL.DALLoaiPhong.Delete(lp);
-            //            ArrayList<DTO.LoaiPhong> listLP = BLL.BLLLoaiPhong.GetAll();
-            //            BLL.BLLLoaiPhong.DoVaoTable(listLP, tblLoaiPhong);
-            //        }
-        ThongBao.ThongBaoDonGian("Thông báo", "Hiện không thế xóa!");
+        int dongDangChon = tblLoaiPhong.getSelectedRow();
+        if (dongDangChon < 0) {
+            ThongBao.ThongBaoDonGian("Thông Báo", "Bạn chưa chọn loại phòng cần xóa");
+        } else {
+            int XacNhan = JOptionPane.showConfirmDialog(null, "Bạn có chắc xóa không?", "Thông báo xác nhận", JOptionPane.OK_CANCEL_OPTION);
+            if (XacNhan == JOptionPane.CANCEL_OPTION) {
+                return;
+            }
+        }
+        //Lấy danh sách các sp  cần xóa
+        int dongCanXoa[] = tblLoaiPhong.getSelectedRows();
+        for (int i = 0; i < dongCanXoa.length; i++) {
+            String MaLoaiPhong = tblLoaiPhong.getValueAt(dongCanXoa[i], 0).toString();
+            BLL.BLLLoaiPhong.Delete(MaLoaiPhong);
+        }
+        ArrayList<LoaiPhong> arr = BLL.BLLLoaiPhong.GetAll();
+        BLL.BLLLoaiPhong.DoVaoTable(arr, tblLoaiPhong);
     }//GEN-LAST:event_btnXoaActionPerformed
 
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
         // TODO add your handling code here:
-        if(validateform()){
-            DTO.LoaiPhong lp = new LoaiPhong(txtMaLoaiPhong.getText(), txtTenLoaiPhong.getText(), Float.parseFloat(txtGiaTien.getText()),
-                Float.parseFloat(txtGiaDien.getText()), Float.parseFloat(txtGiaNuoc.getText()));
-            int count = JOptionPane.YES_OPTION;
-            if (JOptionPane.showConfirmDialog(this, "Bạn có Muốn Cập nhật loại phòng", "Cập nhật", JOptionPane.YES_NO_OPTION) == count) {
-                DAL.DALLoaiPhong.Update(lp);
-                ArrayList<DTO.LoaiPhong> listLP = BLL.BLLLoaiPhong.GetAll();
-                BLL.BLLLoaiPhong.DoVaoTable(listLP, tblLoaiPhong);
-            }
+         String TenLoaiPhong;
+        double GiaPhong;
+        double GiaDien;
+        double GiaNuoc;
+        if (validateform()) {
+            TenLoaiPhong = txtTenLoaiPhong.getText();
+            GiaPhong = ChuyenDoi.SoDouble(txtGiaTien.getText());
+            GiaDien = ChuyenDoi.SoDouble(txtGiaDien.getText());
+            GiaNuoc = ChuyenDoi.SoDouble(txtGiaNuoc.getText());
+            int dongDangChon = tblLoaiPhong.getSelectedRow();
+            String MaLoaiPhong = tblLoaiPhong.getValueAt(dongDangChon, 0).toString();
+            LoaiPhong lp = new LoaiPhong(MaLoaiPhong, TenLoaiPhong, GiaPhong, GiaDien, GiaNuoc);
+            BLL.BLLLoaiPhong.Update(lp);
+            ArrayList<LoaiPhong> arr = BLL.BLLLoaiPhong.GetAll();
+            BLL.BLLLoaiPhong.DoVaoTable(arr, tblLoaiPhong);
         }
     }//GEN-LAST:event_btnSuaActionPerformed
 
