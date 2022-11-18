@@ -44,7 +44,7 @@ public class DALHoatDongThuePhong {
     public static void Add(HoatDongThuePhong sp, int i) {
         if (i == 0) {
             String sql = "INSERT INTO [dbo].[HoatDongThuePhong]([MaHopDong],[MaPhong],[MaNguoiThue],[NgayThue],[NgayTra],[GhiChu],[TinhTrang]) VALUES(?,?,?,?,?,?,?)";
-            sqlHelper.executeUpdate(sql, sp.getMaHopDong(), sp.getMaPhong(), sp.getMaNguoiThue(), ChuyenDoi.LayNgayString(sp.getNgayThue()),
+            sqlHelper.executeUpdate(sql, sp.getMaHopDong(), sp.getMaPhong(), sp.getMaNguoiThue(), ChuyenDoi.LayNgayString(sp.getNgayThue()), ChuyenDoi.LayNgayString(sp.getNgayTra()),
                     sp.getGhiChu(), (sp.isTinhTrang() ? 1 : 0));
             sql = "UPDATE [dbo].[NguoiThue] SET [TrangThai] = 0 WHERE MaNguoiThue = ?";
             sqlHelper.executeUpdate(sql, sp.getMaNguoiThue());

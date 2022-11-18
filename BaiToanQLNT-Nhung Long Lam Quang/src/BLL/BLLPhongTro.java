@@ -84,7 +84,6 @@ public class BLLPhongTro {
                 pt.setBan(rs.getInt("Ban"));
                 pt.setBongDen(rs.getInt("BongDen"));
                 pt.setKinhCua(rs.getInt("KinhCua"));
-                pt.setAnh(rs.getString("Anh"));
                 pt.setTrangThai(rs.getBoolean("TrangThai"));
             }
         } catch (SQLException ex) {
@@ -96,10 +95,12 @@ public class BLLPhongTro {
     public static void doComboBox(ArrayList<PhongTro> arr, JComboBox cbb) {
         DefaultComboBoxModel cbbModel = (DefaultComboBoxModel) cbb.getModel();
         cbb.removeAllItems();
+        MyCombobox myCbb = new MyCombobox("", "--Chọn phòng--");
+        cbbModel.addElement(myCbb);
         for (PhongTro lsp : arr) {
             Object value = lsp.getMaPhong();
             Object text = lsp.getMaPhong();
-            MyCombobox myCbb = new MyCombobox(value, text);
+            myCbb = new MyCombobox(value, text);
             cbbModel.addElement(myCbb);
         }
     }

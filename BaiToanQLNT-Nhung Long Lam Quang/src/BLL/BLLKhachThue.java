@@ -128,6 +128,7 @@ public class BLLKhachThue {
         }
         return kh;
     }
+
     public static KhachThue FindByMaOrTen(String TuKhoa) {
 
         //Lấy tất cả dữ liệu Loại sản phẩm từ SQL
@@ -153,10 +154,11 @@ public class BLLKhachThue {
         }
         return kh;
     }
-    public static KhachThue FindByNameAndAddr(String TuKhoa,String TuKhoa1) {
+
+    public static KhachThue FindByNameAndAddr(String TuKhoa, String TuKhoa1) {
 
         //Lấy tất cả dữ liệu Loại sản phẩm từ SQL
-        ResultSet rs = DAL.DALKhachThue.FindByNameAndAddr(TuKhoa,TuKhoa1);
+        ResultSet rs = DAL.DALKhachThue.FindByNameAndAddr(TuKhoa, TuKhoa1);
 
         KhachThue kh = new KhachThue();
         try {
@@ -253,10 +255,12 @@ public class BLLKhachThue {
     public static void doComboBox(ArrayList<KhachThue> arr, JComboBox cbb) {
         DefaultComboBoxModel cbbModel = (DefaultComboBoxModel) cbb.getModel();
         cbb.removeAllItems();
+        MyCombobox myCbb = new MyCombobox("", "--Chọn mã người thuê--");
+        cbbModel.addElement(myCbb);
         for (KhachThue lsp : arr) {
             Object value = lsp.getMaNguoiThue();
-            Object text = lsp.getTenNguoiThue();
-            MyCombobox myCbb = new MyCombobox(value, text);
+            Object text = lsp.getMaNguoiThue();
+            myCbb = new MyCombobox(value, text);
             cbbModel.addElement(myCbb);
         }
     }
@@ -269,6 +273,7 @@ public class BLLKhachThue {
             }
         }
     }
+
     public static int CountNguoiThueTrangThai(int i) {
 
         //Lấy tất cả dữ liệu Loại sản phẩm từ SQL
