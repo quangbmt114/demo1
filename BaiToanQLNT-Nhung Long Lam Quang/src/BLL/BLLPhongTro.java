@@ -39,7 +39,6 @@ public class BLLPhongTro {
                 pt.setBan(rs.getInt("Ban"));
                 pt.setBongDen(rs.getInt("BongDen"));
                 pt.setKinhCua(rs.getInt("KinhCua"));
-                pt.setAnh(rs.getString("Anh"));
                 pt.setTrangThai(rs.getBoolean("TrangThai"));
                 list.add(pt);
             }
@@ -85,7 +84,6 @@ public class BLLPhongTro {
                 pt.setBan(rs.getInt("Ban"));
                 pt.setBongDen(rs.getInt("BongDen"));
                 pt.setKinhCua(rs.getInt("KinhCua"));
-                pt.setAnh(rs.getString("Anh"));
                 pt.setTrangThai(rs.getBoolean("TrangThai"));
             }
         } catch (SQLException ex) {

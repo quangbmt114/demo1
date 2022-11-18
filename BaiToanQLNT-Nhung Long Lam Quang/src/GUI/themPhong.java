@@ -301,7 +301,7 @@ public class themPhong extends javax.swing.JFrame {
        BLL.BLLPhongTro.DoVaoTable(arr,TrangChu.tblPhongTro);
        LamMoi();
        ArrayList<DTO.KhachThue> listKhachThue = BLL.BLLKhachThue.GetAll();
-        TrangChu.txtSoLuongNguoi.setText(String.valueOf(listKhachThue.size()));
+        TrangChu.txtSoLuongNguoiThue.setText(String.valueOf(listKhachThue.size()));
        //tạo biến để mặc định để thống kê phòng
        int PhongTrong = 0;
        int PhongDaThue = 0;
@@ -314,8 +314,8 @@ public class themPhong extends javax.swing.JFrame {
             }
         }
         // set số liệu cho Bảng thống kê
-        TrangChu.txtPhongDaThue.setText(String.valueOf(PhongDaThue));
-        TrangChu.txtPhongTrong.setText(String.valueOf(PhongTrong));
+        TrangChu.txtPhongTrong.setText(String.valueOf(PhongDaThue));
+        TrangChu.txtPhongDaThue.setText(String.valueOf(PhongTrong));
 
         BLL.BLLPhongTro.DoVaoTable(arr, tblPhongTro);
         setVisible(false);
@@ -347,7 +347,7 @@ public class themPhong extends javax.swing.JFrame {
        BLL.BLLPhongTro.DoVaoTable(arr,TrangChu.tblPhongTro);
        LamMoi();
        ArrayList<DTO.KhachThue> listKhachThue = BLL.BLLKhachThue.GetAll();
-        TrangChu.txtSoLuongNguoi.setText(String.valueOf(listKhachThue.size()));
+        TrangChu.txtSoLuongNguoiThue.setText(String.valueOf(listKhachThue.size()));
        //tạo biến để mặc định để thống kê phòng
        int PhongTrong = 0;
        int PhongDaThue = 0;
@@ -360,8 +360,8 @@ public class themPhong extends javax.swing.JFrame {
             }
         }
         // set số liệu cho Bảng thống kê
-        TrangChu.txtPhongDaThue.setText(String.valueOf(PhongDaThue));
-        TrangChu.txtPhongTrong.setText(String.valueOf(PhongTrong));
+        TrangChu.txtPhongTrong.setText(String.valueOf(PhongDaThue));
+        TrangChu.txtPhongDaThue.setText(String.valueOf(PhongTrong));
 
         BLL.BLLPhongTro.DoVaoTable(arr, tblPhongTro);
         setVisible(false);
