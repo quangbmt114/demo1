@@ -1408,7 +1408,6 @@ public class TrangChu extends javax.swing.JFrame {
         jLabel52.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel52.setText("Trạng Thái");
 
-        buttonGroup1.add(rbDangThueAC);
         rbDangThueAC.setText("Đang thuê");
 
         btnTao.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/notebook_1.png"))); // NOI18N
