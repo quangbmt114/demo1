@@ -17,51 +17,33 @@ public class KhachThue {
    String TenNguoiThue;
    String CMND;
    String SDT;
+   String Email;
    String DiaChi;
    String NgaySinh;
-   Image AnhCD;
    String NgayTaoDT;
-//   boolean GioiTinh;
+   boolean GioiTinh;
    boolean TrangThai;
+   Image AnhCD;
+   Image AnhCCTruoc;
+   Image AnhCCSau;
 
     public KhachThue() {
     }
 
-    public KhachThue(String MaNguoiThue, String TenNguoiThue, String CMND, String SDT, String DiaChi, String NgaySinh, String NgayTaoDT, boolean TrangThai,Image AnhCD) {
+    public KhachThue(String MaNguoiThue, String TenNguoiThue, String CMND, String SDT, String Email, String DiaChi, String NgaySinh, String NgayTaoDT, boolean GioiTinh, boolean TrangThai, Image AnhCD, Image AnhCCTruoc, Image AnhCCSau) {
         this.MaNguoiThue = MaNguoiThue;
         this.TenNguoiThue = TenNguoiThue;
         this.CMND = CMND;
         this.SDT = SDT;
+        this.Email = Email;
         this.DiaChi = DiaChi;
         this.NgaySinh = NgaySinh;
         this.NgayTaoDT = NgayTaoDT;
-//        this.GioiTinh = GioiTinh;
+        this.GioiTinh = GioiTinh;
         this.TrangThai = TrangThai;
         this.AnhCD = AnhCD;
-    }
-
-    public KhachThue(String MaNguoiThue, String TenNguoiThue, String CMND, String SDT, String DiaChi, String NgaySinh, String NgayTaoDT, boolean TrangThai) {
-        this.MaNguoiThue = MaNguoiThue;
-        this.TenNguoiThue = TenNguoiThue;
-        this.CMND = CMND;
-        this.SDT = SDT;
-        this.DiaChi = DiaChi;
-        this.NgaySinh = NgaySinh;
-        this.NgayTaoDT = NgayTaoDT;
-//        this.GioiTinh = GioiTinh;
-        this.TrangThai = TrangThai;
-    }
-
-    public KhachThue(JFrame jFrame, boolean b) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    public Image getAnhCD() {
-        return AnhCD;
-    }
-
-    public void setAnhCD(Image AnhCD) {
-        this.AnhCD = AnhCD;
+        this.AnhCCTruoc = AnhCCTruoc;
+        this.AnhCCSau = AnhCCSau;
     }
 
     public String getMaNguoiThue() {
@@ -96,6 +78,14 @@ public class KhachThue {
         this.SDT = SDT;
     }
 
+    public String getEmail() {
+        return Email;
+    }
+
+    public void setEmail(String Email) {
+        this.Email = Email;
+    }
+
     public String getDiaChi() {
         return DiaChi;
     }
@@ -120,22 +110,50 @@ public class KhachThue {
         this.NgayTaoDT = NgayTaoDT;
     }
 
-//   public boolean getGioiTinh() {
-//        return GioiTinh;
-//    }
-//
-//
-//    public void setGioiTinh(boolean GioiTinh) {
-//        this.GioiTinh = GioiTinh;
-//    }
+    public boolean isGioiTinh() {
+        return GioiTinh;
+    }
 
-    public boolean getTrangThai() {
+    public void setGioiTinh(boolean GioiTinh) {
+        this.GioiTinh = GioiTinh;
+    }
+
+    public boolean isTrangThai() {
         return TrangThai;
     }
 
     public void setTrangThai(boolean TrangThai) {
         this.TrangThai = TrangThai;
     }
+
+    public Image getAnhCD() {
+        return AnhCD;
+    }
+
+    public void setAnhCD(Image AnhCD) {
+        this.AnhCD = AnhCD;
+    }
+
+    public Image getAnhCCTruoc() {
+        return AnhCCTruoc;
+    }
+
+    public void setAnhCCTruoc(Image AnhCCTruoc) {
+        this.AnhCCTruoc = AnhCCTruoc;
+    }
+
+    public Image getAnhCCSau() {
+        return AnhCCSau;
+    }
+
+    public void setAnhCCSau(Image AnhCCSau) {
+        this.AnhCCSau = AnhCCSau;
+    }
+
+    
+
+    
+     
 
     
 

@@ -34,12 +34,13 @@ public class BLLKhachThue {
                 kh.setTenNguoiThue(rs.getString("TenNguoiThue"));
                 kh.setCMND(rs.getString("CMND"));
                 kh.setSDT(rs.getString("SDT"));
+                kh.setEmail(rs.getString("Email"));
                 kh.setDiaChi(rs.getString("DiaChi"));
                 kh.setNgaySinh(rs.getString("NgaySinh"));
                 kh.setNgayTaoDT(rs.getString("NgayTaoDT"));
-//                kh.setGioiTinh(rs.getByte("GioiTinh") == 0 ? false : true);
+                kh.setGioiTinh(rs.getByte("GioiTinh") == 0 ? false : true);
                 kh.setTrangThai(rs.getByte("TrangThai") == 0 ? false : true);
-                kh.setDiaChi(rs.getString("DiaChi"));
+                
                 arr.add(kh);
 //                System.out.println(nv.getMaNhanVien());
             }
@@ -57,14 +58,15 @@ public class BLLKhachThue {
         tbModel.setRowCount(0);
 
         for (KhachThue kh : arr) {
-            Object obj[] = new Object[8];
+            Object obj[] = new Object[10];
 
             obj[0] = kh.getMaNguoiThue();
             obj[1] = kh.getTenNguoiThue();
-            obj[2] = kh.getSDT();
-            obj[3] = kh.getCMND();
-//            obj[4] = kh.getGioiTinh() == false ? "Nữ" : "Nam";
-            obj[4] = kh.getTrangThai() == true ? "Đang Thuê" : "Đã Trả";
+            obj[2] = kh.getCMND();
+            obj[3] = kh.getSDT();
+            obj[4] = kh.getEmail();
+            obj[8] = kh.isGioiTinh()== false ? "Nữ" : "Nam";
+            obj[9] = kh.isTrangThai()== true ? "Đang Thuê" : "Đã Trả";
             obj[5] = kh.getDiaChi();
             obj[6] = kh.getNgaySinh();
             obj[7] = kh.getNgayTaoDT();
@@ -89,10 +91,11 @@ public class BLLKhachThue {
                 kh.setTenNguoiThue(rs.getString("TenNguoiThue"));
                 kh.setCMND(rs.getString("CMND"));
                 kh.setSDT(rs.getString("SDT"));
+                kh.setEmail(rs.getString("Email"));
                 kh.setDiaChi(rs.getString("DiaChi"));
                 kh.setNgaySinh(rs.getString("NgaySinh"));
                 kh.setNgayTaoDT(rs.getString("NgayTaoDT"));
-//                kh.setGioiTinh(rs.getByte("GioiTinh") == 0 ? false : true);
+                kh.setGioiTinh(rs.getByte("GioiTinh") == 0 ? false : true);
                 kh.setTrangThai(rs.getByte("TrangThai") == 0 ? false : true);
                 arr.add(kh);
 //                System.out.println(nv.getMaNhanVien());
