@@ -51,13 +51,13 @@ public class DALKhachThue {
         String sql =" INSERT INTO [dbo].[NguoiThue]([MaNguoiThue],[TenNguoiThue],[CMND],[SDT],[DiaChi],[NgaySinh]" +
 "           ,[NgayTaoDT],[TrangThai])VALUES (?,?,?,?,?,?,?,?)";
         sqlHelper.executeUpdate(sql, kh.getMaNguoiThue(),kh.getTenNguoiThue(),kh.getCMND(),kh.getSDT()
-                , kh.getDiaChi(),kh.getNgaySinh() , kh.getNgayTaoDT(),kh.getTrangThai());
+                , kh.getDiaChi(),kh.getNgaySinh() , kh.getNgayTaoDT(),kh.isTrangThai());
     }
     public static void Update(KhachThue kh){
         String sql ="UPDATE [dbo].[NguoiThue]SET [TenNguoiThue] = ?,[CMND] = ? ,[SDT] = ? ,[DiaChi] = ?" +
 "     ,[NgaySinh] = ?,[NgayTaoDT] = ?,[TrangThai] = ? WHERE MaNguoiThue = ?";
         sqlHelper.executeUpdate(sql,kh.getTenNguoiThue(), kh.getCMND(),kh.getSDT(),kh.getDiaChi(),
-                 kh.getNgaySinh(), kh.getNgayTaoDT(),kh.getTrangThai(),kh.getMaNguoiThue());
+                 kh.getNgaySinh(), kh.getNgayTaoDT(),kh.isTrangThai(),kh.getMaNguoiThue());
     }
     public static void Delete(String MaKhachHang){
         String sql ="DELETE FROM [dbo].[NguoiThue] WHERE MaNguoiThue =?";
