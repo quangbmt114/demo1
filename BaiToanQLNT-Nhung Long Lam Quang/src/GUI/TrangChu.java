@@ -960,7 +960,7 @@ public class TrangChu extends javax.swing.JFrame {
         jPanel23.setLayout(jPanel23Layout);
         jPanel23Layout.setHorizontalGroup(
             jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+            .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, 0, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel23Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -2383,7 +2383,7 @@ public class TrangChu extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelMain, javax.swing.GroupLayout.PREFERRED_SIZE, 874, Short.MAX_VALUE)
+            .addComponent(panelMain, javax.swing.GroupLayout.DEFAULT_SIZE, 874, Short.MAX_VALUE)
             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
@@ -2607,7 +2607,7 @@ public class TrangChu extends javax.swing.JFrame {
         String MaHD = txtMaHopDong.getText();
         String MaPhong = cbbPhong.getSelectedItem().toString();
         String MaNguoiThue = cbbMaKhachHang.getSelectedItem().toString();
-        System.out.println("'"+MaNguoiThue+"'");
+//        System.out.println("'"+MaNguoiThue+"'");
         Date NgayThue = dateNgayKy.getDate();
         Date NgayTra = dateNgayKetThuc.getDate();
         String GhiChu = txtGhiChu.getText();
@@ -2768,8 +2768,8 @@ public class TrangChu extends javax.swing.JFrame {
         phong(phongChon);
         //phòng
 
-        BLL.BLLKhachThue.HienThiKhachThueCBB(cbbMaKhachHang, tbHopDongThue.getValueAt(dongDangChon, 3).toString());
         KhachThue khach = BLL.BLLKhachThue.FindByMaNguoiThue(tbHopDongThue.getValueAt(dongDangChon, 2).toString());
+        BLL.BLLKhachThue.HienThiKhachThueCBB(cbbMaKhachHang, khach.getMaNguoiThue());//tbHopDongThue.getValueAt(dongDangChon, 3).toString()
         khackThue(khach);
         dateNgayKy.setDate(ChuyenDoi.LayNgayDate(tbHopDongThue.getValueAt(dongDangChon, 4).toString()));
         if (tbHopDongThue.getValueAt(dongDangChon, 5) != null) {
@@ -2866,7 +2866,7 @@ public class TrangChu extends javax.swing.JFrame {
 
     private void btResetNgayTraHDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btResetNgayTraHDActionPerformed
         // TODO add your handling code here:
-        
+        rbDangThueAC.setSelected(false);
         dateNgayKetThuc.setDate(null);
     }//GEN-LAST:event_btResetNgayTraHDActionPerformed
 

@@ -501,6 +501,8 @@ public class HopDong extends javax.swing.JDialog {
     }//GEN-LAST:event_cbbPhongItemStateChanged
 
     public HoatDongThuePhong LayDataForm() {
+        
+        
         String MaHD = txtMaHopDong.getText();
         String MaPhong = cbbPhong.getSelectedItem().toString();
         String MaNguoiThue = BLL.BLLKhachThue.FindByNameAndAddr(cbbTenKhachHang.getSelectedItem().toString(), txtDiaChi.getText()).getMaNguoiThue();
