@@ -30,7 +30,7 @@ public class KhachThue {
     public KhachThue() {
     }
 
-    public KhachThue(String MaNguoiThue, String TenNguoiThue, String CMND, String SDT, String Email, String DiaChi, String NgaySinh, boolean GioiTinh) {
+    public KhachThue(String MaNguoiThue, String TenNguoiThue, String CMND, String SDT, String Email, String DiaChi, String NgaySinh, String NgayTaoDT, boolean GioiTinh, boolean TrangThai, Image AnhCD, Image AnhCCTruoc, Image AnhCCSau) {
         this.MaNguoiThue = MaNguoiThue;
         this.TenNguoiThue = TenNguoiThue;
         this.CMND = CMND;
