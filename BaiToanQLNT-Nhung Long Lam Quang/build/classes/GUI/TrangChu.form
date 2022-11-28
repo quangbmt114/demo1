@@ -692,7 +692,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jScrollPane1" min="-2" pref="2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="panelDsPhongTro" pref="688" max="32767" attributes="0"/>
+                      <Component id="panelDsPhongTro" pref="686" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -1667,7 +1667,7 @@
                                   <Component id="btnSuaKH" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="btnResetKH" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="166" max="32767" attributes="0"/>
+                              <EmptySpace pref="163" max="32767" attributes="0"/>
                           </Group>
                           <Component id="jScrollPane8" alignment="0" max="32767" attributes="0"/>
                       </Group>
@@ -2130,7 +2130,13 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jPanel14" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jScrollPane5" pref="727" max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jScrollPane5" pref="727" max="32767" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <Component id="txtTimKiemHopDong" min="-2" pref="273" max="-2" attributes="0"/>
+                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
                       </Group>
                       <Component id="jLabel53" alignment="0" max="32767" attributes="0"/>
                   </Group>
@@ -2141,8 +2147,12 @@
                           <Component id="jLabel53" min="-2" pref="62" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jScrollPane5" max="32767" attributes="0"/>
                               <Component id="jPanel14" max="32767" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <Component id="txtTimKiemHopDong" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="jScrollPane5" max="32767" attributes="0"/>
+                              </Group>
                           </Group>
                       </Group>
                   </Group>
@@ -2314,7 +2324,7 @@
                                   <Component id="btnSua1" alignment="3" max="32767" attributes="0"/>
                                   <Component id="btnTao" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="191" max="32767" attributes="0"/>
+                              <EmptySpace pref="181" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -2688,6 +2698,11 @@
                     <Property name="opaque" type="boolean" value="true"/>
                   </Properties>
                 </Component>
+                <Component class="javax.swing.JTextField" name="txtTimKiemHopDong">
+                  <Events>
+                    <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtTimKiemHopDongKeyReleased"/>
+                  </Events>
+                </Component>
               </SubComponents>
             </Container>
           </SubComponents>
@@ -2899,7 +2914,7 @@
                               <Component id="jButton2" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
                               <Component id="jButton3" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="267" max="32767" attributes="0"/>
+                          <EmptySpace pref="252" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -3418,7 +3433,7 @@
                               <Component id="btnLamMoi2" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="jScrollPane6" pref="538" max="32767" attributes="0"/>
+                          <Component id="jScrollPane6" pref="526" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>

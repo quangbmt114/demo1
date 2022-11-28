@@ -40,6 +40,12 @@ public class DALHoatDongThuePhong {
         String sql = "select * from HoatDongThuePhong where MaPhong = ?";
         return sqlHelper.executeQuery(sql, MaPhong);
     }
+    public static ResultSet FindByMaHopDongOrMaNguoiThue(String tuKhoa) {
+        String sql = "select * from HoatDongThuePhong "
+                + " where MaHopDong like ? or MaNguoiThue like ?";
+        tuKhoa = "%" + tuKhoa + "%";
+        return sqlHelper.executeQuery(sql, tuKhoa, tuKhoa);
+    }
 
     public static void Add(HoatDongThuePhong sp, int i) {
         if (i == 0) {

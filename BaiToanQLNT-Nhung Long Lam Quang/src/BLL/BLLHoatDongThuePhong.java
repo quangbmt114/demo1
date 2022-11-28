@@ -139,6 +139,34 @@ public class BLLHoatDongThuePhong {
 
         return arr; //Trả về danh sách  sản phẩm
     }
+    
+    public static ArrayList<HoatDongThuePhong> FindByMaHopDongOrMaNguoiThue(String TuKhoa) {
+
+        //Lấy tất cả dữ liệu Loại sản phẩm từ SQL
+        ResultSet rs = DAL.DALHoatDongThuePhong.FindByMaHopDongOrMaNguoiThue(TuKhoa);
+
+        ArrayList<HoatDongThuePhong> arr = new ArrayList<>();
+
+        try {
+            while (rs.next()) {
+                HoatDongThuePhong sp = new HoatDongThuePhong();
+
+                sp.setMaHopDong(rs.getString("MaHopDong"));
+                sp.setMaPhong(rs.getString("MaPhong"));
+                sp.setMaNguoiThue(rs.getString("MaNguoiThue"));
+                sp.setNgayThue(rs.getDate("NgayThue"));
+                sp.setNgayTra(rs.getDate("NgayTra"));
+                sp.setGhiChu(rs.getString("GhiChu"));
+                sp.setTinhTrang(rs.getBoolean("TinhTrang"));
+
+                arr.add(sp);   //Thêm sản phẩm lsp vào ArrayList
+            }
+        } catch (SQLException ex) {
+            System.out.println("Lỗi lấy dữ liệu: " + ex.getMessage());
+        }
+
+        return arr; //Trả về danh sách  sản phẩm
+    }
 
     //Hàm đổ dữ liệu lên Table
     public static void DoVaoTable(ArrayList<HoatDongThuePhong> arr, JTable tbl) {
