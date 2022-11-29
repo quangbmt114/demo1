@@ -196,12 +196,13 @@ public class TrangChu extends javax.swing.JFrame {
 //        tbHopDongThue.getColumnModel().getColumn(3).setPreferredWidth(125);
         //dổ dữ liệu vào bảng
 //        jTblHoaDon
+//cbbPhongTroHDPT
 //        arrHD = BLL.BLLHoatDongThuePhong.GetAll();
 //        arrKT = BLL.BLLKhachThue.GetAll();
 //        BLL.BLLKhachThue.doComboBox(arrKT, cbbMaKhachHang);
 //        TTkhackThue(khach);
-//        arrPT = BLL.BLLPhongTro.GetAll();
-//        BLL.BLLPhongTro.doComboBox(arrPT, cbbPhong);
+        arrPT = BLL.BLLPhongTro.GetAll();
+        BLL.BLLPhongTro.doComboBox(arrPT, cbbPhongTroHDPT);
 //        BLL.BLLHoatDongThuePhong.DoVaoTable(arrHD, tbHopDongThue);
 //        //set default value
 //        dateNgayKy.setDate(new Date());
@@ -380,7 +381,7 @@ public class TrangChu extends javax.swing.JFrame {
         jLabel61 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jLabel62 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        cbbPhongTroHDPT = new javax.swing.JComboBox<>();
         jLabel63 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
         jLabel64 = new javax.swing.JLabel();
@@ -1910,11 +1911,11 @@ public class TrangChu extends javax.swing.JFrame {
         jLabel62.setFont(new java.awt.Font("UTM Times", 1, 14)); // NOI18N
         jLabel62.setText("Phòng");
 
-        jComboBox1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        cbbPhongTroHDPT.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        cbbPhongTroHDPT.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbbPhongTroHDPT.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                cbbPhongTroHDPTActionPerformed(evt);
             }
         });
 
@@ -2047,7 +2048,7 @@ public class TrangChu extends javax.swing.JFrame {
                                 .addGap(33, 33, 33)
                                 .addComponent(jLabel62)
                                 .addGap(33, 33, 33)
-                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(cbbPhongTroHDPT, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel16Layout.createSequentialGroup()
                                 .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jTextField3, javax.swing.GroupLayout.DEFAULT_SIZE, 119, Short.MAX_VALUE)
@@ -2078,7 +2079,7 @@ public class TrangChu extends javax.swing.JFrame {
                     .addComponent(jLabel61)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel62)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cbbPhongTroHDPT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel63)
@@ -2892,9 +2893,9 @@ public class TrangChu extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_tblDIchVuMouseClicked
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    private void cbbPhongTroHDPTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbbPhongTroHDPTActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    }//GEN-LAST:event_cbbPhongTroHDPTActionPerformed
 
     private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
         // TODO add your handling code here:
@@ -3195,6 +3196,7 @@ public class TrangChu extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cbbDonViTinh;
     private javax.swing.JComboBox<String> cbbMaKhachHang;
     private javax.swing.JComboBox<String> cbbPhong;
+    private javax.swing.JComboBox<String> cbbPhongTroHDPT;
     private com.toedter.calendar.JDateChooser dateNgayKetThuc;
     private com.toedter.calendar.JDateChooser dateNgayKy;
     private com.toedter.calendar.JDateChooser dateNgaySinh;
@@ -3202,7 +3204,6 @@ public class TrangChu extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton5;
-    private javax.swing.JComboBox<String> jComboBox1;
     private com.toedter.calendar.JDateChooser jDateChooser2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;

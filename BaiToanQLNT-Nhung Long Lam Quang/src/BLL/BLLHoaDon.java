@@ -4,11 +4,11 @@
  */
 package BLL;
 
-import DTO.PhongTro;
-import helper.MyCombobox;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import DTO.*;
+import helper.*;
+import java.sql.*;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
@@ -21,24 +21,25 @@ import javax.swing.table.DefaultTableModel;
  * @author Dell
  */
 public class BLLHoaDon {
-    public static ArrayList<DTO.PhongTro> GetAll() {
-        ResultSet rs = DAL.DALPhongTro.GetAll();
-        ArrayList<DTO.PhongTro> list = new ArrayList<>();
+
+    public static ArrayList<DTO.HoaDonPhongTro> GetAll() {
+        ResultSet rs = DAL.DALHoaDonPhongTro.GetAllData();
+        ArrayList<DTO.HoaDonPhongTro> list = new ArrayList<>();
         try {
             while (rs.next()) {
-                DTO.PhongTro pt = new DTO.PhongTro();
-                pt.setMaPhong(rs.getString("MaPhong"));
-                pt.setTenPhong(rs.getString("TenPhong"));
-                pt.setMaLoaiPhong(rs.getString("MaLoaiPhong"));
-                pt.setMaKhuTro(rs.getString("MaKhuTro"));
-                pt.setViTri(rs.getString("Vitri"));
-                pt.setDienTich(rs.getFloat("DienTich"));
-                pt.setGiuong(rs.getInt("Giuong"));
-                pt.setBan(rs.getInt("Ban"));
-                pt.setBongDen(rs.getInt("BongDen"));
-                pt.setKinhCua(rs.getInt("KinhCua"));
-                pt.setTrangThai(rs.getBoolean("TrangThai"));
-                list.add(pt);
+                DTO.HoaDonPhongTro hdpt = new DTO.HoaDonPhongTro();
+                hdpt.setMaHoaDon(rs.getString("MaHoaDon"));
+                hdpt.setMaPhong(rs.getString("MaPhong"));
+                hdpt.setThangTieuThu(rs.getDate("ThangTieuThu"));
+                hdpt.setChiSoMoi(rs.getString("ChiSoMoi"));
+                hdpt.setChiSoCu(rs.getString("ChiSoCu"));
+                hdpt.setTongTienPhong(rs.getInt("TongTienPhong"));
+                hdpt.setTongTienDien(rs.getInt("TongTienDien"));
+                hdpt.setTongTienNuoc(rs.getInt("TongTienNuoc"));
+                hdpt.setTongTienDV(rs.getInt("TongTienDV"));
+                hdpt.setTongTien(rs.getInt("TongTien"));
+                hdpt.setGhiChu(rs.getString("GhiChu"));
+                list.add(hdpt);
             }
         } catch (SQLException ex) {
             Logger.getLogger(BLLDichVu.class.getName()).log(Level.SEVERE, null, ex);
@@ -46,70 +47,75 @@ public class BLLHoaDon {
         return list;
     }
 
-    public static void DoVaoTable(ArrayList<DTO.PhongTro> arr, JTable tbl) {
+    public static void DoVaoTable(ArrayList<DTO.HoaDonPhongTro> arr, JTable tbl) {
 
         DefaultTableModel tbModel = (DefaultTableModel) tbl.getModel();
         tbModel.setRowCount(0);
-        for (DTO.PhongTro dv : arr) {
-            Object obj[] = new Object[6];
-
-            obj[0] = dv.getMaPhong();
-            obj[1] = dv.getTenPhong();
-            obj[2] = dv.getMaLoaiPhong();
-            obj[3] = dv.getViTri();
-            obj[4] = dv.getDienTich();
-            obj[5] = dv.isTrangThai() ? "Đang sử dụng" : "Không sử dụng";
+        for (DTO.HoaDonPhongTro hdpt : arr) {
+            Object obj[] = new Object[11];
+            obj[0] = hdpt.getMaHoaDon();
+            obj[1] = hdpt.getMaPhong();
+            obj[2] = ChuyenDoi.LayNgayString(hdpt.getThangTieuThu());
+            obj[3] = hdpt.getChiSoMoi();
+            obj[4] = hdpt.getChiSoCu();
+            obj[5] = hdpt.getTongTienPhong();
+            obj[6] = hdpt.getTongTienDien();
+            obj[7] = hdpt.getTongTienNuoc();
+            obj[8] = hdpt.getTongTienDV();
+            obj[9] = hdpt.getTongTien();
+            obj[10] = hdpt.getGhiChu();
+//            obj[5] = hdpt.isTrangThai() ? "Đang sử dụng" : "Không sử dụng";
 
             tbModel.addRow(obj);
         }
     }
 
-    public static PhongTro FindMaPhong(String TuKhoa) {
+    public static HoaDonPhongTro FindMaPhong(String TuKhoa) {
 
         //Lấy tất cả dữ liệu Loại sản phẩm từ SQL
-        ResultSet rs = DAL.DALPhongTro.FindByMaPhong(TuKhoa);
+        ResultSet rs = DAL.DALHoaDonPhongTro.FindByMaPhong(TuKhoa);
 
-        DTO.PhongTro pt = new DTO.PhongTro();
+        DTO.HoaDonPhongTro hdpt = new DTO.HoaDonPhongTro();
         try {
             while (rs.next()) {
-                pt.setMaPhong(rs.getString("MaPhong"));
-                pt.setTenPhong(rs.getString("TenPhong"));
-                pt.setMaLoaiPhong(rs.getString("MaLoaiPhong"));
-                pt.setMaKhuTro(rs.getString("MaKhuTro"));
-                pt.setViTri(rs.getString("Vitri"));
-                pt.setDienTich(rs.getFloat("DienTich"));
-                pt.setGiuong(rs.getInt("Giuong"));
-                pt.setBan(rs.getInt("Ban"));
-                pt.setBongDen(rs.getInt("BongDen"));
-                pt.setKinhCua(rs.getInt("KinhCua"));
-                pt.setTrangThai(rs.getBoolean("TrangThai"));
+                hdpt.setMaHoaDon(rs.getString("MaHoaDon"));
+                hdpt.setMaPhong(rs.getString("MaPhong"));
+                hdpt.setThangTieuThu(rs.getDate("ThangTieuThu"));
+                hdpt.setChiSoMoi(rs.getString("ChiSoMoi"));
+                hdpt.setChiSoCu(rs.getString("ChiSoCu"));
+                hdpt.setTongTienPhong(rs.getInt("TongTienPhong"));
+                hdpt.setTongTienDien(rs.getInt("TongTienDien"));
+                hdpt.setTongTienNuoc(rs.getInt("TongTienNuoc"));
+                hdpt.setTongTienDV(rs.getInt("TongTienDV"));
+                hdpt.setTongTien(rs.getInt("TongTien"));
+                hdpt.setGhiChu(rs.getString("GhiChu"));
             }
         } catch (SQLException ex) {
             System.out.println("Lỗi lấy dữ liệu" + ex.getMessage());
         }
-        return pt;
+        return hdpt;
     }
 
-    public static void doComboBox(ArrayList<PhongTro> arr, JComboBox cbb) {
-        DefaultComboBoxModel cbbModel = (DefaultComboBoxModel) cbb.getModel();
-        cbb.removeAllItems();
-        MyCombobox myCbb = new MyCombobox("", "--Chọn phòng--");
-        cbbModel.addElement(myCbb);
-        for (PhongTro lsp : arr) {
-            Object value = lsp.getMaPhong();
-            Object text = lsp.getMaPhong();
-            myCbb = new MyCombobox(value, text);
-            cbbModel.addElement(myCbb);
-        }
-    }
+//    public static void doComboBox(ArrayList<PhongTro> arr, JComboBox cbb) {
+//        DefaultComboBoxModel cbbModel = (DefaultComboBoxModel) cbb.getModel();
+//        cbb.removeAllItems();
+//        MyCombobox myCbb = new MyCombobox("", "--Chọn phòng--");
+//        cbbModel.addElement(myCbb);
+//        for (PhongTro lsp : arr) {
+//            Object value = lsp.getMaPhong();
+//            Object text = lsp.getMaPhong();
+//            myCbb = new MyCombobox(value, text);
+//            cbbModel.addElement(myCbb);
+//        }
+//    }
 
-    public static void HienThiPhongTroCBB(JComboBox cbb, String tenLoai) {
-        for (int i = 0; i < cbb.getItemCount(); i++) {
-            MyCombobox myCbb = (MyCombobox) cbb.getItemAt(i);
-            if (myCbb.toString().equals(tenLoai)) {
-                cbb.setSelectedIndex(i);
-            }
-        }
-    }
-    
+//    public static void HienThiHoaDonPhongTroCBB(JComboBox cbb, String tenLoai) {
+//        for (int i = 0; i < cbb.getItemCount(); i++) {
+//            MyCombobox myCbb = (MyCombobox) cbb.getItemAt(i);
+//            if (myCbb.toString().equals(tenLoai)) {
+//                cbb.setSelectedIndex(i);
+//            }
+//        }
+//    }
+
 }
