@@ -249,6 +249,7 @@ public class BLLHoatDongThuePhong {
     public static boolean CheckMaHopDong(String MaHopDong){
         ArrayList<HoatDongThuePhong> arr=FindByMaHopDong(MaHopDong);
         for (HoatDongThuePhong hd:arr){
+//            ThongBao.ThongBaoDonGian("", "'"+arr.get(0).getMaHopDong()+"'"+MaHopDong+"'");
             if(hd.getMaHopDong().equals(MaHopDong)){
                 return false;
             }

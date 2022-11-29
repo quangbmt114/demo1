@@ -75,6 +75,7 @@ public class DALHoatDongThuePhong {
         String sql;
         if (i == 0) {
 
+            
             sql = "UPDATE [dbo].[HoatDongThuePhong] SET [MaPhong] = ? ,[MaNguoiThue] = ? ,[NgayThue] =? ,[NgayTra] =?,[GhiChu] = ?,[TinhTrang] = ? WHERE MaHopDong = ?";
             sqlHelper.executeUpdate(sql, sp.getMaPhong(), sp.getMaNguoiThue(),
                     ChuyenDoi.LayNgayString(sp.getNgayThue()), ChuyenDoi.LayNgayString(sp.getNgayTra()), sp.getGhiChu(),
@@ -85,10 +86,13 @@ public class DALHoatDongThuePhong {
             sqlHelper.executeUpdate(sql, sp.getMaPhong());
         } else {
 
+//update HoatDongThuePhong set NgayTra=null where MaHopDong='PA0300000000001'
             sql = "UPDATE [dbo].[HoatDongThuePhong] SET [MaPhong] = ? ,[MaNguoiThue] = ? ,[NgayThue] =? ,[GhiChu] = ?,[TinhTrang] = ? WHERE MaHopDong = ?";
             sqlHelper.executeUpdate(sql, sp.getMaPhong(), sp.getMaNguoiThue(),
                     ChuyenDoi.LayNgayString(sp.getNgayThue()), sp.getGhiChu(),
                     (sp.isTinhTrang() ? 1 : 0), sp.getMaHopDong());
+            sql = "update HoatDongThuePhong set NgayTra=null where MaHopDong=?";
+            sqlHelper.executeUpdate(sql,sp.getMaHopDong());
             sql = "UPDATE [dbo].[NguoiThue] SET [TrangThai] = 1 WHERE MaNguoiThue = ?";
             sqlHelper.executeUpdate(sql, sp.getMaNguoiThue());
             sql = "UPDATE [dbo].[PhongTro] set[TrangThai] = 1 WHERE MaPhong=?";

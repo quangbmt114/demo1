@@ -2632,16 +2632,12 @@ public class TrangChu extends javax.swing.JFrame {
         boolean TinhTrang = true;
         Date NgayTra = dateNgayKetThuc.getDate();
         if (dateNgayKetThuc.getDate() != null) {
-//            rbDaKetHDAC.setSelected(true);
             rbDangThueAC.setSelected(false);
-        }else{
             TinhTrang = false;
+        } else {
+            TinhTrang = true;
         }
 
-//        if (rbDaKetHDAC.isSelected()) {
-////        ThongBao.ThongBaoDonGian("  ", NgayTra.toString());
-//            TinhTrang = false;
-//        }
         HoatDongThuePhong hdtp = new HoatDongThuePhong(MaHD, MaPhong, MaNguoiThue, NgayThue, NgayTra, GhiChu, TinhTrang);
         return hdtp;
     }
@@ -2679,11 +2675,11 @@ public class TrangChu extends javax.swing.JFrame {
         // TODO add your handling code here:
         if (cbbMaKhachHang.getSelectedIndex() > 0 && cbbPhong.getSelectedIndex() > 0) {
             HoatDongThuePhong hoatDong = LayDataForm();
-            if (!BLL.BLLHoatDongThuePhong.CheckMaHopDong(hoatDong.getMaPhong())) {
-                ThongBao.ThongBaoDonGian("Thông báo", "Không hợp lệ!   ");
+            if (!BLL.BLLHoatDongThuePhong.CheckMaHopDong(hoatDong.getMaHopDong())) {
+                ThongBao.ThongBaoDonGian("Thông báo", "Mã hợp đồng không hợp lệ!   ");
 
             } else {
-                ThongBao.ThongBaoDonGian("Thông báo", "Mã hợp đồng hợp lệ!   ");
+                ThongBao.ThongBaoDonGian("Thông báo", "Mã hợp đồng hợp lệ!");
                 if (hoatDong.getNgayTra() != null) {
                     BLL.BLLHoatDongThuePhong.Add(hoatDong, 0);
                 } else {
@@ -2703,16 +2699,23 @@ public class TrangChu extends javax.swing.JFrame {
     private void btnSua1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSua1ActionPerformed
         // TODO add your handling code here:
         try {
-            HoatDongThuePhong hoatDong = LayDataForm();
-            if (hoatDong.getNgayTra() != null) {
-                BLL.BLLHoatDongThuePhong.Update(hoatDong, 0);
-            } else {
-                BLL.BLLHoatDongThuePhong.Update(hoatDong, 1);
+            if (cbbMaKhachHang.getSelectedIndex() > 0 && cbbPhong.getSelectedIndex() > 0) {
+                HoatDongThuePhong hoatDong = LayDataForm();
+                if (BLL.BLLHoatDongThuePhong.CheckMaHopDong(hoatDong.getMaHopDong())) {
+                    ThongBao.ThongBaoDonGian("Thông báo", "Mã hợp đồng không tồn tại!   ");
 
+                } else {
+//                ThongBao.ThongBaoDonGian("Thông báo", "Mã hợp đồng hợp lệ!");
+                    if (hoatDong.getNgayTra() != null) {
+                        BLL.BLLHoatDongThuePhong.Update(hoatDong, 0);
+                    } else {
+                        BLL.BLLHoatDongThuePhong.Update(hoatDong, 1);
+
+                    }
+                    ThongBao.ThongBaoDonGian("Thông báo", "Đã cập nhật!   ");
+                    LamMoi();
+                }
             }
-            ThongBao.ThongBaoDonGian("Thông báo", "Đã cập nhật!   ");
-            LamMoi();
-
         } catch (Exception e) {
             ThongBao.ThongBaoDonGian("Thông báo", "Vui lòng kiểm tra thông tin!   ");
         }
@@ -2721,6 +2724,8 @@ public class TrangChu extends javax.swing.JFrame {
         BLL.BLLHoatDongThuePhong.DoVaoTable(arrHD, tbHopDongThue);
         ArrayList<DTO.PhongTro> list = BLL.BLLPhongTro.GetAll();
         BLL.BLLPhongTro.DoVaoTable(list, tblPhongTro);
+
+
     }//GEN-LAST:event_btnSua1ActionPerformed
 
     private void btnLamMoi1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLamMoi1ActionPerformed
@@ -2730,7 +2735,7 @@ public class TrangChu extends javax.swing.JFrame {
 
     private void cbbMaKhachHangItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbbMaKhachHangItemStateChanged
         // TODO add your handling code here:
-        if (cbbMaKhachHang.getItemCount() > 1) {
+        if (cbbMaKhachHang.getItemCount() > 1 && cbbMaKhachHang.getSelectedIndex() > 0) {
             KhachThue khach = BLL.BLLKhachThue.FindByMaNguoiThue(cbbMaKhachHang.getSelectedItem().toString());
             TTkhackThue(khach);
         }
@@ -2739,7 +2744,6 @@ public class TrangChu extends javax.swing.JFrame {
     public void TTphong(PhongTro phongChon) {
         txtDienTich.setText(ChuyenDoi.SoString(phongChon.getDienTich()));
         LoaiPhong loaiPhong = BLL.BLLLoaiPhong.FindMaLoaiPhong(phongChon.getMaLoaiPhong().toString());
-        System.out.println(loaiPhong.getGiaPhong() + "   " + loaiPhong.getMaLoaiPhong());
         txtGiaPhong.setText(ChuyenDoi.SoString(loaiPhong.getGiaPhong()));
     }
 
@@ -2753,7 +2757,7 @@ public class TrangChu extends javax.swing.JFrame {
     private void cbbPhongItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbbPhongItemStateChanged
         // TODO add your handling code here:
         System.out.println(cbbPhong.getItemCount());
-        if (cbbPhong.getItemCount() > 1) {
+        if (cbbPhong.getItemCount() > 1 && cbbPhong.getSelectedIndex() > 0) {
             PhongTro phongChon = BLL.BLLPhongTro.FindMaPhong(cbbPhong.getSelectedItem().toString());
             TTphong(phongChon);
             String SoHopDong = BLL.BLLHoatDongThuePhong.SoHoaDon(cbbPhong.getSelectedItem().toString());
@@ -2778,7 +2782,6 @@ public class TrangChu extends javax.swing.JFrame {
         if (dongDangChon < 0) {
             return;//Thoát
         }
-        txtMaHopDong.setText(tbHopDongThue.getValueAt(dongDangChon, 0).toString());
         //Phòng và thông tin phòng thêm vào đây
         PhongTro phongChon = BLL.BLLPhongTro.FindMaPhong(tbHopDongThue.getValueAt(dongDangChon, 1).toString());
         BLL.BLLPhongTro.HienThiPhongTroCBB(cbbPhong, phongChon.getMaPhong().toString());
@@ -2800,20 +2803,11 @@ public class TrangChu extends javax.swing.JFrame {
             txtGhiChu.setText(null);
         }
         if (tbHopDongThue.getValueAt(dongDangChon, 7).toString() == "Đang thuê") {
-//            rbDaKetHDAC.setSelected(false);
             rbDangThueAC.setSelected(true);
         } else {
-//            rbDaKetHDAC.setSelected(true);
             rbDangThueAC.setSelected(false);
         }
-        //        txtDiaChi.setText(tbHopDongThue.getValueAt(dongDangChon, 5).toString());
-        //        JDNgaySinh.setDate(ChuyenDoi.LayNgayDate(tbHopDongThue.getValueAt(dongDangChon, 6).toString()));
-        //        if (tbHopDongThue.getValueAt(dongDangChon, 7) == null) {
-        //            JDNgayVao.setDate(new Date());
-        //        } else {
-        //            JDNgayVao.setDate(ChuyenDoi.LayNgayDate(tbHopDongThue.getValueAt(dongDangChon, 7).toString()));
-        //        }
-        //        btnSuaKH.setEnabled(true);
+        txtMaHopDong.setText(tbHopDongThue.getValueAt(dongDangChon, 0).toString());
     }//GEN-LAST:event_tbHopDongThueMouseClicked
 
     private void btnThem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThem1ActionPerformed
