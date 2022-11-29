@@ -1534,16 +1534,8 @@
                                           <Group type="102" attributes="0">
                                               <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="txtDiaChi" alignment="0" min="-2" pref="182" max="-2" attributes="0"/>
-                                                  <Component id="JDNgaySinh" alignment="0" min="-2" pref="183" max="-2" attributes="0"/>
-                                                  <Component id="JDNgayVao" alignment="0" min="-2" pref="183" max="-2" attributes="0"/>
-                                                  <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                                      <Component id="txtMaKH" alignment="0" pref="182" max="32767" attributes="0"/>
-                                                      <Component id="txtTenKH" alignment="0" max="32767" attributes="0"/>
-                                                      <Component id="txtCMND" alignment="0" max="32767" attributes="0"/>
-                                                      <Component id="txtSDT" alignment="0" max="32767" attributes="0"/>
-                                                      <Component id="txtSDT2" alignment="0" max="32767" attributes="0"/>
-                                                  </Group>
+                                                  <Component id="TBEmail" alignment="0" min="-2" pref="182" max="-2" attributes="0"/>
+                                                  <Component id="txtMaKH" min="-2" pref="226" max="-2" attributes="0"/>
                                               </Group>
                                           </Group>
                                           <Group type="102" alignment="0" attributes="0">
@@ -1553,6 +1545,18 @@
                                               <Group type="103" groupAlignment="0" attributes="0">
                                                   <Component id="rbDaTra" min="-2" max="-2" attributes="0"/>
                                                   <Component id="rbNu" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                          </Group>
+                                          <Group type="102" alignment="1" attributes="0">
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="txtTenKH" alignment="1" min="-2" pref="226" max="-2" attributes="0"/>
+                                                  <Component id="txtCMND" alignment="1" min="-2" pref="226" max="-2" attributes="0"/>
+                                                  <Component id="txtSDT" alignment="1" min="-2" pref="226" max="-2" attributes="0"/>
+                                                  <Component id="txtEmail" alignment="1" min="-2" pref="226" max="-2" attributes="0"/>
+                                                  <Component id="txtDiaChi" alignment="1" min="-2" pref="226" max="-2" attributes="0"/>
+                                                  <Component id="JDNgaySinh" alignment="1" min="-2" pref="226" max="-2" attributes="0"/>
+                                                  <Component id="JDNgayVao" alignment="1" min="-2" pref="226" max="-2" attributes="0"/>
                                               </Group>
                                           </Group>
                                       </Group>
@@ -1569,7 +1573,7 @@
                                   </Group>
                               </Group>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="jScrollPane8" max="32767" attributes="0"/>
+                              <Component id="jScrollPane8" pref="838" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -1598,10 +1602,12 @@
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="txtSDT2" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtEmail" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel89" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="TBEmail" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel85" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="txtDiaChi" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -1618,10 +1624,10 @@
                               </Group>
                               <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jLabel86" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="JDNgayVao" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel86" min="-2" max="-2" attributes="0"/>
+                                  <Component id="JDNgayVao" min="-2" pref="28" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="rbNam" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="rbNu" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -1667,7 +1673,7 @@
                                   <Component id="btnSuaKH" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="btnResetKH" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="163" max="32767" attributes="0"/>
+                              <EmptySpace pref="173" max="32767" attributes="0"/>
                           </Group>
                           <Component id="jScrollPane8" alignment="0" max="32767" attributes="0"/>
                       </Group>
@@ -1693,6 +1699,9 @@
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JTextField" name="txtTenKH">
+                      <Events>
+                        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtTenKHKeyReleased"/>
+                      </Events>
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel81">
                       <Properties>
@@ -1711,6 +1720,10 @@
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JTextField" name="txtCMND">
+                      <Events>
+                        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtCMNDKeyReleased"/>
+                        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtCMNDKeyTyped"/>
+                      </Events>
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel83">
                       <Properties>
@@ -1756,6 +1769,8 @@
                     <Component class="javax.swing.JTextField" name="txtSDT">
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtSDTActionPerformed"/>
+                        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtSDTKeyReleased"/>
+                        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtSDTKeyTyped"/>
                       </Events>
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel85">
@@ -1964,9 +1979,10 @@
                         <Property name="text" type="java.lang.String" value="Email"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="txtSDT2">
+                    <Component class="javax.swing.JTextField" name="txtEmail">
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtSDT2ActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtEmailActionPerformed"/>
+                        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtEmailKeyReleased"/>
                       </Events>
                     </Component>
                     <Container class="javax.swing.JScrollPane" name="jScrollPane8">
@@ -2074,6 +2090,13 @@
                         </Component>
                       </SubComponents>
                     </Container>
+                    <Component class="javax.swing.JLabel" name="TBEmail">
+                      <Properties>
+                        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="33" green="0" red="ff" type="rgb"/>
+                        </Property>
+                      </Properties>
+                    </Component>
                   </SubComponents>
                 </Container>
               </SubComponents>

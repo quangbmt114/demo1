@@ -65,11 +65,12 @@ public class BLLKhachThue {
             obj[2] = kh.getCMND();
             obj[3] = kh.getSDT();
             obj[4] = kh.getEmail();
-            obj[8] = kh.isGioiTinh()== false ? "Nữ" : "Nam";
-            obj[9] = kh.isTrangThai()== true ? "Đang Thuê" : "Đã Trả";
             obj[5] = kh.getDiaChi();
             obj[6] = kh.getNgaySinh();
             obj[7] = kh.getNgayTaoDT();
+            obj[8] = kh.isGioiTinh()== false ? "Nữ" : "Nam";
+            obj[9] = kh.isTrangThai()== true ? "Đang Thuê" : "Đã Trả";
+            
             tbModel.addRow(obj);
 
         }
@@ -118,10 +119,11 @@ public class BLLKhachThue {
                 kh.setTenNguoiThue(rs.getString("TenNguoiThue"));
                 kh.setCMND(rs.getString("CMND"));
                 kh.setSDT(rs.getString("SDT"));
+                kh.setEmail(rs.getString("Email"));
                 kh.setDiaChi(rs.getString("DiaChi"));
                 kh.setNgaySinh(rs.getString("NgaySinh"));
                 kh.setNgayTaoDT(rs.getString("NgayTaoDT"));
-//                kh.setGioiTinh(rs.getByte("GioiTinh") == 0 ? false : true);
+                kh.setGioiTinh(rs.getByte("GioiTinh") == 0 ? false : true);
                 kh.setTrangThai(rs.getByte("TrangThai") == 0 ? false : true);
 
                 return kh;
@@ -144,10 +146,11 @@ public class BLLKhachThue {
                 kh.setTenNguoiThue(rs.getString("TenNguoiThue"));
                 kh.setCMND(rs.getString("CMND"));
                 kh.setSDT(rs.getString("SDT"));
+                kh.setEmail(rs.getString("Email"));
                 kh.setDiaChi(rs.getString("DiaChi"));
                 kh.setNgaySinh(rs.getString("NgaySinh"));
                 kh.setNgayTaoDT(rs.getString("NgayTaoDT"));
-//                kh.setGioiTinh(rs.getByte("GioiTinh") == 0 ? false : true);
+               kh.setGioiTinh(rs.getByte("GioiTinh") == 0 ? false : true);
                 kh.setTrangThai(rs.getByte("TrangThai") == 0 ? false : true);
 
                 return kh;
@@ -170,10 +173,11 @@ public class BLLKhachThue {
                 kh.setTenNguoiThue(rs.getString("TenNguoiThue"));
                 kh.setCMND(rs.getString("CMND"));
                 kh.setSDT(rs.getString("SDT"));
+                 kh.setEmail(rs.getString("Email"));
                 kh.setDiaChi(rs.getString("DiaChi"));
                 kh.setNgaySinh(rs.getString("NgaySinh"));
                 kh.setNgayTaoDT(rs.getString("NgayTaoDT"));
-//                kh.setGioiTinh(rs.getByte("GioiTinh") == 0 ? false : true);
+                kh.setGioiTinh(rs.getByte("GioiTinh") == 0 ? false : true);
                 kh.setTrangThai(rs.getByte("TrangThai") == 0 ? false : true);
 
                 return kh;
@@ -198,7 +202,7 @@ public class BLLKhachThue {
                 ThongBao.ThongBaoDonGian("Báo Lỗi", "Lỗi check");
                 return false;
             }
-        } else if (them) {
+        } if (them) {
             ResultSet rs = DAL.DALKhachThue.FindBySDT(kh.getSDT());
             try {
                 if (rs.next()) {
@@ -209,7 +213,7 @@ public class BLLKhachThue {
                 ThongBao.ThongBaoDonGian("Báo Lỗi", "Lỗi check");
                 return false;
             }
-        } else if (them) {
+        } if (them) {
             ResultSet rs = DAL.DALKhachThue.FindByCMND(kh.getCMND());
             try {
                 if (rs.next()) {
