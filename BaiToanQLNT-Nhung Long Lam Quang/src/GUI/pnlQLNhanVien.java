@@ -25,8 +25,8 @@ public class pnlQLNhanVien extends javax.swing.JPanel {
      */
     public pnlQLNhanVien() {
         initComponents();
-       ArrayList<NhanVien> arrSP = BLL.BLLNhanVien.GetAll();
-        BLL.BLLNhanVien.DoVaoTable(arrSP, tblNhanVien);
+       ArrayList<NhanVien> arrSP = BLL.BLLChiSoDienNuoc.GetAll();
+        BLL.BLLChiSoDienNuoc.DoVaoTable(arrSP, tblNhanVien);
     }
 
     /**
@@ -384,17 +384,17 @@ public class pnlQLNhanVien extends javax.swing.JPanel {
         NhanVien nv = new NhanVien(TenNhanVien, DiaChi, SoDienThoai,
                 GioiTinh, ChucVu, NgaySinh, NgayVaoLam,
                 Luong, TenDangNhap, MatKhau);
-        BLL.BLLNhanVien.Add(nv);
-        ArrayList<NhanVien> arrSP = BLL.BLLNhanVien.GetAll();
-        BLL.BLLNhanVien.DoVaoTable(arrSP, tblNhanVien);
+        BLL.BLLChiSoDienNuoc.Add(nv);
+        ArrayList<NhanVien> arrSP = BLL.BLLChiSoDienNuoc.GetAll();
+        BLL.BLLChiSoDienNuoc.DoVaoTable(arrSP, tblNhanVien);
     }//GEN-LAST:event_JBThemActionPerformed
 
     private void JBXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBXoaActionPerformed
         // TODO add your handling code here:
          int HangDuocChon = tblNhanVien.getSelectedRow();
-        BLL.BLLNhanVien.Delete((int) tblNhanVien.getValueAt(HangDuocChon, 0));
-        ArrayList<NhanVien> arrSP = BLL.BLLNhanVien.GetAll();
-        BLL.BLLNhanVien.DoVaoTable(arrSP, tblNhanVien);
+        BLL.BLLChiSoDienNuoc.Delete((int) tblNhanVien.getValueAt(HangDuocChon, 0));
+        ArrayList<NhanVien> arrSP = BLL.BLLChiSoDienNuoc.GetAll();
+        BLL.BLLChiSoDienNuoc.DoVaoTable(arrSP, tblNhanVien);
     }//GEN-LAST:event_JBXoaActionPerformed
 
     private void JBSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBSuaActionPerformed
@@ -421,9 +421,9 @@ public class pnlQLNhanVien extends javax.swing.JPanel {
         NhanVien nv = new NhanVien(MaNhanVien,TenNhanVien, DiaChi, SoDienThoai,
                 GioiTinh, ChucVu, NgaySinh, NgayVaoLam,
                 Luong, TenDangNhap, MatKhau);
-        BLL.BLLNhanVien.Update(nv);
-        ArrayList<NhanVien> arrSP = BLL.BLLNhanVien.GetAll();
-        BLL.BLLNhanVien.DoVaoTable(arrSP, tblNhanVien);
+        BLL.BLLChiSoDienNuoc.Update(nv);
+        ArrayList<NhanVien> arrSP = BLL.BLLChiSoDienNuoc.GetAll();
+        BLL.BLLChiSoDienNuoc.DoVaoTable(arrSP, tblNhanVien);
     }//GEN-LAST:event_JBSuaActionPerformed
 
     private void JBResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBResetActionPerformed

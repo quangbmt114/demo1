@@ -2170,6 +2170,11 @@ public class TrangChu extends javax.swing.JFrame {
                 "Mã HĐ", "Phòng", "Tên KH", "Ngày tạo", "Tổng tiền", "Trạng thái"
             }
         ));
+        jTblHoaDon.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTblHoaDonMouseClicked(evt);
+            }
+        });
         jScrollPane7.setViewportView(jTblHoaDon);
 
         javax.swing.GroupLayout jPanel17Layout = new javax.swing.GroupLayout(jPanel17);
@@ -3106,6 +3111,10 @@ public class TrangChu extends javax.swing.JFrame {
 //        BLL.BLLPhong.doDataTable(arrSP, tblPhong);
 
     }//GEN-LAST:event_txtTimKiemHopDongKeyReleased
+
+    private void jTblHoaDonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTblHoaDonMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTblHoaDonMouseClicked
 
     /**
      * @param args the command line arguments
