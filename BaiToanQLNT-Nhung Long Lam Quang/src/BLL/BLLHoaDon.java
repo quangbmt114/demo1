@@ -7,6 +7,8 @@ package BLL;
 import DTO.*;
 import helper.*;
 import java.sql.*;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.logging.Level;
@@ -108,7 +110,6 @@ public class BLLHoaDon {
 //            cbbModel.addElement(myCbb);
 //        }
 //    }
-
 //    public static void HienThiHoaDonPhongTroCBB(JComboBox cbb, String tenLoai) {
 //        for (int i = 0; i < cbb.getItemCount(); i++) {
 //            MyCombobox myCbb = (MyCombobox) cbb.getItemAt(i);
@@ -117,5 +118,41 @@ public class BLLHoaDon {
 //            }
 //        }
 //    }
+    public static String SoHoaDon(String maPhong, Date thangTruoc, Date thangNay) {
+        String soHoaDon = "HD" + maPhong + "-";
+        //HDPA01-120622-120722
+        DateFormat dateFormat = new SimpleDateFormat("ddMMyy");
+        soHoaDon += dateFormat.format(thangTruoc)+"-"+dateFormat.format(thangNay);
+//            Date d = new Date();
+
+//            soHoaDon += dateFormat.format(d);
+//            System.out.println("soHoaDon: " + soHoaDon);
+//            ResultSet rs = DAL.DALHoatDongThuePhong.CountSoHoaDon(soHoaDon);
+//            int rowCount = 0;
+//            if (rs.next()) {
+//                rowCount = rs.getInt(1);
+//            }
+//            boolean dup = false;
+//            do {
+//                if (rowCount > 98) {
+//                    soHoaDon +=(rowCount + 1);
+//                } else if (rowCount > 8) {
+//                    soHoaDon += "0" + (rowCount + 1);
+//                } else {
+//                    soHoaDon += "00" + (rowCount + 1);
+//                }
+////                System.out.println("soHoaDon: " + soHoaDon);
+//                ResultSet rs2 = DAL.DALHoatDongThuePhong.GetHoaDonBySo(soHoaDon);
+//                if (rs2.next()) {
+//                    dup = true;
+//                    rowCount++;
+//                    soHoaDon = maPhong+dateFormat.format(d);
+//                } else {
+//                    dup = false;
+//                }
+//            } while (dup);
+
+        return soHoaDon;
+    }
 
 }

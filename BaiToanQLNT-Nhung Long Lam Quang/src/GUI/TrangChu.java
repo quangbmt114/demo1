@@ -5,6 +5,7 @@
 package GUI;
 
 import BLL.BLLDichVu;
+import DTO.HoaDonPhongTro;
 import DTO.HoatDongThuePhong;
 import DTO.KhachThue;
 import DTO.LoaiPhong;
@@ -47,6 +48,7 @@ public class TrangChu extends javax.swing.JFrame {
     ArrayList<HoatDongThuePhong> arrHD = new ArrayList<>();
     ArrayList<KhachThue> arrKT = new ArrayList<>();
     ArrayList<PhongTro> arrPT = new ArrayList<>();
+    ArrayList<HoaDonPhongTro> arrHDPT = new ArrayList<>();
 
     public TrangChu() {
         initComponents();
@@ -203,10 +205,13 @@ public class TrangChu extends javax.swing.JFrame {
 //        TTkhackThue(khach);
         arrPT = BLL.BLLPhongTro.GetAll();
         BLL.BLLPhongTro.doComboBox(arrPT, cbbPhongTroHDPT);
+        arrHDPT = BLL.BLLHoaDon.GetAll();
+        BLL.BLLHoaDon.DoVaoTable(arrHDPT, jTblHoaDon);
 //        BLL.BLLHoatDongThuePhong.DoVaoTable(arrHD, tbHopDongThue);
 //        //set default value
 //        dateNgayKy.setDate(new Date());
 //        rbDangThueAC.setSelected(true);
+//        txtMaHoaDonPT.setText(BLL.BLLHoaDon.SoHoaDon("PA01", new Date(), new Date()));
     }
 
     /**
@@ -379,7 +384,7 @@ public class TrangChu extends javax.swing.JFrame {
         jPanel16 = new javax.swing.JPanel();
         jLabel60 = new javax.swing.JLabel();
         jLabel61 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txtMaHoaDonPT = new javax.swing.JTextField();
         jLabel62 = new javax.swing.JLabel();
         cbbPhongTroHDPT = new javax.swing.JComboBox<>();
         jLabel63 = new javax.swing.JLabel();
@@ -2044,11 +2049,11 @@ public class TrangChu extends javax.swing.JFrame {
                         .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(jTextField2, javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel16Layout.createSequentialGroup()
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtMaHoaDonPT, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(33, 33, 33)
                                 .addComponent(jLabel62)
-                                .addGap(33, 33, 33)
-                                .addComponent(cbbPhongTroHDPT, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addComponent(cbbPhongTroHDPT, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel16Layout.createSequentialGroup()
                                 .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jTextField3, javax.swing.GroupLayout.DEFAULT_SIZE, 119, Short.MAX_VALUE)
@@ -2077,7 +2082,7 @@ public class TrangChu extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel61)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtMaHoaDonPT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel62)
                     .addComponent(cbbPhongTroHDPT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -3320,7 +3325,6 @@ public class TrangChu extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JTable jTblHoaDon;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField10;
     private javax.swing.JTextField jTextField11;
     private javax.swing.JTextField jTextField12;
@@ -3370,6 +3374,7 @@ public class TrangChu extends javax.swing.JFrame {
     private javax.swing.JLabel txtGiaPhong;
     private javax.swing.JTextField txtGiaTien;
     private javax.swing.JTextField txtMaDichVu;
+    private javax.swing.JTextField txtMaHoaDonPT;
     private javax.swing.JTextField txtMaHopDong;
     private javax.swing.JTextField txtMaKH;
     private javax.swing.JTextField txtMaLoaiPhong;
