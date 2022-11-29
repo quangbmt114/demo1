@@ -87,7 +87,6 @@ public class TrangChu extends javax.swing.JFrame {
         panelMain.add(panelFormDichVu, "DichVu");
         CardLayout layout = (CardLayout) panelMain.getLayout();
         layout.show(panelMain, "TrangChu");
-        opened();
     }
 
     public void LamMoiLoaiPhong() {
@@ -171,7 +170,7 @@ public class TrangChu extends javax.swing.JFrame {
         thread.start();
     }
 
-    public void opened() {// load thông tin panel hợp đồng
+    public void openedPanelHopDong() {// load thông tin panel hợp đồng
         //set kích thước table
         tbHopDongThue.getColumnModel().getColumn(0).setPreferredWidth(105);
         tbHopDongThue.getColumnModel().getColumn(1).setPreferredWidth(40);
@@ -188,6 +187,25 @@ public class TrangChu extends javax.swing.JFrame {
         //set default value
         dateNgayKy.setDate(new Date());
         rbDangThueAC.setSelected(true);
+    }
+    public void openedPanelHoaDon() {// load thông tin panel hợp đồng
+        //set kích thước table
+//        tbHopDongThue.getColumnModel().getColumn(0).setPreferredWidth(105);
+//        tbHopDongThue.getColumnModel().getColumn(1).setPreferredWidth(40);
+//        tbHopDongThue.getColumnModel().getColumn(2).setPreferredWidth(80);
+//        tbHopDongThue.getColumnModel().getColumn(3).setPreferredWidth(125);
+        //dổ dữ liệu vào bảng
+//        jTblHoaDon
+//        arrHD = BLL.BLLHoatDongThuePhong.GetAll();
+//        arrKT = BLL.BLLKhachThue.GetAll();
+//        BLL.BLLKhachThue.doComboBox(arrKT, cbbMaKhachHang);
+//        TTkhackThue(khach);
+//        arrPT = BLL.BLLPhongTro.GetAll();
+//        BLL.BLLPhongTro.doComboBox(arrPT, cbbPhong);
+//        BLL.BLLHoatDongThuePhong.DoVaoTable(arrHD, tbHopDongThue);
+//        //set default value
+//        dateNgayKy.setDate(new Date());
+//        rbDangThueAC.setSelected(true);
     }
 
     /**
@@ -403,7 +421,7 @@ public class TrangChu extends javax.swing.JFrame {
         jRadioButton6 = new javax.swing.JRadioButton();
         jRadioButton7 = new javax.swing.JRadioButton();
         jScrollPane7 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTblHoaDon = new javax.swing.JTable();
         panelFormDichVu = new javax.swing.JPanel();
         jPanel15 = new javax.swing.JPanel();
         jLabel54 = new javax.swing.JLabel();
@@ -962,7 +980,7 @@ public class TrangChu extends javax.swing.JFrame {
         jPanel23.setLayout(jPanel23Layout);
         jPanel23Layout.setHorizontalGroup(
             jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, 0, Short.MAX_VALUE)
+            .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel23Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -2140,8 +2158,8 @@ public class TrangChu extends javax.swing.JFrame {
         jRadioButton7.setFont(new java.awt.Font("UTM Times", 1, 14)); // NOI18N
         jRadioButton7.setText("Chưa thanh toán");
 
-        jTable1.setFont(new java.awt.Font("UTM Times", 1, 14)); // NOI18N
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTblHoaDon.setFont(new java.awt.Font("UTM Times", 1, 14)); // NOI18N
+        jTblHoaDon.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
                 {null, null, null, null, null, null},
@@ -2152,7 +2170,7 @@ public class TrangChu extends javax.swing.JFrame {
                 "Mã HĐ", "Phòng", "Tên KH", "Ngày tạo", "Tổng tiền", "Trạng thái"
             }
         ));
-        jScrollPane7.setViewportView(jTable1);
+        jScrollPane7.setViewportView(jTblHoaDon);
 
         javax.swing.GroupLayout jPanel17Layout = new javax.swing.GroupLayout(jPanel17);
         jPanel17.setLayout(jPanel17Layout);
@@ -2398,7 +2416,7 @@ public class TrangChu extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelMain, javax.swing.GroupLayout.DEFAULT_SIZE, 874, Short.MAX_VALUE)
+            .addComponent(panelMain, javax.swing.GroupLayout.PREFERRED_SIZE, 874, Short.MAX_VALUE)
             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
@@ -2422,12 +2440,14 @@ public class TrangChu extends javax.swing.JFrame {
         // TODO add your handling code here:
         CardLayout layout = (CardLayout) panelMain.getLayout();
         layout.show(panelMain, "HopDong");
+        openedPanelHopDong();
     }//GEN-LAST:event_panelHopDongMouseClicked
 
     private void panelHoaDonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelHoaDonMouseClicked
         // TODO add your handling code here:
         CardLayout layout = (CardLayout) panelMain.getLayout();
         layout.show(panelMain, "HoaDon");
+        openedPanelHoaDon();
     }//GEN-LAST:event_panelHoaDonMouseClicked
 
     private void jLabel24MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel24MouseClicked
@@ -3289,7 +3309,7 @@ public class TrangChu extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JScrollPane jScrollPane8;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTblHoaDon;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField10;
     private javax.swing.JTextField jTextField11;
