@@ -372,9 +372,9 @@ public class TrangChu extends javax.swing.JFrame {
         btnSua1 = new javax.swing.JButton();
         btnLamMoi1 = new javax.swing.JButton();
         cbbMaKhachHang = new javax.swing.JComboBox<>();
-        txtSDT1 = new javax.swing.JLabel();
-        txtCMND1 = new javax.swing.JLabel();
-        txtDiaChi1 = new javax.swing.JLabel();
+        txtSDTHopDong = new javax.swing.JLabel();
+        txtCMNDHopDong = new javax.swing.JLabel();
+        txtDiaChiHopDong = new javax.swing.JLabel();
         cbbPhong = new javax.swing.JComboBox<>();
         txtDienTich = new javax.swing.JLabel();
         txtGiaPhong = new javax.swing.JLabel();
@@ -992,7 +992,7 @@ public class TrangChu extends javax.swing.JFrame {
         jPanel23.setLayout(jPanel23Layout);
         jPanel23Layout.setHorizontalGroup(
             jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, 0, Short.MAX_VALUE)
+            .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel23Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1693,14 +1693,14 @@ public class TrangChu extends javax.swing.JFrame {
             }
         });
 
-        txtSDT1.setFont(new java.awt.Font("UTM Times", 1, 14)); // NOI18N
-        txtSDT1.setText("   ");
+        txtSDTHopDong.setFont(new java.awt.Font("UTM Times", 1, 14)); // NOI18N
+        txtSDTHopDong.setText("   ");
 
-        txtCMND1.setFont(new java.awt.Font("UTM Times", 1, 14)); // NOI18N
-        txtCMND1.setText("   ");
+        txtCMNDHopDong.setFont(new java.awt.Font("UTM Times", 1, 14)); // NOI18N
+        txtCMNDHopDong.setText("   ");
 
-        txtDiaChi1.setFont(new java.awt.Font("UTM Times", 1, 14)); // NOI18N
-        txtDiaChi1.setText("   ");
+        txtDiaChiHopDong.setFont(new java.awt.Font("UTM Times", 1, 14)); // NOI18N
+        txtDiaChiHopDong.setText("   ");
 
         cbbPhong.setFont(new java.awt.Font("UTM Times", 0, 12)); // NOI18N
         cbbPhong.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -1760,7 +1760,7 @@ public class TrangChu extends javax.swing.JFrame {
                             .addComponent(jLabel77))
                         .addGap(21, 21, 21)
                         .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtDiaChi1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtDiaChiHopDong, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(jPanel14Layout.createSequentialGroup()
                                 .addComponent(cbbPhong, 0, 169, Short.MAX_VALUE)
                                 .addGap(18, 18, 18)
@@ -1771,11 +1771,11 @@ public class TrangChu extends javax.swing.JFrame {
                             .addComponent(rbDangThueAC)
                             .addComponent(txtGiaPhong, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(jPanel14Layout.createSequentialGroup()
-                                .addComponent(txtSDT1, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtSDTHopDong, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jLabel47)
                                 .addGap(24, 24, 24)
-                                .addComponent(txtCMND1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(txtCMNDHopDong, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel14Layout.createSequentialGroup()
                                 .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(txtTenNguoiThueHD, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -1826,12 +1826,12 @@ public class TrangChu extends javax.swing.JFrame {
                 .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel43)
                     .addComponent(jLabel47)
-                    .addComponent(txtSDT1)
-                    .addComponent(txtCMND1))
+                    .addComponent(txtSDTHopDong)
+                    .addComponent(txtCMNDHopDong))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel44)
-                    .addComponent(txtDiaChi1))
+                    .addComponent(txtDiaChiHopDong))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel45)
@@ -2468,7 +2468,7 @@ public class TrangChu extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelMain, javax.swing.GroupLayout.DEFAULT_SIZE, 874, Short.MAX_VALUE)
+            .addComponent(panelMain, javax.swing.GroupLayout.PREFERRED_SIZE, 874, Short.MAX_VALUE)
             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
@@ -2718,6 +2718,10 @@ public class TrangChu extends javax.swing.JFrame {
         // TODO add your handling code here:
         txtMaHopDong.setText("");
         cbbMaKhachHang.setSelectedIndex(0);
+        txtTenNguoiThueHD.setText("");
+        txtSDTHopDong.setText("");
+        txtCMNDHopDong.setText("");
+        txtDiaChiHopDong.setText("");
         cbbPhong.setSelectedIndex(0);
         dateNgaySinh.setDate(null);
         dateNgayKy.setDate(null);
@@ -2838,9 +2842,9 @@ public class TrangChu extends javax.swing.JFrame {
     public void TTkhackThue(KhachThue khach) {
         txtTenNguoiThueHD.setText(khach.getTenNguoiThue());
         dateNgaySinh.setDate(ChuyenDoi.LayNgayDate(khach.getNgaySinh()));
-        txtSDT1.setText(khach.getSDT());
-        txtCMND1.setText(khach.getCMND());
-        txtDiaChi1.setText(khach.getDiaChi());
+        txtSDTHopDong.setText(khach.getSDT());
+        txtCMNDHopDong.setText(khach.getCMND());
+        txtDiaChiHopDong.setText(khach.getDiaChi());
     }
     private void cbbPhongItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbbPhongItemStateChanged
         // TODO add your handling code here:
@@ -3469,9 +3473,9 @@ public class TrangChu extends javax.swing.JFrame {
     private javax.swing.JTable tblLoaiPhong;
     public static javax.swing.JTable tblPhongTro;
     private javax.swing.JTextField txtCMND;
-    private javax.swing.JLabel txtCMND1;
+    private javax.swing.JLabel txtCMNDHopDong;
     private javax.swing.JTextField txtDiaChi;
-    private javax.swing.JLabel txtDiaChi1;
+    private javax.swing.JLabel txtDiaChiHopDong;
     private javax.swing.JLabel txtDienTich;
     private javax.swing.JLabel txtDoanhThu;
     private javax.swing.JTextField txtEmail;
@@ -3489,7 +3493,7 @@ public class TrangChu extends javax.swing.JFrame {
     public static javax.swing.JLabel txtPhongDaThue;
     public static javax.swing.JLabel txtPhongTrong;
     private javax.swing.JTextField txtSDT;
-    private javax.swing.JLabel txtSDT1;
+    private javax.swing.JLabel txtSDTHopDong;
     public static javax.swing.JLabel txtSoLuongNguoiThue;
     private javax.swing.JTextField txtTenDichVu;
     private javax.swing.JTextField txtTenKH;
