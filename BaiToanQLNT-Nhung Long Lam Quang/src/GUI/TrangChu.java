@@ -116,7 +116,7 @@ public class TrangChu extends javax.swing.JFrame {
 
     }
 
-    public void FillPhong() {
+       public void FillPhong() {
         ArrayList<PhongTro> ListPhong = BLL.BLLPhongTro.GetAll();
 
         if (ListPhong != null) {
@@ -126,7 +126,8 @@ public class TrangChu extends javax.swing.JFrame {
                 btn[i] = new JButton();
                 btn[i].setName(String.valueOf(ListPhong.get(i).getMaPhong()));
                 String[] mb = ListPhong.get(i).getTenPhong().split(" ");
-                btn[i].setText(mb[0] + " " + mb[1]);
+                btn[i].setText("<html> "+mb[0] + " " + mb[1]+"<br>Trạng thái : "
+                        +String.valueOf(ListPhong.get(i).isTrangThai()?"Chưa thuê":"Đã thuê")+"<html>");
                 btn[i].setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/house.png")));
                 Border thickBorder = new LineBorder(Color.WHITE, 4);
                 btn[i].setBorder(thickBorder);
@@ -134,6 +135,10 @@ public class TrangChu extends javax.swing.JFrame {
                 btn[i].setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
                 btn[i].setForeground(new java.awt.Color(51, 51, 51));
                 System.out.println("Bàn" + i);
+                if(ListPhong.get(i).isTrangThai()){
+                    btn[i].setBackground(Color.GREEN);
+                }
+                String maPhong = ListPhong.get(i).getTenPhong();
 //                if(arrBan.get(i).getGhiChu().equals("Trống")){
 //                    btn[i].setBackground(Color.decode("#ff6699"));
 //                }
@@ -145,7 +150,12 @@ public class TrangChu extends javax.swing.JFrame {
                 btn[i].addMouseListener(new MouseAdapter() {
                     @Override
                     public void mousePressed(MouseEvent e) {
-
+                           FormChiTiet ct = new FormChiTiet(null,true);
+                           ct.TenPhong.setText(maPhong);
+                           ct.setLocationRelativeTo(null);
+                           ct.setVisible(true);
+                           
+                          
                     }
                 });
 
