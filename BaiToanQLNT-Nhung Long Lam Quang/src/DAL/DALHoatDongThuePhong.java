@@ -54,8 +54,8 @@ public class DALHoatDongThuePhong {
                     sp.getGhiChu(), (sp.isTinhTrang() ? 1 : 0));
             sql = "UPDATE [dbo].[NguoiThue] SET [TrangThai] = 0 WHERE MaNguoiThue = ?";
             sqlHelper.executeUpdate(sql, sp.getMaNguoiThue());
-            sql = "UPDATE [dbo].[PhongTro] set[TrangThai] = 0 WHERE MaPhong=?";
-            sqlHelper.executeUpdate(sql, sp.getMaPhong());
+//            sql = "UPDATE [dbo].[PhongTro] set[TrangThai] = 0 WHERE MaPhong=?";
+//            sqlHelper.executeUpdate(sql, sp.getMaPhong());
         } else {
             String sql = "INSERT INTO [dbo].[HoatDongThuePhong]([MaHopDong],[MaPhong],[MaNguoiThue],[NgayThue],[GhiChu],[TinhTrang]) VALUES(?,?,?,?,?,?)";
             sqlHelper.executeUpdate(sql, sp.getMaHopDong(), sp.getMaPhong(), sp.getMaNguoiThue(), ChuyenDoi.LayNgayString(sp.getNgayThue()),
@@ -95,8 +95,9 @@ public class DALHoatDongThuePhong {
             sqlHelper.executeUpdate(sql,sp.getMaHopDong());
             sql = "UPDATE [dbo].[NguoiThue] SET [TrangThai] = 1 WHERE MaNguoiThue = ?";
             sqlHelper.executeUpdate(sql, sp.getMaNguoiThue());
-            sql = "UPDATE [dbo].[PhongTro] set[TrangThai] = 1 WHERE MaPhong=?";
-            sqlHelper.executeUpdate(sql, sp.getMaPhong());
+            sql = "if (select count(*) from hoatdongthuephong where maphong= ? and tinhtrang=1)=1 "
+                    + "UPDATE [dbo].[PhongTro] set[TrangThai] = 1 WHERE MaPhong=?";
+            sqlHelper.executeUpdate(sql, sp.getMaPhong(), sp.getMaPhong());
         }
 
 //        String sql = "UPDATE [dbo].[HoatDongThuePhong] SET [MaPhong] = ? ,[MaNguoiThue] = ? ,[NgayThue] =? ,[NgayTra] =?,[GhiChu] = ?,[TinhTrang] = ? WHERE MaHopDong = ?";

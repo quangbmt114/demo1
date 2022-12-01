@@ -127,7 +127,7 @@ public class TrangChu extends javax.swing.JFrame {
                 btn[i].setName(String.valueOf(ListPhong.get(i).getMaPhong()));
                 String[] mb = ListPhong.get(i).getTenPhong().split(" ");
                 btn[i].setText("<html> "+mb[0] + " " + mb[1]+"<br>Trạng thái : "
-                        +String.valueOf(ListPhong.get(i).isTrangThai()?"Chưa thuê":"Đã thuê")+"<html>");
+                        +String.valueOf(ListPhong.get(i).isTrangThai()?"Đã thuê":"Chưa thuê")+"<html>");
                 btn[i].setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/house.png")));
                 Border thickBorder = new LineBorder(Color.WHITE, 4);
                 btn[i].setBorder(thickBorder);
@@ -2699,6 +2699,7 @@ public class TrangChu extends javax.swing.JFrame {
         // TODO add your handling code here:
         CardLayout layout = (CardLayout) panelMain.getLayout();
         layout.show(panelMain, "TrangChu");
+        FillPhong();
     }//GEN-LAST:event_jPanel4MouseClicked
     public HoatDongThuePhong LayDataForm() {
         String MaHD = txtMaHopDong.getText();

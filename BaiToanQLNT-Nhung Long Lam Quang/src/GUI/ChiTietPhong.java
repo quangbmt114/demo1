@@ -26,6 +26,7 @@ public class ChiTietPhong extends javax.swing.JDialog {
         txtMaPhong.setText(TrangChu.text);
         for (PhongTro phongTro : list) {
             if(phongTro.getTenPhong().equals(FormChiTiet.TenPhong.getText())){
+                txtMaPhong.setText(phongTro.getMaPhong());
                 txtTenPhong.setText(phongTro.getTenPhong());
                 txtMaLoaiPhong.setText(phongTro.getMaLoaiPhong());
                 txtMaKhuTro.setText(phongTro.getMaKhuTro());
