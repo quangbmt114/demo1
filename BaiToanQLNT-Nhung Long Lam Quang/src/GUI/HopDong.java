@@ -36,17 +36,14 @@ public class HopDong extends javax.swing.JDialog {
 
     public void opened() {
         //set kích thước table
-        tbHopDongThue.getColumnModel().getColumn(0).setPreferredWidth(105);
-        tbHopDongThue.getColumnModel().getColumn(1).setPreferredWidth(40);
-        tbHopDongThue.getColumnModel().getColumn(2).setPreferredWidth(80);
-        tbHopDongThue.getColumnModel().getColumn(3).setPreferredWidth(125);
+        
         //dổ dữ liệu vào bảng
         arrHD = BLL.BLLHoatDongThuePhong.GetAll();
         arrKT = BLL.BLLKhachThue.GetAll();
         BLL.BLLKhachThue.doComboBox(arrKT, cbbTenKhachHang);
         arrPT = BLL.BLLPhongTro.GetAll();
         BLL.BLLPhongTro.doComboBox(arrPT, cbbPhong);
-        BLL.BLLHoatDongThuePhong.DoVaoTable(arrHD, tbHopDongThue);
+       
         //set default value
         dateNgayKy.setDate(new Date());
         rbDangThueAC.setSelected(true);
@@ -97,8 +94,6 @@ public class HopDong extends javax.swing.JDialog {
         txtDienTich = new javax.swing.JLabel();
         txtGiaPhong = new javax.swing.JLabel();
         jButton5 = new javax.swing.JButton();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        tbHopDongThue = new javax.swing.JTable();
         jLabel16 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -259,7 +254,7 @@ public class HopDong extends javax.swing.JDialog {
                                 .addComponent(jLabel9)
                                 .addGap(24, 24, 24)
                                 .addComponent(txtCMND, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 270, Short.MAX_VALUE)
+                            .addComponent(jScrollPane1)
                             .addComponent(dateNgayKetThuc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(dateNgayKy, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
@@ -343,27 +338,9 @@ public class HopDong extends javax.swing.JDialog {
                 .addContainerGap(28, Short.MAX_VALUE))
         );
 
-        tbHopDongThue.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null}
-            },
-            new String [] {
-                "Mã HĐ", "Phòng", "Mã người thuê", "Tên KH", "Ngày ký", "Ngày kết thúc", "Ghi chú", "Trạng thái"
-            }
-        ));
-        tbHopDongThue.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tbHopDongThueMouseClicked(evt);
-            }
-        });
-        jScrollPane2.setViewportView(tbHopDongThue);
-
         jLabel16.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
         jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel16.setText("QUẢN LÝ HỢP ĐỒNG THUÊ");
+        jLabel16.setText(" HỢP ĐỒNG THUÊ");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -372,8 +349,7 @@ public class HopDong extends javax.swing.JDialog {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 734, Short.MAX_VALUE))
+                .addContainerGap(46, Short.MAX_VALUE))
             .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
@@ -382,9 +358,7 @@ public class HopDong extends javax.swing.JDialog {
                 .addGap(16, 16, 16)
                 .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane2))
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
@@ -416,50 +390,6 @@ public class HopDong extends javax.swing.JDialog {
         txtCMND.setText(khach.getCMND());
         txtDiaChi.setText(khach.getDiaChi());
     }
-    private void tbHopDongThueMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbHopDongThueMouseClicked
-        // TODO add your handling code here:
-        int dongDangChon = tbHopDongThue.getSelectedRow();
-        if (dongDangChon < 0) {
-            return;//Thoát
-        }
-        txtMaHopDong.setText(tbHopDongThue.getValueAt(dongDangChon, 0).toString());
-//Phòng và thông tin phòng thêm vào đây
-        PhongTro phongChon = BLL.BLLPhongTro.FindMaPhong(tbHopDongThue.getValueAt(dongDangChon, 1).toString());
-        BLL.BLLPhongTro.HienThiPhongTroCBB(cbbPhong, phongChon.getMaPhong().toString());
-        phong(phongChon);
-//phòng
-
-        BLL.BLLKhachThue.HienThiKhachThueCBB(cbbTenKhachHang, tbHopDongThue.getValueAt(dongDangChon, 3).toString());
-        KhachThue khach = BLL.BLLKhachThue.FindByMaNguoiThue(tbHopDongThue.getValueAt(dongDangChon, 2).toString());
-        khackThue(khach);
-        dateNgayKy.setDate(ChuyenDoi.LayNgayDate(tbHopDongThue.getValueAt(dongDangChon, 4).toString()));
-        if (tbHopDongThue.getValueAt(dongDangChon, 5) != null) {
-            dateNgayKetThuc.setDate(ChuyenDoi.LayNgayDate(tbHopDongThue.getValueAt(dongDangChon, 5).toString()));
-        } else {
-            dateNgayKetThuc.setCalendar(null);
-        }
-        if (tbHopDongThue.getValueAt(dongDangChon, 6) != null) {
-            txtGhiChu.setText(tbHopDongThue.getValueAt(dongDangChon, 6).toString());
-        } else {
-            txtGhiChu.setText(null);
-        }
-        if (tbHopDongThue.getValueAt(dongDangChon, 7).toString() == "Đang thuê") {
-            rbDaKetHDAC.setSelected(false);
-            rbDangThueAC.setSelected(true);
-        } else {
-            rbDaKetHDAC.setSelected(true);
-            rbDangThueAC.setSelected(false);
-        }
-//        txtDiaChi.setText(tbHopDongThue.getValueAt(dongDangChon, 5).toString());
-//        JDNgaySinh.setDate(ChuyenDoi.LayNgayDate(tbHopDongThue.getValueAt(dongDangChon, 6).toString()));
-//        if (tbHopDongThue.getValueAt(dongDangChon, 7) == null) {
-//            JDNgayVao.setDate(new Date());
-//        } else {
-//            JDNgayVao.setDate(ChuyenDoi.LayNgayDate(tbHopDongThue.getValueAt(dongDangChon, 7).toString()));
-//        }
-//        btnSuaKH.setEnabled(true);
-    }//GEN-LAST:event_tbHopDongThueMouseClicked
-
     private void rbDaKetHDACActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbDaKetHDACActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_rbDaKetHDACActionPerformed
@@ -485,19 +415,12 @@ public class HopDong extends javax.swing.JDialog {
 
     private void cbbTenKhachHangItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbbTenKhachHangItemStateChanged
         // TODO add your handling code here:
-        if (cbbTenKhachHang.getItemCount() > 0) {
-            KhachThue khach = BLL.BLLKhachThue.FindByName(cbbTenKhachHang.getSelectedItem().toString()).get(0);
-            khackThue(khach);
-        }
+        
     }//GEN-LAST:event_cbbTenKhachHangItemStateChanged
 
     private void cbbPhongItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbbPhongItemStateChanged
         // TODO add your handling code here:
-        System.out.println(cbbPhong.getItemCount());
-        if (cbbPhong.getItemCount() > 0) {
-            PhongTro phongChon = BLL.BLLPhongTro.FindMaPhong(cbbPhong.getSelectedItem().toString());
-            phong(phongChon);
-        }
+        
     }//GEN-LAST:event_cbbPhongItemStateChanged
 
     public HoatDongThuePhong LayDataForm() {
@@ -543,7 +466,6 @@ public class HopDong extends javax.swing.JDialog {
             LamMoi();
         }
         arrHD = BLL.BLLHoatDongThuePhong.GetAll();
-        BLL.BLLHoatDongThuePhong.DoVaoTable(arrHD, tbHopDongThue);
         ArrayList<DTO.PhongTro> list = BLL.BLLPhongTro.GetAll();
         BLL.BLLPhongTro.DoVaoTable(list, tblPhongTro);
     }//GEN-LAST:event_btnTaoActionPerformed
@@ -572,7 +494,6 @@ public class HopDong extends javax.swing.JDialog {
         }
 
         arrHD = BLL.BLLHoatDongThuePhong.GetAll();
-        BLL.BLLHoatDongThuePhong.DoVaoTable(arrHD, tbHopDongThue);
         ArrayList<DTO.PhongTro> list = BLL.BLLPhongTro.GetAll();
         BLL.BLLPhongTro.DoVaoTable(list, tblPhongTro);
     }//GEN-LAST:event_btnSuaActionPerformed
@@ -648,10 +569,8 @@ public class HopDong extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JRadioButton rbDaKetHDAC;
     private javax.swing.JRadioButton rbDangThueAC;
-    private javax.swing.JTable tbHopDongThue;
     private javax.swing.JLabel txtCMND;
     private javax.swing.JLabel txtDiaChi;
     private javax.swing.JLabel txtDienTich;

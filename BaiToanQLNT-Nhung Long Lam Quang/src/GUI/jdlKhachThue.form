@@ -190,16 +190,14 @@
                                           <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                               <Component id="TBEmail" pref="222" max="32767" attributes="0"/>
-                                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                                  <Component id="txtMaKH" alignment="0" pref="222" max="32767" attributes="0"/>
-                                                  <Component id="txtTenKH" alignment="0" max="32767" attributes="0"/>
-                                                  <Component id="txtCMND" alignment="0" max="32767" attributes="0"/>
-                                                  <Component id="txtSDT" alignment="0" max="32767" attributes="0"/>
-                                                  <Component id="txtDiaChi" alignment="0" max="32767" attributes="0"/>
-                                                  <Component id="JDNgaySinh" alignment="0" max="32767" attributes="0"/>
-                                                  <Component id="JDNgayVao" alignment="0" max="32767" attributes="0"/>
-                                                  <Component id="txtEmail" alignment="0" max="32767" attributes="0"/>
-                                              </Group>
+                                              <Component id="txtMaKH" alignment="0" pref="222" max="32767" attributes="0"/>
+                                              <Component id="txtTenKH" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="txtCMND" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="txtSDT" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="txtDiaChi" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="JDNgaySinh" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="JDNgayVao" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="txtEmail" alignment="0" max="32767" attributes="0"/>
                                           </Group>
                                       </Group>
                                   </Group>
@@ -299,7 +297,7 @@
                               <Component id="btnSuaKH" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="btnResetKH" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="158" max="32767" attributes="0"/>
+                          <EmptySpace pref="171" max="32767" attributes="0"/>
                       </Group>
                       <Component id="jScrollPane8" alignment="0" max="32767" attributes="0"/>
                   </Group>

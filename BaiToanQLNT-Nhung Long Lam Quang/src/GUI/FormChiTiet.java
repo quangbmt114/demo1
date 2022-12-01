@@ -50,8 +50,18 @@ public class FormChiTiet extends javax.swing.JDialog {
         jButton2.setText("Thêm Khách");
 
         jButton3.setText("Hợp Đồng");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton4.setText("Hóa Đơn");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         TenPhong.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         TenPhong.setText("jLabel2");
@@ -124,6 +134,16 @@ public class FormChiTiet extends javax.swing.JDialog {
         ChiTietPhong ctp = new ChiTietPhong(null, true);
         ctp.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        new HoaDon(null, true).setVisible(true);
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        new HopDong(null, true).setVisible(true);
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
