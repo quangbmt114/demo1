@@ -108,7 +108,8 @@ public class TrangChu extends javax.swing.JFrame {
 
     public boolean validateform() {
 
-        if (txtMaLoaiPhong.getText().equals("") || txtTenLoaiPhong.getText().equals("") || txtGiaTien.getText().equals("") || txtGiaDien.getText().equals("") || txtGiaNuoc.getText().equals("")) {
+        if (txtMaLoaiPhong.getText().equals("") || txtTenLoaiPhong.getText().equals("") 
+          || txtGiaTien.getText().equals("") || txtGiaDien.getText().equals("") || txtGiaNuoc.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Vui lòng nhập ĐẦY ĐỦ THÔNG TIN!");
             return false;
         }
@@ -132,7 +133,7 @@ public class TrangChu extends javax.swing.JFrame {
                 Border thickBorder = new LineBorder(Color.WHITE, 4);
                 btn[i].setBorder(thickBorder);
                 btn[i].setBackground(Color.decode("#8080ff"));
-                btn[i].setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
+                btn[i].setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
                 btn[i].setForeground(new java.awt.Color(51, 51, 51));
                 System.out.println("Bàn" + i);
                 if(ListPhong.get(i).isTrangThai()){
