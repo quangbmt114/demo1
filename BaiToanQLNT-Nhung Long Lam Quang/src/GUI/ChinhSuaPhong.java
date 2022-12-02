@@ -33,6 +33,8 @@ public class ChinhSuaPhong extends javax.swing.JDialog {
      * Creates new form ChinhSuaPhong
      */
     ArrayList<DTO.LoaiPhong> list = BLL.BLLLoaiPhong.GetAll();
+        ArrayList<DTO.PhongTro> listPT = BLL.BLLPhongTro.GetAll();
+
     public ChinhSuaPhong(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -43,6 +45,21 @@ public class ChinhSuaPhong extends javax.swing.JDialog {
         for (LoaiPhong lp : list) {
             cbbModel.addElement(lp.getTenLoaiPhong());
             cbbLoaiPhong.setModel(cbbModel);
+        }
+        for (PhongTro Phong : listPT) {
+            if(ChiTietPhong.txtMaPhong.getText().equals(Phong.getMaPhong())){
+                txtMaPhong.setText(Phong.getMaPhong());
+                txtTenPhong.setText(Phong.getTenPhong());
+                txtViTri.setText(Phong.getViTri());
+                txtDienTich.setText(String.valueOf(Phong.getDienTich()));
+                txtGiuong.setText(String.valueOf(Phong.getGiuong()));
+                txtBan.setText(String.valueOf(Phong.getBan()));
+                txtBongDen.setText(String.valueOf(Phong.getBongDen()));
+                txtCuaKinh.setText(String.valueOf(Phong.getKinhCua()));
+                JRSuDung.setSelected(Phong.isTrangThai()?true:false);
+                                JRKhongSuDung.setSelected(Phong.isTrangThai()?true:false);
+
+            }
         }
     }
       public void LamMoi() {
