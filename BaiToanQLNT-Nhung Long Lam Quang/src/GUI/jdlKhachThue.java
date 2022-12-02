@@ -490,7 +490,7 @@ public class jdlKhachThue extends javax.swing.JDialog {
             NgaySinh = ChuyenDoi.LayNgayString(JDNgaySinh.getDate());
             NgayTaoDT = ChuyenDoi.LayNgayString(JDNgayVao.getDate());
 
-            KhachThue kh = new KhachThue(MaNguoiThue, TenNguoiThue, CMND, SDT, DiaChi, NgaySinh, NgayTaoDT, TrangThai);
+            KhachThue kh = new KhachThue(MaNguoiThue, TenNguoiThue, CMND, SDT, Email, DiaChi, NgaySinh, NgayTaoDT, GioiTinh, TrangThai);
             BLL.BLLKhachThue.Add(kh);
 //            ThongBao.ThongBaoDonGian("Thông báo", "Đã thêm!");
             ArrayList<KhachThue> arr = BLL.BLLKhachThue.GetAll();

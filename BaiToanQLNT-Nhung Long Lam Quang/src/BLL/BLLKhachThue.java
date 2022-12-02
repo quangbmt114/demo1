@@ -68,8 +68,8 @@ public class BLLKhachThue {
             obj[5] = kh.getDiaChi();
             obj[6] = kh.getNgaySinh();
             obj[7] = kh.getNgayTaoDT();
-            obj[8] = kh.isGioiTinh()== false ? "Nữ" : "Nam";
-            obj[9] = kh.isTrangThai()== true ? "Đang Thuê" : "Đã Trả";
+            obj[8] = kh.getGioiTinh()== false ? "Nữ" : "Nam";
+            obj[9] = kh.getTrangThai()== true ? "Đang Thuê" : "Đã Trả";
             
             tbModel.addRow(obj);
 
