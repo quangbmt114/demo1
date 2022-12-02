@@ -3807,15 +3807,18 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jLabel30" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
                               <Component id="cbPhongtbQLCSDN" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jScrollPane3" pref="0" max="32767" attributes="0"/>
+                              <Component id="jScrollPane3" pref="787" max="32767" attributes="0"/>
                           </Group>
-                          <Component id="jPanel7" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Component id="jPanel7" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          </Group>
                       </Group>
-                      <EmptySpace pref="509" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -3843,9 +3846,9 @@
                       <Table columnCount="5" rowCount="4">
                         <Column editable="true" title="M&#xe3; ch&#x1ec9; s&#x1ed1;" type="java.lang.Object"/>
                         <Column editable="true" title="M&#xe3; ph&#xf2;ng" type="java.lang.Object"/>
-                        <Column editable="true" title="Ng&#xe0;y ghi" type="java.lang.Object"/>
                         <Column editable="true" title="&#x110;i&#x1ec7;n" type="java.lang.Object"/>
                         <Column editable="true" title="N&#x1b0;&#x1edb;c" type="java.lang.Object"/>
+                        <Column editable="true" title="Ng&#xe0;y ghi" type="java.lang.Object"/>
                       </Table>
                     </Property>
                     <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
@@ -3894,15 +3897,8 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
                           <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <Component id="btnAddCSDN" min="-2" pref="71" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="btnUpdCSDienNuoc" min="-2" pref="71" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="btnDelCSDN" min="-2" pref="71" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
                                   <Group type="102" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Component id="lblTenSP" alignment="0" min="-2" pref="92" max="-2" attributes="0"/>
@@ -3925,15 +3921,25 @@
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Component id="cbMaPhongQLDN" alignment="1" min="-2" pref="228" max="-2" attributes="0"/>
                                           <Group type="102" alignment="1" attributes="0">
-                                              <Component id="jLabel31" min="-2" pref="165" max="-2" attributes="0"/>
+                                              <Component id="txtMaChiSoCSDN" min="-2" pref="165" max="-2" attributes="0"/>
                                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                               <Component id="jButton4" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
                                   </Group>
                               </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
+                                  <Component id="btnAddCSDN" min="-2" pref="71" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="btnUpdCSDienNuoc" min="-2" pref="71" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="btnDelCSDN" min="-2" pref="71" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="btnResetFormCSDN" min="-2" pref="105" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
-                          <EmptySpace pref="198" max="32767" attributes="0"/>
+                          <EmptySpace pref="166" max="32767" attributes="0"/>
                       </Group>
                       <Component id="jLabel34" alignment="1" max="32767" attributes="0"/>
                   </Group>
@@ -3946,7 +3952,7 @@
                           <EmptySpace pref="22" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="lblMaSP3" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel31" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtMaChiSoCSDN" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jButton4" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
@@ -3977,6 +3983,7 @@
                               <Component id="btnAddCSDN" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="btnUpdCSDienNuoc" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="btnDelCSDN" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnResetFormCSDN" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                       </Group>
@@ -4092,7 +4099,7 @@
                     <Property name="text" type="java.lang.String" value="M&#xe3; ch&#x1ec9; s&#x1ed1;:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel31">
+                <Component class="javax.swing.JLabel" name="txtMaChiSoCSDN">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="M&#xe3; ch&#x1ec9; s&#x1ed1;"/>
                   </Properties>
@@ -4115,6 +4122,17 @@
                     <Property name="horizontalAlignment" type="int" value="0"/>
                     <Property name="text" type="java.lang.String" value="Ph&#xf2;ng Tr&#x1ecd;"/>
                   </Properties>
+                </Component>
+                <Component class="javax.swing.JButton" name="btnResetFormCSDN">
+                  <Properties>
+                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                      <Image iconType="3" name="/images/refresh-16px.png"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="L&#xe0;m m&#x1edb;i"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnResetFormCSDNActionPerformed"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
