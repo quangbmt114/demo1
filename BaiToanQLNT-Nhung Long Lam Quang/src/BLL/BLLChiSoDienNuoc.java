@@ -64,4 +64,22 @@ public class BLLChiSoDienNuoc {
             DAL.DALChiSoDienNuoc.Update(cs);
         }
 
+    public static ArrayList<ChiSoDienNuoc> FindByMaPhong(String tukhoa) {
+        ResultSet rs = DAL.DALChiSoDienNuoc.FindByMaPhong(tukhoa);
+        ArrayList<ChiSoDienNuoc> arr = new ArrayList<>();
+        try {
+            while (rs.next()) {
+                ChiSoDienNuoc cs = new ChiSoDienNuoc();
+                cs.setMaChiSo(rs.getString("MaChiSo"));
+                cs.setMaPhong(rs.getString("MaPhong"));
+                cs.setSoDien(rs.getInt("SoDien"));
+                cs.setSoNuoc(rs.getInt("SoNuoc"));
+                cs.setNgayGhi(rs.getDate("NgayGhi"));
+                arr.add(cs);  
+            }
+        } catch (SQLException ex) {
+            System.out.println("Lỗi lấy dữ liệu: " + ex.getMessage());
+        }
+        return arr;
+    }
 }

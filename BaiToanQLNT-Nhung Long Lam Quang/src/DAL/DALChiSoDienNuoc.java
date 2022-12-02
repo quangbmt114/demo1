@@ -37,5 +37,10 @@ public class DALChiSoDienNuoc {
         String sql = "DELETE ChiSoDienNuoc where MaChiSo= ?";
         sqlHelper.executeUpdate(sql, MaChiSoDienNuoc);
     }
+    public static ResultSet FindByMaPhong(String MaPhong) {
+        String sql="Select * from ChiSoDienNuoc where MaPhong = ?  order by NgayGhi";
+        ResultSet rs=sqlHelper.executeQuery(sql,MaPhong);
+        return rs;
+    }
 
 }
