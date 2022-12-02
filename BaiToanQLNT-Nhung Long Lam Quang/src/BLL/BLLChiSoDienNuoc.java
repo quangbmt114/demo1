@@ -9,7 +9,10 @@ import static BLL.BLLHoatDongThuePhong.Check;
 import DTO.*;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
@@ -81,5 +84,39 @@ public class BLLChiSoDienNuoc {
             System.out.println("Lỗi lấy dữ liệu: " + ex.getMessage());
         }
         return arr;
+    }
+    
+    public static String SoHoaDon(String maPhong) {
+        String soHoaDon = ""+maPhong;
+        DateFormat dateFormat = new SimpleDateFormat("ddMMyyyy");
+        Date d = new Date();
+        soHoaDon += dateFormat.format(d);
+////            System.out.println("soHoaDon: " + soHoaDon);
+//            ResultSet rs = DAL.DALHoatDongThuePhong.CountSoHoaDon(soHoaDon);
+//            int rowCount = 0;
+//            if (rs.next()) {
+//                rowCount = rs.getInt(1);
+//            }
+//            boolean dup = false;
+//            do {
+//                if (rowCount > 98) {
+//                    soHoaDon +=(rowCount + 1);
+//                } else if (rowCount > 8) {
+//                    soHoaDon += "0" + (rowCount + 1);
+//                } else {
+//                    soHoaDon += "00" + (rowCount + 1);
+//                }
+////                System.out.println("soHoaDon: " + soHoaDon);
+//                ResultSet rs2 = DAL.DALHoatDongThuePhong.GetHoaDonBySo(soHoaDon);
+//                if (rs2.next()) {
+//                    dup = true;
+//                    rowCount++;
+//                    soHoaDon = maPhong+dateFormat.format(d);
+//                } else {
+//                    dup = false;
+//                }
+//            } while (dup);
+
+        return soHoaDon;
     }
 }
