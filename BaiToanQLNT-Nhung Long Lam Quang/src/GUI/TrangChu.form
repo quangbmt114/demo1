@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+<Form version="1.8" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <NonVisualComponents>
     <Container class="javax.swing.JPopupMenu" name="jPopupMenu1">
 
@@ -676,7 +676,11 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
+<<<<<<< Updated upstream
                   <Component id="jPanel20" alignment="0" pref="1234" max="32767" attributes="0"/>
+=======
+                  <Component id="jPanel20" alignment="0" max="32767" attributes="0"/>
+>>>>>>> Stashed changes
                   <Component id="panelDsPhongTro" alignment="0" max="32767" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="100" max="-2" attributes="0"/>
@@ -692,7 +696,11 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jScrollPane1" min="-2" pref="2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
+<<<<<<< Updated upstream
                       <Component id="panelDsPhongTro" pref="688" max="32767" attributes="0"/>
+=======
+                      <Component id="panelDsPhongTro" max="32767" attributes="0"/>
+>>>>>>> Stashed changes
                   </Group>
               </Group>
             </DimensionLayout>
@@ -700,7 +708,9 @@
           <SubComponents>
             <Container class="javax.swing.JPanel" name="jPanel20">
 
-              <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBoxLayout"/>
+              <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBoxLayout">
+                <Property name="axis" type="int" value="0"/>
+              </Layout>
               <SubComponents>
                 <Container class="javax.swing.JPanel" name="jPanel21">
                   <Properties>
@@ -714,15 +724,12 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jLabel11" max="32767" attributes="0"/>
-                                  <Group type="102" attributes="0">
-                                      <Component id="jLabel10" min="-2" pref="360" max="-2" attributes="0"/>
-                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                  </Group>
+                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                  <Component id="jLabel10" alignment="0" pref="354" max="32767" attributes="0"/>
                                   <Component id="txtDoanhThu" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="jLabel11" max="32767" attributes="0"/>
                               </Group>
-                              <EmptySpace max="-2" attributes="0"/>
+                              <EmptySpace min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -733,9 +740,9 @@
                               <Component id="jLabel10" min="-2" pref="32" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="txtDoanhThu" min="-2" pref="41" max="-2" attributes="0"/>
-                              <EmptySpace pref="19" max="32767" attributes="0"/>
+                              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                               <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -789,16 +796,13 @@
                   <Layout>
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Component id="txtSoLuongNguoiThue" max="32767" attributes="0"/>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="jLabel12" min="-2" pref="365" max="-2" attributes="0"/>
-                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                  </Group>
+                                  <Component id="jLabel12" pref="346" max="32767" attributes="0"/>
                               </Group>
-                              <EmptySpace max="-2" attributes="0"/>
+                              <EmptySpace min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -854,11 +858,14 @@
                   <Layout>
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jPanel10" alignment="0" pref="0" max="32767" attributes="0"/>
-                          <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace max="32767" attributes="0"/>
-                              <Component id="jLabel13" min="-2" pref="334" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="jPanel10" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
+                              <Component id="jLabel13" min="-2" pref="334" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -901,14 +908,17 @@
                             <DimensionLayout dim="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace max="-2" attributes="0"/>
                                       <Component id="jPanel11" min="-2" max="-2" attributes="0"/>
+<<<<<<< Updated upstream
                                       <EmptySpace pref="64" max="32767" attributes="0"/>
+=======
+                                      <EmptySpace max="-2" attributes="0"/>
+>>>>>>> Stashed changes
                                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                           <Component id="jLabel20" pref="133" max="32767" attributes="0"/>
                                           <Component id="txtPhongDaThue" max="32767" attributes="0"/>
                                       </Group>
-                                      <EmptySpace max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
@@ -966,22 +976,24 @@
                               <Layout>
                                 <DimensionLayout dim="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" alignment="0" attributes="0">
+                                      <Group type="102" attributes="0">
                                           <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                              <Component id="txtPhongTrong" max="32767" attributes="0"/>
-                                              <Component id="jLabel17" pref="124" max="32767" attributes="0"/>
-                                          </Group>
-                                          <EmptySpace pref="35" max="32767" attributes="0"/>
+                                          <Component id="txtPhongTrong" min="-2" pref="124" max="-2" attributes="0"/>
+                                          <EmptySpace pref="45" max="32767" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="jLabel17" max="32767" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                                 </DimensionLayout>
                                 <DimensionLayout dim="1">
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" alignment="0" attributes="0">
-                                          <EmptySpace max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                                           <Component id="jLabel17" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                           <Component id="txtPhongTrong" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace pref="37" max="32767" attributes="0"/>
                                       </Group>
@@ -1066,14 +1078,60 @@
                     </TitledBorder>
                   </Border>
                 </Property>
+                <Property name="alignmentY" type="float" value="1.0"/>
                 <Property name="autoscrolls" type="boolean" value="true"/>
                 <Property name="componentPopupMenu" type="javax.swing.JPopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
                   <ComponentRef name="jPopupMenu1"/>
                 </Property>
                 <Property name="inheritsPopupMenu" type="boolean" value="true"/>
               </Properties>
-
-              <Layout class="org.netbeans.modules.form.compat2.layouts.DesignFlowLayout"/>
+              <AccessibilityProperties>
+                <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value=""/>
+              </AccessibilityProperties>
+              <LayoutCode>
+                <CodeStatement>
+                  <CodeExpression id="1_flowLayout1">
+                    <CodeVariable name="flowLayout1" type="4096" declaredType="java.awt.FlowLayout"/>
+                    <ExpressionOrigin>
+                      <ExpressionProvider type="CodeConstructor">
+                        <CodeConstructor class="java.awt.FlowLayout" parameterTypes=""/>
+                      </ExpressionProvider>
+                    </ExpressionOrigin>
+                  </CodeExpression>
+                  <StatementProvider type="CodeExpression">
+                    <CodeExpression id="1_flowLayout1"/>
+                  </StatementProvider>
+                </CodeStatement>
+                <CodeStatement>
+                  <CodeExpression id="1_flowLayout1"/>
+                  <StatementProvider type="CodeMethod">
+                    <CodeMethod name="setAlignOnBaseline" class="java.awt.FlowLayout" parameterTypes="boolean"/>
+                  </StatementProvider>
+                  <Parameters>
+                    <CodeExpression id="2">
+                      <ExpressionOrigin>
+                        <Value type="boolean" value="true"/>
+                      </ExpressionOrigin>
+                    </CodeExpression>
+                  </Parameters>
+                </CodeStatement>
+                <CodeStatement>
+                  <CodeExpression id="3_panelDsPhongTro">
+                    <CodeVariable name="panelDsPhongTro" type="8194" declaredType="javax.swing.JPanel"/>
+                    <ExpressionOrigin>
+                      <ExpressionProvider type="ComponentRef">
+                        <ComponentRef name="panelDsPhongTro"/>
+                      </ExpressionProvider>
+                    </ExpressionOrigin>
+                  </CodeExpression>
+                  <StatementProvider type="CodeMethod">
+                    <CodeMethod name="setLayout" class="java.awt.Container" parameterTypes="java.awt.LayoutManager"/>
+                  </StatementProvider>
+                  <Parameters>
+                    <CodeExpression id="1_flowLayout1"/>
+                  </Parameters>
+                </CodeStatement>
+              </LayoutCode>
             </Container>
           </SubComponents>
         </Container>
@@ -1107,7 +1165,11 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
+<<<<<<< Updated upstream
                       <Component id="jLabel16" alignment="0" pref="1234" max="32767" attributes="0"/>
+=======
+                      <Component id="jLabel16" alignment="0" pref="1143" max="32767" attributes="0"/>
+>>>>>>> Stashed changes
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="jPanel9" min="-2" pref="344" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
@@ -1432,7 +1494,11 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
+<<<<<<< Updated upstream
                       <Component id="jLabel29" pref="1228" max="32767" attributes="0"/>
+=======
+                      <Component id="jLabel29" pref="1133" max="32767" attributes="0"/>
+>>>>>>> Stashed changes
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
                   <Component id="jPanel6" alignment="1" max="32767" attributes="0"/>
@@ -1569,7 +1635,11 @@
                                   </Group>
                               </Group>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
+<<<<<<< Updated upstream
                               <Component id="jScrollPane8" max="32767" attributes="0"/>
+=======
+                              <Component id="jScrollPane8" pref="739" max="32767" attributes="0"/>
+>>>>>>> Stashed changes
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -2130,7 +2200,17 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jPanel14" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
+<<<<<<< Updated upstream
                           <Component id="jScrollPane5" pref="727" max="32767" attributes="0"/>
+=======
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jScrollPane5" pref="628" max="32767" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <Component id="txtTimKiemHopDong" min="-2" pref="273" max="-2" attributes="0"/>
+                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
+>>>>>>> Stashed changes
                       </Group>
                       <Component id="jLabel53" alignment="0" max="32767" attributes="0"/>
                   </Group>
@@ -3204,7 +3284,7 @@
                                   <Component id="jRadioButton7" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace pref="131" max="32767" attributes="0"/>
+                          <EmptySpace pref="34" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -3374,7 +3454,11 @@
                                   </Group>
                               </Group>
                           </Group>
+<<<<<<< Updated upstream
                           <EmptySpace pref="334" max="32767" attributes="0"/>
+=======
+                          <EmptySpace pref="243" max="32767" attributes="0"/>
+>>>>>>> Stashed changes
                       </Group>
                       <Component id="jScrollPane6" alignment="1" max="32767" attributes="0"/>
                   </Group>
