@@ -23,14 +23,14 @@ public class KhachThue {
    String NgayTaoDT;
    boolean GioiTinh;
    boolean TrangThai;
-   String AnhCD;
-   String AnhCCTruoc;
-   String AnhCCSau;
+   Image AnhCD;
+   Image AnhCCTruoc;
+   Image AnhCCSau;
 
     public KhachThue() {
     }
 
-    public KhachThue(String MaNguoiThue, String TenNguoiThue, String CMND, String SDT, String Email, String DiaChi, String NgaySinh, String NgayTaoDT, boolean GioiTinh, boolean TrangThai, String AnhCD, String AnhCCTruoc, String AnhCCSau) {
+    public KhachThue(String MaNguoiThue, String TenNguoiThue, String CMND, String SDT, String Email, String DiaChi, String NgaySinh, boolean GioiTinh) {
         this.MaNguoiThue = MaNguoiThue;
         this.TenNguoiThue = TenNguoiThue;
         this.CMND = CMND;
@@ -45,23 +45,6 @@ public class KhachThue {
         this.AnhCCTruoc = AnhCCTruoc;
         this.AnhCCSau = AnhCCSau;
     }
-
-    public KhachThue(String MaNguoiThue, String TenNguoiThue, String CMND, String SDT, String Email, String DiaChi, String NgaySinh, String NgayTaoDT, boolean GioiTinh, boolean TrangThai) {
-        this.MaNguoiThue = MaNguoiThue;
-        this.TenNguoiThue = TenNguoiThue;
-        this.CMND = CMND;
-        this.SDT = SDT;
-        this.Email = Email;
-        this.DiaChi = DiaChi;
-        this.NgaySinh = NgaySinh;
-        this.NgayTaoDT = NgayTaoDT;
-        this.GioiTinh = GioiTinh;
-        this.TrangThai = TrangThai;
-    }
-
-    
-
-    
 
     public String getMaNguoiThue() {
         return MaNguoiThue;
@@ -127,7 +110,7 @@ public class KhachThue {
         this.NgayTaoDT = NgayTaoDT;
     }
 
-    public boolean getGioiTinh() {
+    public boolean isGioiTinh() {
         return GioiTinh;
     }
 
@@ -135,7 +118,7 @@ public class KhachThue {
         this.GioiTinh = GioiTinh;
     }
 
-    public boolean getTrangThai() {
+    public boolean isTrangThai() {
         return TrangThai;
     }
 
@@ -143,27 +126,27 @@ public class KhachThue {
         this.TrangThai = TrangThai;
     }
 
-    public String getAnhCD() {
+    public Image getAnhCD() {
         return AnhCD;
     }
 
-    public void setAnhCD(String AnhCD) {
+    public void setAnhCD(Image AnhCD) {
         this.AnhCD = AnhCD;
     }
 
-    public String getAnhCCTruoc() {
+    public Image getAnhCCTruoc() {
         return AnhCCTruoc;
     }
 
-    public void setAnhCCTruoc(String AnhCCTruoc) {
+    public void setAnhCCTruoc(Image AnhCCTruoc) {
         this.AnhCCTruoc = AnhCCTruoc;
     }
 
-    public String getAnhCCSau() {
+    public Image getAnhCCSau() {
         return AnhCCSau;
     }
 
-    public void setAnhCCSau(String AnhCCSau) {
+    public void setAnhCCSau(Image AnhCCSau) {
         this.AnhCCSau = AnhCCSau;
     }
 

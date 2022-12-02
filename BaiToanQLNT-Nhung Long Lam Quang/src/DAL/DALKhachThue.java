@@ -48,16 +48,16 @@ public class DALKhachThue {
     }
     public static void Insert(KhachThue kh){
          //set dateformat DMY + insert into
-        String sql =" INSERT INTO [dbo].[NguoiThue]([MaNguoiThue],[TenNguoiThue],[CMND],[Email],[SDT],[DiaChi],[NgaySinh]" +
-"           ,[NgayTaoDT],[GioiTinh] ,[TrangThai])VALUES (?,?,?,?,?,?,?,?,?,?)";
-        sqlHelper.executeUpdate(sql, kh.getMaNguoiThue(),kh.getTenNguoiThue(),kh.getCMND(),kh.getSDT(),kh.getEmail()
-                , kh.getDiaChi(),kh.getNgaySinh() , kh.getNgayTaoDT(),kh.getGioiTinh(),kh.getTrangThai());
+        String sql =" INSERT INTO [dbo].[NguoiThue]([MaNguoiThue],[TenNguoiThue],[CMND],[SDT],[DiaChi],[NgaySinh]" +
+"           ,[NgayTaoDT],[TrangThai])VALUES (?,?,?,?,?,?,?,?)";
+        sqlHelper.executeUpdate(sql, kh.getMaNguoiThue(),kh.getTenNguoiThue(),kh.getCMND(),kh.getSDT()
+                , kh.getDiaChi(),kh.getNgaySinh() , kh.getNgayTaoDT(),kh.isTrangThai());
     }
     public static void Update(KhachThue kh){
-        String sql ="UPDATE [dbo].[NguoiThue]SET [TenNguoiThue] = ?,[CMND] = ? ,[SDT] = ? ,[Email]=?,[DiaChi] = ?" +
-"     ,[NgaySinh] = ?,[NgayTaoDT] = ?,[GioiTinh] = ?,[TrangThai] = ? WHERE MaNguoiThue = ?";
-        sqlHelper.executeUpdate(sql,kh.getTenNguoiThue(), kh.getCMND(),kh.getSDT(),kh.getEmail(),kh.getDiaChi(),
-                 kh.getNgaySinh(), kh.getNgayTaoDT(),kh.getGioiTinh(),kh.getTrangThai(),kh.getMaNguoiThue());
+        String sql ="UPDATE [dbo].[NguoiThue]SET [TenNguoiThue] = ?,[CMND] = ? ,[SDT] = ? ,[DiaChi] = ?" +
+"     ,[NgaySinh] = ?,[NgayTaoDT] = ?,[TrangThai] = ? WHERE MaNguoiThue = ?";
+        sqlHelper.executeUpdate(sql,kh.getTenNguoiThue(), kh.getCMND(),kh.getSDT(),kh.getDiaChi(),
+                 kh.getNgaySinh(), kh.getNgayTaoDT(),kh.isTrangThai(),kh.getMaNguoiThue());
     }
     public static void Delete(String MaKhachHang){
         String sql ="DELETE FROM [dbo].[NguoiThue] WHERE MaNguoiThue =?";
