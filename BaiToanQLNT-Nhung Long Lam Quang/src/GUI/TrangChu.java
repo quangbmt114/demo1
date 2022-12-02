@@ -3087,7 +3087,7 @@ public class TrangChu extends javax.swing.JFrame {
 
     private void btnSua1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSua1ActionPerformed
         // TODO add your handling code here:
-        try {
+//        try {
             if (cbbMaKhachHang.getSelectedIndex() > 0 && cbbPhong.getSelectedIndex() > 0) {
                 HoatDongThuePhong hoatDong = LayDataForm();
                 if (BLL.BLLHoatDongThuePhong.CheckMaHopDong(hoatDong.getMaHopDong())) {
@@ -3104,10 +3104,12 @@ public class TrangChu extends javax.swing.JFrame {
                     ThongBao.ThongBaoDonGian("Thông báo", "Đã cập nhật!   ");
                     LamMoi();
                 }
+            }else{
+            ThongBao.ThongBaoDonGian("Thông báo", "Vui lòng điền thông tin cần cập nhật!");
             }
-        } catch (Exception e) {
-            ThongBao.ThongBaoDonGian("Thông báo", "Vui lòng kiểm tra thông tin!   ");
-        }
+//        } catch (Exception e) {
+//            ThongBao.ThongBaoDonGian("Thông báo", "Vui lòng kiểm tra thông tin!   ");
+//        }
 
         arrHD = BLL.BLLHoatDongThuePhong.GetAll();
         BLL.BLLHoatDongThuePhong.DoVaoTable(arrHD, tbHopDongThue);
