@@ -3,14 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/New/demo1/BaiToanQLNT-Nhung%20Long%20Lam%20Quang/src/DAL/DALChiSoDienNuoc.java</file>
-            <file>file:/D:/New/demo1/BaiToanQLNT-Nhung%20Long%20Lam%20Quang/src/GUI/TrangChu.java</file>
-            <file>file:/D:/New/demo1/BaiToanQLNT-Nhung%20Long%20Lam%20Quang/src/GUI/DangNhap.java</file>
-            <file>file:/D:/New/demo1/BaiToanQLNT-Nhung%20Long%20Lam%20Quang/src/GUI/ChiTietPhong.java</file>
-            <file>file:/D:/New/demo1/BaiToanQLNT-Nhung%20Long%20Lam%20Quang/src/BLL/BLLPhongTro.java</file>
-            <file>file:/D:/New/demo1/BaiToanQLNT-Nhung%20Long%20Lam%20Quang/src/DAL/DALHoatDongThuePhong.java</file>
-            <file>file:/D:/New/demo1/BaiToanQLNT-Nhung%20Long%20Lam%20Quang/src/BLL/BLLChiSoDienNuoc.java</file>
-            <file>file:/D:/New/demo1/BaiToanQLNT-Nhung%20Long%20Lam%20Quang/src/DAL/DALPhongTro.java</file>
+            <file>file:/C:/Users/quang%20nguyen/Documents/GitHub/demo1/BaiToanQLNT-Nhung%20Long%20Lam%20Quang/src/GUI/TrangChu.java</file>
+            <file>file:/C:/Users/quang%20nguyen/Documents/GitHub/demo1/BaiToanQLNT-Nhung%20Long%20Lam%20Quang/src/GUI/ChinhSuaPhong.java</file>
+            <file>file:/C:/Users/quang%20nguyen/Documents/GitHub/demo1/BaiToanQLNT-Nhung%20Long%20Lam%20Quang/src/GUI/ChiTietPhong.java</file>
+            <file>file:/C:/Users/quang%20nguyen/Documents/GitHub/demo1/BaiToanQLNT-Nhung%20Long%20Lam%20Quang/src/GUI/FormChiTiet.java</file>
+            <file>file:/C:/Users/quang%20nguyen/Documents/GitHub/demo1/BaiToanQLNT-Nhung%20Long%20Lam%20Quang/src/GUI/themPhong.java</file>
         </group>
     </open-files>
 </project-private>
