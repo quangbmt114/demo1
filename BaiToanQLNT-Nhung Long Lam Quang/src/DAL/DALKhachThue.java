@@ -48,10 +48,12 @@ public class DALKhachThue {
     }
     public static void Insert(KhachThue kh){
          //set dateformat DMY + insert into
-        String sql =" INSERT INTO [dbo].[NguoiThue]([MaNguoiThue],[TenNguoiThue],[CMND],[SDT],[DiaChi],[NgaySinh]" +
-"           ,[NgayTaoDT],[TrangThai])VALUES (?,?,?,?,?,?,?,?)";
-        sqlHelper.executeUpdate(sql, kh.getMaNguoiThue(),kh.getTenNguoiThue(),kh.getCMND(),kh.getSDT()
-                , kh.getDiaChi(),kh.getNgaySinh() , kh.getNgayTaoDT(),kh.isTrangThai());
+        String sql =" INSERT INTO [dbo].[NguoiThue]([MaNguoiThue],[TenNguoiThue],[CMND],[SDT],[Email],[DiaChi]" +
+"           ,[NgaySinh],[GioiTinh],[NgayTaoDT],[TrangThai],[AnhChanDung],[AnhCCTruoc],[AnhCCSau])" +
+"     VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        sqlHelper.executeUpdate(sql, kh.getMaNguoiThue(),kh.getTenNguoiThue(),kh.getCMND(),kh.getSDT(),kh.getEmail()
+                , kh.getDiaChi(),kh.getNgaySinh() ,kh.isGioiTinh(), kh.getNgayTaoDT(),kh.isTrangThai()
+        ,kh.getAnhCD(),kh.getAnhCCTruoc(),kh.getAnhCCSau());
     }
     public static void Update(KhachThue kh){
         String sql ="UPDATE [dbo].[NguoiThue]SET [TenNguoiThue] = ?,[CMND] = ? ,[SDT] = ? ,[DiaChi] = ?" +

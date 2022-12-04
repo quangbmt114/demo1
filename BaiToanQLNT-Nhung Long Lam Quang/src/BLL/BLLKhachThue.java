@@ -40,7 +40,9 @@ public class BLLKhachThue {
                 kh.setNgayTaoDT(rs.getString("NgayTaoDT"));
                 kh.setGioiTinh(rs.getByte("GioiTinh") == 0 ? false : true);
                 kh.setTrangThai(rs.getByte("TrangThai") == 0 ? false : true);
-                
+                kh.setAnhCD(rs.getString("AnhChanDung"));
+                kh.setAnhCCTruoc(rs.getString("AnhCCTruoc"));
+                kh.setAnhCCSau(rs.getString("AnhCCSau"));
                 arr.add(kh);
 //                System.out.println(nv.getMaNhanVien());
             }
@@ -98,6 +100,9 @@ public class BLLKhachThue {
                 kh.setNgayTaoDT(rs.getString("NgayTaoDT"));
                 kh.setGioiTinh(rs.getByte("GioiTinh") == 0 ? false : true);
                 kh.setTrangThai(rs.getByte("TrangThai") == 0 ? false : true);
+                kh.setAnhCD(rs.getString("AnhChanDung"));
+                kh.setAnhCCTruoc(rs.getString("AnhCCTruoc"));
+                kh.setAnhCCSau(rs.getString("AnhCCSau"));
                 arr.add(kh);
 //                System.out.println(nv.getMaNhanVien());
             }
@@ -125,7 +130,9 @@ public class BLLKhachThue {
                 kh.setNgayTaoDT(rs.getString("NgayTaoDT"));
                 kh.setGioiTinh(rs.getByte("GioiTinh") == 0 ? false : true);
                 kh.setTrangThai(rs.getByte("TrangThai") == 0 ? false : true);
-
+                kh.setAnhCD(rs.getString("AnhChanDung"));
+                kh.setAnhCCTruoc(rs.getString("AnhCCTruoc"));
+                kh.setAnhCCSau(rs.getString("AnhCCSau"));
                 return kh;
             }
         } catch (SQLException ex) {
@@ -152,7 +159,9 @@ public class BLLKhachThue {
                 kh.setNgayTaoDT(rs.getString("NgayTaoDT"));
                kh.setGioiTinh(rs.getByte("GioiTinh") == 0 ? false : true);
                 kh.setTrangThai(rs.getByte("TrangThai") == 0 ? false : true);
-
+                kh.setAnhCD(rs.getString("AnhChanDung"));
+                kh.setAnhCCTruoc(rs.getString("AnhCCTruoc"));
+                kh.setAnhCCSau(rs.getString("AnhCCSau"));
                 return kh;
             }
         } catch (SQLException ex) {
@@ -179,7 +188,9 @@ public class BLLKhachThue {
                 kh.setNgayTaoDT(rs.getString("NgayTaoDT"));
                 kh.setGioiTinh(rs.getByte("GioiTinh") == 0 ? false : true);
                 kh.setTrangThai(rs.getByte("TrangThai") == 0 ? false : true);
-
+                kh.setAnhCD(rs.getString("AnhChanDung"));
+                kh.setAnhCCTruoc(rs.getString("AnhCCTruoc"));
+                kh.setAnhCCSau(rs.getString("AnhCCSau"));
                 return kh;
             }
         } catch (SQLException ex) {

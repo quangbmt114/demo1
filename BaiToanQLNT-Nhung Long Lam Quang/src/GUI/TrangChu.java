@@ -55,6 +55,9 @@ public class TrangChu extends javax.swing.JFrame {
     ArrayList<PhongTro> arrPT = new ArrayList<>();
     ArrayList<HoaDonPhongTro> arrHDPT = new ArrayList<>();
     ArrayList<ChiSoDienNuoc> arrCSDN = new ArrayList<>();
+    String AnhCD;
+    String AnhCMNDTrc;
+    String AnhCMNDSau;
 
     public TrangChu() {
         initComponents();
@@ -3337,13 +3340,13 @@ public class TrangChu extends javax.swing.JFrame {
             CMND = txtCMND.getText();
             NgaySinh = ChuyenDoi.LayNgayString(JDNgaySinh.getDate());
             NgayTaoDT = ChuyenDoi.LayNgayString(JDNgayVao.getDate());
-
-            KhachThue kh = new KhachThue(MaNguoiThue, TenNguoiThue, CMND, SDT, DiaChi, NgaySinh, NgayTaoDT, TrangThai);
+            System.out.println("abc" + AnhCD);
+            KhachThue kh = new KhachThue(MaNguoiThue, TenNguoiThue, CMND, SDT, Email,
+                    DiaChi, NgaySinh, NgayTaoDT, GioiTinh, TrangThai, AnhCD, AnhCMNDTrc, AnhCMNDSau);
             BLL.BLLKhachThue.Add(kh);
-//            ThongBao.ThongBaoDonGian("Thông báo", "Đã thêm!");
+            ThongBao.ThongBaoDonGian("Thông báo", "Đã thêm!");
             ArrayList<KhachThue> arr = BLL.BLLKhachThue.GetAll();
 
-            BLL.BLLKhachThue.DoVaoTable(arr, tblKhachThue);
         }
         LamMoiKhachThue();
     }//GEN-LAST:event_btnThemKHActionPerformed
@@ -3408,7 +3411,7 @@ public class TrangChu extends javax.swing.JFrame {
                 ThongBao.ThongBaoDonGian("Thông Báo", "Bạn chưa chọn khách hàng cần sửa");
             }
             String MaKhachHang = tblKhachThue.getValueAt(dongDangChon, 0).toString();
-            KhachThue kh = new KhachThue(MaNguoiThue, TenNguoiThue, CMND, SDT, DiaChi, NgaySinh, NgayTaoDT, TrangThai);
+            KhachThue kh = new KhachThue(MaNguoiThue, TenNguoiThue, CMND, SDT, Email, DiaChi, NgaySinh, NgayTaoDT, GioiTinh, TrangThai, AnhCD, AnhCMNDTrc, AnhCMNDSau);
             BLL.BLLKhachThue.Update(kh);
 
             ArrayList<KhachThue> arr = BLL.BLLKhachThue.GetAll();
@@ -3704,7 +3707,7 @@ public class TrangChu extends javax.swing.JFrame {
         ResetFormQLDN();
 
     }//GEN-LAST:event_btnResetFormCSDNActionPerformed
-    
+
     private void cbMaPhongQLDNItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbMaPhongQLDNItemStateChanged
         // TODO add your handling code here:
         if (cbMaPhongQLDN.getItemCount() > 0) {

@@ -15,6 +15,7 @@ import java.io.File;
 import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
@@ -40,7 +41,9 @@ public class jdlKhachThue extends javax.swing.JDialog {
 //        rbNam.setVisible(false);
 //        rbNu.setVisible(false);
     }
-
+   String AnhCD;
+   String AnhCMNDTrc;
+   String AnhCMNDSau;
     public boolean validateform() {
 
         if (txtMaKH.getText().equals("") || txtTenKH.getText().equals("") || txtCMND.getText().equals("") || txtSDT.getText().equals("")) {
@@ -451,7 +454,8 @@ public class jdlKhachThue extends javax.swing.JDialog {
         chooser.showOpenDialog(btnHInhAnhCD);
         
         File file = chooser.getSelectedFile();
-        String st = file.getPath();
+        String st = file.getName();
+        AnhCD = st;
         ImageIcon icon = new ImageIcon(new ImageIcon(file.getPath()).getImage().getScaledInstance(140, 200, Image.SCALE_SMOOTH));
         JLHinhAnh.setIcon(icon);
         System.out.println(st);
@@ -489,10 +493,11 @@ public class jdlKhachThue extends javax.swing.JDialog {
             CMND = txtCMND.getText();
             NgaySinh = ChuyenDoi.LayNgayString(JDNgaySinh.getDate());
             NgayTaoDT = ChuyenDoi.LayNgayString(JDNgayVao.getDate());
-
-            KhachThue kh = new KhachThue(MaNguoiThue, TenNguoiThue, CMND, SDT, DiaChi, NgaySinh, NgayTaoDT, TrangThai);
-            BLL.BLLKhachThue.Add(kh);
-//            ThongBao.ThongBaoDonGian("Thông báo", "Đã thêm!");
+            System.out.println("abc"+AnhCD);
+            KhachThue kh = new KhachThue(MaNguoiThue, TenNguoiThue, CMND, SDT, Email,
+                    DiaChi, NgaySinh, NgayTaoDT, GioiTinh, TrangThai, AnhCD, AnhCMNDTrc, AnhCMNDSau);
+                    BLL.BLLKhachThue.Add(kh);
+            ThongBao.ThongBaoDonGian("Thông báo", "Đã thêm!");
             ArrayList<KhachThue> arr = BLL.BLLKhachThue.GetAll();
 
           
@@ -510,6 +515,7 @@ public class jdlKhachThue extends javax.swing.JDialog {
         
         File file = chooser.getSelectedFile();
         String st = file.getName();
+        AnhCMNDTrc = st;
         ImageIcon icon = new ImageIcon(new ImageIcon(file.getPath()).getImage().getScaledInstance(200, 150, Image.SCALE_SMOOTH));
         JLHinhCMNDMatTrc.setIcon(icon);
         System.out.println(st);
@@ -521,7 +527,8 @@ public class jdlKhachThue extends javax.swing.JDialog {
         chooser.showOpenDialog(btnHInhCMNDSau);
         
         File file = chooser.getSelectedFile();
-        String st = file.getPath();
+        String st = file.getName();
+        AnhCMNDSau = st;
         ImageIcon icon = new ImageIcon(new ImageIcon(file.getPath()).getImage().getScaledInstance(200, 150, Image.SCALE_SMOOTH));
         JLHinhCMNDMatSau.setIcon(icon);
         System.out.println(st);
@@ -562,7 +569,8 @@ public class jdlKhachThue extends javax.swing.JDialog {
 
     private void txtTenKHKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTenKHKeyReleased
        String Name = txtTenKH.getText();
-       if(!Name.matches("[a-zA-Z ,]+  ")){
+       String CheckName = "\\w[^0-9]{0,20}";
+       if(!Name.matches(CheckName)){
            JOptionPane.showMessageDialog(null, "Tên phải là chữ");
        }
        
