@@ -57,7 +57,7 @@ public class TrangChu extends javax.swing.JFrame {
     ArrayList<PhongTro> arrPT = new ArrayList<>();
     ArrayList<HoaDonPhongTro> arrHDPT = new ArrayList<>();
     ArrayList<ChiSoDienNuoc> arrCSDN = new ArrayList<>();
-    ArrayList<DichVu> arrDV = new ArrayList<>();
+    ArrayList<DTO.DichVu> arrDV = new ArrayList<>();
     String AnhCD;
     String AnhCMNDTrc;
     String AnhCMNDSau;
@@ -453,7 +453,6 @@ public void openedPanelDichVu() {// load thông tin panel hợp đồng
         jDateChooser2 = new com.toedter.calendar.JDateChooser();
         txtSoNuocTieuThuHD = new javax.swing.JLabel();
         jLabel61 = new javax.swing.JLabel();
-        txtMaHoaDonPT = new javax.swing.JTextField();
         jLabel62 = new javax.swing.JLabel();
         cbbPhongTroHDPT = new javax.swing.JComboBox<>();
         jLabel78 = new javax.swing.JLabel();
@@ -485,6 +484,7 @@ public void openedPanelDichVu() {// load thông tin panel hợp đồng
         jLabel71 = new javax.swing.JLabel();
         txtTienPhongHDPT = new javax.swing.JLabel();
         txtTienPhongHDPT1 = new javax.swing.JLabel();
+        txtMaHoaDonPT = new javax.swing.JLabel();
         jPanel17 = new javax.swing.JPanel();
         jTextField12 = new javax.swing.JTextField();
         jScrollPane7 = new javax.swing.JScrollPane();
@@ -2218,6 +2218,9 @@ public void openedPanelDichVu() {// load thông tin panel hợp đồng
         txtTienPhongHDPT1.setFont(new java.awt.Font("UTM Times", 1, 14)); // NOI18N
         txtTienPhongHDPT1.setText("   ");
 
+        txtMaHoaDonPT.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txtMaHoaDonPT.setText("Mã hợp đồng");
+
         javax.swing.GroupLayout jPanel16Layout = new javax.swing.GroupLayout(jPanel16);
         jPanel16.setLayout(jPanel16Layout);
         jPanel16Layout.setHorizontalGroup(
@@ -2271,8 +2274,8 @@ public void openedPanelDichVu() {// load thông tin panel hợp đồng
                                 .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jTextField2)
                                     .addGroup(jPanel16Layout.createSequentialGroup()
-                                        .addComponent(txtMaHoaDonPT, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(33, 33, 33)
+                                        .addComponent(txtMaHoaDonPT, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(jLabel62)
                                         .addGap(18, 18, 18)
                                         .addComponent(cbbPhongTroHDPT, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -2334,9 +2337,9 @@ public void openedPanelDichVu() {// load thông tin panel hợp đồng
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel61)
-                    .addComponent(txtMaHoaDonPT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel62)
-                    .addComponent(cbbPhongTroHDPT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cbbPhongTroHDPT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtMaHoaDonPT))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel63)
@@ -2651,6 +2654,12 @@ public void openedPanelDichVu() {// load thông tin panel hợp đồng
 
         dateNgayGhiDienNuoc.setDateFormatString("yyy-MM-dd");
 
+        txtSoDienQLDN.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtSoDienQLDNKeyReleased(evt);
+            }
+        });
+
         lblMaSP2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         lblMaSP2.setForeground(new java.awt.Color(255, 102, 0));
         lblMaSP2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -2665,6 +2674,12 @@ public void openedPanelDichVu() {// load thông tin panel hợp đồng
         lblTenSP.setForeground(new java.awt.Color(255, 102, 0));
         lblTenSP.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lblTenSP.setText("Số nước");
+
+        txtSoNuocQLDN.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtSoNuocQLDNKeyReleased(evt);
+            }
+        });
 
         lblGiaNhap.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         lblGiaNhap.setForeground(new java.awt.Color(255, 102, 0));
@@ -3786,7 +3801,7 @@ public void openedPanelDichVu() {// load thông tin panel hợp đồng
             ThongBao.ThongBaoDonGian("Thông Báo", "Chưa xóa");
         }
 
-//        loadTB();
+        loadTB();
     }//GEN-LAST:event_btnDelCSDNActionPerformed
 
     private void cbPhongtbQLCSDNItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbPhongtbQLCSDNItemStateChanged
@@ -3879,11 +3894,13 @@ public void openedPanelDichVu() {// load thông tin panel hợp đồng
     }//GEN-LAST:event_cbbPhongTroHDPTItemStateChanged
 public void loadTTDienNuocTieuThu(){
     if(cbbPhongTroHDPT.getSelectedIndex() > 0&&cbbChiSoMoiHDPT.getSelectedIndex() > 0&&cbbChiSoCuHDPT.getSelectedIndex() > 0){
+    txtMaHoaDonPT.setText(BLLHoaDon.SoHoaDon(cbbPhongTroHDPT.getSelectedItem()+"", ChuyenDoi.LayNgayDate(txtNgayGhiCuHD.getText()),  ChuyenDoi.LayNgayDate(txtNgayGhiMoiHD.getText())));
         txtSoDienTieuThuHD.setText((Integer.parseInt(txtSoDienMoiHD.getText())-Integer.parseInt(txtSoDienCuHD.getText()))+"");
         txtSoNuocTieuThuHD.setText((Integer.parseInt(txtSoNuocMoiHD.getText())-Integer.parseInt(txtSoNuocCuHD.getText()))+"");
         txtTienDienHDPT.setText((Integer.parseInt(txtSoDienTieuThuHD.getText())*(ChuyenDoi.SoDouble(txtGiaDienHDPT.getText())))+"");
         txtTienNuocHDPT.setText((Integer.parseInt(txtSoNuocTieuThuHD.getText())*(ChuyenDoi.SoDouble(txtGiaNuocHDPT.getText())))+"");
     }else{
+        txtSoDienTieuThuHD.setText("   ");
         txtSoDienTieuThuHD.setText("  ");
         txtSoNuocTieuThuHD.setText("  ");
         txtTienDienHDPT.setText("  ");
@@ -3920,6 +3937,24 @@ public void loadTTDienNuocTieuThu(){
     private void jTblHoaDonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTblHoaDonMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_jTblHoaDonMouseClicked
+
+    private void txtSoDienQLDNKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSoDienQLDNKeyReleased
+        // TODO add your handling code here:
+        try {
+            Integer.parseInt(txtSoDienQLDN.getText());
+        } catch (Exception e) {
+            ThongBao.ThongBaoDonGian("Thông báo", "Cần điền số!");
+        }
+    }//GEN-LAST:event_txtSoDienQLDNKeyReleased
+
+    private void txtSoNuocQLDNKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSoNuocQLDNKeyReleased
+        // TODO add your handling code here:
+        try {
+            Integer.parseInt(txtSoNuocQLDN.getText());
+        } catch (Exception e) {
+            ThongBao.ThongBaoDonGian("Thông báo", "Cần điền số!");
+        }
+    }//GEN-LAST:event_txtSoNuocQLDNKeyReleased
    
 
     /**
@@ -4190,7 +4225,7 @@ public void loadTTDienNuocTieuThu(){
     private javax.swing.JTextField txtGiaTien;
     private javax.swing.JLabel txtMaChiSoCSDN;
     private javax.swing.JTextField txtMaDichVu;
-    private javax.swing.JTextField txtMaHoaDonPT;
+    private javax.swing.JLabel txtMaHoaDonPT;
     private javax.swing.JTextField txtMaHopDong;
     private javax.swing.JTextField txtMaKH;
     private javax.swing.JTextField txtMaLoaiPhong;
