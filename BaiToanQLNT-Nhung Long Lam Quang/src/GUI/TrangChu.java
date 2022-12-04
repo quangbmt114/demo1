@@ -464,10 +464,6 @@ public class TrangChu extends javax.swing.JFrame {
         txtNgayGhiCuHD = new javax.swing.JLabel();
         jPanel17 = new javax.swing.JPanel();
         jTextField12 = new javax.swing.JTextField();
-        jRadioButton4 = new javax.swing.JRadioButton();
-        jRadioButton5 = new javax.swing.JRadioButton();
-        jRadioButton6 = new javax.swing.JRadioButton();
-        jRadioButton7 = new javax.swing.JRadioButton();
         jScrollPane7 = new javax.swing.JScrollPane();
         jTblHoaDon = new javax.swing.JTable();
         panelFormDichVu = new javax.swing.JPanel();
@@ -1064,7 +1060,7 @@ public class TrangChu extends javax.swing.JFrame {
             .addGroup(jPanel12Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 86, Short.MAX_VALUE)
                 .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel20, javax.swing.GroupLayout.DEFAULT_SIZE, 133, Short.MAX_VALUE)
                     .addComponent(txtPhongDaThue, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -1129,7 +1125,7 @@ public class TrangChu extends javax.swing.JFrame {
         panelTrangChu.setLayout(panelTrangChuLayout);
         panelTrangChuLayout.setHorizontalGroup(
             panelTrangChuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel20, javax.swing.GroupLayout.DEFAULT_SIZE, 1237, Short.MAX_VALUE)
+            .addComponent(jPanel20, javax.swing.GroupLayout.DEFAULT_SIZE, 1300, Short.MAX_VALUE)
             .addComponent(panelDsPhongTro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(panelTrangChuLayout.createSequentialGroup()
                 .addGap(100, 100, 100)
@@ -1254,7 +1250,7 @@ public class TrangChu extends javax.swing.JFrame {
         jPanel8.setLayout(jPanel8Layout);
         jPanel8Layout.setHorizontalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, 1237, Short.MAX_VALUE)
+            .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, 1300, Short.MAX_VALUE)
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, 344, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1583,7 +1579,7 @@ public class TrangChu extends javax.swing.JFrame {
                         .addGap(17, 17, 17)
                         .addComponent(jLabel88, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 829, Short.MAX_VALUE))
+                .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 886, Short.MAX_VALUE))
         );
         jPanel18Layout.setVerticalGroup(
             jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1684,7 +1680,7 @@ public class TrangChu extends javax.swing.JFrame {
         panelKhachThue2Layout.setHorizontalGroup(
             panelKhachThue2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelKhachThue2Layout.createSequentialGroup()
-                .addComponent(jLabel29, javax.swing.GroupLayout.DEFAULT_SIZE, 1231, Short.MAX_VALUE)
+                .addComponent(jLabel29, javax.swing.GroupLayout.DEFAULT_SIZE, 1288, Short.MAX_VALUE)
                 .addContainerGap())
             .addComponent(jPanel6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
@@ -2010,7 +2006,7 @@ public class TrangChu extends javax.swing.JFrame {
                 .addComponent(jPanel14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 730, Short.MAX_VALUE)
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 780, Short.MAX_VALUE)
                     .addGroup(jPanel13Layout.createSequentialGroup()
                         .addComponent(txtTimKiemHopDong, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))))
@@ -2358,7 +2354,7 @@ public class TrangChu extends javax.swing.JFrame {
                     .addComponent(jLabel68)
                     .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtSoNuocTieuThuHD))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 126, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel72)
                     .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -2391,32 +2387,16 @@ public class TrangChu extends javax.swing.JFrame {
 
         jPanel17.setBackground(new java.awt.Color(0, 204, 255));
 
-        jRadioButton4.setBackground(new java.awt.Color(0, 204, 255));
-        jRadioButton4.setFont(new java.awt.Font("UTM Times", 1, 14)); // NOI18N
-        jRadioButton4.setText("Tất cả");
-
-        jRadioButton5.setBackground(new java.awt.Color(0, 204, 255));
-        jRadioButton5.setFont(new java.awt.Font("UTM Times", 1, 14)); // NOI18N
-        jRadioButton5.setText("Đã thanh toán");
-
-        jRadioButton6.setBackground(new java.awt.Color(0, 204, 255));
-        jRadioButton6.setFont(new java.awt.Font("UTM Times", 1, 14)); // NOI18N
-        jRadioButton6.setText("Thiếu tiền");
-
-        jRadioButton7.setBackground(new java.awt.Color(0, 204, 255));
-        jRadioButton7.setFont(new java.awt.Font("UTM Times", 1, 14)); // NOI18N
-        jRadioButton7.setText("Chưa thanh toán");
-
         jTblHoaDon.setFont(new java.awt.Font("UTM Times", 1, 14)); // NOI18N
         jTblHoaDon.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Mã HĐ", "Phòng", "Tên KH", "Ngày tạo", "Tổng tiền", "Trạng thái"
+                "Mã HĐ", "Mã phòng", "Ngày tạo", "Chỉ số mới", "Chỉ số cũ", "Tiền điện", "Tiền nước", "Tiền DV", "Tổng tiền", "Ghi chú"
             }
         ));
         jTblHoaDon.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -2433,30 +2413,15 @@ public class TrangChu extends javax.swing.JFrame {
             .addComponent(jScrollPane7)
             .addGroup(jPanel17Layout.createSequentialGroup()
                 .addGap(72, 72, 72)
-                .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jTextField12, javax.swing.GroupLayout.PREFERRED_SIZE, 491, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel17Layout.createSequentialGroup()
-                        .addComponent(jRadioButton4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jRadioButton5)
-                        .addGap(39, 39, 39)
-                        .addComponent(jRadioButton6)
-                        .addGap(46, 46, 46)
-                        .addComponent(jRadioButton7)))
-                .addContainerGap(131, Short.MAX_VALUE))
+                .addComponent(jTextField12, javax.swing.GroupLayout.PREFERRED_SIZE, 491, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(151, Short.MAX_VALUE))
         );
         jPanel17Layout.setVerticalGroup(
             jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel17Layout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addComponent(jTextField12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jRadioButton4)
-                    .addComponent(jRadioButton5)
-                    .addComponent(jRadioButton6)
-                    .addComponent(jRadioButton7))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane7))
         );
 
@@ -2607,7 +2572,7 @@ public class TrangChu extends javax.swing.JFrame {
                             .addGroup(jPanel15Layout.createSequentialGroup()
                                 .addGap(189, 189, 189)
                                 .addComponent(JRKhongSuDung)))))
-                .addContainerGap(337, Short.MAX_VALUE))
+                .addContainerGap(400, Short.MAX_VALUE))
             .addComponent(jScrollPane6, javax.swing.GroupLayout.Alignment.TRAILING)
         );
         jPanel15Layout.setVerticalGroup(
@@ -2856,7 +2821,7 @@ public class TrangChu extends javax.swing.JFrame {
                     .addGroup(panelFormDienNuocLayout.createSequentialGroup()
                         .addComponent(cbPhongtbQLCSDN, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 602, Short.MAX_VALUE))
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 652, Short.MAX_VALUE))
                 .addContainerGap())
         );
         panelFormDienNuocLayout.setVerticalGroup(
@@ -3614,10 +3579,6 @@ public class TrangChu extends javax.swing.JFrame {
 
     }//GEN-LAST:event_txtTimKiemHopDongKeyReleased
 
-    private void jTblHoaDonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTblHoaDonMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTblHoaDonMouseClicked
-
     private void txtTenKHKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTenKHKeyReleased
         String Name = txtTenKH.getText();
         if (!Name.matches("[a-zA-Z ,]+  ")) {
@@ -3885,6 +3846,10 @@ public void loadTTDienNuocTieuThu(){
         loadTTChiSoByMaChiSo(cbbChiSoCuHDPT, txtSoDienCuHD, txtSoNuocCuHD, txtNgayGhiCuHD);
         loadTTDienNuocTieuThu();
     }//GEN-LAST:event_cbbChiSoCuHDPTItemStateChanged
+
+    private void jTblHoaDonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTblHoaDonMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTblHoaDonMouseClicked
     public void ResetFormQLDN() {
         txtMaChiSoCSDN.setText("Mã chỉ số");
         cbMaPhongQLDN.setSelectedIndex(0);
@@ -4106,10 +4071,6 @@ public void loadTTDienNuocTieuThu(){
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JRadioButton jRadioButton3;
-    private javax.swing.JRadioButton jRadioButton4;
-    private javax.swing.JRadioButton jRadioButton5;
-    private javax.swing.JRadioButton jRadioButton6;
-    private javax.swing.JRadioButton jRadioButton7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
