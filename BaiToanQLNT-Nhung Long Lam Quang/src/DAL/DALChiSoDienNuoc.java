@@ -38,9 +38,14 @@ public class DALChiSoDienNuoc {
         sqlHelper.executeUpdate(sql, MaChiSoDienNuoc);
     }
     public static ResultSet FindByMaPhong(String MaPhong) {
-        String sql="Select * from ChiSoDienNuoc where MaPhong = ?  order by NgayGhi";
+        String sql="Select * from ChiSoDienNuoc where MaPhong = ?  order by NgayGhi desc";
         ResultSet rs=sqlHelper.executeQuery(sql,MaPhong);
         return rs;
     }
 
+    public static ResultSet FindMaChiSo(String MaPhong) {
+        String sql="Select * from ChiSoDienNuoc where MaChiSo = ?";
+        ResultSet rs=sqlHelper.executeQuery(sql,MaPhong);
+        return rs;
+    }
 }
