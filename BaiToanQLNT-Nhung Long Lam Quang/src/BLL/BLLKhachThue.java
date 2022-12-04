@@ -60,7 +60,7 @@ public class BLLKhachThue {
         tbModel.setRowCount(0);
 
         for (KhachThue kh : arr) {
-            Object obj[] = new Object[10];
+            Object obj[] = new Object[13];
 
             obj[0] = kh.getMaNguoiThue();
             obj[1] = kh.getTenNguoiThue();
@@ -72,6 +72,9 @@ public class BLLKhachThue {
             obj[7] = kh.getNgayTaoDT();
             obj[8] = kh.isGioiTinh()== false ? "Nữ" : "Nam";
             obj[9] = kh.isTrangThai()== true ? "Đang Thuê" : "Đã Trả";
+            obj[10]=kh.getAnhCD();
+            obj[11]=kh.getAnhCCTruoc();
+            obj[12]=kh.getAnhCCSau();
             
             tbModel.addRow(obj);
 
