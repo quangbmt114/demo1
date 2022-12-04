@@ -33,7 +33,7 @@ public class DALChiSoDienNuoc {
        sqlHelper.executeUpdate(sql, cs.getMaPhong(), cs.getSoDien(), cs.getSoNuoc(), ChuyenDoi.LayNgayString(cs.getNgayGhi()), cs.getMaChiSo());
     }
 
-    public static void Delete(int MaChiSoDienNuoc) {
+    public static void Delete(String MaChiSoDienNuoc) {
         String sql = "DELETE ChiSoDienNuoc where MaChiSo= ?";
         sqlHelper.executeUpdate(sql, MaChiSoDienNuoc);
     }

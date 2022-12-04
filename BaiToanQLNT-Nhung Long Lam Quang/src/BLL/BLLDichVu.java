@@ -5,7 +5,7 @@
 package BLL;
 
 import DTO.LoaiPhong;
-import GUI.DichVu;
+import GUI.frmDichVu;
 import java.util.ArrayList;
 import java.sql.ResultSet;
 import java.sql.SQLException;

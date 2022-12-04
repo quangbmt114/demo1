@@ -57,6 +57,7 @@ public class TrangChu extends javax.swing.JFrame {
     ArrayList<PhongTro> arrPT = new ArrayList<>();
     ArrayList<HoaDonPhongTro> arrHDPT = new ArrayList<>();
     ArrayList<ChiSoDienNuoc> arrCSDN = new ArrayList<>();
+    ArrayList<DichVu> arrDV = new ArrayList<>();
     String AnhCD;
     String AnhCMNDTrc;
     String AnhCMNDSau;
@@ -254,10 +255,8 @@ public void openedPanelDichVu() {// load thông tin panel hợp đồng
 //        arrKT = BLL.BLLKhachThue.GetAll();
 //        BLL.BLLKhachThue.doComboBox(arrKT, cbbMaKhachHang);
 //        TTkhackThue(khach);
-        arrPT = BLL.BLLPhongTro.GetAll();
-        BLL.BLLPhongTro.doComboBox(arrPT, cbbPhongTroHDPT);
-        arrHDPT = BLL.BLLHoaDon.GetAll();
-        BLL.BLLHoaDon.DoVaoTable(arrHDPT, jTblHoaDon);
+        arrDV = BLL.BLLDichVu.GetAll();
+        BLL.BLLDichVu.DoVaoTable(arrDV, tblDIchVu);
 //        BLL.BLLHoatDongThuePhong.DoVaoTable(arrHD, tbHopDongThue);
 //        //set default value
 //        dateNgayKy.setDate(new Date());
@@ -2548,7 +2547,7 @@ public void openedPanelDichVu() {// load thông tin panel hợp đồng
 
             },
             new String [] {
-                "Mã dịch vụ", "Tên dịch vụ", "Giá", "Đơn vị tính", "Trạng thái"
+                "Mã dịch vụ", "Tên dịch vụ", "Giá"
             }
         ));
         tblDIchVu.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -3301,11 +3300,11 @@ public void openedPanelDichVu() {// load thông tin panel hợp đồng
     private void btnThem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThem1ActionPerformed
         // TODO add your handling code here:
 //        boolean TrangThai = JRDangSuDung.isSelected() ? true : false;
-//        DTO.DichVu dv = new DTO.DichVu(txtMaDichVu.getText(), txtTenDichVu.getText(),
+//        DTO.frmDichVu dv = new DTO.frmDichVu(txtMaDichVu.getText(), txtTenDichVu.getText(),
 //                Float.parseFloat(txtGia.getText()), (String) cbbDonViTinh.getSelectedItem(),
 //                TrangThai);
 //        DAL.DALDichVu.Add(dv);
-//        ArrayList<DTO.DichVu> arr = BLL.BLLDichVu.GetAll();
+//        ArrayList<DTO.frmDichVu> arr = BLL.BLLDichVu.GetAll();
 //        BLL.BLLDichVu.DoVaoTable(arr, tblDIchVu);
 //        LamMoi();
 //        helper.ThongBao.ThongBaoDonGian("thông báo", "Thêm thành công !!");
@@ -3314,21 +3313,21 @@ public void openedPanelDichVu() {// load thông tin panel hợp đồng
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
         // TODO add your handling code here:
 //        boolean TrangThai = JRDangSuDung.isSelected() ? true : false;
-//        DTO.DichVu dv = new DTO.DichVu(txtMaDichVu.getText(), txtTenDichVu.getText(),
+//        DTO.frmDichVu dv = new DTO.frmDichVu(txtMaDichVu.getText(), txtTenDichVu.getText(),
 //                Float.parseFloat(txtGia.getText()), (String) cbbDonViTinh.getSelectedItem(),
 //                TrangThai);
 //        DAL.DALDichVu.Update(dv);
-//        ArrayList<DTO.DichVu> list = BLLDichVu.GetAll();
+//        ArrayList<DTO.frmDichVu> list = BLLDichVu.GetAll();
 //        BLLDichVu.DoVaoTable(list, tblDIchVu);
     }//GEN-LAST:event_btnUpdateActionPerformed
 
     private void btnXoa1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoa1ActionPerformed
         // TODO add your handling code here:
-//        DTO.DichVu dv = new DTO.DichVu(txtMaDichVu.getText(), txtTenDichVu.getText(),
+//        DTO.frmDichVu dv = new DTO.frmDichVu(txtMaDichVu.getText(), txtTenDichVu.getText(),
 //                Float.parseFloat(txtGia.getText()), (String) cbbDonViTinh.getSelectedItem(),
 //                true);
 //        DAL.DALDichVu.Delete(dv);
-//        ArrayList<DTO.DichVu> arr = BLL.BLLDichVu.GetAll();
+//        ArrayList<DTO.frmDichVu> arr = BLL.BLLDichVu.GetAll();
 //        BLL.BLLDichVu.DoVaoTable(arr, tblDIchVu);
 //        LamMoi();
 //        helper.ThongBao.ThongBaoDonGian("thông báo", "Xóa thành công !!");
@@ -3651,7 +3650,34 @@ public void openedPanelDichVu() {// load thông tin panel hợp đồng
 
     private void btnUpdCSDienNuocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdCSDienNuocActionPerformed
         // TODO add your handling code here:
-        MyCombobox tenPhong = (MyCombobox) cbMaPhongQLDN.getSelectedItem();
+        if (cbMaPhongQLDN.getSelectedIndex() > 0) {
+            if (BLLChiSoDienNuoc.FindMaChiSo(txtMaChiSoCSDN.getText()) != null) {
+                if (txtMaChiSoCSDN.getText().equals("") || txtSoDienQLDN.getText().equals("") || txtSoNuocQLDN.getText().equals("")) {
+                    ThongBao.ThongBaoDonGian("Thông báo", "Vui lòng điền đầy đủ thông tin!");
+                } else {
+
+                    String maChiSo = txtMaChiSoCSDN.getText();
+                    String maPhong = cbMaPhongQLDN.getSelectedItem() + "";
+                    int soDien = Integer.parseInt(txtSoDienQLDN.getText());
+                    int soNuoc = Integer.parseInt(txtSoNuocQLDN.getText());
+                    Date ngayGhi = dateNgayGhiDienNuoc.getDate();
+                    BLLChiSoDienNuoc.Update(new ChiSoDienNuoc(maPhong, maChiSo, soDien, soNuoc, ngayGhi));
+                    int XacNhan = JOptionPane.showConfirmDialog(null, "Bạn có chắc sửa không?", "Thông báo xác nhận", JOptionPane.OK_CANCEL_OPTION);
+                    if (XacNhan == JOptionPane.CANCEL_OPTION) {
+                        return;
+                    }
+                    ThongBao.ThongBaoDonGian("Thông báo", "Đã sửa!");
+
+                }
+                arrCSDN = BLLChiSoDienNuoc.GetAll();
+                BLLChiSoDienNuoc.DoVaoTable(arrCSDN, tbDienNuocQLCS);
+            } else {
+                ThongBao.ThongBaoDonGian("Thông báo", "Mã chỉ số không có trong dữ liệu!");
+            }
+        } else {
+            ThongBao.ThongBaoDonGian("Thông báo", "Vui lòng điền đầy đủ thông tin!");
+        }
+//        MyCombobox tenPhong = (MyCombobox) cbMaPhongQLDN.getSelectedItem();
 //        System.out.println(cbMaPhongQLDN.getSelectedItem());
 //        ArrayList<Phong> arrP = BLL.BLLPhong.FindByName(tenPhong + "");
 //        try {
@@ -3679,7 +3705,30 @@ public void openedPanelDichVu() {// load thông tin panel hợp đồng
 
     private void btnAddCSDNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddCSDNActionPerformed
         // TODO add your handling code here:
-        MyCombobox tenPhong = (MyCombobox) cbMaPhongQLDN.getSelectedItem();
+        if (cbMaPhongQLDN.getSelectedIndex() > 0) {
+            if (BLLChiSoDienNuoc.FindMaChiSo(txtMaChiSoCSDN.getText()) == null) {
+                if (txtMaChiSoCSDN.getText().equals("") || txtSoDienQLDN.getText().equals("") || txtSoNuocQLDN.getText().equals("")) {
+                    ThongBao.ThongBaoDonGian("Thông báo", "Vui lòng điền đầy đủ thông tin!");
+                } else {
+
+                    String maChiSo = txtMaChiSoCSDN.getText();
+                    String maPhong = cbMaPhongQLDN.getSelectedItem() + "";
+                    int soDien = Integer.parseInt(txtSoDienQLDN.getText());
+                    int soNuoc = Integer.parseInt(txtSoNuocQLDN.getText());
+                    Date ngayGhi = dateNgayGhiDienNuoc.getDate();
+                    BLLChiSoDienNuoc.Add(new ChiSoDienNuoc(maPhong, maChiSo, soDien, soNuoc, ngayGhi));
+                    ThongBao.ThongBaoDonGian("Thông báo", "Đã thêm!");
+
+                }
+                arrCSDN = BLLChiSoDienNuoc.GetAll();
+                BLLChiSoDienNuoc.DoVaoTable(arrCSDN, tbDienNuocQLCS);
+            } else {
+                ThongBao.ThongBaoDonGian("Thông báo", "Mã chỉ số đã có trong dữ liệu!");
+            }
+        } else {
+            ThongBao.ThongBaoDonGian("Thông báo", "Vui lòng chọn phòng và điền đầy đủ thông tin!");
+        }
+//        MyCombobox tenPhong = (MyCombobox) cbMaPhongQLDN.getSelectedItem();
 //        System.out.println(cbMaPhongQLDN.getSelectedItem());
 //        ArrayList<Phong> arrP = BLL.BLLPhong.FindByName(tenPhong + "");
 //        try {
@@ -3707,38 +3756,35 @@ public void openedPanelDichVu() {// load thông tin panel hợp đồng
     }//GEN-LAST:event_btnAddCSDNActionPerformed
 
     private void btnDelCSDNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDelCSDNActionPerformed
-        // TODO add your handling code here:
-//        int dongDangChon = tbDienNuoc.getSelectedRow();
-//        if (dongDangChon == 0) {
-//            ThongBao.ThongBaoDonGian("Thông Báo", "Không thể xóa người đại diện!");
-//        }
-//        if (dongDangChon < 0) {
-//            ThongBao.ThongBaoDonGian("Thông Báo", "Bạn chưa chọn đối tượng cần xóa");
-//        } else {
-//            int XacNhan = JOptionPane.showConfirmDialog(null, "Bạn có chắc xóa không?", "Thông báo xác nhận", JOptionPane.OK_CANCEL_OPTION);
-//            if (XacNhan == JOptionPane.CANCEL_OPTION) {
-//                return;
-//            }
-//        }
-//        //Lấy danh sách các sp  cần xóa
-//        try {
-//            int dongCanXoa[] = tbDienNuoc.getSelectedRows();
-//
+        // TODO add your handling code here:        // TODO add your handling code here:
+        int dongDangChon = tbDienNuocQLCS.getSelectedRow();
+        if (dongDangChon < 0) {
+            ThongBao.ThongBaoDonGian("Thông Báo", "Bạn chưa chọn đối tượng cần xóa");
+        } else {
+            int XacNhan = JOptionPane.showConfirmDialog(null, "Bạn có chắc xóa không?", "Thông báo xác nhận", JOptionPane.OK_CANCEL_OPTION);
+            if (XacNhan == JOptionPane.CANCEL_OPTION) {
+                return;
+            }
+        }
+        //Lấy danh sách các sp  cần xóa
+        try {
+            int dongCanXoa[] = tbDienNuocQLCS.getSelectedRows();
+
 //            MyCombobox tenPhong = (MyCombobox) cbMaPhongQLDN.getSelectedItem();
 //            System.out.println(cbMaPhongQLDN.getSelectedItem());
 //            ArrayList<Phong> arrP = BLL.BLLPhong.FindByName(tenPhong + "");
 //
 //            if (arrP.size() > 0) {
-//                for (int i = 0; i < dongCanXoa.length; i++) {
+            for (int i = 0; i < dongCanXoa.length; i++) {
 //                    String maPhong = arrP.get(0).getMaPhong();
 //                    Date ngayGhi = ChuyenDoi.LayNgayDate(tbDienNuoc.getValueAt(dongCanXoa[i], 0).toString());
-//                    BLL.BLLChiSoDienNuoc.Delete(maPhong, ngayGhi);
-//                }
+                BLL.BLLChiSoDienNuoc.Delete(tbDienNuocQLCS.getValueAt(dongDangChon, 0).toString());
+            }
 //            }
-//            ThongBao.ThongBaoDonGian("Thông Báo", "Đã xóa");
-//        } catch (Exception e) {
-//            ThongBao.ThongBaoDonGian("Thông Báo", "Chưa xóa");
-//        }
+            ThongBao.ThongBaoDonGian("Thông Báo", "Đã xóa");
+        } catch (Exception e) {
+            ThongBao.ThongBaoDonGian("Thông Báo", "Chưa xóa");
+        }
 
 //        loadTB();
     }//GEN-LAST:event_btnDelCSDNActionPerformed
@@ -3779,7 +3825,15 @@ public void openedPanelDichVu() {// load thông tin panel hợp đồng
         ResetFormQLDN();
 
     }//GEN-LAST:event_btnResetFormCSDNActionPerformed
+                                       
+    public void ResetFormQLDN() {
+        txtMaChiSoCSDN.setText("Mã chỉ số");
+        cbMaPhongQLDN.setSelectedIndex(0);
+        txtSoDienQLDN.setText("");
+        txtSoNuocQLDN.setText("");
+        dateNgayGhiDienNuoc.setDate(null);
 
+    }
     private void cbMaPhongQLDNItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbMaPhongQLDNItemStateChanged
         // TODO add your handling code here:
         if (cbMaPhongQLDN.getItemCount() > 0) {
@@ -3866,14 +3920,7 @@ public void loadTTDienNuocTieuThu(){
     private void jTblHoaDonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTblHoaDonMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_jTblHoaDonMouseClicked
-    public void ResetFormQLDN() {
-        txtMaChiSoCSDN.setText("Mã chỉ số");
-        cbMaPhongQLDN.setSelectedIndex(0);
-        txtSoDienQLDN.setText("");
-        txtSoNuocQLDN.setText("");
-        dateNgayGhiDienNuoc.setDate(null);
-
-    }
+   
 
     /**
      * @param args the command line arguments

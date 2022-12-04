@@ -67,7 +67,7 @@ public class BLLChiSoDienNuoc {
         DAL.DALChiSoDienNuoc.Add(cs);
     }
 
-    public static void Delete(int cs) {
+    public static void Delete(String cs) {
         DAL.DALChiSoDienNuoc.Delete(cs);
     }
 
@@ -190,7 +190,7 @@ public class BLLChiSoDienNuoc {
 
     public static String SoHoaDon(String maPhong) {
         String soHoaDon = "" + maPhong;
-        DateFormat dateFormat = new SimpleDateFormat("ddMMyyyy");
+        DateFormat dateFormat = new SimpleDateFormat("ddMMyy");
         Date d = new Date();
         soHoaDon += dateFormat.format(d);
 ////            System.out.println("soHoaDon: " + soHoaDon);
