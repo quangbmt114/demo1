@@ -3565,6 +3565,7 @@ public void openedPanelDichVu() {// load thông tin panel hợp đồng
         txtEmail.setText(tblKhachThue.getValueAt(dongDangChon, 4).toString());
         txtDiaChi.setText(tblKhachThue.getValueAt(dongDangChon, 5).toString());
         JDNgaySinh.setDate(ChuyenDoi.LayNgayDate(tblKhachThue.getValueAt(dongDangChon, 6).toString()));
+        
         if (tblKhachThue.getValueAt(dongDangChon, 7) == null) {
             JDNgayVao.setDate(new Date());
         } else {
@@ -3584,7 +3585,42 @@ public void openedPanelDichVu() {// load thông tin panel hợp đồng
             rbDaTra.setSelected(true);
             rbDangThue.setSelected(false);
         }
-
+        String fileAnhCD = "./src/images/" + tblKhachThue.getValueAt(dongDangChon, 10);
+        String fileAnhCMNDtrc = "./src/images/" + tblKhachThue.getValueAt(dongDangChon, 11);
+        String fileAnhCMNDSau = "./src/images/" + tblKhachThue.getValueAt(dongDangChon, 12);
+        if(tblKhachThue.getValueAt(dongDangChon, 10)==null){
+            String fileAnhcd = "./src/images/man-128px.png";
+            ImageIcon iconAnhCD = new ImageIcon(new ImageIcon(fileAnhcd).getImage().getScaledInstance(140, 180, Image.SCALE_SMOOTH));
+        ImageIcon iconAnhCMNDtrc = new ImageIcon(new ImageIcon(fileAnhCMNDtrc).getImage().getScaledInstance(180, 140, Image.SCALE_SMOOTH));
+        ImageIcon iconAnhCMNDSau = new ImageIcon(new ImageIcon(fileAnhCMNDSau).getImage().getScaledInstance(180, 140, Image.SCALE_SMOOTH));
+        JLHinhAnh.setIcon(iconAnhCD);
+        JLHinhCMNDTrc.setIcon(iconAnhCMNDtrc);
+          JLHinhCMNDSau.setIcon(iconAnhCMNDSau);
+        }else if(tblKhachThue.getValueAt(dongDangChon, 11)==null){
+            String fileAnhcd = "./src/images/man-128px.png";
+            ImageIcon iconAnhCD = new ImageIcon(new ImageIcon(fileAnhCD).getImage().getScaledInstance(140, 180, Image.SCALE_SMOOTH));
+            ImageIcon iconAnhCMNDtrc = new ImageIcon(new ImageIcon(fileAnhcd).getImage().getScaledInstance(180, 140, Image.SCALE_SMOOTH));
+             ImageIcon iconAnhCMNDSau = new ImageIcon(new ImageIcon(fileAnhCMNDSau).getImage().getScaledInstance(180, 140, Image.SCALE_SMOOTH));
+             JLHinhAnh.setIcon(iconAnhCD);
+         JLHinhCMNDTrc.setIcon(iconAnhCMNDtrc);
+          JLHinhCMNDSau.setIcon(iconAnhCMNDSau);
+        }else if(tblKhachThue.getValueAt(dongDangChon, 12)==null){
+            String fileAnhcd = "./src/images/man-128px.png";
+            ImageIcon iconAnhCD = new ImageIcon(new ImageIcon(fileAnhCD).getImage().getScaledInstance(140, 180, Image.SCALE_SMOOTH));
+            ImageIcon iconAnhCMNDtrc = new ImageIcon(new ImageIcon(fileAnhCMNDtrc).getImage().getScaledInstance(180, 140, Image.SCALE_SMOOTH));
+             ImageIcon iconAnhCMNDSau = new ImageIcon(new ImageIcon(fileAnhcd).getImage().getScaledInstance(180, 140, Image.SCALE_SMOOTH));
+             JLHinhAnh.setIcon(iconAnhCD);
+         JLHinhCMNDTrc.setIcon(iconAnhCMNDtrc);
+          JLHinhCMNDSau.setIcon(iconAnhCMNDSau);
+        }else{
+            ImageIcon iconAnhCD = new ImageIcon(new ImageIcon(fileAnhCD).getImage().getScaledInstance(140, 180, Image.SCALE_SMOOTH));
+        ImageIcon iconAnhCMNDtrc = new ImageIcon(new ImageIcon(fileAnhCMNDtrc).getImage().getScaledInstance(180, 140, Image.SCALE_SMOOTH));
+        ImageIcon iconAnhCMNDSau = new ImageIcon(new ImageIcon(fileAnhCMNDSau).getImage().getScaledInstance(180, 140, Image.SCALE_SMOOTH));
+        JLHinhAnh.setIcon(iconAnhCD);
+         JLHinhCMNDTrc.setIcon(iconAnhCMNDtrc);
+          JLHinhCMNDSau.setIcon(iconAnhCMNDSau);
+ 
+        }
         btnSuaKH.setEnabled(true);
     }//GEN-LAST:event_tblKhachThueMouseClicked
 
