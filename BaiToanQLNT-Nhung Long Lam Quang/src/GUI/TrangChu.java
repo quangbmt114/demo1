@@ -3300,38 +3300,38 @@ public void openedPanelDichVu() {// load thông tin panel hợp đồng
 
     private void btnThem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThem1ActionPerformed
         // TODO add your handling code here:
-        boolean TrangThai = JRDangSuDung.isSelected() ? true : false;
-        DTO.DichVu dv = new DTO.DichVu(txtMaDichVu.getText(), txtTenDichVu.getText(),
-                Float.parseFloat(txtGia.getText()), (String) cbbDonViTinh.getSelectedItem(),
-                TrangThai);
-        DAL.DALDichVu.Add(dv);
-        ArrayList<DTO.DichVu> arr = BLL.BLLDichVu.GetAll();
-        BLL.BLLDichVu.DoVaoTable(arr, tblDIchVu);
-        LamMoi();
-        helper.ThongBao.ThongBaoDonGian("thông báo", "Thêm thành công !!");
+//        boolean TrangThai = JRDangSuDung.isSelected() ? true : false;
+//        DTO.DichVu dv = new DTO.DichVu(txtMaDichVu.getText(), txtTenDichVu.getText(),
+//                Float.parseFloat(txtGia.getText()), (String) cbbDonViTinh.getSelectedItem(),
+//                TrangThai);
+//        DAL.DALDichVu.Add(dv);
+//        ArrayList<DTO.DichVu> arr = BLL.BLLDichVu.GetAll();
+//        BLL.BLLDichVu.DoVaoTable(arr, tblDIchVu);
+//        LamMoi();
+//        helper.ThongBao.ThongBaoDonGian("thông báo", "Thêm thành công !!");
     }//GEN-LAST:event_btnThem1ActionPerformed
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
         // TODO add your handling code here:
-        boolean TrangThai = JRDangSuDung.isSelected() ? true : false;
-        DTO.DichVu dv = new DTO.DichVu(txtMaDichVu.getText(), txtTenDichVu.getText(),
-                Float.parseFloat(txtGia.getText()), (String) cbbDonViTinh.getSelectedItem(),
-                TrangThai);
-        DAL.DALDichVu.Update(dv);
-        ArrayList<DTO.DichVu> list = BLLDichVu.GetAll();
-        BLLDichVu.DoVaoTable(list, tblDIchVu);
+//        boolean TrangThai = JRDangSuDung.isSelected() ? true : false;
+//        DTO.DichVu dv = new DTO.DichVu(txtMaDichVu.getText(), txtTenDichVu.getText(),
+//                Float.parseFloat(txtGia.getText()), (String) cbbDonViTinh.getSelectedItem(),
+//                TrangThai);
+//        DAL.DALDichVu.Update(dv);
+//        ArrayList<DTO.DichVu> list = BLLDichVu.GetAll();
+//        BLLDichVu.DoVaoTable(list, tblDIchVu);
     }//GEN-LAST:event_btnUpdateActionPerformed
 
     private void btnXoa1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoa1ActionPerformed
         // TODO add your handling code here:
-        DTO.DichVu dv = new DTO.DichVu(txtMaDichVu.getText(), txtTenDichVu.getText(),
-                Float.parseFloat(txtGia.getText()), (String) cbbDonViTinh.getSelectedItem(),
-                true);
-        DAL.DALDichVu.Delete(dv);
-        ArrayList<DTO.DichVu> arr = BLL.BLLDichVu.GetAll();
-        BLL.BLLDichVu.DoVaoTable(arr, tblDIchVu);
-        LamMoi();
-        helper.ThongBao.ThongBaoDonGian("thông báo", "Xóa thành công !!");
+//        DTO.DichVu dv = new DTO.DichVu(txtMaDichVu.getText(), txtTenDichVu.getText(),
+//                Float.parseFloat(txtGia.getText()), (String) cbbDonViTinh.getSelectedItem(),
+//                true);
+//        DAL.DALDichVu.Delete(dv);
+//        ArrayList<DTO.DichVu> arr = BLL.BLLDichVu.GetAll();
+//        BLL.BLLDichVu.DoVaoTable(arr, tblDIchVu);
+//        LamMoi();
+//        helper.ThongBao.ThongBaoDonGian("thông báo", "Xóa thành công !!");
     }//GEN-LAST:event_btnXoa1ActionPerformed
 
     private void btnLamMoi2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLamMoi2ActionPerformed
@@ -3342,17 +3342,17 @@ public void openedPanelDichVu() {// load thông tin panel hợp đồng
 
     private void tblDIchVuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblDIchVuMouseClicked
         // TODO add your handling code here:
-        btnUpdate.setEnabled(true);
-        int count = tblDIchVu.getSelectedRow();
-        txtMaDichVu.setText((String) tblDIchVu.getValueAt(count, 0));
-        txtTenDichVu.setText((String) tblDIchVu.getValueAt(count, 1));
-        txtGia.setText(String.valueOf(tblDIchVu.getValueAt(count, 3)));
-        cbbDonViTinh.setSelectedItem(tblDIchVu.getValueAt(count, 2));
-        if (tblDIchVu.getValueAt(count, 4).equals("Đang sử dụng")) {
-            JRDangSuDung.setSelected(true);
-        } else {
-            JRKhongSuDung.setSelected(true);
-        }
+//        btnUpdate.setEnabled(true);
+//        int count = tblDIchVu.getSelectedRow();
+//        txtMaDichVu.setText((String) tblDIchVu.getValueAt(count, 0));
+//        txtTenDichVu.setText((String) tblDIchVu.getValueAt(count, 1));
+//        txtGia.setText(String.valueOf(tblDIchVu.getValueAt(count, 3)));
+//        cbbDonViTinh.setSelectedItem(tblDIchVu.getValueAt(count, 2));
+//        if (tblDIchVu.getValueAt(count, 4).equals("Đang sử dụng")) {
+//            JRDangSuDung.setSelected(true);
+//        } else {
+//            JRKhongSuDung.setSelected(true);
+//        }
     }//GEN-LAST:event_tblDIchVuMouseClicked
 
     private void btResetNgayTraHDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btResetNgayTraHDActionPerformed
