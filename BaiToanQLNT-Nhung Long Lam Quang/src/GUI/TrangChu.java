@@ -1310,12 +1310,6 @@ public class TrangChu extends javax.swing.JFrame {
         jLabel80.setFont(new java.awt.Font("UTM Times", 1, 14)); // NOI18N
         jLabel80.setText("Tên KH");
 
-        txtTenKH.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtTenKHKeyReleased(evt);
-            }
-        });
-
         jLabel81.setFont(new java.awt.Font("UTM Times", 1, 14)); // NOI18N
         jLabel81.setText("Ngày sinh");
 
@@ -3633,13 +3627,6 @@ public class TrangChu extends javax.swing.JFrame {
 //        BLL.BLLPhong.doDataTable(arrSP, tblPhong);
 
     }//GEN-LAST:event_txtTimKiemHopDongKeyReleased
-
-    private void txtTenKHKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTenKHKeyReleased
-        String Name = txtTenKH.getText();
-        if (!Name.matches("[a-zA-Z ,]+  ")) {
-            JOptionPane.showMessageDialog(null, "Tên phải là chữ");
-        }        // TODO add your handling code here:
-    }//GEN-LAST:event_txtTenKHKeyReleased
 
     private void txtEmailKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEmailKeyReleased
         String Email = "^[a-zA-Z][a-zA-Z0-9]+@[a-zA-Z]+(\\.[a-zA-Z]+){1,3}$";

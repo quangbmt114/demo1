@@ -1769,9 +1769,6 @@
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JTextField" name="txtTenKH">
-                      <Events>
-                        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtTenKHKeyReleased"/>
-                      </Events>
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel81">
                       <Properties>

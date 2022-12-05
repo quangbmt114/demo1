@@ -29,6 +29,11 @@ public class DALHoatDongThuePhong {
         return sqlHelper.executeQuery(sql, tuKhoa);
     }
 
+    public static ResultSet FindMaHopDong(String tuKhoa) {
+        String sql = "select * from HoatDongThuePhong "
+                + " where MaHopDong = ?";
+        return sqlHelper.executeQuery(sql, tuKhoa);
+    }
     public static ResultSet FindByMaNguoiThue(String tuKhoa) {
         String sql = "select * from HoatDongThuePhong "
                 + " where MaNguoiThue like ?";
