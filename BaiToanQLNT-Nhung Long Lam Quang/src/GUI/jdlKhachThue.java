@@ -588,9 +588,27 @@ public class jdlKhachThue extends javax.swing.JDialog {
             TBEmail.setText(null);
         }
     }//GEN-LAST:event_txtEmailKeyReleased
-
+    public void LamMoi(){
+        txtMaKH.setText("");
+        txtTenKH.setText("");
+        txtCMND.setText("");
+        txtDiaChi.setText("");
+        txtEmail.setText("");
+        txtSDT.setText("");
+        JDNgaySinh.setDate(null);
+        JDNgayVao.setDate(null);
+        String fileAnhcd = "./src/images/man-128px.png";
+        ImageIcon iconAnhCD = new ImageIcon(new ImageIcon(fileAnhcd).getImage().getScaledInstance(140, 180, Image.SCALE_SMOOTH));
+            ImageIcon iconAnhCMNDtrc = new ImageIcon(new ImageIcon(fileAnhcd).getImage().getScaledInstance(180, 140, Image.SCALE_SMOOTH));
+             ImageIcon iconAnhCMNDSau = new ImageIcon(new ImageIcon(fileAnhcd).getImage().getScaledInstance(180, 140, Image.SCALE_SMOOTH));
+             JLHinhAnh.setIcon(iconAnhCD);
+         JLHinhCMNDMatTrc.setIcon(iconAnhCMNDtrc);
+          JLHinhCMNDMatSau.setIcon(iconAnhCMNDSau);
+    }
     private void btnResetKHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetKHActionPerformed
         // TODO add your handling code here:
+        LamMoi();
+        
     }//GEN-LAST:event_btnResetKHActionPerformed
     private void formWindowOpened(java.awt.event.WindowEvent evt) {
         
@@ -674,7 +692,7 @@ public class jdlKhachThue extends javax.swing.JDialog {
     private javax.swing.JTextField txtCMND;
     private javax.swing.JTextField txtDiaChi;
     private javax.swing.JTextField txtEmail;
-    private javax.swing.JTextField txtMaKH;
+    public static javax.swing.JTextField txtMaKH;
     private javax.swing.JTextField txtSDT;
     private javax.swing.JTextField txtTenKH;
     // End of variables declaration//GEN-END:variables
