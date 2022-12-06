@@ -5,6 +5,9 @@
 package GUI;
 
 import DTO.KhachThue;
+import DTO.PhongTro;
+import static GUI.HopDong.cbbMaKhachHang;
+import static GUI.HopDong.cbbPhong;
 import helper.ChuyenDoi;
 import helper.ThongBao;
 import java.util.ArrayList;
@@ -41,6 +44,7 @@ public class jdlKhachThue extends javax.swing.JDialog {
 //        rbNam.setVisible(false);
 //        rbNu.setVisible(false);
     }
+   
    String AnhCD;
    String AnhCMNDTrc;
    String AnhCMNDSau;
@@ -472,10 +476,13 @@ public class jdlKhachThue extends javax.swing.JDialog {
         String NgayTaoDT;
         boolean GioiTinh;
         boolean TrangThai;
+        HopDong hopdong = new  HopDong(null, true);
+        
+         
+            
         //            String NgayTra;
         if (validateform()) {
             MaNguoiThue = txtMaKH.getText();
-
             TenNguoiThue = txtTenKH.getText();
             DiaChi = txtDiaChi.getText();
             SDT = txtSDT.getText();
@@ -496,11 +503,27 @@ public class jdlKhachThue extends javax.swing.JDialog {
             System.out.println("abc"+AnhCD);
             KhachThue kh = new KhachThue(MaNguoiThue, TenNguoiThue, CMND, SDT, Email,
                     DiaChi, NgaySinh, NgayTaoDT, GioiTinh, TrangThai, AnhCD, AnhCMNDTrc, AnhCMNDSau);
-                    BLL.BLLKhachThue.Add(kh);
-            ThongBao.ThongBaoDonGian("Thông báo", "Đã thêm!");
-            ArrayList<KhachThue> arr = BLL.BLLKhachThue.GetAll();
-
-          
+            BLL.BLLKhachThue.Add(kh);
+            // truyền dữ liêu sang form Hợp đồng
+            ArrayList<KhachThue> arrKT = BLL.BLLKhachThue.GetAll();
+            ArrayList<PhongTro> arrPT = BLL.BLLPhongTro.GetAll();
+            BLL.BLLKhachThue.doComboBox(arrKT, cbbMaKhachHang);
+            BLL.BLLPhongTro.doComboBox(arrPT, cbbPhong);
+            int index = 0;
+            for (int i = 0; i < cbbMaKhachHang.getItemCount(); i++) {
+                
+                if (cbbMaKhachHang.getItemAt(i).equals(MaNguoiThue)) {
+                    index = i;
+                    cbbMaKhachHang.setSelectedIndex(index);
+                    System.out.println("123"+index);
+                }
+            }
+            
+            hopdong.setVisible(true);
+            
+            
+            setVisible(false);
+            
         }
     }//GEN-LAST:event_btnThemKHActionPerformed
 

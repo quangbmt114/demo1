@@ -309,4 +309,8 @@ public class BLLHoatDongThuePhong {
         }
         return true;
     }
+
+    public static void doComboBox(ArrayList<HoatDongThuePhong> arrHD, JComboBox<String> cbbPhong) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }

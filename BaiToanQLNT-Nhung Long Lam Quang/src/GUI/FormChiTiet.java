@@ -4,6 +4,7 @@
  */
 package GUI;
 
+import DTO.PhongTro;
 import java.util.ArrayList;
 
 /**
@@ -154,9 +155,17 @@ public class FormChiTiet extends javax.swing.JDialog {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        ArrayList<DTO.PhongTro> arrPT =  new ArrayList<>();
-       jdlKhachThue khachThue = new jdlKhachThue(null, true);
-       khachThue.txtMaKH.setText(TenPhong.getText());
+        
+        ArrayList<DTO.PhongTro> arrPT =  BLL.BLLPhongTro.GetAll();
+        jdlKhachThue khachThue = new jdlKhachThue(null, true);
+        for (PhongTro phongTro : arrPT) {
+            if(phongTro.getTenPhong().equals(TenPhong.getText())){
+                khachThue.txtMaKH.setText(phongTro.getMaPhong());
+                
+            }
+        }
+       
+       
        khachThue.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 

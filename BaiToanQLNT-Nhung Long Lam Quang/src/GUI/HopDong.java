@@ -22,28 +22,26 @@ public class HopDong extends javax.swing.JDialog {
     /**
      * Creates new form HopDong
      */
-    ArrayList<HoatDongThuePhong> arrHD = new ArrayList<>();
-    ArrayList<KhachThue> arrKT = new ArrayList<>();
-    ArrayList<PhongTro> arrPT = new ArrayList<>();
-
+   
+   ArrayList<KhachThue> arrKT =BLL.BLLKhachThue.GetAll();
+    ArrayList<PhongTro> arrPT = BLL.BLLPhongTro.GetAll();
+    String maKhachthue;
     public HopDong(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
+        
         initComponents();
         ImageIcon icon = new ImageIcon("src/images/blue-home-icon.png");
         setIconImage(icon.getImage());
         opened();
+        
     }
 
     public void opened() {
         //set kích thước table
 
         //dổ dữ liệu vào bảng
-        arrHD = BLL.BLLHoatDongThuePhong.GetAll();
-        arrKT = BLL.BLLKhachThue.GetAll();
-        BLL.BLLKhachThue.doComboBox(arrKT, cbbMaKhachHang);
-        arrPT = BLL.BLLPhongTro.GetAll();
-        BLL.BLLPhongTro.doComboBox(arrPT, cbbPhong);
-
+//        BLL.BLLKhachThue.doComboBox(arrKT, cbbMaKhachHang);
+//            BLL.BLLPhongTro.doComboBox(arrPT, cbbPhong);
         //set default value
         dateNgayKy.setDate(new Date());
         rbDangThueAC.setSelected(true);
@@ -96,6 +94,8 @@ public class HopDong extends javax.swing.JDialog {
         txtTenNguoiThueHD = new javax.swing.JLabel();
         jLabel49 = new javax.swing.JLabel();
         jLabel50 = new javax.swing.JLabel();
+        JLmaKhachThue = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
         jLabel16 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -240,6 +240,15 @@ public class HopDong extends javax.swing.JDialog {
         jLabel50.setFont(new java.awt.Font("UTM Times", 1, 14)); // NOI18N
         jLabel50.setText("Ngày Hết Hạn");
 
+        JLmaKhachThue.setText(" ");
+
+        jButton1.setText("jButton1");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -271,7 +280,6 @@ public class HopDong extends javax.swing.JDialog {
                                 .addGap(5, 5, 5)
                                 .addComponent(txtDienTich, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(22, 22, 22))
-                            .addComponent(rbDangThueAC)
                             .addComponent(txtGiaPhong, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(txtSDT, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -288,6 +296,12 @@ public class HopDong extends javax.swing.JDialog {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jButton5)
                                 .addGap(39, 39, 39))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(rbDangThueAC)
+                                .addGap(52, 52, 52)
+                                .addComponent(jButton1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(JLmaKhachThue))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 245, Short.MAX_VALUE)
@@ -364,7 +378,9 @@ public class HopDong extends javax.swing.JDialog {
                 .addGap(26, 26, 26)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel52)
-                    .addComponent(rbDangThueAC))
+                    .addComponent(rbDangThueAC)
+                    .addComponent(JLmaKhachThue)
+                    .addComponent(jButton1))
                 .addGap(33, 33, 33)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE, false)
                     .addComponent(btnLamMoi1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -384,7 +400,7 @@ public class HopDong extends javax.swing.JDialog {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(46, Short.MAX_VALUE))
+                .addContainerGap(49, Short.MAX_VALUE))
             .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
@@ -550,6 +566,15 @@ public class HopDong extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_txtMaHopDongKeyReleased
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        System.out.println(cbbMaKhachHang.getSelectedItem());
+        Object bmt = "PA0121321";
+        if(cbbMaKhachHang.getSelectedItem().toString().equals("BangPA01")){
+            cbbMaKhachHang.setSelectedItem(bmt);
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     public void phong(PhongTro phongChon) {
         txtDienTich.setText(ChuyenDoi.SoString(phongChon.getDienTich()));
         LoaiPhong loaiPhong = BLL.BLLLoaiPhong.FindMaLoaiPhong(phongChon.getMaLoaiPhong().toString());
@@ -651,17 +676,19 @@ public class HopDong extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public static javax.swing.JLabel JLmaKhachThue;
     private javax.swing.JButton btResetNgayTraHD;
     private javax.swing.ButtonGroup btnGGioiTinh;
     private javax.swing.ButtonGroup btnGTrangThai;
     private javax.swing.JButton btnLamMoi1;
     private javax.swing.JButton btnSua1;
     private javax.swing.JButton btnTao;
-    private javax.swing.JComboBox<String> cbbMaKhachHang;
-    private javax.swing.JComboBox<String> cbbPhong;
+    public static javax.swing.JComboBox<String> cbbMaKhachHang;
+    public static javax.swing.JComboBox<String> cbbPhong;
     private com.toedter.calendar.JDateChooser dateNgayKetThuc;
     private com.toedter.calendar.JDateChooser dateNgayKy;
     private com.toedter.calendar.JDateChooser dateNgaySinh;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel40;

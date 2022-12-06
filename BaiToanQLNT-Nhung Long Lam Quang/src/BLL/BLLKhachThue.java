@@ -258,6 +258,9 @@ public class BLLKhachThue {
     public static void Add(KhachThue kh) {
         if (Check(kh, true)) {
             DAL.DALKhachThue.Insert(kh);
+            ThongBao.ThongBaoDonGian("Thông báo", "Đã thêm!");
+        }else{
+            return  ;
         }
     }
 
