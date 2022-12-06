@@ -4,7 +4,9 @@
  */
 package GUI;
 
+import DTO.KhachThue;
 import DTO.PhongTro;
+import static GUI.FormDaiDien.cbbDaiDien;
 import java.util.ArrayList;
 
 /**
@@ -32,12 +34,13 @@ public class FormChiTiet extends javax.swing.JDialog {
 
         jPanel1 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnThemKhach = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         TenPhong = new javax.swing.JLabel();
         jButton5 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        btnDaiDien = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -50,10 +53,10 @@ public class FormChiTiet extends javax.swing.JDialog {
             }
         });
 
-        jButton2.setText("Thêm Khách");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnThemKhach.setText("Thêm Khách");
+        btnThemKhach.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnThemKhachActionPerformed(evt);
             }
         });
 
@@ -79,6 +82,13 @@ public class FormChiTiet extends javax.swing.JDialog {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/smart-home-128px.png"))); // NOI18N
 
+        btnDaiDien.setText(" Đại Diện");
+        btnDaiDien.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDaiDienActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -87,15 +97,17 @@ public class FormChiTiet extends javax.swing.JDialog {
                 .addGap(176, 176, 176)
                 .addComponent(TenPhong, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(43, 43, 43)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnDaiDien, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(88, 88, 88)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnThemKhach, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(100, 100, 100))
         );
@@ -109,7 +121,7 @@ public class FormChiTiet extends javax.swing.JDialog {
                         .addGap(18, 18, 18)
                         .addComponent(jButton1)
                         .addGap(16, 16, 16)
-                        .addComponent(jButton2)
+                        .addComponent(btnThemKhach)
                         .addGap(18, 18, 18)
                         .addComponent(jButton3)
                         .addGap(18, 18, 18)
@@ -118,8 +130,10 @@ public class FormChiTiet extends javax.swing.JDialog {
                         .addComponent(jButton5))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(39, 39, 39)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(73, Short.MAX_VALUE))
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnDaiDien)))
+                .addContainerGap(54, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -153,7 +167,7 @@ public class FormChiTiet extends javax.swing.JDialog {
         new HopDong(null, true).setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnThemKhachActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemKhachActionPerformed
         // TODO add your handling code here:
         
         ArrayList<DTO.PhongTro> arrPT =  BLL.BLLPhongTro.GetAll();
@@ -167,7 +181,22 @@ public class FormChiTiet extends javax.swing.JDialog {
        
        
        khachThue.setVisible(true);
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btnThemKhachActionPerformed
+
+    private void btnDaiDienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDaiDienActionPerformed
+        // TODO add your handling code here:
+        ArrayList<DTO.PhongTro> arrPT =  BLL.BLLPhongTro.GetAll();
+        FormDaiDien daidien = new FormDaiDien(null, true);
+        for (PhongTro phongTro : arrPT) {
+            if(phongTro.getTenPhong().equals(TenPhong.getText())){
+                daidien.JLabelDaiDien.setText(phongTro.getMaPhong());
+                ArrayList<KhachThue> arrKT = BLL.BLLKhachThue.FindByMangMaOrTen(phongTro.getMaPhong());
+        BLL.BLLKhachThue.doComboBox(arrKT, cbbDaiDien);
+            }
+        }
+        
+        daidien.setVisible(true);
+    }//GEN-LAST:event_btnDaiDienActionPerformed
 
     /**
      * @param args the command line arguments
@@ -213,8 +242,9 @@ public class FormChiTiet extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JLabel TenPhong;
+    private javax.swing.JButton btnDaiDien;
+    private javax.swing.JButton btnThemKhach;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;

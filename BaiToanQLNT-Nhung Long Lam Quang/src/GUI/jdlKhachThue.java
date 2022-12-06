@@ -509,21 +509,14 @@ public class jdlKhachThue extends javax.swing.JDialog {
             ArrayList<PhongTro> arrPT = BLL.BLLPhongTro.GetAll();
             BLL.BLLKhachThue.doComboBox(arrKT, cbbMaKhachHang);
             BLL.BLLPhongTro.doComboBox(arrPT, cbbPhong);
-            int index = 0;
-            for (int i = 0; i < cbbMaKhachHang.getItemCount(); i++) {
-                
+            for (int i = 0; i < cbbMaKhachHang.getItemCount(); i++) {         
                 if (cbbMaKhachHang.getItemAt(i).equals(MaNguoiThue)) {
-                    index = i;
-                    cbbMaKhachHang.setSelectedIndex(index);
-                    System.out.println("123"+index);
+                    cbbMaKhachHang.setSelectedIndex(i);
+                    System.out.println("abc"+i);
                 }
             }
-            
             hopdong.setVisible(true);
-            
-            
-            setVisible(false);
-            
+            setVisible(false); 
         }
     }//GEN-LAST:event_btnThemKHActionPerformed
 

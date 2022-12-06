@@ -40,8 +40,8 @@ public class HopDong extends javax.swing.JDialog {
         //set kích thước table
 
         //dổ dữ liệu vào bảng
-//        BLL.BLLKhachThue.doComboBox(arrKT, cbbMaKhachHang);
-//            BLL.BLLPhongTro.doComboBox(arrPT, cbbPhong);
+        BLL.BLLKhachThue.doComboBox(arrKT, cbbMaKhachHang);
+            BLL.BLLPhongTro.doComboBox(arrPT, cbbPhong);
         //set default value
         dateNgayKy.setDate(new Date());
         rbDangThueAC.setSelected(true);
@@ -568,11 +568,8 @@ public class HopDong extends javax.swing.JDialog {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        System.out.println(cbbMaKhachHang.getSelectedItem());
-        Object bmt = "PA0121321";
-        if(cbbMaKhachHang.getSelectedItem().toString().equals("BangPA01")){
-            cbbMaKhachHang.setSelectedItem(bmt);
-        }
+        
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     public void phong(PhongTro phongChon) {
