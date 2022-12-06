@@ -2967,7 +2967,7 @@
                                   <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
                                   <Component id="btnUpdHoaDonHDPT" min="-2" pref="140" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="74" max="-2" attributes="0"/>
-                                  <Component id="jButton3" min="-2" pref="141" max="-2" attributes="0"/>
+                                  <Component id="btnLamMoiHoaDon" min="-2" pref="141" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace pref="18" max="32767" attributes="0"/>
@@ -3078,9 +3078,9 @@
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jButton1" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
                               <Component id="btnUpdHoaDonHDPT" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
-                              <Component id="jButton3" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
+                              <Component id="btnLamMoiHoaDon" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="233" max="32767" attributes="0"/>
+                          <EmptySpace pref="278" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -3153,7 +3153,7 @@
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnUpdHoaDonHDPTActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JButton" name="jButton3">
+                <Component class="javax.swing.JButton" name="btnLamMoiHoaDon">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -3167,7 +3167,7 @@
                     <Property name="text" type="java.lang.String" value="L&#xe0;m M&#x1edb;i"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton3ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLamMoiHoaDonActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="txtSoDienMoiHD">
@@ -3246,6 +3246,7 @@
                   </Properties>
                   <Events>
                     <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="cbbPhongTroHDPTItemStateChanged"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbbPhongTroHDPTActionPerformed"/>
                   </Events>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
@@ -3700,7 +3701,7 @@
                               <Component id="btnLamMoi2" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="jScrollPane6" pref="526" max="32767" attributes="0"/>
+                          <Component id="jScrollPane6" pref="556" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>

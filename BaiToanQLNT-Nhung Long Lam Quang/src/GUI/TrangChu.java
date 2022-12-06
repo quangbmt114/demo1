@@ -11,6 +11,7 @@ import DTO.HoatDongThuePhong;
 import DTO.KhachThue;
 import DTO.LoaiPhong;
 import DTO.PhongTro;
+import static GUI.FormDaiDien.cbbDaiDien;
 import helper.ChuyenDoi;
 import helper.MyCombobox;
 import helper.ThongBao;
@@ -442,7 +443,7 @@ public class TrangChu extends javax.swing.JFrame {
         jLabel73 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         btnUpdHoaDonHDPT = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        btnLamMoiHoaDon = new javax.swing.JButton();
         txtSoDienMoiHD = new javax.swing.JLabel();
         txtSoNuocMoiHD = new javax.swing.JLabel();
         txtNgayGhiMoiHD = new javax.swing.JLabel();
@@ -2086,13 +2087,13 @@ public class TrangChu extends javax.swing.JFrame {
             }
         });
 
-        jButton3.setBackground(new java.awt.Color(255, 255, 255));
-        jButton3.setFont(new java.awt.Font("UTM Times", 1, 14)); // NOI18N
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/refresh.png"))); // NOI18N
-        jButton3.setText("Làm Mới");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        btnLamMoiHoaDon.setBackground(new java.awt.Color(255, 255, 255));
+        btnLamMoiHoaDon.setFont(new java.awt.Font("UTM Times", 1, 14)); // NOI18N
+        btnLamMoiHoaDon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/refresh.png"))); // NOI18N
+        btnLamMoiHoaDon.setText("Làm Mới");
+        btnLamMoiHoaDon.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                btnLamMoiHoaDonActionPerformed(evt);
             }
         });
 
@@ -2124,6 +2125,11 @@ public class TrangChu extends javax.swing.JFrame {
         cbbPhongTroHDPT.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 cbbPhongTroHDPTItemStateChanged(evt);
+            }
+        });
+        cbbPhongTroHDPT.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbbPhongTroHDPTActionPerformed(evt);
             }
         });
 
@@ -2339,7 +2345,7 @@ public class TrangChu extends javax.swing.JFrame {
                         .addGap(47, 47, 47)
                         .addComponent(btnUpdHoaDonHDPT, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(74, 74, 74)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnLamMoiHoaDon, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(18, Short.MAX_VALUE))
         );
         jPanel16Layout.setVerticalGroup(
@@ -2430,7 +2436,7 @@ public class TrangChu extends javax.swing.JFrame {
                 .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnUpdHoaDonHDPT, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnLamMoiHoaDon, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(233, Short.MAX_VALUE))
         );
 
@@ -2897,6 +2903,8 @@ public class TrangChu extends javax.swing.JFrame {
 
     private void panelKhachThueMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelKhachThueMouseClicked
         // TODO add your handling code here:
+        ArrayList<KhachThue> listKH = BLL.BLLKhachThue.GetAll();
+        BLL.BLLKhachThue.DoVaoTable(listKH, tblKhachThue);
         CardLayout layout = (CardLayout) panelMain.getLayout();
         layout.show(panelMain, "KhachThue");
     }//GEN-LAST:event_panelKhachThueMouseClicked
@@ -3910,7 +3918,19 @@ public class TrangChu extends javax.swing.JFrame {
     }
     private void cbbPhongTroHDPTItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbbPhongTroHDPTItemStateChanged
         // TODO add your handling code here:
+        
         if (cbbPhongTroHDPT.getSelectedIndex() > 0) {
+            
+                System.out.println(cbbPhongTroHDPT.getSelectedItem().toString());
+//                ArrayList<KhachThue> arrKT = BLL.BLLKhachThue.FindByMangMaOrTen
+//            (cbbPhongTroHDPT.getSelectedItem().toString());
+//                for (KhachThue kt : arrKT) {
+//                if (kt.isDaiDien()==true) {
+//                    System.out.println(kt.getTenNguoiThue());
+//                   
+//                    }
+//            }
+            
             arrCSDN = BLLChiSoDienNuoc.FindByMaPhong(cbbPhongTroHDPT.getSelectedItem() + "");
             BLLChiSoDienNuoc.doComboBox(arrCSDN, cbbChiSoCuHDPT);
             arrCSDN = BLLChiSoDienNuoc.FindByMaPhong(cbbPhongTroHDPT.getSelectedItem() + "");
@@ -3923,7 +3943,7 @@ public class TrangChu extends javax.swing.JFrame {
             HoatDongThuePhong hdtp=BLLHoatDongThuePhong.FindDaiDienPhong(cbbPhongTroHDPT.getSelectedItem() + "");
             if(BLLHoatDongThuePhong.FindDaiDienPhong(cbbPhongTroHDPT.getSelectedItem() + "")!=null){
                 KhachThue kt=BLLKhachThue.FindByMaNguoiThue(BLLHoatDongThuePhong.FindDaiDienPhong(cbbPhongTroHDPT.getSelectedItem() + "").getMaNguoiThue());
-                txtDaiDienPhongHDPT.setText(kt.getMaNguoiThue());
+                txtDaiDienPhongHDPT.setText(kt.getTenNguoiThue());
                 txtMailLLHDPT.setText(kt.getEmail());
             }else{
                 txtDaiDienPhongHDPT.setText("   ");
@@ -4072,13 +4092,17 @@ public class TrangChu extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnUpdHoaDonHDPTActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void btnLamMoiHoaDonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLamMoiHoaDonActionPerformed
         // TODO add your handling code here:
         btnUpdHoaDonHDPT.setEnabled(false);
         txtMaHoaDonPT.setText("Mã hóa đơn");
         cbbPhongTroHDPT.setSelectedIndex(0);
         jDateChooser2.setDate(null);
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_btnLamMoiHoaDonActionPerformed
+
+    private void cbbPhongTroHDPTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbbPhongTroHDPTActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbbPhongTroHDPTActionPerformed
 
     /**
      * @param args the command line arguments
@@ -4144,6 +4168,7 @@ public class TrangChu extends javax.swing.JFrame {
     private javax.swing.JButton btnLamMoi;
     private javax.swing.JButton btnLamMoi1;
     private javax.swing.JButton btnLamMoi2;
+    private javax.swing.JButton btnLamMoiHoaDon;
     private javax.swing.JButton btnResetFormCSDN;
     private javax.swing.JButton btnResetKH;
     private javax.swing.JButton btnSetMaChiSo;
@@ -4173,7 +4198,6 @@ public class TrangChu extends javax.swing.JFrame {
     private com.toedter.calendar.JDateChooser dateNgayKy;
     private com.toedter.calendar.JDateChooser dateNgaySinh;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton5;
     private com.toedter.calendar.JDateChooser jDateChooser2;
     private javax.swing.JLabel jLabel1;

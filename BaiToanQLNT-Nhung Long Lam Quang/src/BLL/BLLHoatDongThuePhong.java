@@ -157,6 +157,7 @@ public class BLLHoatDongThuePhong {
                 sp.setNgayTra(rs.getDate("NgayTra"));
                 sp.setGhiChu(rs.getString("GhiChu"));
                 sp.setTinhTrang(rs.getBoolean("TinhTrang"));
+                
                 return sp;
 //                arr.add(sp);   //Thêm sản phẩm lsp vào ArrayList
             }

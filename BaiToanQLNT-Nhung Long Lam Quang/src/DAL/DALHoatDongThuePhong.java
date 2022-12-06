@@ -47,7 +47,7 @@ public class DALHoatDongThuePhong {
     }
     
     public static ResultSet FindDaiDienPhong(String MaPhong) {
-        String sql = "select * from HoatDongThuePhong where MaPhong = ? and TinhTrang=1 and DaiDien=1";
+        String sql = "select * from HoatDongThuePhong where MaPhong = ? and TinhTrang=1";
         return sqlHelper.executeQuery(sql, MaPhong);
     }
     public static ResultSet FindByMaHopDongOrMaNguoiThue(String tuKhoa) {
