@@ -7,7 +7,9 @@ package GUI;
 import DTO.KhachThue;
 import DTO.PhongTro;
 import static GUI.HopDong.cbbPhong;
+import java.sql.ResultSet;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -106,11 +108,20 @@ public class FormDaiDien extends javax.swing.JDialog {
 
     private void cbbDaiDienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbbDaiDienActionPerformed
         // TODO add your handling code here:
-        
+       
     }//GEN-LAST:event_cbbDaiDienActionPerformed
 
     private void btnXacNhanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXacNhanActionPerformed
         // TODO add your handling code here:
+        ;
+        int dem = JOptionPane.YES_OPTION;
+        if(cbbDaiDien.getSelectedIndex()!=0&&JOptionPane.showConfirmDialog(this, "Bạn muốn xác nhận đại diện", "Xác Nhận", JOptionPane.OK_OPTION)==dem){
+            KhachThue kh = new KhachThue(cbbDaiDien.getSelectedItem().toString(), true);
+            BLL.BLLKhachThue.UpdateDaiDien(kh);
+            JOptionPane.showMessageDialog(this, "Xác Nhận Đại Diện Thành Công");
+        
+        }
+         
         
     }//GEN-LAST:event_btnXacNhanActionPerformed
 

@@ -304,6 +304,11 @@ public class BLLKhachThue {
         DAL.DALKhachThue.Update(kh);
 
     }
+    public static void UpdateDaiDien(KhachThue kh) {
+
+        DAL.DALKhachThue.UpdateDaiDien(kh);
+
+    }
 
     public static void Delete(String MaKhachHang) {
 

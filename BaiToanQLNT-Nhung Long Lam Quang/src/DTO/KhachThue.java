@@ -26,8 +26,13 @@ public class KhachThue {
    String AnhCD;
    String AnhCCTruoc;
    String AnhCCSau;
-
+   boolean DaiDien;
     public KhachThue() {
+    }
+
+    public KhachThue(String MaNguoiThue, boolean DaiDien) {
+        this.MaNguoiThue = MaNguoiThue;
+        this.DaiDien = DaiDien;
     }
 
     public KhachThue(String MaNguoiThue, String TenNguoiThue, String CMND, String SDT, String Email, String DiaChi, String NgaySinh,
@@ -45,6 +50,14 @@ public class KhachThue {
         this.AnhCD = AnhCD;
         this.AnhCCTruoc = AnhCCTruoc;
         this.AnhCCSau = AnhCCSau;
+    }
+
+    public boolean isDaiDien() {
+        return DaiDien;
+    }
+
+    public void setDaiDien(boolean DaiDien) {
+        this.DaiDien = DaiDien;
     }
 
     
