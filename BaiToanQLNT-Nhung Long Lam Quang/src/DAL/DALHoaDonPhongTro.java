@@ -13,7 +13,7 @@ import java.sql.ResultSet;
  * @author Dell
  */
 public class DALHoaDonPhongTro {
-    
+
     //Lay 
     public static ResultSet GetAllData() {
         String sql = "select * from HoaDon";
@@ -28,12 +28,26 @@ public class DALHoaDonPhongTro {
         return sqlHelper.executeQuery(sql, tuKhoa);
     }
 
-
     public static ResultSet FindByMaPhong(String MaPhong) {
         String sql = "select * from HoaDon where MaPhong = ?";
         return sqlHelper.executeQuery(sql, MaPhong);
     }
 
+    public static void Add(HoaDonPhongTro hdpt) {
+
+        String sql = "INSERT INTO [dbo].[HoaDon] ([MaHoaDon],[MaPhong],[ThangTieuThu],[ChiSoMoi],[ChiSoCu],[TongTienPhong],[TongTienDien],[TongTienNuoc],[TongTienDV],[TongTien],[GhiChu]) VALUES(?,?,?,?,?,?,?,?,?,?,?)";
+        sqlHelper.executeUpdate(sql, hdpt.getMaHoaDon(), hdpt.getMaPhong(), ChuyenDoi.LayNgayString(hdpt.getThangTieuThu()), hdpt.getChiSoMoi(), hdpt.getChiSoCu(),
+                hdpt.getTongTienPhong(), hdpt.getTongTienDien(), hdpt.getTongTienNuoc(), hdpt.getTongTienDV(), hdpt.getTongTien(), hdpt.getGhiChu());
+    }
+
+    public static void Update(HoaDonPhongTro hdpt) {
+        String sql;
+        sql = "UPDATE [dbo].[HoaDon]\n"
+                + "   SET [MaPhong] = ?,[ThangTieuThu] = ?,[ChiSoMoi] = ?,[ChiSoCu] = ?,[TongTienPhong] = ?,[TongTienDien] = ?,\n"
+                + "   [TongTienNuoc] = ?,[TongTienDV] = ?,[TongTien] = ?,[GhiChu] = ? WHERE [MaHoaDon] = ?";
+        sqlHelper.executeUpdate(sql, hdpt.getMaPhong(), ChuyenDoi.LayNgayString(hdpt.getThangTieuThu()), hdpt.getChiSoMoi(), hdpt.getChiSoCu(),
+                hdpt.getTongTienPhong(), hdpt.getTongTienDien(), hdpt.getTongTienNuoc(), hdpt.getTongTienDV(), hdpt.getTongTien(), hdpt.getGhiChu(), hdpt.getMaHoaDon());
+    }
 //    public static void Add(HoaDonPhongTro hdpt, int i) {
 //        if (i == 0) {
 //            String sql = "INSERT INTO [dbo].[HoaDon]([MaHoaDon],[MaPhong],[MaNguoiThue],[NgayThue],[NgayTra],[GhiChu],[TinhTrang]) VALUES(?,?,?,?,?,?,?)";
@@ -91,7 +105,6 @@ public class DALHoaDonPhongTro {
 ////                hdpt.getNgayThue(), hdpt.getNgayTra(), hdpt.getGhiChu(),
 ////                hdpt.isTinhTrang(), hdpt.getMaHoaDon());
 //    }
-
     public static void Delete(int getMaHoaDon) {
         String sql = "DELETE HoaDonPhongTro where MaHoaDon = ?";
         sqlHelper.executeUpdate(sql, getMaHoaDon);
@@ -99,7 +112,7 @@ public class DALHoaDonPhongTro {
 
     public static ResultSet CountSoHoaDon(String SoHoaDon) {
         String sql = "select count(*) from HoaDon where MaHoaDon like ?";
-        return sqlHelper.executeQuery(sql, "%"+SoHoaDon+"%");
+        return sqlHelper.executeQuery(sql, "%" + SoHoaDon + "%");
     }
 
     public static ResultSet GetHoaDonBySo(String SoHoaDon) {

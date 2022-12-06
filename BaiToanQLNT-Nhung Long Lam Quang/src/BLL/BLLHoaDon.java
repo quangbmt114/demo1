@@ -48,6 +48,15 @@ public class BLLHoaDon {
         }
         return list;
     }
+    public static void Add(HoaDonPhongTro sp) {
+            DAL.DALHoaDonPhongTro.Add(sp);
+//        if (BLLKhachThue.CheckTrangThaiMaNguoiThue(sp.getMaNguoiThue())) {
+//            System.out.println("hey hey");
+//        }
+    }
+    public static void Update(HoaDonPhongTro sp) {
+            DAL.DALHoaDonPhongTro.Update(sp);        
+    }
 
     public static void DoVaoTable(ArrayList<DTO.HoaDonPhongTro> arr, JTable tbl) {
 

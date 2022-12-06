@@ -441,7 +441,7 @@ public class TrangChu extends javax.swing.JFrame {
         jLabel72 = new javax.swing.JLabel();
         jLabel73 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnUpdHoaDonHDPT = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         txtSoDienMoiHD = new javax.swing.JLabel();
         txtSoNuocMoiHD = new javax.swing.JLabel();
@@ -2069,17 +2069,32 @@ public class TrangChu extends javax.swing.JFrame {
         jButton1.setFont(new java.awt.Font("UTM Times", 1, 14)); // NOI18N
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/notebook_1.png"))); // NOI18N
         jButton1.setText("Tạo Hóa Đơn");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
-        jButton2.setBackground(new java.awt.Color(255, 255, 255));
-        jButton2.setFont(new java.awt.Font("UTM Times", 1, 14)); // NOI18N
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/updated.png"))); // NOI18N
-        jButton2.setText("Cập nhật");
-        jButton2.setEnabled(false);
+        btnUpdHoaDonHDPT.setBackground(new java.awt.Color(255, 255, 255));
+        btnUpdHoaDonHDPT.setFont(new java.awt.Font("UTM Times", 1, 14)); // NOI18N
+        btnUpdHoaDonHDPT.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/updated.png"))); // NOI18N
+        btnUpdHoaDonHDPT.setText("Cập nhật");
+        btnUpdHoaDonHDPT.setEnabled(false);
+        btnUpdHoaDonHDPT.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdHoaDonHDPTActionPerformed(evt);
+            }
+        });
 
         jButton3.setBackground(new java.awt.Color(255, 255, 255));
         jButton3.setFont(new java.awt.Font("UTM Times", 1, 14)); // NOI18N
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/refresh.png"))); // NOI18N
         jButton3.setText("Làm Mới");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         txtSoDienMoiHD.setFont(new java.awt.Font("UTM Times", 1, 14)); // NOI18N
         txtSoDienMoiHD.setText("   ");
@@ -2322,7 +2337,7 @@ public class TrangChu extends javax.swing.JFrame {
                     .addGroup(jPanel16Layout.createSequentialGroup()
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(47, 47, 47)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnUpdHoaDonHDPT, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(74, 74, 74)
                         .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(18, Short.MAX_VALUE))
@@ -2414,7 +2429,7 @@ public class TrangChu extends javax.swing.JFrame {
                 .addGap(98, 98, 98)
                 .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnUpdHoaDonHDPT, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(233, Short.MAX_VALUE))
         );
@@ -3976,6 +3991,13 @@ public class TrangChu extends javax.swing.JFrame {
 
     private void jTblHoaDonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTblHoaDonMouseClicked
         // TODO add your handling code here:
+        btnUpdHoaDonHDPT.setEnabled(true);
+        int indexRow = jTblHoaDon.getSelectedRow();
+        BLLPhongTro.HienThiPhongTroCBB(cbbPhongTroHDPT,jTblHoaDon.getValueAt(indexRow, 1).toString());
+        BLLChiSoDienNuoc.HienThiHoaDonPhongTroCBB(cbbChiSoMoiHDPT,jTblHoaDon.getValueAt(indexRow, 3).toString());
+        BLLChiSoDienNuoc.HienThiHoaDonPhongTroCBB(cbbChiSoCuHDPT,jTblHoaDon.getValueAt(indexRow, 4).toString());
+        txtMaHoaDonPT.setText(jTblHoaDon.getValueAt(indexRow, 0).toString());
+        jDateChooser2.setDate(ChuyenDoi.LayNgayDate(jTblHoaDon.getValueAt(indexRow, 2).toString()));
     }//GEN-LAST:event_jTblHoaDonMouseClicked
 
     private void txtSoDienQLDNKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSoDienQLDNKeyReleased
@@ -3995,6 +4017,68 @@ public class TrangChu extends javax.swing.JFrame {
             ThongBao.ThongBaoDonGian("Thông báo", "Cần điền số!");
         }
     }//GEN-LAST:event_txtSoNuocQLDNKeyReleased
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        String maHoaDon=txtMaHoaDonPT.getText();
+        if(maHoaDon!=null){
+            try {
+            String maPhong=cbbPhongTroHDPT.getSelectedItem()+"";
+            String chiSoMoi=cbbChiSoMoiHDPT.getSelectedItem()+"";
+            String chiSoCu=cbbChiSoCuHDPT.getSelectedItem()+"";
+            Date ngayGhi=jDateChooser2.getDate();
+            int tienDien=(int)ChuyenDoi.SoDouble(txtTienDienHDPT.getText());
+            int tienPhong=(int)ChuyenDoi.SoDouble(txtTienPhongHDPT.getText());
+            int tienNuoc=(int)ChuyenDoi.SoDouble(txtTienNuocHDPT.getText());
+            int tienDV=0;//ChuyenDoi.SoDouble(txtTienDichVuHDPT.getText());
+            int tongTien=(int)ChuyenDoi.SoDouble(txtTongTienHDPT.getText());
+            String ghiChu=null;
+            BLLHoaDon.Add(new HoaDonPhongTro(maHoaDon, maPhong, ngayGhi, chiSoMoi, chiSoCu, tienPhong, tienDien, tienNuoc, tienDV, tongTien, ghiChu));
+            ThongBao.ThongBaoDonGian("Thông báo", "Đã thêm");
+                
+            } catch (Exception e) {
+                
+            ThongBao.ThongBaoDonGian("Thông báo", "Hóa đơn đã tồn tại hoặc sai thông tin, vui lòng kiểm tra lại!!");
+            }
+        }else{
+            ThongBao.ThongBaoDonGian("Thông báo", "Chưa đủ thông tin!!");
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void btnUpdHoaDonHDPTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdHoaDonHDPTActionPerformed
+        // TODO add your handling code here:
+        String maHoaDon=txtMaHoaDonPT.getText();
+        if(maHoaDon!=null){
+            try {
+            String maPhong=cbbPhongTroHDPT.getSelectedItem()+"";
+            String chiSoMoi=cbbChiSoMoiHDPT.getSelectedItem()+"";
+            String chiSoCu=cbbChiSoCuHDPT.getSelectedItem()+"";
+            Date ngayGhi=jDateChooser2.getDate();
+            int tienDien=(int)ChuyenDoi.SoDouble(txtTienDienHDPT.getText());
+            int tienPhong=(int)ChuyenDoi.SoDouble(txtTienPhongHDPT.getText());
+            int tienNuoc=(int)ChuyenDoi.SoDouble(txtTienNuocHDPT.getText());
+            int tienDV=0;//ChuyenDoi.SoDouble(txtTienDichVuHDPT.getText());
+            int tongTien=(int)ChuyenDoi.SoDouble(txtTongTienHDPT.getText());
+            String ghiChu=null;
+            BLLHoaDon.Update(new HoaDonPhongTro(maHoaDon, maPhong, ngayGhi, chiSoMoi, chiSoCu, tienPhong, tienDien, tienNuoc, tienDV, tongTien, ghiChu));
+            ThongBao.ThongBaoDonGian("Thông báo", "Đã sửa!");
+                
+            } catch (Exception e) {
+                
+            ThongBao.ThongBaoDonGian("Thông báo", "Hóa đơn không tồn tại hoặc sai thông tin, vui lòng kiểm tra lại!!");
+            }
+        }else{
+            ThongBao.ThongBaoDonGian("Thông báo", "Chưa đủ thông tin!!");
+        }
+    }//GEN-LAST:event_btnUpdHoaDonHDPTActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        btnUpdHoaDonHDPT.setEnabled(false);
+        txtMaHoaDonPT.setText("Mã hóa đơn");
+        cbbPhongTroHDPT.setSelectedIndex(0);
+        jDateChooser2.setDate(null);
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -4071,6 +4155,7 @@ public class TrangChu extends javax.swing.JFrame {
     private javax.swing.JButton btnThem1;
     private javax.swing.JButton btnThemKH;
     private javax.swing.JButton btnUpdCSDienNuoc;
+    private javax.swing.JButton btnUpdHoaDonHDPT;
     private javax.swing.JButton btnUpdate;
     private javax.swing.JButton btnXoa;
     private javax.swing.JButton btnXoa1;
@@ -4088,7 +4173,6 @@ public class TrangChu extends javax.swing.JFrame {
     private com.toedter.calendar.JDateChooser dateNgayKy;
     private com.toedter.calendar.JDateChooser dateNgaySinh;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton5;
     private com.toedter.calendar.JDateChooser jDateChooser2;
