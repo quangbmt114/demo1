@@ -3652,7 +3652,7 @@
                                   <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
                                   <Component id="btnLamMoi2" min="-2" pref="141" max="-2" attributes="0"/>
                               </Group>
-                              <Group type="102" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="1" attributes="0">
                                       <Component id="jLabel55" alignment="1" min="-2" max="-2" attributes="0"/>
@@ -3661,13 +3661,14 @@
                                   </Group>
                                   <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="txtGia" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="txtGiaDichVu" alignment="0" max="32767" attributes="0"/>
                                       <Component id="txtTenDichVu" alignment="0" pref="625" max="32767" attributes="0"/>
                                       <Component id="txtMaDichVu" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="txtErrGiaDichVu" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
-                          <EmptySpace pref="412" max="32767" attributes="0"/>
+                          <EmptySpace pref="414" max="32767" attributes="0"/>
                       </Group>
                       <Component id="jScrollPane6" alignment="1" max="32767" attributes="0"/>
                   </Group>
@@ -3689,10 +3690,12 @@
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="txtGia" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtGiaDichVu" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel57" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="129" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="txtErrGiaDichVu" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="106" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="btnThem1" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                               <Component id="btnUpdate" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -3700,7 +3703,7 @@
                               <Component id="btnLamMoi2" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="jScrollPane6" pref="556" max="32767" attributes="0"/>
+                          <Component id="jScrollPane6" pref="526" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -3741,7 +3744,10 @@
                 </Component>
                 <Component class="javax.swing.JTextField" name="txtTenDichVu">
                 </Component>
-                <Component class="javax.swing.JTextField" name="txtGia">
+                <Component class="javax.swing.JTextField" name="txtGiaDichVu">
+                  <Events>
+                    <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtGiaDichVuKeyReleased"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel57">
                   <Properties>
@@ -3871,6 +3877,14 @@
                     </Component>
                   </SubComponents>
                 </Container>
+                <Component class="javax.swing.JLabel" name="txtErrGiaDichVu">
+                  <Properties>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="0" green="33" red="ff" type="rgb"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="   "/>
+                  </Properties>
+                </Component>
               </SubComponents>
             </Container>
           </SubComponents>

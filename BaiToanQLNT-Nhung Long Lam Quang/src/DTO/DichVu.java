@@ -10,19 +10,17 @@ package DTO;
  */
 public class DichVu {
     private String MaDichVu,TenDichVu;
-    private float Gia;
-    private String DonViTinh;
-    private boolean TrangThai;
+    private int Gia;
+//    private String DonViTinh;
+//    private boolean TrangThai;
 
     public DichVu() {
     }
 
-    public DichVu(String MaDichVu, String TenDichVu, float Gia, String DonViTinh, boolean TrangThai) {
+    public DichVu(String MaDichVu, String TenDichVu, int Gia) {
         this.MaDichVu = MaDichVu;
         this.TenDichVu = TenDichVu;
         this.Gia = Gia;
-        this.DonViTinh = DonViTinh;
-        this.TrangThai = TrangThai;
     }
 
     public String getMaDichVu() {
@@ -41,28 +39,13 @@ public class DichVu {
         this.TenDichVu = TenDichVu;
     }
 
-    public float getGia() {
+    public int getGia() {
         return Gia;
     }
 
-    public void setGia(float Gia) {
+    public void setGia(int Gia) {
         this.Gia = Gia;
     }
 
-    public String getDonViTinh() {
-        return DonViTinh;
-    }
-
-    public void setDonViTinh(String DonViTinh) {
-        this.DonViTinh = DonViTinh;
-    }
-
-    public boolean isTrangThai() {
-        return TrangThai;
-    }
-
-    public void setTrangThai(boolean TrangThai) {
-        this.TrangThai = TrangThai;
-    }
     
 }

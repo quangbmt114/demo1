@@ -4,6 +4,7 @@
  */
 package BLL;
 
+import DTO.DichVu;
 import DTO.LoaiPhong;
 import GUI.frmDichVu;
 import java.util.ArrayList;
@@ -26,9 +27,9 @@ public class BLLDichVu {
                 DTO.DichVu dv = new DTO.DichVu();
               dv.setMaDichVu(rs.getString("MaDichVu"));
               dv.setTenDichVu(rs.getString("TenDichVu"));
-              dv.setGia(rs.getFloat("GiaDichVu"));
-              dv.setDonViTinh(rs.getString("DonViTinh"));
-              dv.setTrangThai(rs.getBoolean("TrangThai"));
+              dv.setGia(rs.getInt("GiaDichVu"));
+//              dv.setDonViTinh(rs.getString("DonViTinh"));
+//              dv.setTrangThai(rs.getBoolean("TrangThai"));
               list.add(dv);
             }
         } catch (SQLException ex) {
@@ -45,11 +46,16 @@ public class BLLDichVu {
             
             obj[0] = dv.getMaDichVu();
             obj[1] = dv.getTenDichVu();
-            obj[3] = dv.getGia();
-             obj[2] = dv.getDonViTinh();
-              obj[4] = dv.isTrangThai()?"Đang sử dụng":"Không sử dụng";
+            obj[2] = dv.getGia();
+//             obj[2] = dv.getDonViTinh();Y
      
             tbModel.addRow(obj);
         }
     }
+    public static void Add(DichVu dv){
+        DAL.DALDichVu.Add(dv);
+    } 
+    public static void Delete(String dv){
+        DAL.DALDichVu.Delete(dv);
+    } 
 }
