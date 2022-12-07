@@ -2114,6 +2114,8 @@ public class TrangChu extends javax.swing.JFrame {
         txtSoDienTieuThuHD.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         txtSoDienTieuThuHD.setText("   ");
 
+        jDateChooser2.setDateFormatString("dd-mm-yyyy");
+
         txtSoNuocTieuThuHD.setFont(new java.awt.Font("UTM Times", 1, 14)); // NOI18N
         txtSoNuocTieuThuHD.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         txtSoNuocTieuThuHD.setText("   ");

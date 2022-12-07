@@ -3204,6 +3204,9 @@
                   </Properties>
                 </Component>
                 <Component class="com.toedter.calendar.JDateChooser" name="jDateChooser2">
+                  <Properties>
+                    <Property name="dateFormatString" type="java.lang.String" value="dd-mm-yyyy"/>
+                  </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="txtSoNuocTieuThuHD">
                   <Properties>
