@@ -476,7 +476,7 @@ public class jdlKhachThue extends javax.swing.JDialog {
         String NgayTaoDT;
         boolean GioiTinh;
         boolean TrangThai;
-        HopDong hopdong = new  HopDong(null, true);
+        
         
          
             
@@ -505,6 +505,7 @@ public class jdlKhachThue extends javax.swing.JDialog {
                     DiaChi, NgaySinh, NgayTaoDT, GioiTinh, TrangThai, AnhCD, AnhCMNDTrc, AnhCMNDSau);
             BLL.BLLKhachThue.Add(kh);
             // truyền dữ liêu sang form Hợp đồng
+            HopDong hopdong = new  HopDong(null, true);
             ArrayList<KhachThue> arrKT = BLL.BLLKhachThue.GetAll();
             ArrayList<PhongTro> arrPT = BLL.BLLPhongTro.GetAll();
             BLL.BLLKhachThue.doComboBox(arrKT, cbbMaKhachHang);

@@ -5,6 +5,7 @@
 package BLL;
 
 import DTO.KhachThue;
+import GUI.jdlKhachThue;
 import helper.MyCombobox;
 import helper.ThongBao;
 import java.sql.ResultSet;
@@ -294,6 +295,8 @@ public class BLLKhachThue {
         if (Check(kh, true)) {
             DAL.DALKhachThue.Insert(kh);
             ThongBao.ThongBaoDonGian("Thông báo", "Đã thêm!");
+            jdlKhachThue khachthue = new jdlKhachThue(null, true);
+            khachthue.LamMoi();
         }else{
             return  ;
         }

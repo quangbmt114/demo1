@@ -19,8 +19,20 @@ public class HoatDongThuePhong {
     Date NgayTra;
     String GhiChu;
     boolean TinhTrang;
+    boolean DaiDien;
 
     public HoatDongThuePhong() {
+    }
+
+    public HoatDongThuePhong(String MaHopDong, String MaPhong, String MaNguoiThue, Date NgayThue, Date NgayTra, String GhiChu, boolean TinhTrang, boolean DaiDien) {
+        this.MaHopDong = MaHopDong;
+        this.MaPhong = MaPhong;
+        this.MaNguoiThue = MaNguoiThue;
+        this.NgayThue = NgayThue;
+        this.NgayTra = NgayTra;
+        this.GhiChu = GhiChu;
+        this.TinhTrang = TinhTrang;
+        this.DaiDien = DaiDien;
     }
 
     public HoatDongThuePhong(String MaHopDong, String MaPhong, String MaNguoiThue, Date NgayThue, Date NgayTra, String GhiChu, boolean TinhTrang) {
@@ -35,6 +47,14 @@ public class HoatDongThuePhong {
 
     public String getMaHopDong() {
         return MaHopDong;
+    }
+
+    public boolean isDaiDien() {
+        return DaiDien;
+    }
+
+    public void setDaiDien(boolean DaiDien) {
+        this.DaiDien = DaiDien;
     }
 
     public void setMaHopDong(String MaHopDong) {

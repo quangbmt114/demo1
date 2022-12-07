@@ -47,7 +47,7 @@ public class DALHoatDongThuePhong {
     }
     
     public static ResultSet FindDaiDienPhong(String MaPhong) {
-        String sql = "select * from HoatDongThuePhong where MaPhong = ? and TinhTrang=1";
+        String sql = "select * from HoatDongThuePhong where MaPhong = ? and TinhTrang=1 and DaiDien = 1";
         return sqlHelper.executeQuery(sql, MaPhong);
     }
     public static ResultSet FindByMaHopDongOrMaNguoiThue(String tuKhoa) {
@@ -62,10 +62,6 @@ public class DALHoatDongThuePhong {
             String sql = "INSERT INTO [dbo].[HoatDongThuePhong]([MaHopDong],[MaPhong],[MaNguoiThue],[NgayThue],[NgayTra],[GhiChu],[TinhTrang]) VALUES(?,?,?,?,?,?,?)";
             sqlHelper.executeUpdate(sql, sp.getMaHopDong(), sp.getMaPhong(), sp.getMaNguoiThue(), ChuyenDoi.LayNgayString(sp.getNgayThue()), ChuyenDoi.LayNgayString(sp.getNgayTra()),
                     sp.getGhiChu(), 0);
-//            sql = "if (select count(*) from hoatdongthuephong where maphong= ? and tinhtrang=1)>1 UPDATE [dbo].[NguoiThue] SET [TrangThai] = 0 WHERE MaNguoiThue = ?";
-//            sqlHelper.executeUpdate(sql, sp.getMaNguoiThue());
-//            sql = "UPDATE [dbo].[PhongTro] set[TrangThai] = 0 WHERE MaPhong=?";
-//            sqlHelper.executeUpdate(sql, sp.getMaPhong());
         } else {
             String sql = "INSERT INTO [dbo].[HoatDongThuePhong]([MaHopDong],[MaPhong],[MaNguoiThue],[NgayThue],[GhiChu],[TinhTrang]) VALUES(?,?,?,?,?,?)";
             sqlHelper.executeUpdate(sql, sp.getMaHopDong(), sp.getMaPhong(), sp.getMaNguoiThue(), ChuyenDoi.LayNgayString(sp.getNgayThue()),
@@ -74,6 +70,8 @@ public class DALHoatDongThuePhong {
             sqlHelper.executeUpdate(sql, sp.getMaNguoiThue());
             sql = "UPDATE [dbo].[PhongTro] set[TrangThai] = 1 WHERE MaPhong=?";
             sqlHelper.executeUpdate(sql, sp.getMaPhong());
+            sql = " if (select count(*) from hoatdongthuephong where maphong= ? and tinhtrang=1)=1 UPDATE [dbo].[hoatdongthuephong] set[DaiDien] = 1 WHERE MaHopDong=?";
+            sqlHelper.executeUpdate(sql, sp.getMaPhong(), sp.getMaHopDong());
         }
 
 //        System.out.println(sp.getMaHopDong() + sp.getMaPhong() + sp.getMaNguoiThue()

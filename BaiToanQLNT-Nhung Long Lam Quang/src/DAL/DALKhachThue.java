@@ -67,7 +67,7 @@ public class DALKhachThue {
                  kh.getNgaySinh(), kh.getNgayTaoDT(),kh.isTrangThai(),kh.getMaNguoiThue());
     }
     public static void UpdateDaiDien(KhachThue kh){
-        String sql ="UPDATE [dbo].[NguoiThue]SET [DaiDien]=? WHERE MaNguoiThue = ?";
+        String sql ="UPDATE [dbo].[HoatDongThuePhong]SET [DaiDien]=? WHERE MaNguoiThue = ?";
         sqlHelper.executeUpdate(sql,kh.isDaiDien(),kh.getMaNguoiThue());
     }
     public static void Delete(String MaKhachHang){
