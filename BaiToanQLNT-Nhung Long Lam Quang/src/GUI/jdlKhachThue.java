@@ -489,7 +489,10 @@ public class jdlKhachThue extends javax.swing.JDialog {
         boolean GioiTinh;
         boolean TrangThai;
         
+         HopDong hopdong = new  HopDong(null, true);
+        hopdong.JLTenPhong.setText(JLTenPhong.getText());
          
+            
             
         //            String NgayTra;
         if (validateform()) {
@@ -516,20 +519,22 @@ public class jdlKhachThue extends javax.swing.JDialog {
                     DiaChi, NgaySinh, NgayTaoDT, GioiTinh, TrangThai, AnhCD, AnhCMNDTrc, AnhCMNDSau);
             BLL.BLLKhachThue.Add(kh);
             // truyền dữ liêu sang form Hợp đồng
-            HopDong hopdong = new  HopDong(null, true);
-        hopdong.JLTenPhong.setText(JLTenPhong.getText());
-            hopdong.setVisible(true);
-            ArrayList<KhachThue> arrKT = BLL.BLLKhachThue.GetAll();
-            ArrayList<PhongTro> arrPT = BLL.BLLPhongTro.GetAll();
-            BLL.BLLKhachThue.doComboBox(arrKT, cbbMaKhachHang);
-            BLL.BLLPhongTro.doComboBox(arrPT, cbbPhong);
+            // lọc cbb theo Phòng đinh sẵn
+           ArrayList<PhongTro> arrPT = BLL.BLLPhongTro.GetAll();
+            for(PhongTro pt : arrPT){
+                if(JLTenPhong.getText().equalsIgnoreCase(pt.getTenPhong())){
+                  ArrayList<KhachThue> arrKT = BLL.BLLKhachThue.FindByMangMaOrTen(pt.getMaPhong());  
+                  BLL.BLLKhachThue.doComboBox(arrKT, cbbMaKhachHang);
+                    ArrayList<PhongTro> arrOnlyPT = BLL.BLLPhongTro.FindOnlyMaPhong(JLTenPhong.getText());
+                    BLL.BLLPhongTro.doComboBox(arrOnlyPT, cbbPhong);
+                }
+            }
             for (int i = 0; i < cbbMaKhachHang.getItemCount(); i++) {         
                 if (cbbMaKhachHang.getItemAt(i).equals(MaNguoiThue)) {
                     cbbMaKhachHang.setSelectedIndex(i);
-                    System.out.println("abc"+i);
                 }
             }
-            
+            hopdong.setVisible(true);
             setVisible(false); 
         }
     }//GEN-LAST:event_btnThemKHActionPerformed

@@ -91,6 +91,32 @@ public class BLLPhongTro {
         }
         return pt;
     }
+    public static ArrayList<DTO.PhongTro> FindOnlyMaPhong(String TuKhoa) {
+
+        //Lấy tất cả dữ liệu Loại sản phẩm từ SQL
+        ResultSet rs = DAL.DALPhongTro.FindByOnlyMaPhong(TuKhoa);
+        ArrayList<DTO.PhongTro> list = new ArrayList<>();
+        DTO.PhongTro pt = new DTO.PhongTro();
+        try {
+            while (rs.next()) {
+                pt.setMaPhong(rs.getString("MaPhong"));
+                pt.setTenPhong(rs.getString("TenPhong"));
+                pt.setMaLoaiPhong(rs.getString("MaLoaiPhong"));
+                pt.setMaKhuTro(rs.getString("MaKhuTro"));
+                pt.setViTri(rs.getString("Vitri"));
+                pt.setDienTich(rs.getFloat("DienTich"));
+                pt.setGiuong(rs.getInt("Giuong"));
+                pt.setBan(rs.getInt("Ban"));
+                pt.setBongDen(rs.getInt("BongDen"));
+                pt.setKinhCua(rs.getInt("KinhCua"));
+                pt.setTrangThai(rs.getBoolean("TrangThai"));
+                list.add(pt);
+            }
+        } catch (SQLException ex) {
+            System.out.println("Lỗi lấy dữ liệu" + ex.getMessage());
+        }
+        return list ;
+    }
 
     public static void doComboBox(ArrayList<PhongTro> arr, JComboBox cbb) {
         DefaultComboBoxModel cbbModel = (DefaultComboBoxModel) cbb.getModel();

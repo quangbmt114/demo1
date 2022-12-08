@@ -76,4 +76,8 @@ public class DALPhongTro {
         String sql = "select * from PhongTro where MaPhong = ? ";//like tìm gần giống , = tìm chính xác
         return sqlHelper.executeQuery(sql,name);
     }
+    public static ResultSet FindByOnlyMaPhong(String name){
+        String sql = "select * from PhongTro where TenPhong = ? ";//like tìm gần giống , = tìm chính xác
+        return sqlHelper.executeQuery(sql,name);
+    }
 }

@@ -443,11 +443,13 @@ public class HopDong extends javax.swing.JDialog {
                 ThongBao.ThongBaoDonGian("Thông báo", "Mã hợp đồng không hợp lệ!   ");
 
             } else {
-                ThongBao.ThongBaoDonGian("Thông báo", "Mã hợp đồng hợp lệ!");
+                ThongBao.ThongBaoDonGian("Thông báo", "Mã hợp đồng hợp lệ! Tạo mới thành công !!");
                 if (hoatDong.getNgayTra() != null) {
                     BLL.BLLHoatDongThuePhong.Add(hoatDong, 0);
+                    setVisible(false);
                 } else {
                     BLL.BLLHoatDongThuePhong.Add(hoatDong, 1);
+                    setVisible(false);
                 }
                 //                LamMoi();
             }

@@ -171,11 +171,13 @@ public class FormChiTiet extends javax.swing.JDialog {
         // TODO add your handling code here:
         
         ArrayList<DTO.PhongTro> arrPT =  BLL.BLLPhongTro.GetAll();
+        
         jdlKhachThue khachThue = new jdlKhachThue(null, true);
         for (PhongTro phongTro : arrPT) {
             if(phongTro.getTenPhong().equals(TenPhong.getText())){
                 khachThue.txtMaKH.setText(phongTro.getMaPhong());
                 khachThue.JLTenPhong.setText(phongTro.getTenPhong());
+                
             }
         }
        
