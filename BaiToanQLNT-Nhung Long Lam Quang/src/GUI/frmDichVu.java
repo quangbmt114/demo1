@@ -227,7 +227,7 @@ public class frmDichVu extends javax.swing.JDialog {
         // TODO add your handling code here:
         boolean TrangThai = JRDangSuDung.isSelected()?true:false;
         DTO.DichVu dv = new DTO.DichVu(txtMaDichVu.getText(),txtTenDichVu.getText(),
-        Float.parseFloat(txtGia.getText()), (String) cbbDonViTinh.getSelectedItem()
+        (int)Float.parseFloat(txtGia.getText()), (String) cbbDonViTinh.getSelectedItem()
                 ,TrangThai);
         DAL.DALDichVu.Update(dv);
         ArrayList<DTO.DichVu> list = BLLDichVu.GetAll();
@@ -266,8 +266,8 @@ public class frmDichVu extends javax.swing.JDialog {
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
         // TODO add your handling code here:
         boolean TrangThai = JRDangSuDung.isSelected()?true:false;
-        DTO.DichVu dv = new DTO.DichVu(txtMaDichVu.getText(),txtTenDichVu.getText(),
-        Float.parseFloat(txtGia.getText()), (String) cbbDonViTinh.getSelectedItem()
+        DTO.DichVu dv = new DTO.DichVu(txtMaDichVu.getText(),txtTenDichVu.getText(), 
+                (int) Float.parseFloat(txtGia.getText()), (String) cbbDonViTinh.getSelectedItem()
                 ,TrangThai);
         DAL.DALDichVu.Add(dv);
         ArrayList<DTO.DichVu> arr = BLL.BLLDichVu.GetAll();
@@ -279,9 +279,9 @@ public class frmDichVu extends javax.swing.JDialog {
     private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
         // TODO add your handling code here:
         DTO.DichVu dv = new DTO.DichVu(txtMaDichVu.getText(),txtTenDichVu.getText(),
-        Float.parseFloat(txtGia.getText()), (String) cbbDonViTinh.getSelectedItem()
+        (int)Float.parseFloat(txtGia.getText()), (String) cbbDonViTinh.getSelectedItem()
                 ,true);
-        DAL.DALDichVu.Delete(dv);
+        DAL.DALDichVu.Delete(txtMaDichVu.getText());
         ArrayList<DTO.DichVu> arr = BLL.BLLDichVu.GetAll();
         BLL.BLLDichVu.DoVaoTable(arr, tblDIchVu);
         LamMoi();

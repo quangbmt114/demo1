@@ -11,8 +11,8 @@ package DTO;
 public class DichVu {
     private String MaDichVu,TenDichVu;
     private int Gia;
-//    private String DonViTinh;
-//    private boolean TrangThai;
+    private String DonViTinh;
+    private boolean TrangThai;
 
     public DichVu() {
     }
@@ -22,6 +22,15 @@ public class DichVu {
         this.TenDichVu = TenDichVu;
         this.Gia = Gia;
     }
+
+    public DichVu(String MaDichVu, String TenDichVu, int Gia, String DonViTinh, boolean TrangThai) {
+        this.MaDichVu = MaDichVu;
+        this.TenDichVu = TenDichVu;
+        this.Gia = Gia;
+        this.DonViTinh = DonViTinh;
+        this.TrangThai = TrangThai;
+    }
+
 
     public String getMaDichVu() {
         return MaDichVu;
