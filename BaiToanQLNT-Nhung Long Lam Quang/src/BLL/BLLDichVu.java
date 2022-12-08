@@ -58,4 +58,13 @@ public class BLLDichVu {
     public static void Delete(String dv){
         DAL.DALDichVu.Delete(dv);
     } 
+    public static boolean CheckMaDichVu(String dv){
+        ArrayList<DichVu> arr=GetAll();
+        for(DichVu i:arr){
+            if(i.getMaDichVu().equals(dv)){
+                return false;
+            }
+        }
+        return true;
+    } 
 }

@@ -3361,73 +3361,83 @@ public class TrangChu extends javax.swing.JFrame {
     private void btnThem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThem1ActionPerformed
         // TODO add your handling code here:
 //        boolean TrangThai = JRDangSuDung.isSelected() ? true : false;
-        if (txtErrGiaDichVu.equals("   ")) {
-            return;
-        }
-        DichVu dv = new DichVu(txtMaDichVu.getText(), txtTenDichVu.getText(),
-                Integer.parseInt(txtGiaDichVu.getText()));
+        if (txtErrGiaDichVu.getText().equals("   ")) {
+            DichVu dv = new DichVu(txtMaDichVu.getText(), txtTenDichVu.getText(),
+                    Integer.parseInt(txtGiaDichVu.getText()));
 //                ,(String) cbbDonViTinh.getSelectedItem(),                TrangThai
-
-        BLL.BLLDichVu.Add(dv);
-        ArrayList<DTO.DichVu> arr = BLL.BLLDichVu.GetAll();
-        BLL.BLLDichVu.DoVaoTable(arr, tblDIchVu);
+            try {
+                BLL.BLLDichVu.Add(dv);
+                ArrayList<DTO.DichVu> arr = BLL.BLLDichVu.GetAll();
+                BLL.BLLDichVu.DoVaoTable(arr, tblDIchVu);
 //        LamMoiFormDV();
-        helper.ThongBao.ThongBaoDonGian("thông báo", "Thêm thành công !!");
+                helper.ThongBao.ThongBaoDonGian("thông báo", "Thêm thành công !!");
+
+            } catch (Exception e) {
+                helper.ThongBao.ThongBaoDonGian("thông báo", "Vui lòng kiểm tra lại thông tin !!");
+            }
+        }
     }//GEN-LAST:event_btnThem1ActionPerformed
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
         // TODO add your handling code here:
 //        boolean TrangThai = JRDangSuDung.isSelected() ? true : false;
-//        DTO.frmDichVu dv = new DTO.frmDichVu(txtMaDichVu.getText(), txtTenDichVu.getText(),
-//                Float.parseFloat(txtGia.getText()), (String) cbbDonViTinh.getSelectedItem(),
-//                TrangThai);
-//        DAL.DALDichVu.Update(dv);
-//        ArrayList<DTO.frmDichVu> list = BLLDichVu.GetAll();
-//        BLLDichVu.DoVaoTable(list, tblDIchVu);
+        if (txtErrGiaDichVu.getText().equals("   ")) {
+            if (!BLLDichVu.CheckMaDichVu(txtMaDichVu.getText())) {
+                DTO.DichVu dv = new DTO.DichVu(txtMaDichVu.getText(), txtTenDichVu.getText(),
+                        Integer.parseInt(txtGiaDichVu.getText()));
+//                , (String) cbbDonViTinh.getSelectedItem(), TrangThai
+                DAL.DALDichVu.Update(dv);
+
+                ThongBao.ThongBaoDonGian("Thông Báo", "Đã sửa!");
+                ArrayList<DTO.DichVu> list = BLLDichVu.GetAll();
+                BLLDichVu.DoVaoTable(list, tblDIchVu);
+            } else {
+                ThongBao.ThongBaoDonGian("Thông Báo", "Không có mã dịch vụ!");
+            }
 //        LamMoiFormDV();
+        }
     }//GEN-LAST:event_btnUpdateActionPerformed
 
     private void btnXoa1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoa1ActionPerformed
         // TODO add your handling code here:
         int dongDangChon = tblDIchVu.getSelectedRow();
-        if (dongDangChon == 0) {
-            ThongBao.ThongBaoDonGian("Thông Báo", "Không thể xóa người đại diện!");
-        }
-        if (dongDangChon < 0) {
-            ThongBao.ThongBaoDonGian("Thông Báo", "Bạn chưa chọn đối tượng cần xóa");
+        if (dongDangChon <= 0) {
+            ThongBao.ThongBaoDonGian("Thông Báo", "Bạn chưa chọn đối tượng cần xóa!");
+            return;
         } else {
             int XacNhan = JOptionPane.showConfirmDialog(null, "Bạn có chắc xóa không?", "Thông báo xác nhận", JOptionPane.OK_CANCEL_OPTION);
             if (XacNhan == JOptionPane.CANCEL_OPTION) {
                 return;
             }
-        }
-        //Lấy danh sách các sp  cần xóa
-        try {
-            int dongCanXoa[] = tblDIchVu.getSelectedRows();
+//        }
+            //Lấy danh sách các sp  cần xóa
+            try {
+                int dongCanXoa[] = tblDIchVu.getSelectedRows();
 
 //            MyCombobox tenPhong = (MyCombobox) cbPhong.getSelectedItem();
 //            System.out.println(cbPhong.getSelectedItem());
 //            ArrayList<Phong> arrP = BLL.BLLPhong.FindByName(tenPhong + "");
 //        arrDV=BLLDichVu.
 //            if (arrP.size() > 0) {
-            for (int i = 0; i < dongCanXoa.length; i++) {
+                for (int i = 0; i < dongCanXoa.length; i++) {
 //                    String maPhong = arrP.get(0).getMaPhong();
 //                    Date ngayGhi = ChuyenDoi.LayNgayDate(tblDIchVu.getValueAt(dongCanXoa[i], 0).toString());
-                BLL.BLLDichVu.Delete(tblDIchVu.getValueAt(dongCanXoa[i], 0).toString());
-            }
+                    BLL.BLLDichVu.Delete(tblDIchVu.getValueAt(dongCanXoa[i], 0).toString());
+                }
 //            }
-            ThongBao.ThongBaoDonGian("Thông Báo", "Đã xóa");
-        } catch (Exception e) {
-            ThongBao.ThongBaoDonGian("Thông Báo", "Chưa xóa");
-        }
+                ThongBao.ThongBaoDonGian("Thông Báo", "Đã xóa");
+            } catch (Exception e) {
+                ThongBao.ThongBaoDonGian("Thông Báo", "Chưa xóa");
+            }
 //        DTO.frmDichVu dv = new DTO.frmDichVu(txtMaDichVu.getText(), txtTenDichVu.getText(),
 //                Float.parseFloat(txtGia.getText()), (String) cbbDonViTinh.getSelectedItem(),
 //                true);
 //        DAL.DALDichVu.Delete(dv);
-        ArrayList<DTO.DichVu> arr = BLL.BLLDichVu.GetAll();
-        BLL.BLLDichVu.DoVaoTable(arr, tblDIchVu);
+            ArrayList<DTO.DichVu> arr = BLL.BLLDichVu.GetAll();
+            BLL.BLLDichVu.DoVaoTable(arr, tblDIchVu);
 //        LamMoiFormDV();
 //        helper.ThongBao.ThongBaoDonGian("thông báo", "Xóa thành công !!");
+        }
     }//GEN-LAST:event_btnXoa1ActionPerformed
 
     public void LamMoiFormDV() {
@@ -3783,7 +3793,7 @@ public class TrangChu extends javax.swing.JFrame {
         // TODO add your handling code here:
         if (cbMaPhongQLDN.getSelectedIndex() > 0) {
             if (BLLChiSoDienNuoc.FindMaChiSo(txtMaChiSoCSDN.getText()) != null) {
-                if (txtMaChiSoCSDN.getText().equals("") || txtSoDienQLDN.getText().equals("") || txtSoNuocQLDN.getText().equals("")||!txtErrSoDienCSDN.getText().equals("   ")||!txtErrSoNuocCSDN.getText().equals("   ")) {
+                if (txtMaChiSoCSDN.getText().equals("") || txtSoDienQLDN.getText().equals("") || txtSoNuocQLDN.getText().equals("") || !txtErrSoDienCSDN.getText().equals("   ") || !txtErrSoNuocCSDN.getText().equals("   ")) {
                     ThongBao.ThongBaoDonGian("Thông báo", "Vui lòng điền đầy đủ thông tin!");
                 } else {
 
@@ -3838,7 +3848,7 @@ public class TrangChu extends javax.swing.JFrame {
         // TODO add your handling code here:
         if (cbMaPhongQLDN.getSelectedIndex() > 0) {
             if (BLLChiSoDienNuoc.FindMaChiSo(txtMaChiSoCSDN.getText()) == null) {
-                if (txtMaChiSoCSDN.getText().equals("") || txtSoDienQLDN.getText().equals("") || txtSoNuocQLDN.getText().equals("")||!txtErrSoDienCSDN.getText().equals("   ")||!txtErrSoNuocCSDN.getText().equals("   ")) {
+                if (txtMaChiSoCSDN.getText().equals("") || txtSoDienQLDN.getText().equals("") || txtSoNuocQLDN.getText().equals("") || !txtErrSoDienCSDN.getText().equals("   ") || !txtErrSoNuocCSDN.getText().equals("   ")) {
                     ThongBao.ThongBaoDonGian("Thông báo", "Vui lòng điền thông tin hợp lệ!");
                 } else {
 
