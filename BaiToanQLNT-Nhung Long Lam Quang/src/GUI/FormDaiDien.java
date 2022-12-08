@@ -4,6 +4,7 @@
  */
 package GUI;
 
+import DTO.HoatDongThuePhong;
 import DTO.KhachThue;
 import DTO.PhongTro;
 import static GUI.HopDong.cbbPhong;
@@ -19,13 +20,16 @@ public class FormDaiDien extends javax.swing.JDialog {
 
     /**
      * Creates new form FormDaiDien
-     */
+     */ 
+
     public FormDaiDien(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         String MaPhong = JLabelDaiDien.getText();
-        ArrayList<KhachThue> arrKT = BLL.BLLKhachThue.FindByMangMaOrTen(MaPhong);
+     ArrayList<KhachThue> arrKT = BLL.BLLKhachThue.FindByMangMaOrTen(MaPhong);
+       
         BLL.BLLKhachThue.doComboBox(arrKT, cbbDaiDien);
+       
         
     }
 
@@ -113,14 +117,25 @@ public class FormDaiDien extends javax.swing.JDialog {
 
     private void btnXacNhanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXacNhanActionPerformed
         // TODO add your handling code here:
-        ;
+        ArrayList<KhachThue> arrKT = BLL.BLLKhachThue.FindByMangMaOrTen(JLabelDaiDien.getText());
         int dem = JOptionPane.YES_OPTION;
-        if(cbbDaiDien.getSelectedIndex()!=0&&JOptionPane.showConfirmDialog(this, "Bạn muốn xác nhận đại diện", "Xác Nhận", JOptionPane.OK_OPTION)==dem){
+        for (KhachThue kt : arrKT) {
+            if(kt.getMaNguoiThue().equalsIgnoreCase(cbbDaiDien.getSelectedItem().toString())){
+                if(cbbDaiDien.getSelectedIndex()!=0&&JOptionPane.showConfirmDialog(this, "Bạn muốn xác nhận đại diện", "Xác Nhận", JOptionPane.OK_OPTION)==dem){
             KhachThue kh = new KhachThue(cbbDaiDien.getSelectedItem().toString(), true);
             BLL.BLLKhachThue.UpdateDaiDien(kh);
             JOptionPane.showMessageDialog(this, "Xác Nhận Đại Diện Thành Công");
         
+        }else{
+            return ;
         }
+            }else if(cbbDaiDien.getSelectedIndex()!=0){
+                KhachThue kh = new KhachThue(kt.getMaNguoiThue(), false);
+            BLL.BLLKhachThue.UpdateDaiDien(kh);
+            }
+        }
+        
+        
          
         
     }//GEN-LAST:event_btnXacNhanActionPerformed

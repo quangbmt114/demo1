@@ -175,7 +175,7 @@ public class FormChiTiet extends javax.swing.JDialog {
         for (PhongTro phongTro : arrPT) {
             if(phongTro.getTenPhong().equals(TenPhong.getText())){
                 khachThue.txtMaKH.setText(phongTro.getMaPhong());
-                
+                khachThue.JLTenPhong.setText(phongTro.getTenPhong());
             }
         }
        

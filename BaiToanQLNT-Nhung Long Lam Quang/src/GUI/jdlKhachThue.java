@@ -107,6 +107,7 @@ public class jdlKhachThue extends javax.swing.JDialog {
         rbNam = new javax.swing.JRadioButton();
         rbNu = new javax.swing.JRadioButton();
         TBEmail = new javax.swing.JLabel();
+        JLTenPhong = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -414,18 +415,29 @@ public class jdlKhachThue extends javax.swing.JDialog {
                 .addGap(314, 314, 314))
         );
 
+        JLTenPhong.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        JLTenPhong.setForeground(new java.awt.Color(255, 51, 51));
+        JLTenPhong.setText("jLabel1");
+
         javax.swing.GroupLayout panelKhachThue2Layout = new javax.swing.GroupLayout(panelKhachThue2);
         panelKhachThue2.setLayout(panelKhachThue2Layout);
         panelKhachThue2Layout.setHorizontalGroup(
             panelKhachThue2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel29, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPanel18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(panelKhachThue2Layout.createSequentialGroup()
+                .addGap(185, 185, 185)
+                .addComponent(jLabel29, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(JLTenPhong, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panelKhachThue2Layout.setVerticalGroup(
             panelKhachThue2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelKhachThue2Layout.createSequentialGroup()
-                .addComponent(jLabel29)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelKhachThue2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel29, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(JLTenPhong, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel18, javax.swing.GroupLayout.PREFERRED_SIZE, 494, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -477,7 +489,6 @@ public class jdlKhachThue extends javax.swing.JDialog {
         boolean GioiTinh;
         boolean TrangThai;
         
-        
          
             
         //            String NgayTra;
@@ -506,6 +517,8 @@ public class jdlKhachThue extends javax.swing.JDialog {
             BLL.BLLKhachThue.Add(kh);
             // truyền dữ liêu sang form Hợp đồng
             HopDong hopdong = new  HopDong(null, true);
+        hopdong.JLTenPhong.setText(JLTenPhong.getText());
+            hopdong.setVisible(true);
             ArrayList<KhachThue> arrKT = BLL.BLLKhachThue.GetAll();
             ArrayList<PhongTro> arrPT = BLL.BLLPhongTro.GetAll();
             BLL.BLLKhachThue.doComboBox(arrKT, cbbMaKhachHang);
@@ -516,7 +529,7 @@ public class jdlKhachThue extends javax.swing.JDialog {
                     System.out.println("abc"+i);
                 }
             }
-            hopdong.setVisible(true);
+            
             setVisible(false); 
         }
     }//GEN-LAST:event_btnThemKHActionPerformed
@@ -680,6 +693,7 @@ public class jdlKhachThue extends javax.swing.JDialog {
     private javax.swing.JLabel JLHinhAnh;
     private javax.swing.JLabel JLHinhCMNDMatSau;
     private javax.swing.JLabel JLHinhCMNDMatTrc;
+    public static javax.swing.JLabel JLTenPhong;
     private javax.swing.JLabel TBEmail;
     private javax.swing.JButton btnHInhAnhCD;
     private javax.swing.JButton btnHInhCMNDSau;
