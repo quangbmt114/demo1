@@ -489,10 +489,7 @@ public class jdlKhachThue extends javax.swing.JDialog {
         boolean GioiTinh;
         boolean TrangThai;
         
-         String TenPhong =String.valueOf(JLTenPhong.getText()); 
-         
-            
-            
+         String TenPhong =String.valueOf(JLTenPhong.getText());   
         //            String NgayTra;
         if (validateform()) {
             System.out.println(JLTenPhong.getText());
@@ -514,24 +511,22 @@ public class jdlKhachThue extends javax.swing.JDialog {
             CMND = txtCMND.getText();
             NgaySinh = ChuyenDoi.LayNgayString(JDNgaySinh.getDate());
             NgayTaoDT = ChuyenDoi.LayNgayString(JDNgayVao.getDate());
-            System.out.println("abc"+AnhCD);
             KhachThue kh = new KhachThue(MaNguoiThue, TenNguoiThue, CMND, SDT, Email,
-                    DiaChi, NgaySinh, NgayTaoDT, GioiTinh, TrangThai, AnhCD, AnhCMNDTrc, AnhCMNDSau);
+            DiaChi, NgaySinh, NgayTaoDT, GioiTinh, TrangThai, AnhCD, AnhCMNDTrc, AnhCMNDSau);
             BLL.BLLKhachThue.Add(kh);
             // truyền dữ liêu sang form Hợp đồng
             // lọc cbb theo Phòng đinh sẵn
             ArrayList<PhongTro> arrPT = BLL.BLLPhongTro.GetAll();
-           HopDong hopdong = new  HopDong(null, true);
+            HopDong hopdong = new  HopDong(null, true);
             
              for(PhongTro pt : arrPT){
-                System.out.println(pt.getTenPhong());
                  System.out.println(TenPhong);
-                if(JLTenPhong.getText().equals(pt.getTenPhong())){
+                if(TenPhong.equals(pt.getTenPhong())){
                   ArrayList<KhachThue> arrKT = BLL.BLLKhachThue.FindByMangMaOrTen(pt.getMaPhong());  
                   BLL.BLLKhachThue.doComboBox(arrKT, cbbMaKhachHang);
-                    ArrayList<PhongTro> arrOnlyPT = BLL.BLLPhongTro.FindOnlyMaPhong(JLTenPhong.getText());
+                    ArrayList<PhongTro> arrOnlyPT = BLL.BLLPhongTro.FindOnlyMaPhong(TenPhong);
                     BLL.BLLPhongTro.doComboBox(arrOnlyPT, cbbPhong);
-                    
+                    hopdong.JLTenPhong.setText(TenPhong);
                 }
             }
              hopdong.setVisible(true);
