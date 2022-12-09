@@ -78,6 +78,11 @@ public class FormChiTiet extends javax.swing.JDialog {
         TenPhong.setText("jLabel2");
 
         jButton5.setText("Dịch Vụ");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/smart-home-128px.png"))); // NOI18N
@@ -199,6 +204,12 @@ public class FormChiTiet extends javax.swing.JDialog {
         
         daidien.setVisible(true);
     }//GEN-LAST:event_btnDaiDienActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+        jdlThemDichVuPhong ctp = new jdlThemDichVuPhong(null, true);
+        ctp.setVisible(true);
+    }//GEN-LAST:event_jButton5ActionPerformed
 
     /**
      * @param args the command line arguments

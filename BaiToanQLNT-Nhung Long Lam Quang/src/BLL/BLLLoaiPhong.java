@@ -5,7 +5,7 @@
 package BLL;
 
 import DTO.LoaiPhong;
-import DTO.LoaiSanPham;
+import DTO.CTDV;
 import GUI.QuanLyLoaiPhong2;
 import helper.ChuyenDoi;
 import helper.ThongBao;
