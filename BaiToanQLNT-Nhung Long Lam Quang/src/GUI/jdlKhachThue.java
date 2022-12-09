@@ -38,7 +38,7 @@ public class jdlKhachThue extends javax.swing.JDialog {
         initComponents();
         ImageIcon icon = new ImageIcon("src/images/blue-home-icon.png");
         setIconImage(icon.getImage());
-        ArrayList<KhachThue> arrKH = BLL.BLLKhachThue.GetAll();
+//        ArrayList<KhachThue> arrKH = BLL.BLLKhachThue.GetAll();
         
 //        jLabel90.setVisible(false);
 //        rbNam.setVisible(false);
@@ -489,13 +489,13 @@ public class jdlKhachThue extends javax.swing.JDialog {
         boolean GioiTinh;
         boolean TrangThai;
         
-         HopDong hopdong = new  HopDong(null, true);
-        hopdong.JLTenPhong.setText(JLTenPhong.getText());
+         String TenPhong =String.valueOf(JLTenPhong.getText()); 
          
             
             
         //            String NgayTra;
         if (validateform()) {
+            System.out.println(JLTenPhong.getText());
             MaNguoiThue = txtMaKH.getText();
             TenNguoiThue = txtTenKH.getText();
             DiaChi = txtDiaChi.getText();
@@ -520,23 +520,33 @@ public class jdlKhachThue extends javax.swing.JDialog {
             BLL.BLLKhachThue.Add(kh);
             // truyền dữ liêu sang form Hợp đồng
             // lọc cbb theo Phòng đinh sẵn
-           ArrayList<PhongTro> arrPT = BLL.BLLPhongTro.GetAll();
-            for(PhongTro pt : arrPT){
-                if(JLTenPhong.getText().equalsIgnoreCase(pt.getTenPhong())){
+            ArrayList<PhongTro> arrPT = BLL.BLLPhongTro.GetAll();
+           HopDong hopdong = new  HopDong(null, true);
+            
+             for(PhongTro pt : arrPT){
+                System.out.println(pt.getTenPhong());
+                 System.out.println(TenPhong);
+                if(JLTenPhong.getText().equals(pt.getTenPhong())){
                   ArrayList<KhachThue> arrKT = BLL.BLLKhachThue.FindByMangMaOrTen(pt.getMaPhong());  
                   BLL.BLLKhachThue.doComboBox(arrKT, cbbMaKhachHang);
                     ArrayList<PhongTro> arrOnlyPT = BLL.BLLPhongTro.FindOnlyMaPhong(JLTenPhong.getText());
                     BLL.BLLPhongTro.doComboBox(arrOnlyPT, cbbPhong);
+                    
                 }
             }
-            for (int i = 0; i < cbbMaKhachHang.getItemCount(); i++) {         
-                if (cbbMaKhachHang.getItemAt(i).equals(MaNguoiThue)) {
-                    cbbMaKhachHang.setSelectedIndex(i);
-                }
-            }
-            hopdong.setVisible(true);
-            setVisible(false); 
+             hopdong.setVisible(true);
+            setVisible(false);
+//            for (int i = 0; i < cbbMaKhachHang.getItemCount(); i++) {         
+//                if (cbbMaKhachHang.getItemAt(i).equals(MaNguoiThue)) {
+//                    cbbMaKhachHang.setSelectedIndex(i);
+//                }
+//            }
+             
         }
+        
+            
+            
+        
     }//GEN-LAST:event_btnThemKHActionPerformed
 
     private void rbDaTraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbDaTraActionPerformed

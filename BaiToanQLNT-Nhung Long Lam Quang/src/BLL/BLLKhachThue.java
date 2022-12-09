@@ -298,7 +298,7 @@ public class BLLKhachThue {
             jdlKhachThue khachthue = new jdlKhachThue(null, true);
             khachthue.LamMoi();
         }else{
-            return  ;
+            
         }
     }
 
