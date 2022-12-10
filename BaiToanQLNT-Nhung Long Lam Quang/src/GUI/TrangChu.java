@@ -117,6 +117,16 @@ public class TrangChu extends javax.swing.JFrame {
         return true;
         
     }
+    public boolean validateformKhach() {
+        
+        if (txtMaKH.getText().equals("") || txtTenKH.getText().equals("")
+                || txtCMND.getText().equals("") || txtSDT.getText().equals("") || txtDiaChi.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "Vui lòng nhập ĐẦY ĐỦ THÔNG TIN!");
+            return false;
+        }
+        return true;
+        
+    }
     
     public void FillPhong() {
         ArrayList<PhongTro> ListPhong = BLL.BLLPhongTro.GetAll();
@@ -283,6 +293,7 @@ public class TrangChu extends javax.swing.JFrame {
         MenuHopDong = new javax.swing.JMenuItem();
         MenuThemKhachThue = new javax.swing.JMenuItem();
         buttonGroup1 = new javax.swing.ButtonGroup();
+        buttonGroup2 = new javax.swing.ButtonGroup();
         jPanel3 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -1334,6 +1345,7 @@ public class TrangChu extends javax.swing.JFrame {
         jLabel83.setText("Giới tính");
 
         rbNam.setBackground(new java.awt.Color(0, 204, 255));
+        buttonGroup1.add(rbNam);
         rbNam.setFont(new java.awt.Font("UTM Times", 1, 14)); // NOI18N
         rbNam.setText("Nam");
         rbNam.addActionListener(new java.awt.event.ActionListener() {
@@ -1343,6 +1355,7 @@ public class TrangChu extends javax.swing.JFrame {
         });
 
         rbNu.setBackground(new java.awt.Color(0, 204, 255));
+        buttonGroup1.add(rbNu);
         rbNu.setFont(new java.awt.Font("UTM Times", 1, 14)); // NOI18N
         rbNu.setText("Nữ");
 
@@ -1434,10 +1447,12 @@ public class TrangChu extends javax.swing.JFrame {
         jLabel87.setText("Tình trạng");
 
         rbDangThue.setBackground(new java.awt.Color(0, 204, 255));
+        buttonGroup2.add(rbDangThue);
         rbDangThue.setFont(new java.awt.Font("UTM Times", 1, 14)); // NOI18N
         rbDangThue.setText("Đang thuê");
 
         rbDaTra.setBackground(new java.awt.Color(0, 204, 255));
+        buttonGroup2.add(rbDaTra);
         rbDaTra.setFont(new java.awt.Font("UTM Times", 1, 14)); // NOI18N
         rbDaTra.setText("Đã trả");
         rbDaTra.addActionListener(new java.awt.event.ActionListener() {
@@ -1980,7 +1995,7 @@ public class TrangChu extends javax.swing.JFrame {
                     .addComponent(btnLamMoi1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnSua1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnTao))
-                .addContainerGap(213, Short.MAX_VALUE))
+                .addContainerGap(185, Short.MAX_VALUE))
         );
 
         tbHopDongThue.setModel(new javax.swing.table.DefaultTableModel(
@@ -2438,7 +2453,7 @@ public class TrangChu extends javax.swing.JFrame {
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnUpdHoaDonHDPT, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnLamMoiHoaDon, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(278, Short.MAX_VALUE))
+                .addContainerGap(243, Short.MAX_VALUE))
         );
 
         jPanel17.setBackground(new java.awt.Color(0, 204, 255));
@@ -2650,7 +2665,7 @@ public class TrangChu extends javax.swing.JFrame {
                     .addComponent(btnXoa1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnLamMoi2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 526, Short.MAX_VALUE))
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 527, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout panelFormDichVuLayout = new javax.swing.GroupLayout(panelFormDichVu);
@@ -2904,7 +2919,7 @@ public class TrangChu extends javax.swing.JFrame {
                     .addGroup(panelFormDienNuocLayout.createSequentialGroup()
                         .addComponent(cbPhongtbQLCSDN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 825, Short.MAX_VALUE))
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 787, Short.MAX_VALUE))
                     .addGroup(panelFormDienNuocLayout.createSequentialGroup()
                         .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
@@ -3515,9 +3530,9 @@ public class TrangChu extends javax.swing.JFrame {
         boolean GioiTinh;
         boolean TrangThai;
         //            String NgayTra;
-        if (validateform()) {
+        if (validateformKhach()) {
             MaNguoiThue = txtMaKH.getText();
-            
+
             TenNguoiThue = txtTenKH.getText();
             DiaChi = txtDiaChi.getText();
             SDT = txtSDT.getText();
@@ -3528,9 +3543,9 @@ public class TrangChu extends javax.swing.JFrame {
                 GioiTinh = true;
             }
             if (rbDaTra.isSelected()) {
-                TrangThai = true;
-            } else {
                 TrangThai = false;
+            } else {
+                TrangThai = true;
             }
             CMND = txtCMND.getText();
             NgaySinh = ChuyenDoi.LayNgayString(JDNgaySinh.getDate());
@@ -3541,7 +3556,7 @@ public class TrangChu extends javax.swing.JFrame {
             BLL.BLLKhachThue.Add(kh);
             ThongBao.ThongBaoDonGian("Thông báo", "Đã thêm!");
             ArrayList<KhachThue> arr = BLL.BLLKhachThue.GetAll();
-            
+            BLL.BLLKhachThue.DoVaoTable(arr, tblKhachThue);
         }
         LamMoiKhachThue();
     }//GEN-LAST:event_btnThemKHActionPerformed
@@ -3580,7 +3595,7 @@ public class TrangChu extends javax.swing.JFrame {
         boolean GioiTinh;
         boolean TrangThai;
         //            String NgayTra;
-        if (validateform()) {
+        if (validateformKhach()) {
             MaNguoiThue = txtMaKH.getText();
             
             TenNguoiThue = txtTenKH.getText();
@@ -3593,9 +3608,9 @@ public class TrangChu extends javax.swing.JFrame {
                 GioiTinh = true;
             }
             if (rbDaTra.isSelected()) {
-                TrangThai = true;
-            } else {
                 TrangThai = false;
+            } else {
+                TrangThai = true;
             }
             CMND = txtCMND.getText();
             NgaySinh = ChuyenDoi.LayNgayString(JDNgaySinh.getDate());
@@ -4296,6 +4311,7 @@ public class TrangChu extends javax.swing.JFrame {
     private javax.swing.JButton btnXoa1;
     private javax.swing.JButton btnXoaKH;
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.JComboBox<String> cbMaPhongQLDN;
     private javax.swing.JComboBox<String> cbPhongtbQLCSDN;
     private javax.swing.JComboBox<String> cbbChiSoCuHDPT;
