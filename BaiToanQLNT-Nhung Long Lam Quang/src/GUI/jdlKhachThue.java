@@ -39,24 +39,22 @@ public class jdlKhachThue extends javax.swing.JDialog {
         ImageIcon icon = new ImageIcon("src/images/blue-home-icon.png");
         setIconImage(icon.getImage());
 //        ArrayList<KhachThue> arrKH = BLL.BLLKhachThue.GetAll();
-        
+
 //        jLabel90.setVisible(false);
 //        rbNam.setVisible(false);
 //        rbNu.setVisible(false);
     }
-   
-   String AnhCD;
-   String AnhCMNDTrc;
-   String AnhCMNDSau;
+
+    String AnhCD;
+    String AnhCMNDTrc;
+    String AnhCMNDSau;
+
     public boolean validateform() {
 
         if (txtMaKH.getText().equals("") || txtTenKH.getText().equals("") || txtCMND.getText().equals("") || txtSDT.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Vui lòng nhập ĐẦY ĐỦ THÔNG TIN!");
             return false;
         }
-
-       
-
         return true;
 
     }
@@ -468,7 +466,7 @@ public class jdlKhachThue extends javax.swing.JDialog {
         // TODO add your handling code here:
         JFileChooser chooser = new JFileChooser("./src/images");
         chooser.showOpenDialog(btnHInhAnhCD);
-        
+
         File file = chooser.getSelectedFile();
         String st = file.getName();
         AnhCD = st;
@@ -476,7 +474,7 @@ public class jdlKhachThue extends javax.swing.JDialog {
         JLHinhAnh.setIcon(icon);
         System.out.println(st);
     }//GEN-LAST:event_btnHInhAnhCDActionPerformed
-
+    public static boolean check = false;
     private void btnThemKHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemKHActionPerformed
         String MaNguoiThue;
         String TenNguoiThue;
@@ -488,11 +486,11 @@ public class jdlKhachThue extends javax.swing.JDialog {
         String NgayTaoDT;
         boolean GioiTinh;
         boolean TrangThai;
-        
-         String TenPhong =String.valueOf(JLTenPhong.getText());   
+
+        String TenPhong = String.valueOf(JLTenPhong.getText());
+
         //            String NgayTra;
         if (validateform()) {
-            System.out.println(JLTenPhong.getText());
             MaNguoiThue = txtMaKH.getText();
             TenNguoiThue = txtTenKH.getText();
             DiaChi = txtDiaChi.getText();
@@ -512,36 +510,36 @@ public class jdlKhachThue extends javax.swing.JDialog {
             NgaySinh = ChuyenDoi.LayNgayString(JDNgaySinh.getDate());
             NgayTaoDT = ChuyenDoi.LayNgayString(JDNgayVao.getDate());
             KhachThue kh = new KhachThue(MaNguoiThue, TenNguoiThue, CMND, SDT, Email,
-            DiaChi, NgaySinh, NgayTaoDT, GioiTinh, TrangThai, AnhCD, AnhCMNDTrc, AnhCMNDSau);
+                    DiaChi, NgaySinh, NgayTaoDT, GioiTinh, TrangThai, AnhCD, AnhCMNDTrc, AnhCMNDSau);
+            // Thêm Khách Thuê
             BLL.BLLKhachThue.Add(kh);
-            // truyền dữ liêu sang form Hợp đồng
-            // lọc cbb theo Phòng đinh sẵn
-            ArrayList<PhongTro> arrPT = BLL.BLLPhongTro.GetAll();
-            HopDong hopdong = new  HopDong(null, true);
-            
-             for(PhongTro pt : arrPT){
-                 System.out.println(TenPhong);
-                if(TenPhong.equals(pt.getTenPhong())){
-                  ArrayList<KhachThue> arrKT = BLL.BLLKhachThue.FindByMangMaOrTen(pt.getMaPhong());  
-                  BLL.BLLKhachThue.doComboBox(arrKT, cbbMaKhachHang);
-                    ArrayList<PhongTro> arrOnlyPT = BLL.BLLPhongTro.FindOnlyMaPhong(TenPhong);
-                    BLL.BLLPhongTro.doComboBox(arrOnlyPT, cbbPhong);
-                    hopdong.JLTenPhong.setText(TenPhong);
+            if (check == true) {
+                // truyền dữ liêu sang form Hợp đồng
+                // lọc cbb theo Phòng đinh sẵn
+                ArrayList<PhongTro> arrPT = BLL.BLLPhongTro.GetAll();
+                HopDong hopdong = new HopDong(null, true);
+                for (PhongTro pt : arrPT) {
+
+                    if (TenPhong.equals(pt.getTenPhong())) {
+                        ArrayList<KhachThue> arrKT = BLL.BLLKhachThue.FindByMangMaOrTen(pt.getMaPhong());
+                        BLL.BLLKhachThue.doComboBox(arrKT, cbbMaKhachHang);
+                        ArrayList<PhongTro> arrOnlyPT = BLL.BLLPhongTro.FindOnlyMaPhong(TenPhong);
+                        BLL.BLLPhongTro.doComboBox(arrOnlyPT, cbbPhong);
+                        hopdong.JLTenPhong.setText(TenPhong);
+                    }
                 }
+                hopdong.setVisible(true);
+                setVisible(false);
             }
-             hopdong.setVisible(true);
-            setVisible(false);
+
 //            for (int i = 0; i < cbbMaKhachHang.getItemCount(); i++) {         
 //                if (cbbMaKhachHang.getItemAt(i).equals(MaNguoiThue)) {
 //                    cbbMaKhachHang.setSelectedIndex(i);
 //                }
 //            }
-             
         }
-        
-            
-            
-        
+
+
     }//GEN-LAST:event_btnThemKHActionPerformed
 
     private void rbDaTraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbDaTraActionPerformed
@@ -552,7 +550,7 @@ public class jdlKhachThue extends javax.swing.JDialog {
         // TODO add your handling code here:
         JFileChooser chooser = new JFileChooser("./src/images");
         chooser.showOpenDialog(btnHInhCMNDTrc);
-        
+
         File file = chooser.getSelectedFile();
         String st = file.getName();
         AnhCMNDTrc = st;
@@ -565,7 +563,7 @@ public class jdlKhachThue extends javax.swing.JDialog {
         // TODO add your handling code here:
         JFileChooser chooser = new JFileChooser("./src/images");
         chooser.showOpenDialog(btnHInhCMNDSau);
-        
+
         File file = chooser.getSelectedFile();
         String st = file.getName();
         AnhCMNDSau = st;
@@ -579,56 +577,55 @@ public class jdlKhachThue extends javax.swing.JDialog {
     }//GEN-LAST:event_txtEmailActionPerformed
 
     private void txtCMNDKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCMNDKeyTyped
-    
-      char a = evt.getKeyChar();
-      if(!Character.isDigit(a)){
-          evt.consume();
-      }
+
+        char a = evt.getKeyChar();
+        if (!Character.isDigit(a)) {
+            evt.consume();
+        }
     }//GEN-LAST:event_txtCMNDKeyTyped
 
     private void txtCMNDKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCMNDKeyReleased
-       String CMND = txtCMND.getText();
-       if(CMND.length() > 14){
-           JOptionPane.showMessageDialog(null, "Số CMND tối đa 14 số ");
-       }
+        String CMND = txtCMND.getText();
+        if (CMND.length() > 14) {
+            JOptionPane.showMessageDialog(null, "Số CMND tối đa 14 số ");
+        }
     }//GEN-LAST:event_txtCMNDKeyReleased
 
     private void txtSDTKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSDTKeyReleased
-       String SDT = txtSDT.getText();
-       if(SDT.length() > 10){
-           JOptionPane.showMessageDialog(null, "Số điện thoại tối đa 10 số ");
-       }
+        String SDT = txtSDT.getText();
+        if (SDT.length() > 10) {
+            JOptionPane.showMessageDialog(null, "Số điện thoại tối đa 10 số ");
+        }
     }//GEN-LAST:event_txtSDTKeyReleased
 
     private void txtSDTKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSDTKeyTyped
-      char a = evt.getKeyChar();
-      if(!Character.isDigit(a)){
-          evt.consume();
-      }
+        char a = evt.getKeyChar();
+        if (!Character.isDigit(a)) {
+            evt.consume();
+        }
     }//GEN-LAST:event_txtSDTKeyTyped
 
     private void txtTenKHKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTenKHKeyReleased
-       String Name = txtTenKH.getText();
-       String CheckName = "\\w[^0-9]{0,20}";
-       if(!Name.matches(CheckName)){
-           JOptionPane.showMessageDialog(null, "Tên phải là chữ");
-       }
-       
-          
-       
+        String Name = txtTenKH.getText();
+        String CheckName = "\\w[^0-9]{0,20}";
+        if (!Name.matches(CheckName)) {
+            JOptionPane.showMessageDialog(null, "Tên phải là chữ");
+        }
+
+
     }//GEN-LAST:event_txtTenKHKeyReleased
 
     private void txtEmailKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEmailKeyReleased
         String Email = "^[a-zA-Z][a-zA-Z0-9]+@[a-zA-Z]+(\\.[a-zA-Z]+){1,3}$";
         Pattern email = Pattern.compile(Email);
-        Matcher match =email.matcher(txtEmail.getText());
-        if(!match.matches()){
+        Matcher match = email.matcher(txtEmail.getText());
+        if (!match.matches()) {
             TBEmail.setText("Nhập chưa đúng định dạng Email!!");
-        }else{
+        } else {
             TBEmail.setText(null);
         }
     }//GEN-LAST:event_txtEmailKeyReleased
-    public void LamMoi(){
+    public void LamMoi() {
         txtMaKH.setText("");
         txtTenKH.setText("");
         txtCMND.setText("");
@@ -639,19 +636,19 @@ public class jdlKhachThue extends javax.swing.JDialog {
         JDNgayVao.setDate(null);
         String fileAnhcd = "./src/images/man-128px.png";
         ImageIcon iconAnhCD = new ImageIcon(new ImageIcon(fileAnhcd).getImage().getScaledInstance(140, 180, Image.SCALE_SMOOTH));
-            ImageIcon iconAnhCMNDtrc = new ImageIcon(new ImageIcon(fileAnhcd).getImage().getScaledInstance(180, 140, Image.SCALE_SMOOTH));
-             ImageIcon iconAnhCMNDSau = new ImageIcon(new ImageIcon(fileAnhcd).getImage().getScaledInstance(180, 140, Image.SCALE_SMOOTH));
-             JLHinhAnh.setIcon(iconAnhCD);
-         JLHinhCMNDMatTrc.setIcon(iconAnhCMNDtrc);
-          JLHinhCMNDMatSau.setIcon(iconAnhCMNDSau);
+        ImageIcon iconAnhCMNDtrc = new ImageIcon(new ImageIcon(fileAnhcd).getImage().getScaledInstance(180, 140, Image.SCALE_SMOOTH));
+        ImageIcon iconAnhCMNDSau = new ImageIcon(new ImageIcon(fileAnhcd).getImage().getScaledInstance(180, 140, Image.SCALE_SMOOTH));
+        JLHinhAnh.setIcon(iconAnhCD);
+        JLHinhCMNDMatTrc.setIcon(iconAnhCMNDtrc);
+        JLHinhCMNDMatSau.setIcon(iconAnhCMNDSau);
     }
     private void btnResetKHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetKHActionPerformed
         // TODO add your handling code here:
         LamMoi();
-        
+
     }//GEN-LAST:event_btnResetKHActionPerformed
     private void formWindowOpened(java.awt.event.WindowEvent evt) {
-        
+
     }
 
     /**

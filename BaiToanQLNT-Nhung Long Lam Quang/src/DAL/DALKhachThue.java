@@ -48,7 +48,7 @@ public class DALKhachThue {
         return sqlHelper.executeQuery(sql,so);
     }
     public static ResultSet FindByMaNguoiThue(String MaNguoiThue){
-        String sql = "select * from NguoiThue where MaNguoiThue = ? ";//like tìm gần giống , = tìm chính xác
+        String sql = "select * from NguoiThue where MaNguoiThue = ? ";// = tìm chính xác
         return sqlHelper.executeQuery(sql,MaNguoiThue);
     }
     public static void Insert(KhachThue kh){

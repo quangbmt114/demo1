@@ -239,13 +239,25 @@ public class BLLKhachThue {
     }
 
     public static boolean Check(KhachThue kh, boolean them) {
-
+        if (them) {
+            //Kiểm tra mã khách trùng
+            ResultSet rs = DAL.DALKhachThue.FindByMaNguoiThue(kh.getMaNguoiThue());
+            try {
+                if (rs.next()) {
+                    ThongBao.ThongBaoDonGian("Báo Lỗi", " mã Khách đã tồn tại");
+                    return false;
+                }
+            } catch (SQLException ex) {
+                ThongBao.ThongBaoDonGian("Báo Lỗi", "Lỗi check");
+                return false;
+            }
+        }
         if (them) {
             //Kiểm tra mã khách trùng
             ResultSet rs = DAL.DALKhachThue.FindByNameOrID(kh.getTenNguoiThue());
             try {
                 if (rs.next()) {
-                    ThongBao.ThongBaoDonGian("Báo Lỗi", " Khách đã tồn tại");
+                    ThongBao.ThongBaoDonGian("Báo Lỗi", "Tên Khách đã tồn tại");
                     return false;
                 }
             } catch (SQLException ex) {
@@ -294,11 +306,12 @@ public class BLLKhachThue {
     public static void Add(KhachThue kh) {
         if (Check(kh, true)) {
             DAL.DALKhachThue.Insert(kh);
+            jdlKhachThue.check = true;
             ThongBao.ThongBaoDonGian("Thông báo", "Đã thêm!");
             jdlKhachThue khachthue = new jdlKhachThue(null, true);
             khachthue.LamMoi();
         }else{
-            
+            jdlKhachThue.check = false;
         }
     }
 
