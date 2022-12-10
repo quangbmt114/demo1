@@ -24,7 +24,10 @@ public class DALDichVu {
     }
 
     public static void Delete(String dv) {
-        String sql = "delete DichVu where MaDichVu = ?";
+        String sql ;
+//        String sql = "delete ctdv where MaDichVu = ?";
+//        helper.sqlHelper.executeUpdate(sql, dv);
+        sql = "delete DichVu where MaDichVu = ?";
         helper.sqlHelper.executeUpdate(sql, dv);
     }
 

@@ -5,6 +5,7 @@
 package GUI;
 
 import BLL.BLLChiSoDienNuoc;
+import BLL.BLLChiTietDichVuPhong;
 import BLL.BLLHoaDon;
 import BLL.BLLHoatDongThuePhong;
 import BLL.BLLKhachThue;
@@ -34,6 +35,7 @@ public class HoaDon extends javax.swing.JDialog {
      * Creates new form NewJDialog
      */
     ArrayList<ChiSoDienNuoc> arrCSDN = new ArrayList<>();
+
     public HoaDon(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -532,7 +534,7 @@ public class HoaDon extends javax.swing.JDialog {
                 int tienDien = (int) ChuyenDoi.SoDouble(txtTienDienHDPT.getText());
                 int tienPhong = (int) ChuyenDoi.SoDouble(txtTienPhongHDPT.getText());
                 int tienNuoc = (int) ChuyenDoi.SoDouble(txtTienNuocHDPT.getText());
-                int tienDV = 0;//ChuyenDoi.SoDouble(txtTienDichVuHDPT.getText());
+                int tienDV = (int) ChuyenDoi.SoDouble(txtTienDichVuHDPT.getText());
                 int tongTien = (int) ChuyenDoi.SoDouble(txtTongTienHDPT.getText());
                 String ghiChu = null;
                 BLLHoaDon.Add(new HoaDonPhongTro(maHoaDon, maPhong, ngayGhi, chiSoMoi, chiSoCu, tienPhong, tienDien, tienNuoc, tienDV, tongTien, ghiChu));
@@ -559,7 +561,7 @@ public class HoaDon extends javax.swing.JDialog {
                 int tienDien = (int) ChuyenDoi.SoDouble(txtTienDienHDPT.getText());
                 int tienPhong = (int) ChuyenDoi.SoDouble(txtTienPhongHDPT.getText());
                 int tienNuoc = (int) ChuyenDoi.SoDouble(txtTienNuocHDPT.getText());
-                int tienDV = 0;//ChuyenDoi.SoDouble(txtTienDichVuHDPT.getText());
+                int tienDV = (int) ChuyenDoi.SoDouble(txtTienDichVuHDPT.getText());
                 int tongTien = (int) ChuyenDoi.SoDouble(txtTongTienHDPT.getText());
                 String ghiChu = null;
                 BLLHoaDon.Update(new HoaDonPhongTro(maHoaDon, maPhong, ngayGhi, chiSoMoi, chiSoCu, tienPhong, tienDien, tienNuoc, tienDV, tongTien, ghiChu));
@@ -590,11 +592,11 @@ public class HoaDon extends javax.swing.JDialog {
             //                ArrayList<KhachThue> arrKT = BLL.BLLKhachThue.FindByMangMaOrTen
             //            (cbbPhongTroHDPT.getSelectedItem().toString());
             //                for (KhachThue kt : arrKT) {
-                //                if (kt.isDaiDien()==true) {
-                    //                    System.out.println(kt.getTenNguoiThue());
-                    //
-                    //                    }
-                //            }
+            //                if (kt.isDaiDien()==true) {
+            //                    System.out.println(kt.getTenNguoiThue());
+            //
+            //                    }
+            //            }
 
             arrCSDN = BLLChiSoDienNuoc.FindByMaPhong(cbbPhongTroHDPT.getSelectedItem() + "");
             BLLChiSoDienNuoc.doComboBox(arrCSDN, cbbChiSoCuHDPT);
@@ -605,6 +607,8 @@ public class HoaDon extends javax.swing.JDialog {
             txtGiaDienHDPT.setText(ChuyenDoi.SoString(loaiPhongPT.getGiaDien()));
             txtGiaNuocHDPT.setText(ChuyenDoi.SoString(loaiPhongPT.getGiaNuoc()));
             txtTienPhongHDPT.setText(ChuyenDoi.SoString(loaiPhongPT.getGiaPhong()));
+            txtTienPhongHDPT.setText(ChuyenDoi.SoString(loaiPhongPT.getGiaPhong()));
+            double tienDV = BLLChiTietDichVuPhong.SumTienByMaPhong(cbbPhongTroHDPT.getSelectedItem() + "");
             HoatDongThuePhong hdtp = BLLHoatDongThuePhong.FindDaiDienPhong(cbbPhongTroHDPT.getSelectedItem() + "");
             if (BLLHoatDongThuePhong.FindDaiDienPhong(cbbPhongTroHDPT.getSelectedItem() + "") != null) {
                 KhachThue kt = BLLKhachThue.FindByMaNguoiThue(BLLHoatDongThuePhong.FindDaiDienPhong(cbbPhongTroHDPT.getSelectedItem() + "").getMaNguoiThue());
@@ -623,6 +627,7 @@ public class HoaDon extends javax.swing.JDialog {
             txtGiaDienHDPT.setText("");
             txtGiaNuocHDPT.setText("");
             txtTienPhongHDPT.setText("");
+            txtTienDichVuHDPT.setText("");
         }
     }//GEN-LAST:event_cbbPhongTroHDPTItemStateChanged
 
@@ -652,7 +657,7 @@ public class HoaDon extends javax.swing.JDialog {
         loadTTChiSoByMaChiSo(cbbChiSoCuHDPT, txtSoDienCuHD, txtSoNuocCuHD, txtNgayGhiCuHD);
         loadTTDienNuocTieuThu();
     }//GEN-LAST:event_cbbChiSoCuHDPTItemStateChanged
-     public void loadTTChiSoByMaChiSo(JComboBox maChiSo, JLabel a, JLabel b, JLabel c) {
+    public void loadTTChiSoByMaChiSo(JComboBox maChiSo, JLabel a, JLabel b, JLabel c) {
         if (maChiSo.getSelectedIndex() > 0) {
             ChiSoDienNuoc csdt = BLLChiSoDienNuoc.FindMaChiSo(maChiSo.getSelectedItem() + "");
             a.setText(csdt.getSoDien() + "");
@@ -664,7 +669,8 @@ public class HoaDon extends javax.swing.JDialog {
             c.setText("");
         }
     }
-     public void loadTTDienNuocTieuThu() {
+
+    public void loadTTDienNuocTieuThu() {
         if (cbbPhongTroHDPT.getSelectedIndex() > 0 && cbbChiSoMoiHDPT.getSelectedIndex() > 0 && cbbChiSoCuHDPT.getSelectedIndex() > 0) {
             txtMaHoaDonPT.setText(BLLHoaDon.SoHoaDon(cbbPhongTroHDPT.getSelectedItem() + "", ChuyenDoi.LayNgayDate(txtNgayGhiCuHD.getText()), ChuyenDoi.LayNgayDate(txtNgayGhiMoiHD.getText())));
             txtSoDienTieuThuHD.setText((Integer.parseInt(txtSoDienMoiHD.getText()) - Integer.parseInt(txtSoDienCuHD.getText())) + "");
@@ -672,7 +678,7 @@ public class HoaDon extends javax.swing.JDialog {
             double tienDien = Integer.parseInt(txtSoDienTieuThuHD.getText()) * (ChuyenDoi.SoDouble(txtGiaDienHDPT.getText()));
             double tienNuoc = Integer.parseInt(txtSoNuocTieuThuHD.getText()) * (ChuyenDoi.SoDouble(txtGiaNuocHDPT.getText()));
             double tienPhong = ChuyenDoi.SoDouble(txtTienPhongHDPT.getText());
-            double tienDV = 0;
+            double tienDV = ChuyenDoi.SoDouble(txtTienDichVuHDPT.getText());
             double tongTien = tienDien + tienNuoc + tienPhong + tienDV;
             txtTienDienHDPT.setText(ChuyenDoi.SoString(tienDien) + "");
             txtTienNuocHDPT.setText(ChuyenDoi.SoString(tienNuoc) + "");
@@ -686,6 +692,7 @@ public class HoaDon extends javax.swing.JDialog {
             txtTongTienHDPT.setText("  ");
         }
     }
+
     /**
      * @param args the command line arguments
      */

@@ -26,7 +26,7 @@ public class jdlThemDichVuPhong extends javax.swing.JDialog {
         setIconImage(icon.getImage());
         ArrayList<DTO.PhongTro> list = BLL.BLLPhongTro.GetAll();
         txtMaPhong.setText(TrangChu.text);
-        ArrayList<DichVu> arrDV = BLL.BLLDichVu.GetAll();
+        ArrayList<DTO.DichVu> arrDV = BLL.BLLDichVu.GetAll();
         BLL.BLLDichVu.DoVaoTable(arrDV, tbChiTietDichVu);
         for (PhongTro phongTro : list) {
             if (phongTro.getTenPhong().equals(FormChiTiet.TenPhong.getText())) {

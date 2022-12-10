@@ -56,6 +56,25 @@ public class BLLChiTietDichVuPhong {
         }
         return list;
     }
+    public static int SumTienByMaPhong(String MaPhong) {
+        ResultSet rs = DAL.DALCTDV.SumTienByMaPhong(MaPhong);
+        ArrayList<CTDV> list = new ArrayList<>();
+        try {
+            while (rs.next()) {
+                int tien=rs.getInt("TongTien");
+//                dv.setMaPhong(rs.getString("MaPhong"));
+//                dv.setMaDichVu(rs.getString("MaDichVu"));
+//              dv.setGia(rs.getInt("GiaDichVu"));
+//              dv.setDonViTinh(rs.getString("DonViTinh"));
+//              dv.setTrangThai(rs.getBoolean("TrangThai"));
+//                list.add(dv);
+                return tien;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(BLLDichVu.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return 0;
+    }
     public static void DoVaoTable(ArrayList<CTDV> arr, JTable tbl) {
 
         DefaultTableModel tbModel = (DefaultTableModel) tbl.getModel();

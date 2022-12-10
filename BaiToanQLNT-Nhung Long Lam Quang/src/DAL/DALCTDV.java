@@ -32,6 +32,10 @@ public class DALCTDV {
         return sqlHelper.executeQuery(sql,MaDichVu, MaPhong);
     }
     
+    public static ResultSet SumTienByMaPhong(String MaPhong){
+        String sql = "select sum(giadichvu) as TongTien from ctdv inner join dichvu on ctdv.MaDichVu=DichVu.MaDichVu where ctdv.MaPhong=?";
+        return sqlHelper.executeQuery(sql, MaPhong);
+    }
     //Hàm thêm loại sản phẩm
     public static void Insert(CTDV lsp){
         String sql = "INSERT INTO [dbo].[CTDV]([MaPhong],[MaDichVu]) VALUES(?,?)";
