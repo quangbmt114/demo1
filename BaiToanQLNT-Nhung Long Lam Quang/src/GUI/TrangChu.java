@@ -63,7 +63,7 @@ public class TrangChu extends javax.swing.JFrame {
     String AnhCD;
     String AnhCMNDTrc;
     String AnhCMNDSau;
-    
+
     public TrangChu() {
         initComponents();
         ArrayList<LoaiPhong> listLP = BLL.BLLLoaiPhong.GetAll();
@@ -80,7 +80,7 @@ public class TrangChu extends javax.swing.JFrame {
         //lấy dữ liệu ddataabase và setText Thống kê lương người đang thuê phòng
         ArrayList<DTO.KhachThue> listKhachThue = BLL.BLLKhachThue.GetAll();
         txtSoLuongNguoiThue.setText(String.valueOf(listKhachThue.size()));
-        
+
         FillPhong();
         ArrayList<DTO.PhongTro> listPhongTro = BLL.BLLPhongTro.GetAll();
         BLL.BLLPhongTro.DoVaoTable(listPhongTro, tblPhongTro);
@@ -91,11 +91,11 @@ public class TrangChu extends javax.swing.JFrame {
         panelMain.add(panelFormHoaDon, "HoaDon");
         panelMain.add(panelFormDichVu, "DichVu");
         panelMain.add(panelFormDienNuoc, "DienNuoc");
-        
+
         CardLayout layout = (CardLayout) panelMain.getLayout();
         layout.show(panelMain, "TrangChu");
     }
-    
+
     public void LamMoiLoaiPhong() {
         // TODO add your handling code here:
         txtMaLoaiPhong.setText("");
@@ -106,28 +106,29 @@ public class TrangChu extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(this, "Làm mới thành công !!");
         btnSua.setEnabled(false);
     }
-    
+
     public boolean validateform() {
-        
+
         if (txtMaLoaiPhong.getText().equals("") || txtTenLoaiPhong.getText().equals("")
                 || txtGiaTien.getText().equals("") || txtGiaDien.getText().equals("") || txtGiaNuoc.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Vui lòng nhập ĐẦY ĐỦ THÔNG TIN!");
             return false;
         }
         return true;
-        
+
     }
+
     public boolean validateformKhach() {
-        
+
         if (txtMaKH.getText().equals("") || txtTenKH.getText().equals("")
                 || txtCMND.getText().equals("") || txtSDT.getText().equals("") || txtDiaChi.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Vui lòng nhập ĐẦY ĐỦ THÔNG TIN!");
             return false;
         }
         return true;
-        
+
     }
-    
+
     public void FillPhong() {
         ArrayList<PhongTro> ListPhong = BLL.BLLPhongTro.GetAll();
         //tạo biến để mặc định để thống kê phòng
@@ -145,7 +146,7 @@ public class TrangChu extends javax.swing.JFrame {
         // set số liệu cho Bảng thống kê
         txtPhongTrong.setText(String.valueOf(PhongDaThue));
         txtPhongDaThue.setText(String.valueOf(PhongTrong));
-        
+
         if (ListPhong != null) {
             panelDsPhongTro.removeAll();
             JButton[] btn = new JButton[ListPhong.size()];
@@ -181,16 +182,16 @@ public class TrangChu extends javax.swing.JFrame {
                         ct.TenPhong.setText(maPhong);
                         ct.setLocationRelativeTo(null);
                         ct.setVisible(true);
-                        
+
                     }
                 });
-                
+
                 panelDsPhongTro.add(btn[i]);
                 panelDsPhongTro.updateUI();
             }
         }
     }
-    
+
     public void DongHo() {
         SimpleDateFormat sdf = new SimpleDateFormat("hh:mm:ss aa");
         Thread thread = new Thread(new Runnable() {
@@ -206,12 +207,12 @@ public class TrangChu extends javax.swing.JFrame {
                         Logger.getLogger(TrangChu.class.getName()).log(Level.SEVERE, null, ex);
                     }
                 }
-                
+
             }
         });
         thread.start();
     }
-    
+
     public void openedPanelHopDong() {// load thông tin panel hợp đồng
         //set kích thước table
         tbHopDongThue.getColumnModel().getColumn(0).setPreferredWidth(105);
@@ -230,7 +231,7 @@ public class TrangChu extends javax.swing.JFrame {
         dateNgayKy.setDate(new Date());
         rbDangThueAC.setSelected(true);
     }
-    
+
     public void openedPanelHoaDon() {// load thông tin panel hợp đồng
         //set kích thước table
 //        tbHopDongThue.getColumnModel().getColumn(0).setPreferredWidth(105);
@@ -254,7 +255,7 @@ public class TrangChu extends javax.swing.JFrame {
 //        rbDangThueAC.setSelected(true);
 //        txtMaHoaDonPT.setText(BLL.BLLHoaDon.SoHoaDon("PA01", new Date(), new Date()));
     }
-    
+
     public void openedPanelDichVu() {// load thông tin panel hợp đồng
         //set kích thước table
 //        tbHopDongThue.getColumnModel().getColumn(0).setPreferredWidth(105);
@@ -2976,7 +2977,7 @@ public class TrangChu extends javax.swing.JFrame {
     }//GEN-LAST:event_panelHoaDonMouseClicked
 
     private void jLabel24MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel24MouseClicked
-        
+
         int dem = JOptionPane.YES_OPTION;
         if (JOptionPane.showConfirmDialog(this, "Bạn muốn đăng xuất khỏi tài khoản ??", "Đăng xuất", JOptionPane.YES_NO_OPTION) == dem) {
             setVisible(false);
@@ -3017,7 +3018,7 @@ public class TrangChu extends javax.swing.JFrame {
             if (tblPhongTro.getValueAt(count, 2).equals(lp.getMaLoaiPhong())) {
                 themPhong.cbbLoaiPhong.setSelectedItem(lp.getTenLoaiPhong());
             }
-            
+
         }
         for (PhongTro pt : listPhong) {
             if (pt.getMaPhong().equals(tblPhongTro.getValueAt(count, 0))) {
@@ -3069,7 +3070,7 @@ public class TrangChu extends javax.swing.JFrame {
         // set số liệu cho Bảng thống kê
         TrangChu.txtPhongTrong.setText(String.valueOf(PhongDaThue));
         TrangChu.txtPhongDaThue.setText(String.valueOf(PhongTrong));
-        
+
         BLL.BLLPhongTro.DoVaoTable(list, tblPhongTro);
     }//GEN-LAST:event_MenuXoaActionPerformed
 
@@ -3128,7 +3129,7 @@ public class TrangChu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnXoaActionPerformed
 
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
-        
+
         String TenLoaiPhong;
         double GiaPhong;
         double GiaDien;
@@ -3184,11 +3185,11 @@ public class TrangChu extends javax.swing.JFrame {
         } else {
             TinhTrang = true;
         }
-        
+
         HoatDongThuePhong hdtp = new HoatDongThuePhong(MaHD, MaPhong, MaNguoiThue, NgayThue, NgayTra, GhiChu, TinhTrang);
         return hdtp;
     }
-    
+
     public void LamMoi() {
         // TODO add your handling code here:
         txtMaHopDong.setText("");
@@ -3208,15 +3209,15 @@ public class TrangChu extends javax.swing.JFrame {
         txtGhiChu.setText("");
         txtDiaChi.setText("");
     }
-    
+
     public void LamMoiKhachThue() {
         // TODO add your handling code here:
         txtMaKH.setText("");
         txtTenKH.setText("");
-        
+
         JDNgaySinh.setDate(null);
         JDNgayVao.setDate(null);
-        
+
         txtSDT.setText("");
         txtCMND.setText("");
         txtEmail.setText("");
@@ -3226,14 +3227,14 @@ public class TrangChu extends javax.swing.JFrame {
         rbDangThue.setSelected(false);
         rbDaTra.setSelected(false);
     }
-    
+
     public void khackThue(KhachThue khach) {
         dateNgaySinh.setDate(ChuyenDoi.LayNgayDate(khach.getNgaySinh()));
         txtSDT.setText(khach.getSDT());
         txtCMND.setText(khach.getCMND());
         txtDiaChi.setText(khach.getDiaChi());
     }
-    
+
     public void phong(PhongTro phongChon) {
         txtDienTich.setText(ChuyenDoi.SoString(phongChon.getDienTich()));
         LoaiPhong loaiPhong = BLL.BLLLoaiPhong.FindMaLoaiPhong(phongChon.getMaLoaiPhong().toString());
@@ -3246,7 +3247,7 @@ public class TrangChu extends javax.swing.JFrame {
             HoatDongThuePhong hoatDong = LayDataForm();
             if (!BLL.BLLHoatDongThuePhong.CheckMaHopDong(hoatDong.getMaHopDong())) {
                 ThongBao.ThongBaoDonGian("Thông báo", "Mã hợp đồng không hợp lệ!   ");
-                
+
             } else {
                 ThongBao.ThongBaoDonGian("Thông báo", "Mã hợp đồng hợp lệ!");
                 if (hoatDong.getNgayTra() != null) {
@@ -3272,14 +3273,14 @@ public class TrangChu extends javax.swing.JFrame {
             HoatDongThuePhong hoatDong = LayDataForm();
             if (BLL.BLLHoatDongThuePhong.CheckMaHopDong(hoatDong.getMaHopDong())) {
                 ThongBao.ThongBaoDonGian("Thông báo", "Mã hợp đồng không tồn tại!   ");
-                
+
             } else {
 //                ThongBao.ThongBaoDonGian("Thông báo", "Mã hợp đồng hợp lệ!");
                 if (hoatDong.getNgayTra() != null) {
                     BLL.BLLHoatDongThuePhong.Update(hoatDong, 0);
                 } else {
                     BLL.BLLHoatDongThuePhong.Update(hoatDong, 1);
-                    
+
                 }
                 ThongBao.ThongBaoDonGian("Thông báo", "Đã cập nhật!   ");
                 LamMoi();
@@ -3295,7 +3296,7 @@ public class TrangChu extends javax.swing.JFrame {
         BLL.BLLHoatDongThuePhong.DoVaoTable(arrHD, tbHopDongThue);
         ArrayList<DTO.PhongTro> list = BLL.BLLPhongTro.GetAll();
         BLL.BLLPhongTro.DoVaoTable(list, tblPhongTro);
-        
+
 
     }//GEN-LAST:event_btnSua1ActionPerformed
 
@@ -3311,13 +3312,13 @@ public class TrangChu extends javax.swing.JFrame {
             TTkhackThue(khach);
         }
     }//GEN-LAST:event_cbbMaKhachHangItemStateChanged
-    
+
     public void TTphong(PhongTro phongChon) {
         txtDienTich.setText(ChuyenDoi.SoString(phongChon.getDienTich()));
         LoaiPhong loaiPhong = BLL.BLLLoaiPhong.FindMaLoaiPhong(phongChon.getMaLoaiPhong().toString());
         txtGiaPhong.setText(ChuyenDoi.SoString(loaiPhong.getGiaPhong()));
     }
-    
+
     public void TTkhackThue(KhachThue khach) {
         txtTenNguoiThueHD.setText(khach.getTenNguoiThue());
         dateNgaySinh.setDate(ChuyenDoi.LayNgayDate(khach.getNgaySinh()));
@@ -3394,7 +3395,7 @@ public class TrangChu extends javax.swing.JFrame {
                 BLL.BLLDichVu.DoVaoTable(arr, tblDIchVu);
 //        LamMoiFormDV();
                 helper.ThongBao.ThongBaoDonGian("thông báo", "Thêm thành công !!");
-                
+
             } catch (Exception e) {
                 helper.ThongBao.ThongBaoDonGian("thông báo", "Vui lòng kiểm tra lại thông tin !!");
             }
@@ -3410,7 +3411,7 @@ public class TrangChu extends javax.swing.JFrame {
                         Integer.parseInt(txtGiaDichVu.getText()));
 //                , (String) cbbDonViTinh.getSelectedItem(), TrangThai
                 DAL.DALDichVu.Update(dv);
-                
+
                 ThongBao.ThongBaoDonGian("Thông Báo", "Đã sửa!");
                 ArrayList<DTO.DichVu> list = BLLDichVu.GetAll();
                 BLLDichVu.DoVaoTable(list, tblDIchVu);
@@ -3462,7 +3463,7 @@ public class TrangChu extends javax.swing.JFrame {
 //        helper.ThongBao.ThongBaoDonGian("thông báo", "Xóa thành công !!");
         }
     }//GEN-LAST:event_btnXoa1ActionPerformed
-    
+
     public void LamMoiFormDV() {
         txtMaDichVu.setText("");
         txtTenDichVu.setText("");
@@ -3573,10 +3574,14 @@ public class TrangChu extends javax.swing.JFrame {
         }
         //Lấy danh sách các KH  cần xóa
         int dongCanXoa[] = tblKhachThue.getSelectedRows();
-        
+
         for (int i = 0; i < dongCanXoa.length; i++) {
-            String MaKhachHang = tblKhachThue.getValueAt(dongCanXoa[i], 0).toString();
-            BLL.BLLKhachThue.Delete(MaKhachHang);
+            if (tblKhachThue.getValueAt(dongCanXoa[i], 0).toString().equals("Đã trả")) {
+                String MaKhachHang = tblKhachThue.getValueAt(dongCanXoa[i], 9).toString();
+                BLL.BLLKhachThue.Delete(MaKhachHang);
+            }else{
+                ThongBao.ThongBaoDonGian("Thông báo", "Khách hàng mã số "+tblKhachThue.getValueAt(dongCanXoa[i], 0).toString()+" đang thuê phòng, không thể xóa!");
+            }
         }
         ArrayList<KhachThue> arr = BLL.BLLKhachThue.GetAll();
         BLL.BLLKhachThue.DoVaoTable(arr, tblKhachThue);
@@ -3597,7 +3602,7 @@ public class TrangChu extends javax.swing.JFrame {
         //            String NgayTra;
         if (validateformKhach()) {
             MaNguoiThue = txtMaKH.getText();
-            
+
             TenNguoiThue = txtTenKH.getText();
             DiaChi = txtDiaChi.getText();
             SDT = txtSDT.getText();
@@ -3615,7 +3620,7 @@ public class TrangChu extends javax.swing.JFrame {
             CMND = txtCMND.getText();
             NgaySinh = ChuyenDoi.LayNgayString(JDNgaySinh.getDate());
             NgayTaoDT = ChuyenDoi.LayNgayString(JDNgayVao.getDate());
-            
+
             int dongDangChon = tblKhachThue.getSelectedRow();
             if (dongDangChon < 0) {
                 ThongBao.ThongBaoDonGian("Thông Báo", "Bạn chưa chọn khách hàng cần sửa");
@@ -3625,7 +3630,7 @@ public class TrangChu extends javax.swing.JFrame {
             BLL.BLLKhachThue.Update(kh);
             ThongBao.ThongBaoDonGian("Thông báo", "Đã sửa thành công!!");
             ArrayList<KhachThue> arr = BLL.BLLKhachThue.GetAll();
-            
+
             BLL.BLLKhachThue.DoVaoTable(arr, tblKhachThue);
         }
 
@@ -3685,7 +3690,7 @@ public class TrangChu extends javax.swing.JFrame {
         txtEmail.setText(tblKhachThue.getValueAt(dongDangChon, 4).toString());
         txtDiaChi.setText(tblKhachThue.getValueAt(dongDangChon, 5).toString());
         JDNgaySinh.setDate(ChuyenDoi.LayNgayDate(tblKhachThue.getValueAt(dongDangChon, 6).toString()));
-        
+
         if (tblKhachThue.getValueAt(dongDangChon, 7) == null) {
             JDNgayVao.setDate(new Date());
         } else {
@@ -3739,7 +3744,7 @@ public class TrangChu extends javax.swing.JFrame {
             JLHinhAnh.setIcon(iconAnhCD);
             JLHinhCMNDTrc.setIcon(iconAnhCMNDtrc);
             JLHinhCMNDSau.setIcon(iconAnhCMNDSau);
-            
+
         }
         btnSuaKH.setEnabled(true);
     }//GEN-LAST:event_tblKhachThueMouseClicked
@@ -3819,7 +3824,7 @@ public class TrangChu extends javax.swing.JFrame {
                 if (txtMaChiSoCSDN.getText().equals("") || txtSoDienQLDN.getText().equals("") || txtSoNuocQLDN.getText().equals("") || !txtErrSoDienCSDN.getText().equals("   ") || !txtErrSoNuocCSDN.getText().equals("   ")) {
                     ThongBao.ThongBaoDonGian("Thông báo", "Vui lòng điền đầy đủ thông tin!");
                 } else {
-                    
+
                     String maChiSo = txtMaChiSoCSDN.getText();
                     String maPhong = cbMaPhongQLDN.getSelectedItem() + "";
                     int soDien = Integer.parseInt(txtSoDienQLDN.getText());
@@ -3831,7 +3836,7 @@ public class TrangChu extends javax.swing.JFrame {
                         return;
                     }
                     ThongBao.ThongBaoDonGian("Thông báo", "Đã sửa!");
-                    
+
                 }
                 arrCSDN = BLLChiSoDienNuoc.GetAll();
                 BLLChiSoDienNuoc.DoVaoTable(arrCSDN, tbDienNuocQLCS);
@@ -3874,7 +3879,7 @@ public class TrangChu extends javax.swing.JFrame {
                 if (txtMaChiSoCSDN.getText().equals("") || txtSoDienQLDN.getText().equals("") || txtSoNuocQLDN.getText().equals("") || !txtErrSoDienCSDN.getText().equals("   ") || !txtErrSoNuocCSDN.getText().equals("   ")) {
                     ThongBao.ThongBaoDonGian("Thông báo", "Vui lòng điền thông tin hợp lệ!");
                 } else {
-                    
+
                     String maChiSo = txtMaChiSoCSDN.getText();
                     String maPhong = cbMaPhongQLDN.getSelectedItem() + "";
                     int soDien = Integer.parseInt(txtSoDienQLDN.getText());
@@ -3882,7 +3887,7 @@ public class TrangChu extends javax.swing.JFrame {
                     Date ngayGhi = dateNgayGhiDienNuoc.getDate();
                     BLLChiSoDienNuoc.Add(new ChiSoDienNuoc(maPhong, maChiSo, soDien, soNuoc, ngayGhi));
                     ThongBao.ThongBaoDonGian("Thông báo", "Đã thêm!");
-                    
+
                 }
                 arrCSDN = BLLChiSoDienNuoc.GetAll();
                 BLLChiSoDienNuoc.DoVaoTable(arrCSDN, tbDienNuocQLCS);
@@ -3949,7 +3954,7 @@ public class TrangChu extends javax.swing.JFrame {
         } catch (Exception e) {
             ThongBao.ThongBaoDonGian("Thông Báo", "Chưa xóa");
         }
-        
+
         loadTB();
     }//GEN-LAST:event_btnDelCSDNActionPerformed
 
@@ -3957,7 +3962,7 @@ public class TrangChu extends javax.swing.JFrame {
         // TODO add your handling code here:
         loadTB();
     }//GEN-LAST:event_cbPhongtbQLCSDNItemStateChanged
-    
+
     public void loadTB() {
         MyCombobox tenPhong = (MyCombobox) cbPhongtbQLCSDN.getSelectedItem();
 //        System.out.println(cbPhongtbQLCSDN.getSelectedItem());
@@ -3965,7 +3970,7 @@ public class TrangChu extends javax.swing.JFrame {
             arrCSDN = BLLChiSoDienNuoc.GetAll();
             BLL.BLLChiSoDienNuoc.DoVaoTable(arrCSDN, tbDienNuocQLCS);
         } else {
-            
+
             ArrayList<ChiSoDienNuoc> arrCS = BLL.BLLChiSoDienNuoc.FindByMaPhong(tenPhong + "");
             if (arrCS.size() > 0) {
                 BLL.BLLChiSoDienNuoc.DoVaoTable(arrCS, tbDienNuocQLCS);
@@ -3989,14 +3994,14 @@ public class TrangChu extends javax.swing.JFrame {
         ResetFormQLDN();
 
     }//GEN-LAST:event_btnResetFormCSDNActionPerformed
-    
+
     public void ResetFormQLDN() {
         txtMaChiSoCSDN.setText("Mã chỉ số");
         cbMaPhongQLDN.setSelectedIndex(0);
         txtSoDienQLDN.setText("");
         txtSoNuocQLDN.setText("");
         dateNgayGhiDienNuoc.setDate(null);
-        
+
     }
     private void cbMaPhongQLDNItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbMaPhongQLDNItemStateChanged
         // TODO add your handling code here:
@@ -4006,7 +4011,7 @@ public class TrangChu extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_cbMaPhongQLDNItemStateChanged
-    
+
     public void loadTTChiSoByMaChiSo(JComboBox maChiSo, JLabel a, JLabel b, JLabel c) {
         if (maChiSo.getSelectedIndex() > 0) {
             ChiSoDienNuoc csdt = BLLChiSoDienNuoc.FindMaChiSo(maChiSo.getSelectedItem() + "");
@@ -4023,7 +4028,7 @@ public class TrangChu extends javax.swing.JFrame {
         // TODO add your handling code here:
 
         if (cbbPhongTroHDPT.getSelectedIndex() > 0) {
-            
+
             System.out.println(cbbPhongTroHDPT.getSelectedItem().toString());
 //                ArrayList<KhachThue> arrKT = BLL.BLLKhachThue.FindByMangMaOrTen
 //            (cbbPhongTroHDPT.getSelectedItem().toString());
@@ -4054,7 +4059,7 @@ public class TrangChu extends javax.swing.JFrame {
                 txtDaiDienPhongHDPT.setText("   ");
                 txtMailLLHDPT.setText("   ");
             }
-            
+
         } else {
             arrCSDN = BLLChiSoDienNuoc.GetAll();
             BLLChiSoDienNuoc.doComboBox(arrCSDN, cbbChiSoCuHDPT);
@@ -4127,8 +4132,8 @@ public class TrangChu extends javax.swing.JFrame {
         jDateChooser2.setDate(ChuyenDoi.LayNgayDate(jTblHoaDon.getValueAt(indexRow, 2).toString()));
         txtTienDichVuHDPT.setText(ChuyenDoi.SoString(ChuyenDoi.SoDouble(jTblHoaDon.getValueAt(indexRow, 8).toString())));
         txtTienPhongHDPT.setText(ChuyenDoi.SoString(ChuyenDoi.SoDouble(jTblHoaDon.getValueAt(indexRow, 5).toString())));
-        txtGiaDienHDPT.setText(ChuyenDoi.SoString((ChuyenDoi.SoDouble(jTblHoaDon.getValueAt(indexRow, 6).toString())/ChuyenDoi.SoDouble(txtSoDienTieuThuHD.getText()))));
-        txtGiaNuocHDPT.setText(ChuyenDoi.SoString((ChuyenDoi.SoDouble(jTblHoaDon.getValueAt(indexRow, 7).toString())/ChuyenDoi.SoDouble(txtSoNuocTieuThuHD.getText()))));
+        txtGiaDienHDPT.setText(ChuyenDoi.SoString((ChuyenDoi.SoDouble(jTblHoaDon.getValueAt(indexRow, 6).toString()) / ChuyenDoi.SoDouble(txtSoDienTieuThuHD.getText()))));
+        txtGiaNuocHDPT.setText(ChuyenDoi.SoString((ChuyenDoi.SoDouble(jTblHoaDon.getValueAt(indexRow, 7).toString()) / ChuyenDoi.SoDouble(txtSoNuocTieuThuHD.getText()))));
     }//GEN-LAST:event_jTblHoaDonMouseClicked
 
     private void txtSoDienQLDNKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSoDienQLDNKeyReleased
@@ -4170,9 +4175,9 @@ public class TrangChu extends javax.swing.JFrame {
                 String ghiChu = null;
                 BLLHoaDon.Add(new HoaDonPhongTro(maHoaDon, maPhong, ngayGhi, chiSoMoi, chiSoCu, tienPhong, tienDien, tienNuoc, tienDV, tongTien, ghiChu));
                 ThongBao.ThongBaoDonGian("Thông báo", "Đã thêm");
-                
+
             } catch (Exception e) {
-                
+
                 ThongBao.ThongBaoDonGian("Thông báo", "Hóa đơn đã tồn tại hoặc sai thông tin, vui lòng kiểm tra lại!!");
             }
         } else {
@@ -4200,7 +4205,7 @@ public class TrangChu extends javax.swing.JFrame {
                 BLLHoaDon.Update(new HoaDonPhongTro(maHoaDon, maPhong, ngayGhi, chiSoMoi, chiSoCu, tienPhong, tienDien, tienNuoc, tienDV, tongTien, ghiChu));
                 ThongBao.ThongBaoDonGian("Thông báo", "Đã sửa!");
             } catch (Exception e) {
-                
+
                 ThongBao.ThongBaoDonGian("Thông báo", "Hóa đơn không tồn tại hoặc sai thông tin, vui lòng kiểm tra lại!!");
             }
         } else {
@@ -4216,7 +4221,7 @@ public class TrangChu extends javax.swing.JFrame {
         txtMaHoaDonPT.setText("Mã hóa đơn");
         cbbPhongTroHDPT.setSelectedIndex(0);
         jDateChooser2.setDate(null);
-        
+
     }//GEN-LAST:event_btnLamMoiHoaDonActionPerformed
 
     private void txtGiaDichVuKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtGiaDichVuKeyReleased

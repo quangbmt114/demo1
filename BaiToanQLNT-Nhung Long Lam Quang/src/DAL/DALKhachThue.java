@@ -62,17 +62,19 @@ public class DALKhachThue {
     }
     public static void Update(KhachThue kh){
         String sql ="UPDATE [dbo].[NguoiThue]SET [TenNguoiThue] = ?,[CMND] = ? ,[SDT] = ? ,[Email]=?,[DiaChi] = ?" +
-"     ,[NgaySinh] = ?,[GioiTinh]=?,[NgayTaoDT] = ?,[TrangThai] = ? WHERE MaNguoiThue = ?";
+"     ,[NgaySinh] = ?,[GioiTinh]=?,[NgayTaoDT] = ?WHERE MaNguoiThue = ?";
         sqlHelper.executeUpdate(sql,kh.getTenNguoiThue(), kh.getCMND(),kh.getSDT(),kh.getEmail(),kh.getDiaChi(),
-                 kh.getNgaySinh(),kh.isGioiTinh(), kh.getNgayTaoDT(),kh.isTrangThai(),kh.getMaNguoiThue());
+                 kh.getNgaySinh(),kh.isGioiTinh(), kh.getNgayTaoDT(),kh.getMaNguoiThue());
     }
     public static void UpdateDaiDien(KhachThue kh){
         String sql ="UPDATE [dbo].[HoatDongThuePhong]SET [DaiDien]=? WHERE MaNguoiThue = ?";
         sqlHelper.executeUpdate(sql,kh.isDaiDien(),kh.getMaNguoiThue());
     }
     public static void Delete(String MaKhachHang){
-        String sql ="DELETE FROM [dbo].[NguoiThue] WHERE MaNguoiThue =?";
-        sqlHelper.executeUpdate(sql, MaKhachHang);
+        String sql =" if(select TrangThai from NguoiThue where MaNguoiThue=?)=0 begin "
+                + "DELETE FROM [dbo].[HoatDongThuePhong] WHERE MaNguoiThue =?"
+                + "DELETE FROM [dbo].[NguoiThue] WHERE MaNguoiThue =? end";
+        sqlHelper.executeUpdate(sql, MaKhachHang, MaKhachHang, MaKhachHang);
     }
     
     public static ResultSet CountNguoiThueTrangThai(int So) {
