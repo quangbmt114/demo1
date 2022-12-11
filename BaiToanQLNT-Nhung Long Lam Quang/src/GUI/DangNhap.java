@@ -440,7 +440,7 @@ public class DangNhap extends javax.swing.JFrame {
         int Verifty_Code = ram.nextInt(999999);
         Code = Verifty_Code;
         final String username = "quangnvpk02150@fpt.edu.vn";
-        final String password = "Quangbmt123";
+        final String password = "vgupjreukeyqqgwj";
         
         Properties prop = new Properties();
         prop.put("mail.smtp.host", "smtp.gmail.com");
