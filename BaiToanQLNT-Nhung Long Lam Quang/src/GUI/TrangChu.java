@@ -3623,7 +3623,7 @@ public class TrangChu extends javax.swing.JFrame {
             String MaKhachHang = tblKhachThue.getValueAt(dongDangChon, 0).toString();
             KhachThue kh = new KhachThue(MaNguoiThue, TenNguoiThue, CMND, SDT, Email, DiaChi, NgaySinh, NgayTaoDT, GioiTinh, TrangThai, AnhCD, AnhCMNDTrc, AnhCMNDSau);
             BLL.BLLKhachThue.Update(kh);
-            
+            ThongBao.ThongBaoDonGian("Thông báo", "Đã sửa thành công!!");
             ArrayList<KhachThue> arr = BLL.BLLKhachThue.GetAll();
             
             BLL.BLLKhachThue.DoVaoTable(arr, tblKhachThue);
