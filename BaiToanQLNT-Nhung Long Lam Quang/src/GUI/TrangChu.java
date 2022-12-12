@@ -3612,6 +3612,7 @@ public class TrangChu extends javax.swing.JFrame {
         String NgayTaoDT;
         boolean GioiTinh;
         boolean TrangThai;
+        
         //            String NgayTra;
         if (validateformKhach()) {
             MaNguoiThue = txtMaKH.getText();
@@ -3726,7 +3727,44 @@ public class TrangChu extends javax.swing.JFrame {
         String fileAnhCD = "./src/images/" + tblKhachThue.getValueAt(dongDangChon, 10);
         String fileAnhCMNDtrc = "./src/images/" + tblKhachThue.getValueAt(dongDangChon, 11);
         String fileAnhCMNDSau = "./src/images/" + tblKhachThue.getValueAt(dongDangChon, 12);
-        if (tblKhachThue.getValueAt(dongDangChon, 10) == null) {
+        if (tblKhachThue.getValueAt(dongDangChon, 10) == null&&tblKhachThue.getValueAt(dongDangChon, 11) == null
+                &&tblKhachThue.getValueAt(dongDangChon, 12) == null) {
+            String fileAnhcd = "./src/images/man-128px.png";
+            ImageIcon iconAnhCD = new ImageIcon(new ImageIcon(fileAnhcd).getImage().getScaledInstance(140, 180, Image.SCALE_SMOOTH));
+            ImageIcon iconAnhCMNDtrc = new ImageIcon(new ImageIcon(fileAnhcd).getImage().getScaledInstance(180, 140, Image.SCALE_SMOOTH));
+            ImageIcon iconAnhCMNDSau = new ImageIcon(new ImageIcon(fileAnhcd).getImage().getScaledInstance(180, 140, Image.SCALE_SMOOTH));
+            JLHinhAnh.setIcon(iconAnhCD);
+            JLHinhCMNDTrc.setIcon(iconAnhCMNDtrc);
+            JLHinhCMNDSau.setIcon(iconAnhCMNDSau);
+        }
+         else if (tblKhachThue.getValueAt(dongDangChon, 11) == null&&tblKhachThue.getValueAt(dongDangChon, 10) == null) {
+            String fileAnhcd = "./src/images/man-128px.png";
+            ImageIcon iconAnhCD = new ImageIcon(new ImageIcon(fileAnhcd).getImage().getScaledInstance(140, 180, Image.SCALE_SMOOTH));
+            ImageIcon iconAnhCMNDtrc = new ImageIcon(new ImageIcon(fileAnhcd).getImage().getScaledInstance(180, 140, Image.SCALE_SMOOTH));
+            ImageIcon iconAnhCMNDSau = new ImageIcon(new ImageIcon(fileAnhCMNDSau).getImage().getScaledInstance(180, 140, Image.SCALE_SMOOTH));
+            JLHinhAnh.setIcon(iconAnhCD);
+            JLHinhCMNDTrc.setIcon(iconAnhCMNDtrc);
+            JLHinhCMNDSau.setIcon(iconAnhCMNDSau);
+        }
+          else if (tblKhachThue.getValueAt(dongDangChon, 12) == null&&tblKhachThue.getValueAt(dongDangChon, 10) == null) {
+            String fileAnhcd = "./src/images/man-128px.png";
+            ImageIcon iconAnhCD = new ImageIcon(new ImageIcon(fileAnhcd).getImage().getScaledInstance(140, 180, Image.SCALE_SMOOTH));
+            ImageIcon iconAnhCMNDtrc = new ImageIcon(new ImageIcon(fileAnhCMNDtrc).getImage().getScaledInstance(180, 140, Image.SCALE_SMOOTH));
+            ImageIcon iconAnhCMNDSau = new ImageIcon(new ImageIcon(fileAnhcd).getImage().getScaledInstance(180, 140, Image.SCALE_SMOOTH));
+            JLHinhAnh.setIcon(iconAnhCD);
+            JLHinhCMNDTrc.setIcon(iconAnhCMNDtrc);
+            JLHinhCMNDSau.setIcon(iconAnhCMNDSau);
+        }
+          else if (tblKhachThue.getValueAt(dongDangChon, 11) == null&&tblKhachThue.getValueAt(dongDangChon, 12) == null) {
+            String fileAnhcd = "./src/images/man-128px.png";
+            ImageIcon iconAnhCD = new ImageIcon(new ImageIcon(fileAnhCD).getImage().getScaledInstance(140, 180, Image.SCALE_SMOOTH));
+            ImageIcon iconAnhCMNDtrc = new ImageIcon(new ImageIcon(fileAnhcd).getImage().getScaledInstance(180, 140, Image.SCALE_SMOOTH));
+            ImageIcon iconAnhCMNDSau = new ImageIcon(new ImageIcon(fileAnhcd).getImage().getScaledInstance(180, 140, Image.SCALE_SMOOTH));
+            JLHinhAnh.setIcon(iconAnhCD);
+            JLHinhCMNDTrc.setIcon(iconAnhCMNDtrc);
+            JLHinhCMNDSau.setIcon(iconAnhCMNDSau);
+        }
+        else if (tblKhachThue.getValueAt(dongDangChon, 10) == null) {
             String fileAnhcd = "./src/images/man-128px.png";
             ImageIcon iconAnhCD = new ImageIcon(new ImageIcon(fileAnhcd).getImage().getScaledInstance(140, 180, Image.SCALE_SMOOTH));
             ImageIcon iconAnhCMNDtrc = new ImageIcon(new ImageIcon(fileAnhCMNDtrc).getImage().getScaledInstance(180, 140, Image.SCALE_SMOOTH));
@@ -3734,7 +3772,9 @@ public class TrangChu extends javax.swing.JFrame {
             JLHinhAnh.setIcon(iconAnhCD);
             JLHinhCMNDTrc.setIcon(iconAnhCMNDtrc);
             JLHinhCMNDSau.setIcon(iconAnhCMNDSau);
-        } else if (tblKhachThue.getValueAt(dongDangChon, 11) == null) {
+        }
+        
+        else if (tblKhachThue.getValueAt(dongDangChon, 11) == null) {
             String fileAnhcd = "./src/images/man-128px.png";
             ImageIcon iconAnhCD = new ImageIcon(new ImageIcon(fileAnhCD).getImage().getScaledInstance(140, 180, Image.SCALE_SMOOTH));
             ImageIcon iconAnhCMNDtrc = new ImageIcon(new ImageIcon(fileAnhcd).getImage().getScaledInstance(180, 140, Image.SCALE_SMOOTH));
@@ -3742,7 +3782,8 @@ public class TrangChu extends javax.swing.JFrame {
             JLHinhAnh.setIcon(iconAnhCD);
             JLHinhCMNDTrc.setIcon(iconAnhCMNDtrc);
             JLHinhCMNDSau.setIcon(iconAnhCMNDSau);
-        } else if (tblKhachThue.getValueAt(dongDangChon, 12) == null) {
+        }
+        else if (tblKhachThue.getValueAt(dongDangChon, 12) == null) {
             String fileAnhcd = "./src/images/man-128px.png";
             ImageIcon iconAnhCD = new ImageIcon(new ImageIcon(fileAnhCD).getImage().getScaledInstance(140, 180, Image.SCALE_SMOOTH));
             ImageIcon iconAnhCMNDtrc = new ImageIcon(new ImageIcon(fileAnhCMNDtrc).getImage().getScaledInstance(180, 140, Image.SCALE_SMOOTH));
@@ -3750,7 +3791,8 @@ public class TrangChu extends javax.swing.JFrame {
             JLHinhAnh.setIcon(iconAnhCD);
             JLHinhCMNDTrc.setIcon(iconAnhCMNDtrc);
             JLHinhCMNDSau.setIcon(iconAnhCMNDSau);
-        } else {
+        }
+        else {
             ImageIcon iconAnhCD = new ImageIcon(new ImageIcon(fileAnhCD).getImage().getScaledInstance(140, 180, Image.SCALE_SMOOTH));
             ImageIcon iconAnhCMNDtrc = new ImageIcon(new ImageIcon(fileAnhCMNDtrc).getImage().getScaledInstance(180, 140, Image.SCALE_SMOOTH));
             ImageIcon iconAnhCMNDSau = new ImageIcon(new ImageIcon(fileAnhCMNDSau).getImage().getScaledInstance(180, 140, Image.SCALE_SMOOTH));
