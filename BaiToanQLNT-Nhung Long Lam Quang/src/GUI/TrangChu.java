@@ -3227,10 +3227,8 @@ public class TrangChu extends javax.swing.JFrame {
         // TODO add your handling code here:
         txtMaKH.setText("");
         txtTenKH.setText("");
-
         JDNgaySinh.setDate(null);
         JDNgayVao.setDate(null);
-
         txtSDT.setText("");
         txtCMND.setText("");
         txtEmail.setText("");
@@ -3526,10 +3524,10 @@ public class TrangChu extends javax.swing.JFrame {
         JFileChooser chooser = new JFileChooser("./src/images");
         chooser.showOpenDialog(btnHInhAnhCD);
         File file = chooser.getSelectedFile();
-        String st = file.getPath();
+        AnhCD = file.getName();
         ImageIcon icon = new ImageIcon(new ImageIcon(file.getPath()).getImage().getScaledInstance(140, 200, Image.SCALE_SMOOTH));
         JLHinhAnh.setIcon(icon);
-        System.out.println(st);
+        
     }//GEN-LAST:event_btnHInhAnhCDActionPerformed
 
     private void btnThemKHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemKHActionPerformed
@@ -3639,13 +3637,12 @@ public class TrangChu extends javax.swing.JFrame {
             if (dongDangChon < 0) {
                 ThongBao.ThongBaoDonGian("Thông Báo", "Bạn chưa chọn khách hàng cần sửa");
             }
-            String MaKhachHang = tblKhachThue.getValueAt(dongDangChon, 0).toString();
+//            String MaKhachHang = tblKhachThue.getValueAt(dongDangChon, 0).toString();
             KhachThue kh = new KhachThue(MaNguoiThue, TenNguoiThue, CMND, SDT, Email, DiaChi, NgaySinh, NgayTaoDT, GioiTinh, TrangThai, AnhCD, AnhCMNDTrc, AnhCMNDSau);
-            BLL.BLLKhachThue.Update(kh);
-            ThongBao.ThongBaoDonGian("Thông báo", "Đã sửa thành công!!");
+            BLL.BLLKhachThue.Update(kh); 
             ArrayList<KhachThue> arr = BLL.BLLKhachThue.GetAll();
-
             BLL.BLLKhachThue.DoVaoTable(arr, tblKhachThue);
+            LamMoiKhachThue();
         }
 
     }//GEN-LAST:event_btnSuaKHActionPerformed
@@ -3671,10 +3668,10 @@ public class TrangChu extends javax.swing.JFrame {
         JFileChooser chooser = new JFileChooser("./src/images");
         chooser.showOpenDialog(btnHInhCMNDTrc);
         File file = chooser.getSelectedFile();
-        String st = file.getPath();
+        AnhCMNDTrc = file.getName();
         ImageIcon icon = new ImageIcon(new ImageIcon(file.getPath()).getImage().getScaledInstance(180, 120, Image.SCALE_SMOOTH));
         JLHinhCMNDTrc.setIcon(icon);
-        System.out.println(st);
+        
     }//GEN-LAST:event_btnHInhCMNDTrcActionPerformed
 
     private void btnHInhCMNDSauActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHInhCMNDSauActionPerformed
@@ -3682,10 +3679,10 @@ public class TrangChu extends javax.swing.JFrame {
         JFileChooser chooser = new JFileChooser("./src/images");
         chooser.showOpenDialog(btnHInhCMNDSau);
         File file = chooser.getSelectedFile();
-        String st = file.getPath();
+        AnhCMNDSau = file.getName();
         ImageIcon icon = new ImageIcon(new ImageIcon(file.getPath()).getImage().getScaledInstance(180, 120, Image.SCALE_SMOOTH));
         JLHinhCMNDSau.setIcon(icon);
-        System.out.println(st);
+        
     }//GEN-LAST:event_btnHInhCMNDSauActionPerformed
 
     private void txtEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailActionPerformed

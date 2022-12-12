@@ -346,10 +346,9 @@ public class BLLKhachThue {
         }
     }
 
-    public static void Update(KhachThue kh) {
-
-        DAL.DALKhachThue.Update(kh);
-
+    public static void Update(KhachThue kh) {     
+            DAL.DALKhachThue.Update(kh);
+        ThongBao.ThongBaoDonGian("Thông báo", "Đã sửa thành công!!");
     }
     public static void UpdateDaiDien(KhachThue kh) {
 
