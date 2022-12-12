@@ -34,6 +34,7 @@ public class DALHoatDongThuePhong {
                 + " where MaHopDong = ?";
         return sqlHelper.executeQuery(sql, tuKhoa);
     }
+
     public static ResultSet FindByMaNguoiThue(String tuKhoa) {
         String sql = "select * from HoatDongThuePhong "
                 + " where MaNguoiThue like ?";
@@ -45,11 +46,12 @@ public class DALHoatDongThuePhong {
         String sql = "select * from HoatDongThuePhong where MaPhong = ?";
         return sqlHelper.executeQuery(sql, MaPhong);
     }
-    
+
     public static ResultSet FindDaiDienPhong(String MaPhong) {
         String sql = "select * from HoatDongThuePhong where MaPhong = ? and TinhTrang=1 and DaiDien = 1";
         return sqlHelper.executeQuery(sql, MaPhong);
     }
+
     public static ResultSet FindByMaHopDongOrMaNguoiThue(String tuKhoa) {
         String sql = "select * from HoatDongThuePhong "
                 + " where MaHopDong like ? or MaNguoiThue like ?";
@@ -87,7 +89,6 @@ public class DALHoatDongThuePhong {
             sql = " if (select count(*) from hoatdongthuephong where maphong= ? and tinhtrang=1)=1 UPDATE [dbo].[PhongTro] set[TrangThai] = 0 WHERE MaPhong=?";
             sqlHelper.executeUpdate(sql, sp.getMaPhong(), sp.getMaPhong());
 
-            
             sql = "UPDATE [dbo].[HoatDongThuePhong] SET [MaPhong] = ? ,[MaNguoiThue] = ? ,[NgayThue] =? ,[NgayTra] =?,[GhiChu] = ?,[TinhTrang] = ? WHERE MaHopDong = ?";
             sqlHelper.executeUpdate(sql, sp.getMaPhong(), sp.getMaNguoiThue(),
                     ChuyenDoi.LayNgayString(sp.getNgayThue()), ChuyenDoi.LayNgayString(sp.getNgayTra()), sp.getGhiChu(),
@@ -96,7 +97,7 @@ public class DALHoatDongThuePhong {
 
 //update HoatDongThuePhong set NgayTra=null where MaHopDong='PA0300000000001'
             sql = "update HoatDongThuePhong set NgayTra=null where MaHopDong=?";
-            sqlHelper.executeUpdate(sql,sp.getMaHopDong());
+            sqlHelper.executeUpdate(sql, sp.getMaHopDong());
             sql = "if (select count(*) from hoatdongthuephong where MaNguoiThue= ? and tinhtrang=1)=0 UPDATE [dbo].[NguoiThue] SET [TrangThai] = 1 WHERE MaNguoiThue = ?";
             sqlHelper.executeUpdate(sql, sp.getMaNguoiThue(), sp.getMaNguoiThue());
             sql = "if (select count(*) from hoatdongthuephong where maphong= ? and tinhtrang=1)=0 UPDATE [dbo].[PhongTro] set[TrangThai] = 1 WHERE MaPhong=?";
@@ -104,7 +105,7 @@ public class DALHoatDongThuePhong {
             sql = "UPDATE [dbo].[HoatDongThuePhong] SET [MaPhong] = ? ,[MaNguoiThue] = ? ,[NgayThue] =? ,[GhiChu] = ?,[TinhTrang] = ? WHERE MaHopDong = ?";
             sqlHelper.executeUpdate(sql, sp.getMaPhong(), sp.getMaNguoiThue(),
                     ChuyenDoi.LayNgayString(sp.getNgayThue()), sp.getGhiChu(),
-                    1 , sp.getMaHopDong());
+                    1, sp.getMaHopDong());
         }
 
 //        String sql = "UPDATE [dbo].[HoatDongThuePhong] SET [MaPhong] = ? ,[MaNguoiThue] = ? ,[NgayThue] =? ,[NgayTra] =?,[GhiChu] = ?,[TinhTrang] = ? WHERE MaHopDong = ?";
@@ -113,8 +114,12 @@ public class DALHoatDongThuePhong {
 //                sp.isTinhTrang(), sp.getMaHopDong());
     }
 
-    public static void Delete(int getMaHopDong) {
-        String sql = "DELETE HoatDongThuePhong where MaHopDong = ?";
+    public static void Delete(String getMaHopDong, String maPhong, String maKhachThue) {
+        String sql = "if (select count(*) from hoatdongthuephong where MaNguoiThue= ? and tinhtrang=1)=1 UPDATE [dbo].[NguoiThue] SET [TrangThai] = 0 WHERE MaNguoiThue = ?";
+        sqlHelper.executeUpdate(sql, maKhachThue, maKhachThue);
+        sql = " if (select count(*) from hoatdongthuephong where maphong= ? and tinhtrang=1)=1 UPDATE [dbo].[PhongTro] set[TrangThai] = 0 WHERE MaPhong=?";
+        sqlHelper.executeUpdate(sql, maPhong, maPhong);
+        sql = "DELETE HoatDongThuePhong where MaHopDong = ?";
         sqlHelper.executeUpdate(sql, getMaHopDong);
     }
 

@@ -258,6 +258,9 @@ public class BLLHoatDongThuePhong {
     public static void Update(HoatDongThuePhong sp, int i) {
             DAL.DALHoatDongThuePhong.Update(sp,i);        
     }
+    public static void Delete(String maHopDong,String maPhong,String maKhachThue) {
+            DAL.DALHoatDongThuePhong.Delete(maHopDong,maPhong,maKhachThue);        
+    }
     
     public static String SoHoaDon(String maPhong) {
         String soHoaDon = ""+maPhong;
