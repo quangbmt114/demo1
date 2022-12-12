@@ -27,6 +27,11 @@ public class DALKhachThue {
         ResultSet rs = sqlHelper.executeQuery(sql,"%"+name+"%");
         return rs;
     }
+    public static ResultSet FindCheckDaiDien(String name){
+        String sql = "select * from NguoiThue where MaNguoiThue like ? and TrangThai = 1 ";//like tìm gần giống , = tìm chính xác
+        ResultSet rs = sqlHelper.executeQuery(sql,"%"+name+"%");
+        return rs;
+    }
     public static ResultSet FindByNameOrID(String name){
         String sql = "select * from NguoiThue where TenNguoiThue = ? or MaNguoiThue = ? ";//like tìm gần giống , = tìm chính xác
         return sqlHelper.executeQuery(sql,name,name);

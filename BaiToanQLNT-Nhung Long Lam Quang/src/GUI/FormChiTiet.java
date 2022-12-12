@@ -213,7 +213,7 @@ public class FormChiTiet extends javax.swing.JDialog {
         for (PhongTro phongTro : arrPT) {
             if(phongTro.getTenPhong().equals(TenPhong.getText())){
                 daidien.JLabelDaiDien.setText(phongTro.getMaPhong());
-                ArrayList<KhachThue> arrKT = BLL.BLLKhachThue.FindByMangMaOrTen(phongTro.getMaPhong());
+                ArrayList<KhachThue> arrKT = BLL.BLLKhachThue.FindCheckDaiDien(phongTro.getMaPhong());
         BLL.BLLKhachThue.doComboBox(arrKT, cbbDaiDien);
             }
         }

@@ -53,11 +53,6 @@ public class FormDaiDien extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         cbbDaiDien.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        cbbDaiDien.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbbDaiDienActionPerformed(evt);
-            }
-        });
 
         btnXacNhan.setText("Xác Nhận");
         btnXacNhan.addActionListener(new java.awt.event.ActionListener() {
@@ -110,11 +105,6 @@ public class FormDaiDien extends javax.swing.JDialog {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void cbbDaiDienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbbDaiDienActionPerformed
-        // TODO add your handling code here:
-       
-    }//GEN-LAST:event_cbbDaiDienActionPerformed
-
     private void btnXacNhanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXacNhanActionPerformed
         // TODO add your handling code here:
         ArrayList<KhachThue> arrKT = BLL.BLLKhachThue.FindByMangMaOrTen(JLabelDaiDien.getText());
@@ -125,7 +115,7 @@ public class FormDaiDien extends javax.swing.JDialog {
             KhachThue kh = new KhachThue(cbbDaiDien.getSelectedItem().toString(), true);
             BLL.BLLKhachThue.UpdateDaiDien(kh);
             JOptionPane.showMessageDialog(this, "Xác Nhận Đại Diện Thành Công");
-        
+                    setVisible(false);
         }else{
             return ;
         }
