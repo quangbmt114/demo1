@@ -67,9 +67,9 @@ public class DALKhachThue {
     }
     public static void Update(KhachThue kh){
         String sql ="UPDATE [dbo].[NguoiThue]SET [TenNguoiThue] = ?,[CMND] = ? ,[SDT] = ? ,[Email]=?,[DiaChi] = ?" +
-"     ,[NgaySinh] = ?,[GioiTinh]=?,[NgayTaoDT] = ?WHERE MaNguoiThue = ?";
+"     ,[NgaySinh] = ?,[GioiTinh]=?,[NgayTaoDT] = ?,[TrangThai] = ? WHERE MaNguoiThue = ?";
         sqlHelper.executeUpdate(sql,kh.getTenNguoiThue(), kh.getCMND(),kh.getSDT(),kh.getEmail(),kh.getDiaChi(),
-                 kh.getNgaySinh(),kh.isGioiTinh(), kh.getNgayTaoDT(),kh.getMaNguoiThue());
+                 kh.getNgaySinh(),kh.isGioiTinh(), kh.getNgayTaoDT(),kh.isTrangThai(),kh.getMaNguoiThue());
     }
     public static void UpdateDaiDien(KhachThue kh){
         String sql ="UPDATE [dbo].[HoatDongThuePhong]SET [DaiDien]=? WHERE MaNguoiThue = ?";
