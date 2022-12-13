@@ -72,12 +72,12 @@ public class DALPhongTro {
         String sql = "delete from [dbo].[PhongTro] where MaPhong = ? ";
         helper.sqlHelper.executeUpdate(sql, pt.getMaPhong());
     }
-    public static ResultSet FindByMaPhong(String name){
+    public static ResultSet FindMaPhong(String name){
         String sql = "select * from PhongTro where MaPhong = ? ";//like tìm gần giống , = tìm chính xác
         return sqlHelper.executeQuery(sql,name);
     }
-    public static ResultSet FindByOnlyMaPhong(String name){
-        String sql = "select * from PhongTro where TenPhong = ? ";//like tìm gần giống , = tìm chính xác
+    public static ResultSet FindByMaPhong(String name){
+        String sql = "select * from PhongTro where MaPhong = ? ";//like tìm gần giống , = tìm chính xác
         return sqlHelper.executeQuery(sql,name);
     }
 }

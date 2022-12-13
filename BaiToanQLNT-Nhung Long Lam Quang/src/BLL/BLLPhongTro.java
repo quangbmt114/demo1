@@ -69,7 +69,7 @@ public class BLLPhongTro {
     public static PhongTro FindMaPhong(String TuKhoa) {
 
         //Lấy tất cả dữ liệu Loại sản phẩm từ SQL
-        ResultSet rs = DAL.DALPhongTro.FindByMaPhong(TuKhoa);
+        ResultSet rs = DAL.DALPhongTro.FindMaPhong(TuKhoa);
 
         DTO.PhongTro pt = new DTO.PhongTro();
         try {
@@ -91,10 +91,10 @@ public class BLLPhongTro {
         }
         return pt;
     }
-    public static ArrayList<DTO.PhongTro> FindOnlyMaPhong(String TuKhoa) {
+    public static ArrayList<DTO.PhongTro> FindByMaPhong(String TuKhoa) {
 
         //Lấy tất cả dữ liệu Loại sản phẩm từ SQL
-        ResultSet rs = DAL.DALPhongTro.FindByOnlyMaPhong(TuKhoa);
+        ResultSet rs = DAL.DALPhongTro.FindByMaPhong(TuKhoa);
         ArrayList<DTO.PhongTro> list = new ArrayList<>();
         DTO.PhongTro pt = new DTO.PhongTro();
         try {

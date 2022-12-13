@@ -208,7 +208,7 @@ public class BLLKhachThue {
         return arr;
     }
     
-   public static ArrayList<KhachThue> FindByMangMaOrTen(String TuKhoa) {
+   public static ArrayList<KhachThue> FindByMaKhachThue(String TuKhoa) {
 
         //Lấy tất cả dữ liệu Loại sản phẩm từ SQL
         ResultSet rs = DAL.DALKhachThue.FindByMaKhachThue(TuKhoa);
