@@ -166,7 +166,16 @@ public class FormChiTiet extends javax.swing.JDialog {
 
     private void btnHoaDonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHoaDonActionPerformed
         // TODO add your handling code here:
-        new HoaDon(null, true).setVisible(true);
+        HoaDon hd = new HoaDon(null, true);
+        ArrayList<DTO.PhongTro> arrPT =  BLL.BLLPhongTro.GetAll();
+        for (PhongTro phongTro : arrPT) {
+            if(phongTro.getTenPhong().equals(TenPhong.getText())){
+                hd.JLTenPhong.setText(phongTro.getTenPhong());
+                    ArrayList<PhongTro> arrOnlyPT = BLL.BLLPhongTro.FindOnlyMaPhong(TenPhong.getText());
+                    BLL.BLLPhongTro.doComboBox(arrOnlyPT,hd.cbbPhongTroHDPT);
+            }
+        }
+        hd.setVisible(true);
     }//GEN-LAST:event_btnHoaDonActionPerformed
 
     private void btnHopDongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHopDongActionPerformed

@@ -1430,6 +1430,11 @@ public class TrangChu extends javax.swing.JFrame {
         btnResetKH.setBackground(new java.awt.Color(255, 255, 255));
         btnResetKH.setFont(new java.awt.Font("UTM Times", 1, 14)); // NOI18N
         btnResetKH.setText("Làm Mới");
+        btnResetKH.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnResetKHActionPerformed(evt);
+            }
+        });
 
         txtTimKiemKH.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1886,7 +1891,7 @@ public class TrangChu extends javax.swing.JFrame {
                 .addComponent(btnTao, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnSua1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
                 .addComponent(btnXoaHopDong)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnLamMoi1, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -4320,6 +4325,12 @@ public class TrangChu extends javax.swing.JFrame {
         loadTB();
         
     }//GEN-LAST:event_btnXoaHopDongActionPerformed
+
+    private void btnResetKHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetKHActionPerformed
+        // TODO add your handling code here:
+        LamMoiKhachThue();
+        JOptionPane.showMessageDialog(this, "Làm Mới Thành Công !!");
+    }//GEN-LAST:event_btnResetKHActionPerformed
 
     /**
      * @param args the command line arguments
