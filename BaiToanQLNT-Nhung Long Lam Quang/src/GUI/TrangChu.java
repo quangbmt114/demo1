@@ -23,6 +23,7 @@ import java.awt.Image;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.File;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -229,6 +230,7 @@ public class TrangChu extends javax.swing.JFrame {
         BLL.BLLPhongTro.doComboBox(arrPT, cbbJtbHopDong);
         BLL.BLLHoatDongThuePhong.DoVaoTable(arrHD, tbHopDongThue);
         //set default value
+        LamMoi();
         dateNgayKy.setDate(new Date());
         rbDangThueAC.setSelected(true);
     }
@@ -1896,7 +1898,7 @@ public class TrangChu extends javax.swing.JFrame {
         btnXoaHopDong.setBackground(new java.awt.Color(255, 255, 255));
         btnXoaHopDong.setFont(new java.awt.Font("UTM Times", 1, 12)); // NOI18N
         btnXoaHopDong.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/delete.png"))); // NOI18N
-        btnXoaHopDong.setText("Cập Nhật");
+        btnXoaHopDong.setText("Xóa");
         btnXoaHopDong.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnXoaHopDongActionPerformed(evt);
@@ -1912,9 +1914,9 @@ public class TrangChu extends javax.swing.JFrame {
                 .addComponent(btnTao, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnSua1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
-                .addComponent(btnXoaHopDong)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnXoaHopDong, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnLamMoi1, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
             .addGroup(jPanel14Layout.createSequentialGroup()
@@ -1966,7 +1968,7 @@ public class TrangChu extends javax.swing.JFrame {
                             .addComponent(dateNgayKy, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btResetNgayTraHD)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
         jPanel14Layout.setVerticalGroup(
             jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2035,7 +2037,7 @@ public class TrangChu extends javax.swing.JFrame {
                     .addComponent(btnLamMoi1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnSua1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnTao)
-                    .addComponent(btnXoaHopDong, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnXoaHopDong, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(181, Short.MAX_VALUE))
         );
 
@@ -3305,6 +3307,14 @@ public class TrangChu extends javax.swing.JFrame {
     private void btnTaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaoActionPerformed
         // TODO add your handling code here:
         if (cbbMaKhachHang.getSelectedIndex() > 0 && cbbPhong.getSelectedIndex() > 0) {
+            if (dateNgayKetThuc.getDate() != null) {
+                Date ngaykt = dateNgayKetThuc.getDate();
+                Date ngayky = dateNgayKy.getDate();
+                if (ngayky.after(ngaykt)) {
+                    ThongBao.ThongBaoDonGian("Thông báo", "Ngày ký không được sau ngày kết thúc!");
+                    return;
+                }
+            }
             HoatDongThuePhong hoatDong = LayDataForm();
             if (!BLL.BLLHoatDongThuePhong.CheckMaHopDong(hoatDong.getMaHopDong())) {
                 ThongBao.ThongBaoDonGian("Thông báo", "Mã hợp đồng không hợp lệ!   ");
@@ -3325,6 +3335,7 @@ public class TrangChu extends javax.swing.JFrame {
         } else {
             ThongBao.ThongBaoDonGian("Thông báo", "Vui lòng chọn người thuê và phòng thuê!");
         }
+        LamMoi();
     }//GEN-LAST:event_btnTaoActionPerformed
 
     private void btnSua1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSua1ActionPerformed
@@ -3357,7 +3368,7 @@ public class TrangChu extends javax.swing.JFrame {
         BLL.BLLHoatDongThuePhong.DoVaoTable(arrHD, tbHopDongThue);
         ArrayList<DTO.PhongTro> list = BLL.BLLPhongTro.GetAll();
         BLL.BLLPhongTro.DoVaoTable(list, tblPhongTro);
-
+        LamMoi();
 
     }//GEN-LAST:event_btnSua1ActionPerformed
 
@@ -4048,7 +4059,8 @@ public class TrangChu extends javax.swing.JFrame {
         } catch (Exception e) {
             ThongBao.ThongBaoDonGian("Thông Báo", "Không xóa được");
         }
-
+//        arrHD =BLLHoatDongThuePhong.GetAll();
+//        BLLHoatDongThuePhong.DoVaoTable(arrHD, tbHopDongThue);
         loadTB();
     }//GEN-LAST:event_btnDelCSDNActionPerformed
 
@@ -4358,8 +4370,11 @@ public class TrangChu extends javax.swing.JFrame {
         } catch (Exception e) {
             ThongBao.ThongBaoDonGian("Thông Báo", "Chưa xóa");
         }
+        LamMoi();
+//        loadTB();
 
-        loadTB();
+        arrHD = BLLHoatDongThuePhong.GetAll();
+        BLLHoatDongThuePhong.DoVaoTable(arrHD, tbHopDongThue);
 
     }//GEN-LAST:event_btnXoaHopDongActionPerformed
 
@@ -4389,7 +4404,7 @@ public class TrangChu extends javax.swing.JFrame {
             arrHD = BLL.BLLHoatDongThuePhong.FindByMaHopDong(cbbJtbHopDong.getSelectedItem() + "");
             BLLHoatDongThuePhong.DoVaoTable(arrHD, tbHopDongThue);
         } else {
-           arrHD = BLL.BLLHoatDongThuePhong.GetAll();
+            arrHD = BLL.BLLHoatDongThuePhong.GetAll();
             BLLHoatDongThuePhong.DoVaoTable(arrHD, tbHopDongThue);
         }
     }//GEN-LAST:event_cbbJtbHopDongItemStateChanged
@@ -4400,7 +4415,7 @@ public class TrangChu extends javax.swing.JFrame {
             arrKT = BLL.BLLKhachThue.FindByMaKhachThue(cbbJtbKhachThue.getSelectedItem() + "");
             BLL.BLLKhachThue.DoVaoTable(arrKT, tblKhachThue);
         } else {
-           arrKT =BLL.BLLKhachThue.GetAll();
+            arrKT = BLL.BLLKhachThue.GetAll();
             BLL.BLLKhachThue.DoVaoTable(arrKT, tblKhachThue);
         }
     }//GEN-LAST:event_cbbJtbKhachThueItemStateChanged

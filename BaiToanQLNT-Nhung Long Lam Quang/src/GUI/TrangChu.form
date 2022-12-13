@@ -2318,9 +2318,9 @@
                               <Component id="btnTao" min="-2" pref="113" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="btnSua1" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="26" max="32767" attributes="0"/>
-                              <Component id="btnXoaHopDong" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="btnXoaHopDong" max="32767" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="btnLamMoi1" min="-2" pref="122" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
@@ -2381,7 +2381,7 @@
                                       <Component id="btResetNgayTraHD" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <EmptySpace max="32767" attributes="0"/>
+                              <EmptySpace pref="24" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -2467,7 +2467,7 @@
                                   <Component id="btnLamMoi1" alignment="3" max="32767" attributes="0"/>
                                   <Component id="btnSua1" alignment="3" max="32767" attributes="0"/>
                                   <Component id="btnTao" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="btnXoaHopDong" alignment="3" max="32767" attributes="0"/>
+                                  <Component id="btnXoaHopDong" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace pref="181" max="32767" attributes="0"/>
                           </Group>
@@ -2805,7 +2805,7 @@
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                           <Image iconType="3" name="/images/delete.png"/>
                         </Property>
-                        <Property name="text" type="java.lang.String" value="C&#x1ead;p Nh&#x1ead;t"/>
+                        <Property name="text" type="java.lang.String" value="X&#xf3;a"/>
                       </Properties>
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnXoaHopDongActionPerformed"/>
