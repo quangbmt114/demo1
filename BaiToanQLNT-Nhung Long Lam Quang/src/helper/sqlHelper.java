@@ -33,6 +33,19 @@ public class sqlHelper {
         }
     }
     
+    public static Connection getConnection() {
+        try {
+            Connection conn = null;
+            //khai bao can sử dụng
+            conn = DriverManager.getConnection(dburl, username, password);
+            System.out.println("connect thành công getcon qlysp");
+            return conn;
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.err.println("connect thất bại");
+        }
+        return null;
+    }
     /**
      * Xây dựng PreparedStatement
      * @param sql là câu lệnh SQL chứa có thể chứa tham số. Nó có thể là một lời gọi thủ tục lưu

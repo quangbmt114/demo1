@@ -135,6 +135,34 @@ public class BLLHoaDon {
         }
         return arr;
     }
+    public static ArrayList<HoaDonPhongTro> FindByMaHoaDon(String TuKhoa) {
+
+        //Lấy tất cả dữ liệu Loại sản phẩm từ SQL
+        ResultSet rs = DAL.DALHoaDonPhongTro.FindByMaHoaDon(TuKhoa);
+
+        ArrayList<HoaDonPhongTro> arr=new ArrayList<>();
+        try {
+            while (rs.next()) {
+                DTO.HoaDonPhongTro hdpt = new DTO.HoaDonPhongTro();
+                hdpt.setMaHoaDon(rs.getString("MaHoaDon"));
+                hdpt.setMaPhong(rs.getString("MaPhong"));
+                hdpt.setThangTieuThu(rs.getDate("ThangTieuThu"));
+                hdpt.setChiSoMoi(rs.getString("ChiSoMoi"));
+                hdpt.setChiSoCu(rs.getString("ChiSoCu"));
+                hdpt.setTongTienPhong(rs.getInt("TongTienPhong"));
+                hdpt.setTongTienDien(rs.getInt("TongTienDien"));
+                hdpt.setTongTienNuoc(rs.getInt("TongTienNuoc"));
+                hdpt.setTongTienDV(rs.getInt("TongTienDV"));
+                hdpt.setTongTien(rs.getInt("TongTien"));
+                hdpt.setGhiChu(rs.getString("GhiChu"));
+                arr.add(hdpt);
+            }
+            return arr;
+        } catch (SQLException ex) {
+            System.out.println("Lỗi lấy dữ liệu" + ex.getMessage());
+        }
+        return arr;
+    }
 
 //    public static void doComboBox(ArrayList<PhongTro> arr, JComboBox cbb) {
 //        DefaultComboBoxModel cbbModel = (DefaultComboBoxModel) cbb.getModel();

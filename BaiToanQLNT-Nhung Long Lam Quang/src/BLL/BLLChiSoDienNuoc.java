@@ -175,11 +175,11 @@ public class BLLChiSoDienNuoc {
                 cs.setSoDien(rs.getInt("SoDien"));
                 cs.setSoNuoc(rs.getInt("SoNuoc"));
                 cs.setNgayGhi(rs.getDate("NgayGhi"));
-                if (chiSo == 1) {
-                    arr.add(cs);
-                }
                 if (cs.getMaChiSo().equals(machisomoi)) {
                     chiSo = 1;
+                }
+                if (chiSo == 1) {
+                    arr.add(cs);
                 }
             }
         } catch (SQLException ex) {
