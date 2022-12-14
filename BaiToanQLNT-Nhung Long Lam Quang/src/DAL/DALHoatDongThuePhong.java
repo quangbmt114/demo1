@@ -95,17 +95,15 @@ public class DALHoatDongThuePhong {
                     0, sp.getMaHopDong());
         } else {
 
-//update HoatDongThuePhong set NgayTra=null where MaHopDong='PA0300000000001'
-            sql = "update HoatDongThuePhong set NgayTra=null where MaHopDong=?";
-            sqlHelper.executeUpdate(sql, sp.getMaHopDong());
-            sql = "if (select count(*) from hoatdongthuephong where MaNguoiThue= ? and tinhtrang=1)=0 UPDATE [dbo].[NguoiThue] SET [TrangThai] = 1 WHERE MaNguoiThue = ?";
-            sqlHelper.executeUpdate(sql, sp.getMaNguoiThue(), sp.getMaNguoiThue());
-            sql = "if (select count(*) from hoatdongthuephong where maphong= ? and tinhtrang=1)=0 UPDATE [dbo].[PhongTro] set[TrangThai] = 1 WHERE MaPhong=?";
-            sqlHelper.executeUpdate(sql, sp.getMaPhong(), sp.getMaPhong());
-            sql = "UPDATE [dbo].[HoatDongThuePhong] SET [MaPhong] = ? ,[MaNguoiThue] = ? ,[NgayThue] =? ,[GhiChu] = ?,[TinhTrang] = ? WHERE MaHopDong = ?";
+//            sql = "update HoatDongThuePhong set NgayTra=null where MaHopDong=?";
+//            sqlHelper.executeUpdate(sql, sp.getMaHopDong());
+//            sql = "if (select count(*) from hoatdongthuephong where MaNguoiThue= ? and tinhtrang=1)=0 UPDATE [dbo].[NguoiThue] SET [TrangThai] = 1 WHERE MaNguoiThue = ?";
+//            sqlHelper.executeUpdate(sql, sp.getMaNguoiThue(), sp.getMaNguoiThue());
+//            sql = "if (select count(*) from hoatdongthuephong where maphong= ? and tinhtrang=1)=0 UPDATE [dbo].[PhongTro] set[TrangThai] = 1 WHERE MaPhong=?";
+//            sqlHelper.executeUpdate(sql, sp.getMaPhong(), sp.getMaPhong());
+            sql = "UPDATE [dbo].[HoatDongThuePhong] SET [MaPhong] = ? ,[MaNguoiThue] = ? ,[NgayThue] =? ,[GhiChu] = ? WHERE MaHopDong = ?";
             sqlHelper.executeUpdate(sql, sp.getMaPhong(), sp.getMaNguoiThue(),
-                    ChuyenDoi.LayNgayString(sp.getNgayThue()), sp.getGhiChu(),
-                    1, sp.getMaHopDong());
+                    ChuyenDoi.LayNgayString(sp.getNgayThue()), sp.getGhiChu(), sp.getMaHopDong());
         }
 
 //        String sql = "UPDATE [dbo].[HoatDongThuePhong] SET [MaPhong] = ? ,[MaNguoiThue] = ? ,[NgayThue] =? ,[NgayTra] =?,[GhiChu] = ?,[TinhTrang] = ? WHERE MaHopDong = ?";

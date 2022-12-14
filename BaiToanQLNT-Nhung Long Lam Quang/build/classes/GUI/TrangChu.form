@@ -3030,7 +3030,6 @@
                                                                       <Component id="txtNgayGhiCuHD" alignment="0" min="-2" pref="89" max="-2" attributes="0"/>
                                                                       <Component id="txtSoDienCuHD" alignment="0" min="-2" pref="89" max="-2" attributes="0"/>
                                                                   </Group>
-                                                                  <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                                                               </Group>
                                                               <Group type="102" alignment="0" attributes="0">
                                                                   <Component id="jLabel90" min="-2" max="-2" attributes="0"/>
@@ -3073,11 +3072,13 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jLabel60" min="-2" pref="41" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabel61" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="jLabel62" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="txtMaHoaDonPT" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="cbbPhongTroHDPT" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jLabel61" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtMaHoaDonPT" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="cbbPhongTroHDPT" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">

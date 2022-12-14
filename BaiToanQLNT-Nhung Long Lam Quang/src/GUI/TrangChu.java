@@ -1136,7 +1136,7 @@ public class TrangChu extends javax.swing.JFrame {
         jPanel23.setLayout(jPanel23Layout);
         jPanel23Layout.setHorizontalGroup(
             jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, 0, Short.MAX_VALUE)
+            .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel23Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -2416,8 +2416,7 @@ public class TrangChu extends javax.swing.JFrame {
                                                         .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                                             .addComponent(txtSoNuocCuHD, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                             .addComponent(txtNgayGhiCuHD, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                            .addComponent(txtSoDienCuHD, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                        .addGap(10, 10, 10))
+                                                            .addComponent(txtSoDienCuHD, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                                     .addGroup(jPanel16Layout.createSequentialGroup()
                                                         .addComponent(jLabel90)
                                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -2445,11 +2444,12 @@ public class TrangChu extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel60, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel61)
+                .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel62)
-                    .addComponent(txtMaHoaDonPT)
-                    .addComponent(cbbPhongTroHDPT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel61)
+                        .addComponent(txtMaHoaDonPT)
+                        .addComponent(cbbPhongTroHDPT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel63)
@@ -3030,7 +3030,7 @@ public class TrangChu extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelMain, javax.swing.GroupLayout.DEFAULT_SIZE, 874, Short.MAX_VALUE)
+            .addComponent(panelMain, javax.swing.GroupLayout.PREFERRED_SIZE, 874, Short.MAX_VALUE)
             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
@@ -3334,6 +3334,7 @@ public class TrangChu extends javax.swing.JFrame {
     private void btnTaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaoActionPerformed
         // TODO add your handling code here:
         if (cbbMaKhachHang.getSelectedIndex() > 0 && cbbPhong.getSelectedIndex() > 0) {
+            HoatDongThuePhong hoatDong = LayDataForm();
             if (dateNgayKetThuc.getDate() != null) {
                 Date ngaykt = dateNgayKetThuc.getDate();
                 Date ngayky = dateNgayKy.getDate();
@@ -3342,12 +3343,11 @@ public class TrangChu extends javax.swing.JFrame {
                     return;
                 }
             }
-            HoatDongThuePhong hoatDong = LayDataForm();
             if (!BLL.BLLHoatDongThuePhong.CheckMaHopDong(hoatDong.getMaHopDong())) {
                 ThongBao.ThongBaoDonGian("Thông báo", "Mã hợp đồng không hợp lệ!   ");
 
             } else {
-                ThongBao.ThongBaoDonGian("Thông báo", "Mã hợp đồng hợp lệ!");
+                ThongBao.ThongBaoDonGian("Thông báo", "Mã hợp đồng hợp lệ, đã thêm!");
                 if (hoatDong.getNgayTra() != null) {
                     BLL.BLLHoatDongThuePhong.Add(hoatDong, 0);
                 } else {
@@ -3372,9 +3372,20 @@ public class TrangChu extends javax.swing.JFrame {
             HoatDongThuePhong hoatDong = LayDataForm();
             if (BLL.BLLHoatDongThuePhong.CheckMaHopDong(hoatDong.getMaHopDong())) {
                 ThongBao.ThongBaoDonGian("Thông báo", "Mã hợp đồng không tồn tại!   ");
-
             } else {
+            if (dateNgayKetThuc.getDate() != null) {
+                Date ngaykt = dateNgayKetThuc.getDate();
+                Date ngayky = dateNgayKy.getDate();
+                if (ngayky.after(ngaykt)) {
+                    ThongBao.ThongBaoDonGian("Thông báo", "Ngày ký không được sau ngày kết thúc!");
+                    return;
+                }
+            }
 //                ThongBao.ThongBaoDonGian("Thông báo", "Mã hợp đồng hợp lệ!");
+                if(!BLLHoatDongThuePhong.FindMaHopDong(txtMaHopDong.getText()).isTinhTrang()&&hoatDong.getNgayTra()==null){
+                    ThongBao.ThongBaoDonGian("Thông báo", "Không thể chỉnh hợp đồng từ đã kết thúc thành hoạt động!!");
+                    return;
+                }
                 if (hoatDong.getNgayTra() != null) {
                     BLL.BLLHoatDongThuePhong.Update(hoatDong, 0);
                 } else {
