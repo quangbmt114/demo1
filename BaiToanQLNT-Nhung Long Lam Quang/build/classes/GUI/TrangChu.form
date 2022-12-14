@@ -2940,15 +2940,16 @@
                                           </Group>
                                           <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
-                                              <Group type="102" attributes="0">
-                                                  <Component id="txtMaHoaDonPT" min="-2" pref="148" max="-2" attributes="0"/>
-                                                  <EmptySpace max="-2" attributes="0"/>
-                                                  <Component id="jLabel62" min="-2" max="-2" attributes="0"/>
-                                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                                  <Component id="cbbPhongTroHDPT" min="-2" pref="133" max="-2" attributes="0"/>
-                                              </Group>
                                               <Component id="txtDaiDienPhongHDPT" min="-2" max="-2" attributes="0"/>
                                               <Component id="txtMailLLHDPT" min="-2" max="-2" attributes="0"/>
+                                              <Group type="102" alignment="1" attributes="0">
+                                                  <Component id="txtMaHoaDonPT" min="-2" pref="200" max="-2" attributes="0"/>
+                                                  <EmptySpace max="-2" attributes="0"/>
+                                                  <Component id="jLabel62" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace max="-2" attributes="0"/>
+                                                  <Component id="cbbPhongTroHDPT" min="-2" pref="133" max="-2" attributes="0"/>
+                                                  <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+                                              </Group>
                                           </Group>
                                       </Group>
                                       <Group type="103" alignment="0" groupAlignment="1" attributes="0">
@@ -3002,15 +3003,15 @@
                                                   </Group>
                                                   <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                                      <Component id="jDateChooser2" alignment="0" max="32767" attributes="0"/>
+                                                      <Component id="jDateChooser2" alignment="0" min="-2" pref="319" max="-2" attributes="0"/>
                                                       <Group type="102" alignment="0" attributes="0">
                                                           <Group type="103" groupAlignment="0" attributes="0">
                                                               <Component id="cbbChiSoMoiHDPT" alignment="0" min="-2" pref="121" max="-2" attributes="0"/>
                                                               <Group type="102" alignment="0" attributes="0">
                                                                   <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
                                                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                                                      <Component id="txtSoNuocMoiHD" alignment="0" max="32767" attributes="0"/>
-                                                                      <Component id="txtNgayGhiMoiHD" alignment="0" max="32767" attributes="0"/>
+                                                                      <Component id="txtSoNuocMoiHD" alignment="0" min="-2" pref="89" max="-2" attributes="0"/>
+                                                                      <Component id="txtNgayGhiMoiHD" alignment="0" min="-2" pref="89" max="-2" attributes="0"/>
                                                                       <Component id="txtSoDienMoiHD" alignment="0" min="-2" pref="89" max="-2" attributes="0"/>
                                                                   </Group>
                                                               </Group>
@@ -3025,15 +3026,15 @@
                                                                   </Group>
                                                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                                                      <Component id="txtSoNuocCuHD" alignment="0" max="32767" attributes="0"/>
-                                                                      <Component id="txtNgayGhiCuHD" alignment="0" max="32767" attributes="0"/>
+                                                                      <Component id="txtSoNuocCuHD" alignment="0" min="-2" pref="89" max="-2" attributes="0"/>
+                                                                      <Component id="txtNgayGhiCuHD" alignment="0" min="-2" pref="89" max="-2" attributes="0"/>
                                                                       <Component id="txtSoDienCuHD" alignment="0" min="-2" pref="89" max="-2" attributes="0"/>
                                                                   </Group>
-                                                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                                                  <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                                                               </Group>
                                                               <Group type="102" alignment="0" attributes="0">
                                                                   <Component id="jLabel90" min="-2" max="-2" attributes="0"/>
-                                                                  <EmptySpace max="32767" attributes="0"/>
+                                                                  <EmptySpace min="-2" max="-2" attributes="0"/>
                                                                   <Component id="cbbChiSoCuHDPT" min="-2" pref="121" max="-2" attributes="0"/>
                                                               </Group>
                                                           </Group>
@@ -3042,7 +3043,7 @@
                                               </Group>
                                               <Group type="102" alignment="0" attributes="0">
                                                   <Component id="jLabel72" min="-2" max="-2" attributes="0"/>
-                                                  <EmptySpace max="32767" attributes="0"/>
+                                                  <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
                                                   <Component id="txtTienDichVuHDPT" min="-2" pref="371" max="-2" attributes="0"/>
                                               </Group>
                                           </Group>
@@ -3050,16 +3051,19 @@
                                       </Group>
                                       <Component id="jLabel73" alignment="0" min="-2" max="-2" attributes="0"/>
                                   </Group>
+                                  <EmptySpace max="32767" attributes="0"/>
                               </Group>
-                              <Group type="102" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
                                   <Component id="jButton1" min="-2" pref="141" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
-                                  <Component id="btnUpdHoaDonHDPT" min="-2" pref="140" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="74" max="-2" attributes="0"/>
-                                  <Component id="btnLamMoiHoaDon" min="-2" pref="141" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="btnUpdHoaDonHDPT" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="btnLamMoiHoaDon" max="32767" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="btnXuatHoaDon" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace pref="30" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -3071,9 +3075,9 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel61" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel62" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="cbbPhongTroHDPT" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel62" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="txtMaHoaDonPT" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="cbbPhongTroHDPT" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
@@ -3168,6 +3172,7 @@
                               <Component id="jButton1" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
                               <Component id="btnUpdHoaDonHDPT" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
                               <Component id="btnLamMoiHoaDon" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
+                              <Component id="btnXuatHoaDon" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace pref="246" max="32767" attributes="0"/>
                       </Group>
@@ -3218,7 +3223,7 @@
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/images/notebook_1.png"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="T&#x1ea1;o H&#xf3;a &#x110;&#x1a1;n"/>
+                    <Property name="text" type="java.lang.String" value="T&#x1ea1;o H&#x110;"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
@@ -3627,6 +3632,20 @@
                     <Property name="text" type="java.lang.String" value="   "/>
                   </Properties>
                 </Component>
+                <Component class="javax.swing.JButton" name="btnXuatHoaDon">
+                  <Properties>
+                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                    </Property>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="UTM Times" size="14" style="1"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="Xu&#x1ea5;t phi&#x1ebf;u"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnXuatHoaDonActionPerformed"/>
+                  </Events>
+                </Component>
               </SubComponents>
             </Container>
             <Container class="javax.swing.JPanel" name="jPanel17">
@@ -3639,12 +3658,12 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jScrollPane7" alignment="0" max="32767" attributes="0"/>
+                      <Component id="jScrollPane7" alignment="0" pref="726" max="32767" attributes="0"/>
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="72" max="-2" attributes="0"/>
-                          <Component id="jTextField12" min="-2" pref="491" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                           <Component id="cbbJtbHDPT" min="-2" pref="133" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="txtSearchHoaDon" min="-2" pref="350" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
@@ -3654,7 +3673,7 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jTextField12" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtSearchHoaDon" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="cbbJtbHDPT" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -3664,7 +3683,10 @@
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JTextField" name="jTextField12">
+                <Component class="javax.swing.JTextField" name="txtSearchHoaDon">
+                  <Events>
+                    <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtSearchHoaDonKeyReleased"/>
+                  </Events>
                 </Component>
                 <Container class="javax.swing.JScrollPane" name="jScrollPane7">
                   <AuxValues>
