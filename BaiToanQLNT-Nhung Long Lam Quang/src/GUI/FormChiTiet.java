@@ -171,7 +171,7 @@ public class FormChiTiet extends javax.swing.JDialog {
         for (PhongTro phongTro : arrPT) {
             if(phongTro.getTenPhong().equals(TenPhong.getText())){
                 hd.JLTenPhong.setText(phongTro.getTenPhong());
-                    ArrayList<PhongTro> arrOnlyPT = BLL.BLLPhongTro.FindOnlyMaPhong(TenPhong.getText());
+                    ArrayList<PhongTro> arrOnlyPT = BLL.BLLPhongTro.FindByMaPhong(phongTro.getMaPhong());
                     BLL.BLLPhongTro.doComboBox(arrOnlyPT,hd.cbbPhongTroHDPT);
             }
         }
@@ -187,9 +187,9 @@ public class FormChiTiet extends javax.swing.JDialog {
         for (PhongTro phongTro : arrPT) {
             if(phongTro.getTenPhong().equals(TenPhong.getText())){
                 hopDong.JLTenPhong.setText(phongTro.getTenPhong());
-                ArrayList<KhachThue> arrKT = BLL.BLLKhachThue.FindByMangMaOrTen(phongTro.getMaPhong());  
+                ArrayList<KhachThue> arrKT = BLL.BLLKhachThue.FindByMaKhachThue(phongTro.getMaPhong());  
                   BLL.BLLKhachThue.doComboBox(arrKT, cbbMaKhachHang);
-                    ArrayList<PhongTro> arrOnlyPT = BLL.BLLPhongTro.FindOnlyMaPhong(TenPhong.getText());
+                    ArrayList<PhongTro> arrOnlyPT = BLL.BLLPhongTro.FindByMaPhong(phongTro.getMaPhong());
                     BLL.BLLPhongTro.doComboBox(arrOnlyPT, cbbPhong);
                
             }

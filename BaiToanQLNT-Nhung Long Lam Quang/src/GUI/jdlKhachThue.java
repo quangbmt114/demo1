@@ -521,9 +521,9 @@ public class jdlKhachThue extends javax.swing.JDialog {
                 for (PhongTro pt : arrPT) {
 
                     if (TenPhong.equals(pt.getTenPhong())) {
-                        ArrayList<KhachThue> arrKT = BLL.BLLKhachThue.FindByMangMaOrTen(pt.getMaPhong());
+                        ArrayList<KhachThue> arrKT = BLL.BLLKhachThue.FindByMaKhachThue(pt.getMaPhong());
                         BLL.BLLKhachThue.doComboBox(arrKT, cbbMaKhachHang);
-                        ArrayList<PhongTro> arrOnlyPT = BLL.BLLPhongTro.FindOnlyMaPhong(TenPhong);
+                        ArrayList<PhongTro> arrOnlyPT = BLL.BLLPhongTro.FindByMaPhong(pt.getMaPhong());
                         BLL.BLLPhongTro.doComboBox(arrOnlyPT, cbbPhong);
                         hopdong.JLTenPhong.setText(TenPhong);
                     }

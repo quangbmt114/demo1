@@ -26,7 +26,7 @@ public class FormDaiDien extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         String MaPhong = JLabelDaiDien.getText();
-     ArrayList<KhachThue> arrKT = BLL.BLLKhachThue.FindByMangMaOrTen(MaPhong);
+     ArrayList<KhachThue> arrKT = BLL.BLLKhachThue.FindByMaKhachThue(MaPhong);
        
         BLL.BLLKhachThue.doComboBox(arrKT, cbbDaiDien);
        
@@ -107,7 +107,7 @@ public class FormDaiDien extends javax.swing.JDialog {
 
     private void btnXacNhanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXacNhanActionPerformed
         // TODO add your handling code here:
-        ArrayList<KhachThue> arrKT = BLL.BLLKhachThue.FindByMangMaOrTen(JLabelDaiDien.getText());
+        ArrayList<KhachThue> arrKT = BLL.BLLKhachThue.FindByMaKhachThue(JLabelDaiDien.getText());
         int dem = JOptionPane.YES_OPTION;
         for (KhachThue kt : arrKT) {
             if(kt.getMaNguoiThue().equalsIgnoreCase(cbbDaiDien.getSelectedItem().toString())){
