@@ -170,10 +170,10 @@ public class TrangChu extends javax.swing.JFrame {
                 btn[i] = new JButton();
                 btn[i].setName(String.valueOf(ListPhong.get(i).getMaPhong()));
                 String[] mb = ListPhong.get(i).getTenPhong().split(" ");
-                btn[i].setText("<html> " + mb[0] + " " + mb[1] +
-                        "<br> Số lượng khách : "+arrKT.size()+
-                        "<br>Trạng thái : "+ String.valueOf(ListPhong.get(i).isTrangThai() ? "Đã thuê" : "Chưa thuê") + "<html>");
-                 String fileAnhcd = "./src/images/house.png";
+                btn[i].setText("<html> " + mb[0] + " " + mb[1]
+                        + "<br> Số lượng khách : " + arrKT.size()
+                        + "<br>Trạng thái : " + String.valueOf(ListPhong.get(i).isTrangThai() ? "Đã thuê" : "Chưa thuê") + "<html>");
+                String fileAnhcd = "./src/images/house.png";
                 ImageIcon icon = new ImageIcon(new ImageIcon(fileAnhcd).getImage().getScaledInstance(100, 70, Image.SCALE_SMOOTH));
                 btn[i].setIcon(icon);
                 Border thickBorder = new LineBorder(Color.WHITE, 4);
@@ -3269,12 +3269,12 @@ public class TrangChu extends javax.swing.JFrame {
         rbDangThue.setSelected(false);
         rbDaTra.setSelected(false);
         String fileAnhcd = "./src/images/man-128px.png";
-            ImageIcon iconAnhCD = new ImageIcon(new ImageIcon(fileAnhcd).getImage().getScaledInstance(140, 180, Image.SCALE_SMOOTH));
-            ImageIcon iconAnhCMNDtrc = new ImageIcon(new ImageIcon(fileAnhcd).getImage().getScaledInstance(180, 140, Image.SCALE_SMOOTH));
-            ImageIcon iconAnhCMNDSau = new ImageIcon(new ImageIcon(fileAnhcd).getImage().getScaledInstance(180, 140, Image.SCALE_SMOOTH));
-            JLHinhAnh.setIcon(iconAnhCD);
-            JLHinhCMNDTrc.setIcon(iconAnhCMNDtrc);
-            JLHinhCMNDSau.setIcon(iconAnhCMNDSau);
+        ImageIcon iconAnhCD = new ImageIcon(new ImageIcon(fileAnhcd).getImage().getScaledInstance(140, 180, Image.SCALE_SMOOTH));
+        ImageIcon iconAnhCMNDtrc = new ImageIcon(new ImageIcon(fileAnhcd).getImage().getScaledInstance(180, 140, Image.SCALE_SMOOTH));
+        ImageIcon iconAnhCMNDSau = new ImageIcon(new ImageIcon(fileAnhcd).getImage().getScaledInstance(180, 140, Image.SCALE_SMOOTH));
+        JLHinhAnh.setIcon(iconAnhCD);
+        JLHinhCMNDTrc.setIcon(iconAnhCMNDtrc);
+        JLHinhCMNDSau.setIcon(iconAnhCMNDSau);
     }
 
     public void khackThue(KhachThue khach) {
@@ -3332,16 +3332,16 @@ public class TrangChu extends javax.swing.JFrame {
             if (BLL.BLLHoatDongThuePhong.CheckMaHopDong(hoatDong.getMaHopDong())) {
                 ThongBao.ThongBaoDonGian("Thông báo", "Mã hợp đồng không tồn tại!   ");
             } else {
-            if (dateNgayKetThuc.getDate() != null) {
-                Date ngaykt = dateNgayKetThuc.getDate();
-                Date ngayky = dateNgayKy.getDate();
-                if (ngayky.after(ngaykt)) {
-                    ThongBao.ThongBaoDonGian("Thông báo", "Ngày ký không được sau ngày kết thúc!");
-                    return;
+                if (dateNgayKetThuc.getDate() != null) {
+                    Date ngaykt = dateNgayKetThuc.getDate();
+                    Date ngayky = dateNgayKy.getDate();
+                    if (ngayky.after(ngaykt)) {
+                        ThongBao.ThongBaoDonGian("Thông báo", "Ngày ký không được sau ngày kết thúc!");
+                        return;
+                    }
                 }
-            }
 //                ThongBao.ThongBaoDonGian("Thông báo", "Mã hợp đồng hợp lệ!");
-                if(!BLLHoatDongThuePhong.FindMaHopDong(txtMaHopDong.getText()).isTinhTrang()&&hoatDong.getNgayTra()==null){
+                if (!BLLHoatDongThuePhong.FindMaHopDong(txtMaHopDong.getText()).isTinhTrang() && hoatDong.getNgayTra() == null) {
                     ThongBao.ThongBaoDonGian("Thông báo", "Không thể chỉnh hợp đồng từ đã kết thúc thành hoạt động!!");
                     return;
                 }
@@ -3913,7 +3913,7 @@ public class TrangChu extends javax.swing.JFrame {
         JLQLHoaDon.setBackground(Color.decode("#33ccff"));
         JLQLDichVu.setBackground(Color.decode("#33ccff"));
         JLQLDienNuoc.setBackground(Color.decode("#3333ff"));
-        
+
         arrPT = BLLPhongTro.GetAll();
         BLLPhongTro.doComboBox(arrPT, cbMaPhongQLDN);
         BLLPhongTro.doComboBox(arrPT, cbPhongtbQLCSDN);
@@ -4276,33 +4276,37 @@ public class TrangChu extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         String maHoaDon = txtMaHoaDonPT.getText();
-        if (maHoaDon != null || jDateChooser2.getDate() == null) {
-            try {
-                String maPhong = cbbPhongTroHDPT.getSelectedItem() + "";
-                String chiSoMoi = cbbChiSoMoiHDPT.getSelectedItem() + "";
-                String chiSoCu = cbbChiSoCuHDPT.getSelectedItem() + "";
-                Date ngayGhi = jDateChooser2.getDate();
-                int tienDien = (int) ChuyenDoi.SoDouble(txtTienDienHDPT.getText());
-                int tienPhong = (int) ChuyenDoi.SoDouble(txtTienPhongHDPT.getText());
-                int tienNuoc = (int) ChuyenDoi.SoDouble(txtTienNuocHDPT.getText());
-                int tienDV = (int) ChuyenDoi.SoDouble(txtTienDichVuHDPT.getText());
-                int tongTien = (int) ChuyenDoi.SoDouble(txtTongTienHDPT.getText());
-                String ghiChu = null;
-                BLLHoaDon.Add(new HoaDonPhongTro(maHoaDon, maPhong, ngayGhi, chiSoMoi, chiSoCu, tienPhong, tienDien, tienNuoc, tienDV, tongTien, ghiChu));
-                ThongBao.ThongBaoDonGian("Thông báo", "Đã thêm");
+        if (!txtDaiDienPhongHDPT.getText().equals("   ") ){
+            if (maHoaDon != null || jDateChooser2.getDate() == null) {
+                try {
+                    String maPhong = cbbPhongTroHDPT.getSelectedItem() + "";
+                    String chiSoMoi = cbbChiSoMoiHDPT.getSelectedItem() + "";
+                    String chiSoCu = cbbChiSoCuHDPT.getSelectedItem() + "";
+                    Date ngayGhi = jDateChooser2.getDate();
+                    int tienDien = (int) ChuyenDoi.SoDouble(txtTienDienHDPT.getText());
+                    int tienPhong = (int) ChuyenDoi.SoDouble(txtTienPhongHDPT.getText());
+                    int tienNuoc = (int) ChuyenDoi.SoDouble(txtTienNuocHDPT.getText());
+                    int tienDV = (int) ChuyenDoi.SoDouble(txtTienDichVuHDPT.getText());
+                    int tongTien = (int) ChuyenDoi.SoDouble(txtTongTienHDPT.getText());
+                    String ghiChu = null;
+                    BLLHoaDon.Add(new HoaDonPhongTro(maHoaDon, maPhong, ngayGhi, chiSoMoi, chiSoCu, tienPhong, tienDien, tienNuoc, tienDV, tongTien, ghiChu));
+                    ThongBao.ThongBaoDonGian("Thông báo", "Đã thêm");
 
-            } catch (Exception e) {
+                } catch (Exception e) {
 
-                ThongBao.ThongBaoDonGian("Thông báo", "Hóa đơn đã tồn tại hoặc sai thông tin, vui lòng kiểm tra lại!!");
+                    ThongBao.ThongBaoDonGian("Thông báo", "Hóa đơn đã tồn tại hoặc sai thông tin, vui lòng kiểm tra lại!!");
+                }
+            } else {
+                ThongBao.ThongBaoDonGian("Thông báo", "Chưa đủ thông tin!!");
             }
         } else {
-            ThongBao.ThongBaoDonGian("Thông báo", "Chưa đủ thông tin!!");
+            ThongBao.ThongBaoDonGian("Thông báo", "Phòng không có đại diện hoặc đang trống!!");
         }
         arrHDPT = BLL.BLLHoaDon.GetAll();
         BLL.BLLHoaDon.DoVaoTable(arrHDPT, jTblHoaDon);
     }//GEN-LAST:event_jButton1ActionPerformed
-                                            
-    public void XuatPhieuThu(String MaHoaDon) {
+
+    public static void XuatPhieuThu(String MaHoaDon) {
         try {
             Hashtable map = new Hashtable();
             JasperReport jasper = JasperCompileManager.compileReport("src/GUI/rptPhieuThu.jrxml");
@@ -4347,8 +4351,7 @@ public class TrangChu extends javax.swing.JFrame {
 
     private void btnLamMoiHoaDonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLamMoiHoaDonActionPerformed
         // TODO add your handling code here:
-        
-        XuatPhieuThu(txtMaHoaDonPT.getText());
+
         btnUpdHoaDonHDPT.setEnabled(false);
         txtMaHoaDonPT.setText("Mã hóa đơn");
         cbbPhongTroHDPT.setSelectedIndex(0);
@@ -4486,7 +4489,7 @@ public class TrangChu extends javax.swing.JFrame {
 //            }
 //                ThongBao.ThongBaoDonGian("Thông Báo", "Đã xóa");
             } catch (Exception e) {
-                ThongBao.ThongBaoDonGian("Thông Báo", "Khong xuất được!!");
+                ThongBao.ThongBaoDonGian("Thông Báo", "Không xuất được!!");
             }
 //        DTO.frmDichVu dv = new DTO.frmDichVu(txtMaDichVu.getText(), txtTenDichVu.getText(),
 //                Float.parseFloat(txtGia.getText()), (String) cbbDonViTinh.getSelectedItem(),
