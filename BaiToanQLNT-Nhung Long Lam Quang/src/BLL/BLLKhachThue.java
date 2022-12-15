@@ -53,6 +53,35 @@ public class BLLKhachThue {
         return arr;
 
     }
+    public static ArrayList<KhachThue> CountKhachThue() {
+        //Lấy tất cả dữ liệu từ SQL
+        ResultSet rs = DAL.DALKhachThue.CountKhachThue();
+        ArrayList<KhachThue> arr = new ArrayList<>();
+        try {
+            while (rs.next()) {
+                KhachThue kh = new KhachThue();
+                kh.setMaNguoiThue(rs.getString("MaNguoiThue"));
+                kh.setTenNguoiThue(rs.getString("TenNguoiThue"));
+                kh.setCMND(rs.getString("CMND"));
+                kh.setSDT(rs.getString("SDT"));
+                kh.setEmail(rs.getString("Email"));
+                kh.setDiaChi(rs.getString("DiaChi"));
+                kh.setNgaySinh(rs.getString("NgaySinh"));
+                kh.setNgayTaoDT(rs.getString("NgayTaoDT"));
+                kh.setGioiTinh(rs.getByte("GioiTinh") == 0 ? false : true);
+                kh.setTrangThai(rs.getByte("TrangThai") == 0 ? false : true);
+                kh.setAnhCD(rs.getString("AnhChanDung"));
+                kh.setAnhCCTruoc(rs.getString("AnhCCTruoc"));
+                kh.setAnhCCSau(rs.getString("AnhCCSau"));
+                arr.add(kh);
+//                System.out.println(nv.getMaNhanVien());
+            }
+        } catch (SQLException ex) {
+            System.out.println("Lỗi lấy dữ liệu" + ex.getMessage());
+        }
+        return arr;
+
+    }
 
     public static void DoVaoTable(ArrayList<KhachThue> arr, JTable tblKhachThue) {
         DefaultTableModel tbModel = (DefaultTableModel) tblKhachThue.getModel();

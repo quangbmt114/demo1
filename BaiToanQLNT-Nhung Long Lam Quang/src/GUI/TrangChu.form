@@ -3023,7 +3023,7 @@
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="btnUpdHoaDonHDPT" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="btnLamMoiHoaDon" max="32767" attributes="0"/>
+                                  <Component id="btnLamMoiHoaDon" pref="119" max="32767" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="btnXuatHoaDon" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>

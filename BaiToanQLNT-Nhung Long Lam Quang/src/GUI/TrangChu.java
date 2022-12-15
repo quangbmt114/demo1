@@ -13,6 +13,7 @@ import DTO.KhachThue;
 import DTO.LoaiPhong;
 import DTO.PhongTro;
 import static GUI.FormDaiDien.cbbDaiDien;
+import groovy.time.TimeCategory;
 import helper.ChuyenDoi;
 import helper.MyCombobox;
 import helper.ThongBao;
@@ -42,6 +43,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
+import javax.swing.Timer;
 import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
 import javax.swing.table.DefaultTableModel;
@@ -60,6 +62,8 @@ public class TrangChu extends javax.swing.JFrame {
     /**
      * Creates new form NewJFrame1
      */
+    
+    
     ArrayList<DTO.LoaiPhong> listLoai = BLL.BLLLoaiPhong.GetAll();
     ArrayList<HoatDongThuePhong> arrHD = new ArrayList<>();
     ArrayList<KhachThue> arrKT = new ArrayList<>();
@@ -73,6 +77,8 @@ public class TrangChu extends javax.swing.JFrame {
 
     public TrangChu() {
         initComponents();
+        Date now = new Date();
+        System.out.println(now.getMonth()+1);
         ArrayList<LoaiPhong> listLP = BLL.BLLLoaiPhong.GetAll();
         BLL.BLLLoaiPhong.DoVaoTable(listLP, tblLoaiPhong);
         ArrayList<KhachThue> listKH = BLL.BLLKhachThue.GetAll();
@@ -82,11 +88,12 @@ public class TrangChu extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         setExtendedState(JFrame.MAXIMIZED_BOTH);
         DongHo();
+        ArrayList<KhachThue> arrCountKT = BLLKhachThue.CountKhachThue();
         ArrayList<DTO.PhongTro> list = BLL.BLLPhongTro.GetAll();
         BLL.BLLPhongTro.DoVaoTable(list, tblPhongTro);
         //lấy dữ liệu ddataabase và setText Thống kê lương người đang thuê phòng
         ArrayList<DTO.KhachThue> listKhachThue = BLL.BLLKhachThue.GetAll();
-        txtSoLuongNguoiThue.setText(String.valueOf(listKhachThue.size()));
+        txtSoLuongNguoiThue.setText(String.valueOf(arrCountKT.size()));
 
         FillPhong();
         ArrayList<DTO.PhongTro> listPhongTro = BLL.BLLPhongTro.GetAll();
