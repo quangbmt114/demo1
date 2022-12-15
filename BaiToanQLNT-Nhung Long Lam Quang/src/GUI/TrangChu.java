@@ -3316,6 +3316,13 @@ public class TrangChu extends javax.swing.JFrame {
         rbNu.setSelected(false);
         rbDangThue.setSelected(false);
         rbDaTra.setSelected(false);
+        String fileAnhcd = "./src/images/man-128px.png";
+            ImageIcon iconAnhCD = new ImageIcon(new ImageIcon(fileAnhcd).getImage().getScaledInstance(140, 180, Image.SCALE_SMOOTH));
+            ImageIcon iconAnhCMNDtrc = new ImageIcon(new ImageIcon(fileAnhcd).getImage().getScaledInstance(180, 140, Image.SCALE_SMOOTH));
+            ImageIcon iconAnhCMNDSau = new ImageIcon(new ImageIcon(fileAnhcd).getImage().getScaledInstance(180, 140, Image.SCALE_SMOOTH));
+            JLHinhAnh.setIcon(iconAnhCD);
+            JLHinhCMNDTrc.setIcon(iconAnhCMNDtrc);
+            JLHinhCMNDSau.setIcon(iconAnhCMNDSau);
     }
 
     public void khackThue(KhachThue khach) {

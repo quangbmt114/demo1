@@ -62,6 +62,11 @@ public class FormDaiDien extends javax.swing.JDialog {
         });
 
         jButton2.setText("Hủy Bỏ");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         JLabelDaiDien.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         JLabelDaiDien.setText("Đại diện");
@@ -129,6 +134,11 @@ public class FormDaiDien extends javax.swing.JDialog {
          
         
     }//GEN-LAST:event_btnXacNhanActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        setVisible(false);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
