@@ -101,6 +101,7 @@ public class TrangChu extends javax.swing.JFrame {
 
         CardLayout layout = (CardLayout) panelMain.getLayout();
         layout.show(panelMain, "TrangChu");
+        JLQLPhong.setBackground(Color.decode("#3333ff"));
     }
 
     public void LamMoiLoaiPhong() {
@@ -226,10 +227,10 @@ public class TrangChu extends javax.swing.JFrame {
 
     public void openedPanelHopDong() {// load thông tin panel hợp đồng
         //set kích thước table
-        tbHopDongThue.getColumnModel().getColumn(0).setPreferredWidth(105);
-        tbHopDongThue.getColumnModel().getColumn(1).setPreferredWidth(40);
-        tbHopDongThue.getColumnModel().getColumn(2).setPreferredWidth(80);
-        tbHopDongThue.getColumnModel().getColumn(3).setPreferredWidth(125);
+        tblHopDongThue.getColumnModel().getColumn(0).setPreferredWidth(105);
+        tblHopDongThue.getColumnModel().getColumn(1).setPreferredWidth(40);
+        tblHopDongThue.getColumnModel().getColumn(2).setPreferredWidth(80);
+        tblHopDongThue.getColumnModel().getColumn(3).setPreferredWidth(125);
         //dổ dữ liệu vào bảng
         arrHD = BLL.BLLHoatDongThuePhong.GetAll();
         arrKT = BLL.BLLKhachThue.GetAll();
@@ -238,7 +239,7 @@ public class TrangChu extends javax.swing.JFrame {
         arrPT = BLL.BLLPhongTro.GetAll();
         BLL.BLLPhongTro.doComboBox(arrPT, cbbPhong);
         BLL.BLLPhongTro.doComboBox(arrPT, cbbJtbHopDong);
-        BLL.BLLHoatDongThuePhong.DoVaoTable(arrHD, tbHopDongThue);
+        BLL.BLLHoatDongThuePhong.DoVaoTable(arrHD, tblHopDongThue);
         //set default value
         LamMoi();
         dateNgayKy.setDate(new Date());
@@ -458,7 +459,7 @@ public class TrangChu extends javax.swing.JFrame {
         btResetNgayTraHD = new javax.swing.JButton();
         btnXoaHopDong = new javax.swing.JButton();
         jScrollPane5 = new javax.swing.JScrollPane();
-        tbHopDongThue = new javax.swing.JTable();
+        tblHopDongThue = new javax.swing.JTable();
         jLabel53 = new javax.swing.JLabel();
         txtTimKiemHopDong = new javax.swing.JTextField();
         cbbJtbHopDong = new javax.swing.JComboBox<>();
@@ -2024,7 +2025,7 @@ public class TrangChu extends javax.swing.JFrame {
                 .addContainerGap(181, Short.MAX_VALUE))
         );
 
-        tbHopDongThue.setModel(new javax.swing.table.DefaultTableModel(
+        tblHopDongThue.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null},
@@ -2035,12 +2036,12 @@ public class TrangChu extends javax.swing.JFrame {
                 "Mã HĐ", "Phòng", "Mã người thuê", "Tên KH", "Ngày ký", "Ngày kết thúc", "Ghi chú", "Trạng thái"
             }
         ));
-        tbHopDongThue.addMouseListener(new java.awt.event.MouseAdapter() {
+        tblHopDongThue.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tbHopDongThueMouseClicked(evt);
+                tblHopDongThueMouseClicked(evt);
             }
         });
-        jScrollPane5.setViewportView(tbHopDongThue);
+        jScrollPane5.setViewportView(tblHopDongThue);
 
         jLabel53.setBackground(new java.awt.Color(0, 204, 255));
         jLabel53.setFont(new java.awt.Font("UTM Times", 1, 36)); // NOI18N
@@ -2409,7 +2410,7 @@ public class TrangChu extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnUpdHoaDonHDPT)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnLamMoiHoaDon, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnLamMoiHoaDon, javax.swing.GroupLayout.DEFAULT_SIZE, 119, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnXuatHoaDon)
                         .addGap(46, 46, 46))))
@@ -2555,7 +2556,7 @@ public class TrangChu extends javax.swing.JFrame {
         jPanel17.setLayout(jPanel17Layout);
         jPanel17Layout.setHorizontalGroup(
             jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 755, Short.MAX_VALUE)
+            .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 757, Short.MAX_VALUE)
             .addGroup(jPanel17Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(cbbJtbHDPT, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -3002,7 +3003,7 @@ public class TrangChu extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(panelMain, javax.swing.GroupLayout.DEFAULT_SIZE, 1334, Short.MAX_VALUE))
+                .addComponent(panelMain, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -3016,6 +3017,8 @@ public class TrangChu extends javax.swing.JFrame {
 
     private void panelQLLPMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelQLLPMouseClicked
         // TODO add your handling code here:
+        ArrayList<LoaiPhong> listKH = BLL.BLLLoaiPhong.GetAll();
+        BLL.BLLLoaiPhong.DoVaoTable(listKH, tblLoaiPhong);
         CardLayout layout = (CardLayout) panelMain.getLayout();
         layout.show(panelMain, "LoaiPhong");
         JLQLPhong.setBackground(Color.decode("#33ccff"));
@@ -3046,6 +3049,8 @@ public class TrangChu extends javax.swing.JFrame {
 
     private void panelHopDongMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelHopDongMouseClicked
         // TODO add your handling code here:
+        ArrayList<HoatDongThuePhong> listKH = BLL.BLLHoatDongThuePhong.GetAll();
+        BLL.BLLHoatDongThuePhong.DoVaoTable(listKH, tblHopDongThue);
         CardLayout layout = (CardLayout) panelMain.getLayout();
         layout.show(panelMain, "HopDong");
         JLQLPhong.setBackground(Color.decode("#33ccff"));
@@ -3060,6 +3065,8 @@ public class TrangChu extends javax.swing.JFrame {
 
     private void panelHoaDonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelHoaDonMouseClicked
         // TODO add your handling code here:
+        ArrayList<HoaDonPhongTro> listKH = BLL.BLLHoaDon.GetAll();
+        BLL.BLLHoaDon.DoVaoTable(listKH, jTblHoaDon);
         CardLayout layout = (CardLayout) panelMain.getLayout();
         layout.show(panelMain, "HoaDon");
         JLQLPhong.setBackground(Color.decode("#33ccff"));
@@ -3083,6 +3090,8 @@ public class TrangChu extends javax.swing.JFrame {
 
     private void panelDichVuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelDichVuMouseClicked
         // TODO add your handling code here:
+        ArrayList<DichVu> listKH = BLL.BLLDichVu.GetAll();
+        BLL.BLLDichVu.DoVaoTable(listKH, tblDIchVu);
         CardLayout layout = (CardLayout) panelMain.getLayout();
         layout.show(panelMain, "DichVu");
         JLQLPhong.setBackground(Color.decode("#33ccff"));
@@ -3299,7 +3308,7 @@ public class TrangChu extends javax.swing.JFrame {
 //                LamMoi();
             }
             arrHD = BLL.BLLHoatDongThuePhong.GetAll();
-            BLL.BLLHoatDongThuePhong.DoVaoTable(arrHD, tbHopDongThue);
+            BLL.BLLHoatDongThuePhong.DoVaoTable(arrHD, tblHopDongThue);
             ArrayList<DTO.PhongTro> list = BLL.BLLPhongTro.GetAll();
             BLL.BLLPhongTro.DoVaoTable(list, tblPhongTro);
         } else {
@@ -3346,7 +3355,7 @@ public class TrangChu extends javax.swing.JFrame {
 //        }
 
         arrHD = BLL.BLLHoatDongThuePhong.GetAll();
-        BLL.BLLHoatDongThuePhong.DoVaoTable(arrHD, tbHopDongThue);
+        BLL.BLLHoatDongThuePhong.DoVaoTable(arrHD, tblHopDongThue);
         ArrayList<DTO.PhongTro> list = BLL.BLLPhongTro.GetAll();
         BLL.BLLPhongTro.DoVaoTable(list, tblPhongTro);
         LamMoi();
@@ -3401,39 +3410,39 @@ public class TrangChu extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton5ActionPerformed
 
-    private void tbHopDongThueMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbHopDongThueMouseClicked
+    private void tblHopDongThueMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblHopDongThueMouseClicked
         // TODO add your handling code here:
-        int dongDangChon = tbHopDongThue.getSelectedRow();
+        int dongDangChon = tblHopDongThue.getSelectedRow();
         if (dongDangChon < 0) {
             return;//Thoát
         }
         //Phòng và thông tin phòng thêm vào đây
-        PhongTro phongChon = BLL.BLLPhongTro.FindMaPhong(tbHopDongThue.getValueAt(dongDangChon, 1).toString());
+        PhongTro phongChon = BLL.BLLPhongTro.FindMaPhong(tblHopDongThue.getValueAt(dongDangChon, 1).toString());
         BLL.BLLPhongTro.HienThiPhongTroCBB(cbbPhong, phongChon.getMaPhong().toString());
         phong(phongChon);
         //phòng
 
-        KhachThue khach = BLL.BLLKhachThue.FindByMaNguoiThue(tbHopDongThue.getValueAt(dongDangChon, 2).toString());
+        KhachThue khach = BLL.BLLKhachThue.FindByMaNguoiThue(tblHopDongThue.getValueAt(dongDangChon, 2).toString());
         BLL.BLLKhachThue.HienThiKhachThueCBB(cbbMaKhachHang, khach.getMaNguoiThue());//tbHopDongThue.getValueAt(dongDangChon, 3).toString()
         khackThue(khach);
-        dateNgayKy.setDate(ChuyenDoi.LayNgayDate(tbHopDongThue.getValueAt(dongDangChon, 4).toString()));
-        if (tbHopDongThue.getValueAt(dongDangChon, 5) != null) {
-            dateNgayKetThuc.setDate(ChuyenDoi.LayNgayDate(tbHopDongThue.getValueAt(dongDangChon, 5).toString()));
+        dateNgayKy.setDate(ChuyenDoi.LayNgayDate(tblHopDongThue.getValueAt(dongDangChon, 4).toString()));
+        if (tblHopDongThue.getValueAt(dongDangChon, 5) != null) {
+            dateNgayKetThuc.setDate(ChuyenDoi.LayNgayDate(tblHopDongThue.getValueAt(dongDangChon, 5).toString()));
         } else {
             dateNgayKetThuc.setCalendar(null);
         }
-        if (tbHopDongThue.getValueAt(dongDangChon, 6) != null) {
-            txtGhiChu.setText(tbHopDongThue.getValueAt(dongDangChon, 6).toString());
+        if (tblHopDongThue.getValueAt(dongDangChon, 6) != null) {
+            txtGhiChu.setText(tblHopDongThue.getValueAt(dongDangChon, 6).toString());
         } else {
             txtGhiChu.setText(null);
         }
-        if (tbHopDongThue.getValueAt(dongDangChon, 7).toString() == "Đang thuê") {
+        if (tblHopDongThue.getValueAt(dongDangChon, 7).toString() == "Đang thuê") {
             rbDangThueAC.setSelected(true);
         } else {
             rbDangThueAC.setSelected(false);
         }
-        txtMaHopDong.setText(tbHopDongThue.getValueAt(dongDangChon, 0).toString());
-    }//GEN-LAST:event_tbHopDongThueMouseClicked
+        txtMaHopDong.setText(tblHopDongThue.getValueAt(dongDangChon, 0).toString());
+    }//GEN-LAST:event_tblHopDongThueMouseClicked
 
     private void btnThem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThem1ActionPerformed
         // TODO add your handling code here:
@@ -3839,7 +3848,7 @@ public class TrangChu extends javax.swing.JFrame {
         // TODO add your handling code here:
         String tukhoa = txtTimKiemHopDong.getText();
         arrHD = BLL.BLLHoatDongThuePhong.FindByMaHopDongOrMaNguoiThue(tukhoa);
-        BLL.BLLHoatDongThuePhong.DoVaoTable(arrHD, tbHopDongThue);
+        BLL.BLLHoatDongThuePhong.DoVaoTable(arrHD, tblHopDongThue);
 //        ArrayList<Phong> arrSP = BLL.BLLPhong.FindByName(tukhoa);
 //        BLL.BLLPhong.doDataTable(arrSP, tblPhong);
 
@@ -3886,6 +3895,8 @@ public class TrangChu extends javax.swing.JFrame {
 
     private void panelDienNuocMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelDienNuocMouseClicked
         // TODO add your handling code here:
+        ArrayList<ChiSoDienNuoc> listKH = BLL.BLLChiSoDienNuoc.GetAll();
+        BLL.BLLChiSoDienNuoc.DoVaoTable(listKH, tbDienNuocQLCS);
         CardLayout layout = (CardLayout) panelMain.getLayout();
         layout.show(panelMain, "DienNuoc");
         JLQLPhong.setBackground(Color.decode("#33ccff"));
@@ -4350,7 +4361,7 @@ public class TrangChu extends javax.swing.JFrame {
 
     private void btnXoaHopDongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaHopDongActionPerformed
         // TODO add your handling code here:
-        int dongDangChon = tbHopDongThue.getSelectedRow();
+        int dongDangChon = tblHopDongThue.getSelectedRow();
         if (dongDangChon < 0) {
             ThongBao.ThongBaoDonGian("Thông Báo", "Bạn chưa chọn đối tượng cần xóa");
         } else {
@@ -4361,7 +4372,7 @@ public class TrangChu extends javax.swing.JFrame {
         }
         //Lấy danh sách các sp  cần xóa
         try {
-            int dongCanXoa[] = tbHopDongThue.getSelectedRows();
+            int dongCanXoa[] = tblHopDongThue.getSelectedRows();
 
 //            MyCombobox tenPhong = (MyCombobox) cbMaPhongQLDN.getSelectedItem();
 //            System.out.println(cbMaPhongQLDN.getSelectedItem());
@@ -4371,7 +4382,7 @@ public class TrangChu extends javax.swing.JFrame {
             for (int i = 0; i < dongCanXoa.length; i++) {
 //                    String maPhong = arrP.get(0).getMaPhong();
 //                    Date ngayGhi = ChuyenDoi.LayNgayDate(tbDienNuoc.getValueAt(dongCanXoa[i], 0).toString());
-                BLL.BLLHoatDongThuePhong.Delete(tbHopDongThue.getValueAt(dongDangChon, 0).toString(), tbHopDongThue.getValueAt(dongDangChon, 1).toString(), tbHopDongThue.getValueAt(dongDangChon, 2).toString());
+                BLL.BLLHoatDongThuePhong.Delete(tblHopDongThue.getValueAt(dongDangChon, 0).toString(), tblHopDongThue.getValueAt(dongDangChon, 1).toString(), tblHopDongThue.getValueAt(dongDangChon, 2).toString());
             }
 //            }
             ThongBao.ThongBaoDonGian("Thông Báo", "Đã xóa");
@@ -4382,7 +4393,7 @@ public class TrangChu extends javax.swing.JFrame {
 //        loadTB();
 
         arrHD = BLLHoatDongThuePhong.GetAll();
-        BLLHoatDongThuePhong.DoVaoTable(arrHD, tbHopDongThue);
+        BLLHoatDongThuePhong.DoVaoTable(arrHD, tblHopDongThue);
 
     }//GEN-LAST:event_btnXoaHopDongActionPerformed
 
@@ -4410,10 +4421,10 @@ public class TrangChu extends javax.swing.JFrame {
         // TODO add your handling code here:
         if (cbbJtbHopDong.getSelectedIndex() > 0) {
             arrHD = BLL.BLLHoatDongThuePhong.FindByMaHopDong(cbbJtbHopDong.getSelectedItem() + "");
-            BLLHoatDongThuePhong.DoVaoTable(arrHD, tbHopDongThue);
+            BLLHoatDongThuePhong.DoVaoTable(arrHD, tblHopDongThue);
         } else {
             arrHD = BLL.BLLHoatDongThuePhong.GetAll();
-            BLLHoatDongThuePhong.DoVaoTable(arrHD, tbHopDongThue);
+            BLLHoatDongThuePhong.DoVaoTable(arrHD, tblHopDongThue);
         }
     }//GEN-LAST:event_cbbJtbHopDongItemStateChanged
 
@@ -4727,8 +4738,8 @@ public class TrangChu extends javax.swing.JFrame {
     private javax.swing.JRadioButton rbNam;
     private javax.swing.JRadioButton rbNu;
     private javax.swing.JTable tbDienNuocQLCS;
-    private javax.swing.JTable tbHopDongThue;
     private javax.swing.JTable tblDIchVu;
+    private javax.swing.JTable tblHopDongThue;
     private javax.swing.JTable tblKhachThue;
     private javax.swing.JTable tblLoaiPhong;
     public static javax.swing.JTable tblPhongTro;
