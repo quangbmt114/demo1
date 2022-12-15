@@ -358,6 +358,7 @@ public class TrangChu extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblPhongTro = new javax.swing.JTable();
         panelDsPhongTro = new javax.swing.JPanel();
+        jButton2 = new javax.swing.JButton();
         panelLoaiPhong = new javax.swing.JPanel();
         jPanel8 = new javax.swing.JPanel();
         jLabel16 = new javax.swing.JLabel();
@@ -1172,6 +1173,14 @@ public class TrangChu extends javax.swing.JFrame {
         panelDsPhongTro.setComponentPopupMenu(jPopupMenu1);
         panelDsPhongTro.setInheritsPopupMenu(true);
 
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/add.png"))); // NOI18N
+        jButton2.setText("THÊM PHÒNG");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout panelTrangChuLayout = new javax.swing.GroupLayout(panelTrangChu);
         panelTrangChu.setLayout(panelTrangChuLayout);
         panelTrangChuLayout.setHorizontalGroup(
@@ -1180,7 +1189,9 @@ public class TrangChu extends javax.swing.JFrame {
             .addGroup(panelTrangChuLayout.createSequentialGroup()
                 .addGap(100, 100, 100)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 665, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
             .addComponent(panelDsPhongTro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         panelTrangChuLayout.setVerticalGroup(
@@ -1188,9 +1199,12 @@ public class TrangChu extends javax.swing.JFrame {
             .addGroup(panelTrangChuLayout.createSequentialGroup()
                 .addComponent(jPanel20, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(panelTrangChuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(panelDsPhongTro, javax.swing.GroupLayout.DEFAULT_SIZE, 686, Short.MAX_VALUE))
+                .addComponent(panelDsPhongTro, javax.swing.GroupLayout.DEFAULT_SIZE, 645, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         panelMain.add(panelTrangChu, "card3");
@@ -2433,7 +2447,7 @@ public class TrangChu extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnUpdHoaDonHDPT)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnLamMoiHoaDon, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnLamMoiHoaDon, javax.swing.GroupLayout.DEFAULT_SIZE, 119, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnXuatHoaDon)
                         .addGap(46, 46, 46))))
@@ -2579,7 +2593,7 @@ public class TrangChu extends javax.swing.JFrame {
         jPanel17.setLayout(jPanel17Layout);
         jPanel17Layout.setHorizontalGroup(
             jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 726, Short.MAX_VALUE)
+            .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 753, Short.MAX_VALUE)
             .addGroup(jPanel17Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(cbbJtbHDPT, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -3120,14 +3134,8 @@ public class TrangChu extends javax.swing.JFrame {
                 themPhong.txtBan.setText(String.valueOf(pt.getBan()));
                 themPhong.txtBongDen.setText(String.valueOf(pt.getBongDen()));
                 themPhong.txtCuaKinh.setText(String.valueOf(pt.getKinhCua()));
-                if (pt.isTrangThai()) {
-                    themPhong.JRSuDung.setSelected(true);
-                } else {
-                    themPhong.JRKhongSuDung.setSelected(true);
-                }
             }
         }
-        themPhong.btnSua.setEnabled(true);
         themPhong.txtMaPhong.setEnabled(false);
         themPhong.txtTenPhong.setText((String) tblPhongTro.getValueAt(count, 1));
         themPhong.txtMaPhong.setText((String) tblPhongTro.getValueAt(count, 0));
@@ -4537,6 +4545,11 @@ public class TrangChu extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnXuatHoaDonActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        new themPhong().setVisible(true);
+    }//GEN-LAST:event_jButton2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -4637,6 +4650,7 @@ public class TrangChu extends javax.swing.JFrame {
     private com.toedter.calendar.JDateChooser dateNgayKy;
     private com.toedter.calendar.JDateChooser dateNgaySinh;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton5;
     private com.toedter.calendar.JDateChooser jDateChooser2;
     private javax.swing.JLabel jLabel1;

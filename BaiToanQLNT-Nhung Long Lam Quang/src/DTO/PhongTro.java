@@ -19,6 +19,19 @@ public class PhongTro {
         this.MaPhong = MaPhong;
     }
 
+    public PhongTro(String MaPhong, String TenPhong, String MaLoaiPhong, String MaKhuTro, String ViTri, float DienTich, int Giuong, int Ban, int BongDen, int KinhCua) {
+        this.MaPhong = MaPhong;
+        this.TenPhong = TenPhong;
+        this.MaLoaiPhong = MaLoaiPhong;
+        this.MaKhuTro = MaKhuTro;
+        this.ViTri = ViTri;
+        this.DienTich = DienTich;
+        this.Giuong = Giuong;
+        this.Ban = Ban;
+        this.BongDen = BongDen;
+        this.KinhCua = KinhCua;
+    }
+
     public PhongTro(String MaPhong, String TenPhong, String MaLoaiPhong, String MaKhuTro, String ViTri, float DienTich, int Giuong, int Ban, int BongDen, int KinhCua, String Anh, boolean TrangThai) {
         this.MaPhong = MaPhong;
         this.TenPhong = TenPhong;

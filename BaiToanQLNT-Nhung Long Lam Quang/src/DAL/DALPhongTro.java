@@ -29,30 +29,17 @@ public class DALPhongTro {
 "           ,[Ban]" +
 "           ,[BongDen]" +
 "           ,[KinhCua]" +
-"           ,[Anh]" +
 "           ,[TrangThai])" +
 "     VALUES" +
-"           (?" +
-"           ,?" +
-"           ,?" +
-"           ,?" +
-"           ,?" +
-"           ,?" +
-"           ,?" +
-"           ,?" +
-"           ,?" +
-"           ,?" +
-"           ,?" +
-"           ,?)";
+"           (?,?,?,?,?,?,?,?,?,?,?)";
         helper.sqlHelper.executeUpdate(sql, pt.getMaPhong(),pt.getTenPhong(),pt.getMaLoaiPhong()
         ,pt.getMaKhuTro(),pt.getViTri(),pt.getDienTich(),pt.getGiuong(),pt.getBan(),pt.getBongDen(),
-        pt.getKinhCua(),null,pt.isTrangThai());
+        pt.getKinhCua(),pt.isTrangThai());
     }
     
     public static void Update(DTO.PhongTro pt){
         String sql ="UPDATE [dbo].[PhongTro]" +
-"   SET " +
-"      [TenPhong] = ?" +
+"   SET [TenPhong] = ?" +
 "      ,[MaLoaiPhong] = ?" +
 "      ,[MaKhuTro] = ?" +
 "      ,[ViTri] = ?" +
@@ -61,12 +48,11 @@ public class DALPhongTro {
 "      ,[Ban] = ?" +
 "      ,[BongDen] = ?" +
 "      ,[KinhCua] = ?" +
-"      ,[Anh] = ?" +
 "      ,[TrangThai] = ?" +
-" WHERE MaPhong=?";
+" WHERE [MaPhong] = ?";
         helper.sqlHelper.executeUpdate(sql,pt.getTenPhong(),pt.getMaLoaiPhong()
         ,pt.getMaKhuTro(),pt.getViTri(),pt.getDienTich(),pt.getGiuong(),pt.getBan(),pt.getBongDen(),
-        pt.getKinhCua(),null,pt.isTrangThai(),pt.getMaPhong());
+        pt.getKinhCua(),pt.isTrangThai(),pt.getMaPhong());
     }
     public static void Delete(DTO.PhongTro pt){
         String sql = "delete from [dbo].[PhongTro] where MaPhong = ? ";
