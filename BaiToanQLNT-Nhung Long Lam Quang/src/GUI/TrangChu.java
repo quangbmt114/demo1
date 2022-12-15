@@ -170,7 +170,13 @@ public class TrangChu extends javax.swing.JFrame {
                 btn[i] = new JButton();
                 btn[i].setName(String.valueOf(ListPhong.get(i).getMaPhong()));
                 String[] mb = ListPhong.get(i).getTenPhong().split(" ");
-                btn[i].setText("<html> " + mb[0] + " " + mb[1]
+                String tenPhong="";
+                for(int kt=0;kt<(mb.length);kt++){
+                    tenPhong+=mb[kt];
+                    if(kt<mb.length-1)
+                        tenPhong+=" ";
+                }
+                btn[i].setText("<html> " + tenPhong
                         + "<br> Số lượng khách : " + arrKT.size()
                         + "<br>Trạng thái : " + String.valueOf(ListPhong.get(i).isTrangThai() ? "Đã thuê" : "Chưa thuê") + "<html>");
                 String fileAnhcd = "./src/images/house.png";
