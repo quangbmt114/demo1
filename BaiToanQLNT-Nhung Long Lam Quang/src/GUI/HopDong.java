@@ -69,7 +69,6 @@ public class HopDong extends javax.swing.JDialog {
         jLabel52 = new javax.swing.JLabel();
         rbDangThueAC = new javax.swing.JRadioButton();
         btnTao = new javax.swing.JButton();
-        btnSua1 = new javax.swing.JButton();
         jLabel40 = new javax.swing.JLabel();
         btnLamMoi1 = new javax.swing.JButton();
         txtMaHopDong = new javax.swing.JTextField();
@@ -131,16 +130,6 @@ public class HopDong extends javax.swing.JDialog {
         btnTao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnTaoActionPerformed(evt);
-            }
-        });
-
-        btnSua1.setBackground(new java.awt.Color(255, 255, 255));
-        btnSua1.setFont(new java.awt.Font("UTM Times", 1, 12)); // NOI18N
-        btnSua1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/updated.png"))); // NOI18N
-        btnSua1.setText("Cập Nhật");
-        btnSua1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSua1ActionPerformed(evt);
             }
         });
 
@@ -294,20 +283,18 @@ public class HopDong extends javax.swing.JDialog {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(JLmaKhachThue))
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 245, Short.MAX_VALUE)
-                                    .addComponent(dateNgayKetThuc, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(dateNgayKy, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(btnLamMoi1, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 245, Short.MAX_VALUE)
+                                        .addComponent(dateNgayKetThuc, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(dateNgayKy, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btResetNgayTraHD))))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(39, 39, 39)
-                        .addComponent(btnTao, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(33, 33, 33)
-                        .addComponent(btnSua1)
-                        .addGap(40, 40, 40)
-                        .addComponent(btnLamMoi1, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(82, 82, 82)
+                        .addComponent(btnTao, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(13, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -374,7 +361,6 @@ public class HopDong extends javax.swing.JDialog {
                 .addGap(33, 33, 33)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE, false)
                     .addComponent(btnLamMoi1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnSua1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnTao))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -461,39 +447,6 @@ public class HopDong extends javax.swing.JDialog {
             ThongBao.ThongBaoDonGian("Thông báo", "Vui lòng chọn người thuê và phòng thuê!");
         }
     }//GEN-LAST:event_btnTaoActionPerformed
-
-    private void btnSua1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSua1ActionPerformed
-        // TODO add your handling code here:
-        //        try {
-        if (cbbMaKhachHang.getSelectedIndex() > 0 && cbbPhong.getSelectedIndex() > 0) {
-            HoatDongThuePhong hoatDong = LayDataForm();
-            if (BLL.BLLHoatDongThuePhong.CheckMaHopDong(hoatDong.getMaHopDong())) {
-                ThongBao.ThongBaoDonGian("Thông báo", "Mã hợp đồng không tồn tại!   ");
-
-            } else {
-                //                ThongBao.ThongBaoDonGian("Thông báo", "Mã hợp đồng hợp lệ!");
-                if (hoatDong.getNgayTra() != null) {
-                    BLL.BLLHoatDongThuePhong.Update(hoatDong, 0);
-                } else {
-                    BLL.BLLHoatDongThuePhong.Update(hoatDong, 1);
-
-                }
-                ThongBao.ThongBaoDonGian("Thông báo", "Đã cập nhật!   ");
-                LamMoi();
-            }
-        } else {
-            ThongBao.ThongBaoDonGian("Thông báo", "Vui lòng điền thông tin cần cập nhật!");
-        }
-        //        } catch (Exception e) {
-        //            ThongBao.ThongBaoDonGian("Thông báo", "Vui lòng kiểm tra thông tin!   ");
-        //        }
-
-//        arrHD = BLL.BLLHoatDongThuePhong.GetAll();
-//        BLL.BLLHoatDongThuePhong.DoVaoTable(arrHD, tbHopDongThue);
-//        ArrayList<DTO.PhongTro> list = BLL.BLLPhongTro.GetAll();
-//        BLL.BLLPhongTro.DoVaoTable(list, tblPhongTro);
-
-    }//GEN-LAST:event_btnSua1ActionPerformed
 
     private void btnLamMoi1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLamMoi1ActionPerformed
         txtMaHopDong.setText("");
@@ -676,7 +629,6 @@ public class HopDong extends javax.swing.JDialog {
     private javax.swing.ButtonGroup btnGGioiTinh;
     private javax.swing.ButtonGroup btnGTrangThai;
     private javax.swing.JButton btnLamMoi1;
-    private javax.swing.JButton btnSua1;
     private javax.swing.JButton btnTao;
     public static javax.swing.JComboBox<String> cbbMaKhachHang;
     public static javax.swing.JComboBox<String> cbbPhong;
