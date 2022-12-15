@@ -158,12 +158,16 @@ public class TrangChu extends javax.swing.JFrame {
             panelDsPhongTro.removeAll();
             JButton[] btn = new JButton[ListPhong.size()];
             for (int i = 0; i < ListPhong.size(); i++) {
+                ArrayList<KhachThue> arrKT = BLLKhachThue.FindByMaKhachThueAndTrangThai(String.valueOf(ListPhong.get(i).getMaPhong()));
                 btn[i] = new JButton();
                 btn[i].setName(String.valueOf(ListPhong.get(i).getMaPhong()));
                 String[] mb = ListPhong.get(i).getTenPhong().split(" ");
-                btn[i].setText("<html> " + mb[0] + " " + mb[1] + "<br>Trạng thái : "
-                        + String.valueOf(ListPhong.get(i).isTrangThai() ? "Đã thuê" : "Chưa thuê") + "<html>");
-                btn[i].setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/house.png")));
+                btn[i].setText("<html> " + mb[0] + " " + mb[1] +
+                        "<br> Số lượng khách : "+arrKT.size()+
+                        "<br>Trạng thái : "+ String.valueOf(ListPhong.get(i).isTrangThai() ? "Đã thuê" : "Chưa thuê") + "<html>");
+                 String fileAnhcd = "./src/images/house.png";
+                ImageIcon icon = new ImageIcon(new ImageIcon(fileAnhcd).getImage().getScaledInstance(100, 70, Image.SCALE_SMOOTH));
+                btn[i].setIcon(icon);
                 Border thickBorder = new LineBorder(Color.WHITE, 4);
                 btn[i].setBorder(thickBorder);
                 btn[i].setBackground(Color.decode("#8080ff"));
