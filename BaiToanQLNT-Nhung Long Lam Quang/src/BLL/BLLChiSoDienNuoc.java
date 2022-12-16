@@ -188,11 +188,10 @@ public class BLLChiSoDienNuoc {
         return arr;
     }
 
-    public static String SoHoaDon(String maPhong) {
+    public static String SoHoaDon(String maPhong,Date ngayGhi) {
         String soHoaDon = "" + maPhong;
         DateFormat dateFormat = new SimpleDateFormat("ddMMyy");
-        Date d = new Date();
-        soHoaDon += dateFormat.format(d);
+        soHoaDon += dateFormat.format(ngayGhi);
 ////            System.out.println("soHoaDon: " + soHoaDon);
 //            ResultSet rs = DAL.DALHoatDongThuePhong.CountSoHoaDon(soHoaDon);
 //            int rowCount = 0;

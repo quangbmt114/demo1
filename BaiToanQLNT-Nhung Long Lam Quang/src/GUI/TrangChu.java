@@ -3500,7 +3500,7 @@ public class TrangChu extends javax.swing.JFrame {
     private void btnXoa1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoa1ActionPerformed
         // TODO add your handling code here:
         int dongDangChon = tblDIchVu.getSelectedRow();
-        if (dongDangChon <= 0) {
+        if (dongDangChon < 0) {
             ThongBao.ThongBaoDonGian("Thông Báo", "Bạn chưa chọn đối tượng cần xóa!");
             return;
         } else {
@@ -4101,8 +4101,8 @@ public class TrangChu extends javax.swing.JFrame {
     }
     private void btnSetMaChiSoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSetMaChiSoActionPerformed
         // TODO add your handling code here:
-        if (cbMaPhongQLDN.getSelectedIndex() > 0) {
-            txtMaChiSoCSDN.setText(BLLChiSoDienNuoc.SoHoaDon(cbMaPhongQLDN.getSelectedItem() + ""));
+        if (cbMaPhongQLDN.getSelectedIndex() > 0&&dateNgayGhiDienNuoc.getDate()!=null) {
+            txtMaChiSoCSDN.setText(BLLChiSoDienNuoc.SoHoaDon(cbMaPhongQLDN.getSelectedItem() + "",dateNgayGhiDienNuoc.getDate()));
         } else {
             ThongBao.ThongBaoDonGian("Thông báo", "Vui lòng chọn phòng trước!");
         }
@@ -4120,13 +4120,12 @@ public class TrangChu extends javax.swing.JFrame {
         txtSoDienQLDN.setText("");
         txtSoNuocQLDN.setText("");
         dateNgayGhiDienNuoc.setDate(null);
-
     }
     private void cbMaPhongQLDNItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbMaPhongQLDNItemStateChanged
         // TODO add your handling code here:
         if (cbMaPhongQLDN.getItemCount() > 0) {
             if (cbMaPhongQLDN.getSelectedIndex() > 0) {
-                txtMaChiSoCSDN.setText(BLLChiSoDienNuoc.SoHoaDon(cbMaPhongQLDN.getSelectedItem() + ""));
+                txtMaChiSoCSDN.setText(BLLChiSoDienNuoc.SoHoaDon(cbMaPhongQLDN.getSelectedItem() + "",dateNgayGhiDienNuoc.getDate()));
             }
         }
     }//GEN-LAST:event_cbMaPhongQLDNItemStateChanged

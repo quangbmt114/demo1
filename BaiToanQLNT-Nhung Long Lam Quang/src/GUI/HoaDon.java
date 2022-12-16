@@ -42,7 +42,7 @@ public class HoaDon extends javax.swing.JDialog {
         ImageIcon icon = new ImageIcon("src/images/blue-home-icon.png");
         setIconImage(icon.getImage());
         btnUpdHoaDonHDPT.setEnabled(true);
-       
+
 //        ArrayList<HoaDonPhongTro> arrHDPT = BLL.BLLHoaDon.GetAll();
 //        BLL.BLLHoaDon.DoVaoTable(arrHDPT, jTblHoaDon);
     }
@@ -108,7 +108,6 @@ public class HoaDon extends javax.swing.JDialog {
         txtDaiDienPhongHDPT = new javax.swing.JLabel();
         txtMailLLHDPT = new javax.swing.JLabel();
         JLTenPhong = new javax.swing.JLabel();
-        btnXuatHoaDon = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -302,21 +301,12 @@ public class HoaDon extends javax.swing.JDialog {
         JLTenPhong.setForeground(new java.awt.Color(255, 51, 51));
         JLTenPhong.setText("jLabel1");
 
-        btnXuatHoaDon.setBackground(new java.awt.Color(255, 255, 255));
-        btnXuatHoaDon.setFont(new java.awt.Font("UTM Times", 1, 14)); // NOI18N
-        btnXuatHoaDon.setText("Xuất phiếu");
-        btnXuatHoaDon.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnXuatHoaDonActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel16Layout = new javax.swing.GroupLayout(jPanel16);
         jPanel16.setLayout(jPanel16Layout);
         jPanel16Layout.setHorizontalGroup(
             jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel16Layout.createSequentialGroup()
-                .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel16Layout.createSequentialGroup()
                         .addGap(53, 53, 53)
                         .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -418,13 +408,11 @@ public class HoaDon extends javax.swing.JDialog {
                     .addGroup(jPanel16Layout.createSequentialGroup()
                         .addGap(37, 37, 37)
                         .addComponent(jButton1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnUpdHoaDonHDPT)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnLamMoiHoaDon)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnXuatHoaDon)))
-                .addContainerGap(53, Short.MAX_VALUE))
+                        .addGap(43, 43, 43)
+                        .addComponent(btnLamMoiHoaDon)))
+                .addContainerGap(92, Short.MAX_VALUE))
         );
         jPanel16Layout.setVerticalGroup(
             jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -516,8 +504,7 @@ public class HoaDon extends javax.swing.JDialog {
                 .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnUpdHoaDonHDPT, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnLamMoiHoaDon, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnXuatHoaDon, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnLamMoiHoaDon, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(77, Short.MAX_VALUE))
         );
 
@@ -543,7 +530,7 @@ public class HoaDon extends javax.swing.JDialog {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         String maHoaDon = txtMaHoaDonPT.getText();
-        if (!txtDaiDienPhongHDPT.getText().equals("   ") ){
+        if (!txtDaiDienPhongHDPT.getText().equals("   ")) {
             if (maHoaDon != null || jDateChooser2.getDate() == null) {
                 try {
                     String maPhong = cbbPhongTroHDPT.getSelectedItem() + "";
@@ -569,6 +556,7 @@ public class HoaDon extends javax.swing.JDialog {
         } else {
             ThongBao.ThongBaoDonGian("Thông báo", "Phòng không có đại diện hoặc đang trống!!");
         }
+        LamMoiForm();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void btnUpdHoaDonHDPTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdHoaDonHDPTActionPerformed
@@ -599,26 +587,19 @@ public class HoaDon extends javax.swing.JDialog {
 
     private void btnLamMoiHoaDonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLamMoiHoaDonActionPerformed
         // TODO add your handling code here:
+        LamMoiForm();
+    }//GEN-LAST:event_btnLamMoiHoaDonActionPerformed
+    public void LamMoiForm() {
         btnUpdHoaDonHDPT.setEnabled(false);
         txtMaHoaDonPT.setText("Mã hóa đơn");
         cbbPhongTroHDPT.setSelectedIndex(0);
         jDateChooser2.setDate(null);
-    }//GEN-LAST:event_btnLamMoiHoaDonActionPerformed
 
+    }
     private void cbbPhongTroHDPTItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbbPhongTroHDPTItemStateChanged
         // TODO add your handling code here:
 
         if (cbbPhongTroHDPT.getSelectedIndex() > 0) {
-
-//            System.out.println(cbbPhongTroHDPT.getSelectedItem().toString());
-//                ArrayList<KhachThue> arrKT = BLL.BLLKhachThue.FindByMangMaOrTen
-//            (cbbPhongTroHDPT.getSelectedItem().toString());
-//                for (KhachThue kt : arrKT) {
-//                if (kt.isDaiDien()==true) {
-//                    System.out.println(kt.getTenNguoiThue());
-//                   
-//                    }
-//            }
             arrCSDN = BLLChiSoDienNuoc.FindByMaPhong(cbbPhongTroHDPT.getSelectedItem() + "");
             BLLChiSoDienNuoc.doComboBox(arrCSDN, cbbChiSoMoiHDPT);
             cbbChiSoMoiHDPT.setSelectedIndex(1);
@@ -680,52 +661,6 @@ public class HoaDon extends javax.swing.JDialog {
         loadTTChiSoByMaChiSo(cbbChiSoCuHDPT, txtSoDienCuHD, txtSoNuocCuHD, txtNgayGhiCuHD);
         loadTTDienNuocTieuThu();
     }//GEN-LAST:event_cbbChiSoCuHDPTItemStateChanged
-
-    private void btnXuatHoaDonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXuatHoaDonActionPerformed
-        // TODO add your handling code here:
-        if(txtMaHoaDonPT.getText().equals("Mã hóa đơn")){
-            ThongBao.ThongBaoDonGian("Thông Báo", "Bạn chưa có hóa đơn cần xuất!");
-        }else{
-            TrangChu.XuatPhieuThu(txtMaHoaDonPT.getText());
-        }
-//            
-//            return;
-//        } else {
-//            int XacNhan = JOptionPane.showConfirmDialog(null, "Bạn có chắc xuất hóa đơn không?", "Thông báo xác nhận", JOptionPane.OK_CANCEL_OPTION);
-//            if (XacNhan == JOptionPane.CANCEL_OPTION) {
-//                return;
-//            }
-//            //        }
-//        //Lấy danh sách các sp  cần xóa
-//        try {
-//            int dongCanXoa[] = jTblHoaDon.getSelectedRows();
-//
-//            //            MyCombobox tenPhong = (MyCombobox) cbPhong.getSelectedItem();
-//            //            System.out.println(cbPhong.getSelectedItem());
-//            //            ArrayList<Phong> arrP = BLL.BLLPhong.FindByName(tenPhong + "");
-//            //        arrDV=BLLDichVu.
-//            //            if (arrP.size() > 0) {
-//                for (int i = 0; i < dongCanXoa.length; i++) {
-//                    //                    String maPhong = arrP.get(0).getMaPhong();
-//                    //                    Date ngayGhi = ChuyenDoi.LayNgayDate(tblDIchVu.getValueAt(dongCanXoa[i], 0).toString());
-//                    //                    BLL.BLLDichVu.Delete(tblDIchVu.getValueAt(dongCanXoa[i], 0).toString());
-//                    XuatPhieuThu(jTblHoaDon.getValueAt(i, 0).toString());
-//                }
-//                //            }
-//            //                ThongBao.ThongBaoDonGian("Thông Báo", "Đã xóa");
-//        } catch (Exception e) {
-//            ThongBao.ThongBaoDonGian("Thông Báo", "Không xuất được!!");
-//        }
-//        //        DTO.frmDichVu dv = new DTO.frmDichVu(txtMaDichVu.getText(), txtTenDichVu.getText(),
-//            //                Float.parseFloat(txtGia.getText()), (String) cbbDonViTinh.getSelectedItem(),
-//            //                true);
-//        //        DAL.DALDichVu.Delete(dv);
-//        //            ArrayList<DTO.DichVu> arr = BLL.BLLDichVu.GetAll();
-//        //            BLL.BLLDichVu.DoVaoTable(arr, tblDIchVu);
-//        //        LamMoiFormDV();
-//        //        helper.ThongBao.ThongBaoDonGian("thông báo", "Xóa thành công !!");
-//        }
-    }//GEN-LAST:event_btnXuatHoaDonActionPerformed
     public void loadTTChiSoByMaChiSo(JComboBox maChiSo, JLabel a, JLabel b, JLabel c) {
         if (maChiSo.getSelectedIndex() > 0) {
             ChiSoDienNuoc csdt = BLLChiSoDienNuoc.FindMaChiSo(maChiSo.getSelectedItem() + "");
@@ -810,7 +745,6 @@ public class HoaDon extends javax.swing.JDialog {
     public static javax.swing.JLabel JLTenPhong;
     private javax.swing.JButton btnLamMoiHoaDon;
     private javax.swing.JButton btnUpdHoaDonHDPT;
-    private javax.swing.JButton btnXuatHoaDon;
     private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.JComboBox<String> cbbChiSoCuHDPT;
     private javax.swing.JComboBox<String> cbbChiSoMoiHDPT;
