@@ -4,10 +4,12 @@
  */
 package GUI;
 
+import BLL.BLLKhachThue;
 import DTO.KhachThue;
 import DTO.PhongTro;
 import static GUI.HopDong.cbbMaKhachHang;
 import static GUI.HopDong.cbbPhong;
+import static GUI.TrangChu.txtSoLuongNguoiThue;
 import helper.ChuyenDoi;
 import helper.ThongBao;
 import java.util.ArrayList;
@@ -529,6 +531,8 @@ public class jdlKhachThue extends javax.swing.JDialog {
                     }
                 }
                 hopdong.setVisible(true);
+                ArrayList<KhachThue> arrCountKT = BLLKhachThue.CountKhachThue();
+                txtSoLuongNguoiThue.setText(String.valueOf(arrCountKT.size()));
                 setVisible(false);
             }
 
