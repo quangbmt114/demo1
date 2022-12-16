@@ -304,10 +304,10 @@ public class BLLHoatDongThuePhong {
         return soHoaDon;
     }
     public static boolean CheckMaHopDong(String MaHopDong,String MaPhong,String MaNT){
-        ArrayList<HoatDongThuePhong> arr=FindByMaHopDong(MaHopDong);
+        ArrayList<HoatDongThuePhong> arr=GetAll();
         for (HoatDongThuePhong hd:arr){
 //            ThongBao.ThongBaoDonGian("", "'"+arr.get(0).getMaHopDong()+"'"+MaHopDong+"'");
-            if(hd.getMaHopDong().equals(MaHopDong) || (hd.getMaPhong().equals(MaPhong)&&hd.getMaNguoiThue().equals(MaNT)&&hd.isTinhTrang())){
+            if(hd.getMaHopDong().equals(MaHopDong) || (hd.getMaPhong().equals(MaPhong)&&hd.getMaNguoiThue().equals(MaNT)&&hd.isTinhTrang()==true)){
                 return false;
             }
         }
