@@ -3345,7 +3345,7 @@ public class TrangChu extends javax.swing.JFrame {
                         }
                     }
                 }
-                if (!BLL.BLLHoatDongThuePhong.CheckMaHopDong(hoatDong.getMaHopDong(),hoatDong.getMaPhong(),hoatDong.getMaNguoiThue())) {
+                if (!BLL.BLLHoatDongThuePhong.CheckMaHopDong(hoatDong.getMaHopDong(), hoatDong.getMaPhong(), hoatDong.getMaNguoiThue())) {
                     ThongBao.ThongBaoDonGian("Thông báo", "Mã hợp đồng không hợp lệ hoặc khách đang thuê phòng này!   ");
 
                 } else {
@@ -3361,9 +3361,9 @@ public class TrangChu extends javax.swing.JFrame {
                 BLL.BLLHoatDongThuePhong.DoVaoTable(arrHD, tblHopDongThue);
                 ArrayList<DTO.PhongTro> list = BLL.BLLPhongTro.GetAll();
                 BLL.BLLPhongTro.DoVaoTable(list, tblPhongTro);
-            } else {
-                ThongBao.ThongBaoDonGian("Thông báo", "Vui lòng chọn người thuê và phòng thuê!");
             }
+        } else {
+            ThongBao.ThongBaoDonGian("Thông báo", "Vui lòng chọn người thuê và phòng thuê!");
         }
         LamMoi();
     }//GEN-LAST:event_btnTaoActionPerformed
@@ -3374,7 +3374,7 @@ public class TrangChu extends javax.swing.JFrame {
         if (cbbMaKhachHang.getSelectedIndex() > 0 && cbbPhong.getSelectedIndex() > 0) {
             HoatDongThuePhong hoatDong = LayDataForm();
             if (hoatDong != null) {
-                if (BLL.BLLHoatDongThuePhong.CheckMaHopDong(hoatDong.getMaHopDong(),hoatDong.getMaPhong(),hoatDong.getMaNguoiThue())) {
+                if (BLL.BLLHoatDongThuePhong.CheckMaHopDong(hoatDong.getMaHopDong(), hoatDong.getMaPhong(), hoatDong.getMaNguoiThue())) {
                     ThongBao.ThongBaoDonGian("Thông báo", "Mã hợp đồng không tồn tại!   ");
                 } else {
                     if (!BLLHoatDongThuePhong.FindMaHopDong(txtMaHopDong.getText()).isTinhTrang() && hoatDong.getNgayTra() == null) {

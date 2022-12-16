@@ -459,9 +459,9 @@ public class HopDong extends javax.swing.JDialog {
                 }
                 ArrayList<DTO.PhongTro> list = BLL.BLLPhongTro.GetAll();
                 BLL.BLLPhongTro.DoVaoTable(list, tblPhongTro);
-            } else {
-                ThongBao.ThongBaoDonGian("Thông báo", "Vui lòng chọn người thuê và phòng thuê!");
-            }
+            } 
+        }else {
+            ThongBao.ThongBaoDonGian("Thông báo", "Vui lòng chọn người thuê và phòng thuê!");
         }
     }//GEN-LAST:event_btnTaoActionPerformed
 
