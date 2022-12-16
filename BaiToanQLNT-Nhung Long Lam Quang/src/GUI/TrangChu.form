@@ -712,7 +712,7 @@
                           <Component id="jButton2" min="-2" pref="39" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="panelDsPhongTro" pref="645" max="32767" attributes="0"/>
+                      <Component id="panelDsPhongTro" pref="636" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -2287,11 +2287,9 @@
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="btnTao" min="-2" pref="113" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="64" max="-2" attributes="0"/>
                               <Component id="btnSua1" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="btnXoaHopDong" max="32767" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
                               <Component id="btnLamMoi1" min="-2" pref="122" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
@@ -2438,7 +2436,6 @@
                                   <Component id="btnLamMoi1" alignment="3" max="32767" attributes="0"/>
                                   <Component id="btnSua1" alignment="3" max="32767" attributes="0"/>
                                   <Component id="btnTao" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="btnXoaHopDong" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace pref="181" max="32767" attributes="0"/>
                           </Group>
@@ -2543,12 +2540,12 @@
                     </Component>
                     <Component class="com.toedter.calendar.JDateChooser" name="dateNgayKy">
                       <Properties>
-                        <Property name="dateFormatString" type="java.lang.String" value="dd/MM/YYYY"/>
+                        <Property name="dateFormatString" type="java.lang.String" value="dd/MM/yyyy"/>
                       </Properties>
                     </Component>
                     <Component class="com.toedter.calendar.JDateChooser" name="dateNgayKetThuc">
                       <Properties>
-                        <Property name="dateFormatString" type="java.lang.String" value="dd/MM/YYYY"/>
+                        <Property name="dateFormatString" type="java.lang.String" value="dd/MM/yyyy"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel51">
@@ -2763,23 +2760,6 @@
                       </Properties>
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btResetNgayTraHDActionPerformed"/>
-                      </Events>
-                    </Component>
-                    <Component class="javax.swing.JButton" name="btnXoaHopDong">
-                      <Properties>
-                        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                        </Property>
-                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="UTM Times" size="12" style="1"/>
-                        </Property>
-                        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                          <Image iconType="3" name="/images/delete.png"/>
-                        </Property>
-                        <Property name="text" type="java.lang.String" value="X&#xf3;a"/>
-                      </Properties>
-                      <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnXoaHopDongActionPerformed"/>
                       </Events>
                     </Component>
                   </SubComponents>
@@ -3028,7 +3008,7 @@
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="btnUpdHoaDonHDPT" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="btnLamMoiHoaDon" pref="119" max="32767" attributes="0"/>
+                                  <Component id="btnLamMoiHoaDon" max="32767" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="btnXuatHoaDon" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
@@ -3869,7 +3849,7 @@
                               <Component id="btnLamMoi2" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="jScrollPane6" pref="527" max="32767" attributes="0"/>
+                          <Component id="jScrollPane6" pref="526" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -4009,9 +3989,9 @@
                         </Property>
                         <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                           <Table columnCount="3" rowCount="0">
-                            <Column editable="true" title="M&#xe3; d&#x1ecb;ch v&#x1ee5;" type="java.lang.Object"/>
-                            <Column editable="true" title="T&#xea;n d&#x1ecb;ch v&#x1ee5;" type="java.lang.Object"/>
-                            <Column editable="true" title="Gi&#xe1;" type="java.lang.Object"/>
+                            <Column editable="false" title="M&#xe3; d&#x1ecb;ch v&#x1ee5;" type="java.lang.Object"/>
+                            <Column editable="false" title="T&#xea;n d&#x1ecb;ch v&#x1ee5;" type="java.lang.Object"/>
+                            <Column editable="false" title="Gi&#xe1;" type="java.lang.Object"/>
                           </Table>
                         </Property>
                         <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
@@ -4124,11 +4104,11 @@
                   <Properties>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                       <Table columnCount="5" rowCount="4">
-                        <Column editable="true" title="M&#xe3; ch&#x1ec9; s&#x1ed1;" type="java.lang.Object"/>
-                        <Column editable="true" title="M&#xe3; ph&#xf2;ng" type="java.lang.Object"/>
-                        <Column editable="true" title="&#x110;i&#x1ec7;n" type="java.lang.Object"/>
-                        <Column editable="true" title="N&#x1b0;&#x1edb;c" type="java.lang.Object"/>
-                        <Column editable="true" title="Ng&#xe0;y ghi" type="java.lang.Object"/>
+                        <Column editable="false" title="M&#xe3; ch&#x1ec9; s&#x1ed1;" type="java.lang.Object"/>
+                        <Column editable="false" title="M&#xe3; ph&#xf2;ng" type="java.lang.Object"/>
+                        <Column editable="false" title="&#x110;i&#x1ec7;n" type="java.lang.Object"/>
+                        <Column editable="false" title="N&#x1b0;&#x1edb;c" type="java.lang.Object"/>
+                        <Column editable="false" title="Ng&#xe0;y ghi" type="java.lang.Object"/>
                       </Table>
                     </Property>
                     <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
@@ -4183,41 +4163,34 @@
                                   <Group type="103" groupAlignment="1" max="-2" attributes="0">
                                       <Group type="102" attributes="0">
                                           <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="lblMaSP2" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="lblMaSP3" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="lblMaSP3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="lblGiaNhap" alignment="0" min="-2" pref="106" max="-2" attributes="0"/>
                                           </Group>
                                           <EmptySpace max="32767" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="cbMaPhongQLDN" alignment="1" min="-2" pref="228" max="-2" attributes="0"/>
                                               <Group type="102" alignment="1" attributes="0">
                                                   <Component id="txtMaChiSoCSDN" min="-2" pref="165" max="-2" attributes="0"/>
                                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                                   <Component id="btnSetMaChiSo" min="-2" max="-2" attributes="0"/>
                                               </Group>
+                                              <Component id="dateNgayGhiDienNuoc" alignment="1" min="-2" pref="228" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
-                                      <Group type="102" alignment="1" attributes="0">
-                                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                              <Group type="102" attributes="0">
-                                                  <Group type="103" groupAlignment="0" attributes="0">
-                                                      <Component id="lblTenSP" alignment="0" min="-2" pref="92" max="-2" attributes="0"/>
-                                                      <Component id="lblMaSP" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                  </Group>
-                                                  <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
-                                              </Group>
-                                              <Group type="102" alignment="0" attributes="0">
-                                                  <Component id="lblGiaNhap" min="-2" pref="106" max="-2" attributes="0"/>
-                                                  <EmptySpace max="32767" attributes="0"/>
-                                              </Group>
+                                      <Group type="102" attributes="0">
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="lblTenSP" alignment="0" min="-2" pref="92" max="-2" attributes="0"/>
+                                              <Component id="lblMaSP" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="lblMaSP2" min="-2" max="-2" attributes="0"/>
                                           </Group>
+                                          <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
                                               <Component id="txtErrSoDienCSDN" min="-2" pref="219" max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                                  <Component id="dateNgayGhiDienNuoc" alignment="0" max="32767" attributes="0"/>
                                                   <Component id="txtSoDienQLDN" alignment="0" max="32767" attributes="0"/>
                                                   <Component id="txtSoNuocQLDN" alignment="1" min="-2" pref="228" max="-2" attributes="0"/>
                                               </Group>
                                               <Component id="txtErrSoNuocCSDN" alignment="0" min="-2" pref="219" max="-2" attributes="0"/>
+                                              <Component id="cbMaPhongQLDN" alignment="0" min="-2" pref="228" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
                                   </Group>
@@ -4241,24 +4214,26 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jLabel34" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="lblMaSP3" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="txtMaChiSoCSDN" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="btnSetMaChiSo" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <Component id="jLabel34" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="lblMaSP3" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="txtMaChiSoCSDN" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="btnSetMaChiSo" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="lblGiaNhap" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Component id="dateNgayGhiDienNuoc" min="-2" pref="28" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="lblMaSP2" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="cbMaPhongQLDN" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="lblGiaNhap" min="-2" max="-2" attributes="0"/>
-                              <Component id="dateNgayGhiDienNuoc" min="-2" pref="28" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
                               <Component id="txtSoDienQLDN" min="-2" pref="27" max="-2" attributes="0"/>
                               <Component id="lblMaSP" min="-2" max="-2" attributes="0"/>
@@ -4272,7 +4247,7 @@
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="txtErrSoNuocCSDN" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="23" max="32767" attributes="0"/>
+                          <EmptySpace pref="126" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="btnAddCSDN" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="btnUpdCSDienNuoc" alignment="3" min="-2" max="-2" attributes="0"/>
