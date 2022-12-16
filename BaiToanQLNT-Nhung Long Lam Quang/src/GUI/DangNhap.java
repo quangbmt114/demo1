@@ -4,6 +4,7 @@
  */
 package GUI;
 
+import DTO.Login;
 import java.awt.CardLayout;
 import java.awt.HeadlessException;
 import java.io.BufferedWriter;
@@ -11,6 +12,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Properties;
 import java.util.Random;
@@ -167,7 +169,7 @@ public class DangNhap extends javax.swing.JFrame {
 
         panelForgot.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel6.setText("Enter-Email");
+        jLabel6.setText("Nhập Email");
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -375,12 +377,15 @@ public class DangNhap extends javax.swing.JFrame {
         if(remember.isSelected()){
                   SAVE(); //Save This UserName and his PassWord     
 }
-        System.out.println(txtpassword.getPassword());
-        if(txtusername.getText().equals("admin")&&password.equals("admin")){
+        ArrayList<Login> arrLG = BLL.BLLLogin.GetAll();
+        for (Login login : arrLG) {
+            if(txtusername.getText().equals(login.getUsename())&&password.equals(login.getPassword())){
             System.out.println("oke");
             this.setVisible(false);
             new TrangChu().setVisible(true);
         }
+        }
+        
         
     }//GEN-LAST:event_btnDangNhapActionPerformed
 
@@ -411,14 +416,27 @@ public class DangNhap extends javax.swing.JFrame {
     
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-        CardLayout layout = (CardLayout) panelForm.getLayout();
+        if(txtNewPassword.getText().equals(txtVeritfyPassword.getText())){
+            JOptionPane.showMessageDialog(this, "Thay đổi Mật Khẩu thành công !!");
+            CardLayout layout = (CardLayout) panelForm.getLayout();
         layout.show(panelForm, "login");
+        }else{
+             JOptionPane.showMessageDialog(this, "Mật khẩu không trùng khớp !!");
+        }
+        
         
     }//GEN-LAST:event_jButton4ActionPerformed
    
     private void btnSendEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendEmailActionPerformed
-       
+       ArrayList<Login> arrLG = BLL.BLLLogin.GetAll();
         String  Email = txtEmail.getText();
+        int index = 0;
+        for (Login login : arrLG) {
+            if(Email.equals(login.getEmail())){
+                index++;
+                SendVeriftyCode(Email);
+            }
+        }
         if (Email.equals("")) {
             JOptionPane.showMessageDialog(this, "Ô nhập không được để trống !!");
         }else{
@@ -426,7 +444,7 @@ public class DangNhap extends javax.swing.JFrame {
         if(!Email.matches(checkEmail)){
             JOptionPane.showMessageDialog(this, "Không đúng định dạng email");
         }else{
-            SendVeriftyCode(Email);
+            JOptionPane.showMessageDialog(this, "Email nhập không phù hợp vui lòng nhập lại !!");
             txtCodeEmail.setText("");
         }
         //123123
@@ -461,7 +479,7 @@ public class DangNhap extends javax.swing.JFrame {
                     Message.RecipientType.TO,
                     InternetAddress.parse(x)
             );
-            message.setSubject("DEMO TITLE");
+            message.setSubject("Code Password");
             message.setText(String.valueOf(Verifty_Code));
             
             Transport.send(message);

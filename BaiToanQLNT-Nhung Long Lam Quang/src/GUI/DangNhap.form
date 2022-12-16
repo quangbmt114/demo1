@@ -314,7 +314,7 @@
           <SubComponents>
             <Component class="javax.swing.JLabel" name="jLabel6">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Enter-Email"/>
+                <Property name="text" type="java.lang.String" value="Nh&#x1ead;p Email"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="txtEmail">
