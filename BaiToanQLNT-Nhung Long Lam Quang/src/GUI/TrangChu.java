@@ -3326,16 +3326,22 @@ public class TrangChu extends javax.swing.JFrame {
         if (cbbMaKhachHang.getSelectedIndex() > 0 && cbbPhong.getSelectedIndex() > 0) {
             HoatDongThuePhong hoatDong = LayDataForm();
             if (hoatDong != null) {
-                Date ngaykt = dateNgayKetThuc.getDate();
                 Date ngayky = dateNgayKy.getDate();
-                if ((new Date().before(ngaykt) && ngaykt != null) || new Date().before(ngayky)) {
-                    ThongBao.ThongBaoDonGian("Thông báo", "Ngày ký/ ngày kết thúc không được sau ngày hiện tại");
+                if (new Date().before(ngayky)) {
+                    ThongBao.ThongBaoDonGian("Thông báo", "Ngày ký không được sau ngày hiện tại");
                     return;
                 }
-                if (dateNgayKetThuc.getDate() != null) {
-                    if (ngayky.after(ngaykt)) {
-                        ThongBao.ThongBaoDonGian("Thông báo", "Ngày ký không đước sau ngày kết thúc!");
+                if (hoatDong.getNgayTra() != null) {
+                    Date ngaykt = dateNgayKetThuc.getDate();
+                    if ((new Date().before(ngaykt) && ngaykt != null)) {
+                        ThongBao.ThongBaoDonGian("Thông báo", "Ngày kết thúc không được sau ngày hiện tại");
                         return;
+                    }
+                    if (dateNgayKetThuc.getDate() != null) {
+                        if (ngayky.after(ngaykt)) {
+                            ThongBao.ThongBaoDonGian("Thông báo", "Ngày ký không đước sau ngày kết thúc!");
+                            return;
+                        }
                     }
                 }
                 if (!BLL.BLLHoatDongThuePhong.CheckMaHopDong(hoatDong.getMaHopDong())) {
