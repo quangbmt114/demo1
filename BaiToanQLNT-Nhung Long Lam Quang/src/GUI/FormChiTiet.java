@@ -76,6 +76,7 @@ public class FormChiTiet extends javax.swing.JDialog {
             }
         });
 
+        TenPhong.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         TenPhong.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         TenPhong.setText("jLabel2");
 

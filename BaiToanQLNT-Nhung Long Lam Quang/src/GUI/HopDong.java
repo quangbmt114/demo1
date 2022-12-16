@@ -25,6 +25,7 @@ public class HopDong extends javax.swing.JDialog {
    
    ArrayList<KhachThue> arrKT =BLL.BLLKhachThue.GetAll();
     ArrayList<PhongTro> arrPT = BLL.BLLPhongTro.GetAll();
+    ArrayList<HoatDongThuePhong> arrHD = BLL.BLLHoatDongThuePhong.GetAll();
     String maKhachthue;
     public HopDong(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -106,9 +107,9 @@ public class HopDong extends javax.swing.JDialog {
             }
         });
 
-        dateNgayKy.setDateFormatString("dd/MM/YYYY");
+        dateNgayKy.setDateFormatString("dd/MM/yyyy");
 
-        dateNgayKetThuc.setDateFormatString("dd/MM/YYYY");
+        dateNgayKetThuc.setDateFormatString("dd/MM/yyyy");
 
         jLabel51.setFont(new java.awt.Font("UTM Times", 1, 14)); // NOI18N
         jLabel51.setText("Ghi chú");
@@ -425,26 +426,36 @@ public class HopDong extends javax.swing.JDialog {
         // TODO add your handling code here:
         if (cbbMaKhachHang.getSelectedIndex() > 0 && cbbPhong.getSelectedIndex() > 0) {
             HoatDongThuePhong hoatDong = LayDataForm();
-            if (!BLL.BLLHoatDongThuePhong.CheckMaHopDong(hoatDong.getMaHopDong())) {
-                ThongBao.ThongBaoDonGian("Thông báo", "Mã hợp đồng không hợp lệ!   ");
-
-            } else {
-                ThongBao.ThongBaoDonGian("Thông báo", "Mã hợp đồng hợp lệ! Tạo mới thành công !!");
-                if (hoatDong.getNgayTra() != null) {
-                    BLL.BLLHoatDongThuePhong.Add(hoatDong, 0);
-                    setVisible(false);
-                } else {
-                    BLL.BLLHoatDongThuePhong.Add(hoatDong, 1);
-                    setVisible(false);
+            if (hoatDong != null) {
+                Date ngaykt = dateNgayKetThuc.getDate();
+                Date ngayky = dateNgayKy.getDate();
+                if ((new Date().before(ngaykt) && ngaykt != null) || new Date().before(ngayky)) {
+                    ThongBao.ThongBaoDonGian("Thông báo", "Ngày ký/ ngày kết thúc không được sau ngày hiện tại");
+                    return;
                 }
-                //                LamMoi();
+                if (dateNgayKetThuc.getDate() != null) {
+                    if (ngayky.after(ngaykt)) {
+                        ThongBao.ThongBaoDonGian("Thông báo", "Ngày ký không đước sau ngày kết thúc!");
+                        return;
+                    }
+                }
+                if (!BLL.BLLHoatDongThuePhong.CheckMaHopDong(hoatDong.getMaHopDong())) {
+                    ThongBao.ThongBaoDonGian("Thông báo", "Mã hợp đồng không hợp lệ!   ");
+
+                } else {
+                    ThongBao.ThongBaoDonGian("Thông báo", "Mã hợp đồng hợp lệ, đã thêm!");
+                    if (hoatDong.getNgayTra() != null) {
+                        BLL.BLLHoatDongThuePhong.Add(hoatDong, 0);
+                    } else {
+                        BLL.BLLHoatDongThuePhong.Add(hoatDong, 1);
+                    }
+//                LamMoi();
+                }
+                ArrayList<DTO.PhongTro> list = BLL.BLLPhongTro.GetAll();
+                BLL.BLLPhongTro.DoVaoTable(list, tblPhongTro);
+            } else {
+                ThongBao.ThongBaoDonGian("Thông báo", "Vui lòng chọn người thuê và phòng thuê!");
             }
-//            arrHD = BLL.BLLHoatDongThuePhong.GetAll();
-//            BLL.BLLHoatDongThuePhong.DoVaoTable(arrHD, tbHopDongThue);
-//            ArrayList<DTO.PhongTro> list = BLL.BLLPhongTro.GetAll();
-//            BLL.BLLPhongTro.DoVaoTable(list, tblPhongTro);
-        } else {
-            ThongBao.ThongBaoDonGian("Thông báo", "Vui lòng chọn người thuê và phòng thuê!");
         }
     }//GEN-LAST:event_btnTaoActionPerformed
 
@@ -560,6 +571,10 @@ public class HopDong extends javax.swing.JDialog {
         String MaHD = txtMaHopDong.getText();
         if (MaHD.equals("")) {
             ThongBao.ThongBaoDonGian("Thông báo", "Chưa có mã hợp đồng    ");
+            return null;
+        }
+        if (cbbMaKhachHang.getSelectedIndex() == 0 || dateNgayKy.getDate() == null) {
+            ThongBao.ThongBaoDonGian("Thông báo", "Chưa đủ thông tin cần thiết");
             return null;
         }
         String MaPhong = cbbPhong.getSelectedItem().toString();

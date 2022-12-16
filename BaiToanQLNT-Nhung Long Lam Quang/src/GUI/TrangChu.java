@@ -159,7 +159,7 @@ public class TrangChu extends javax.swing.JFrame {
         float Total = 0;
         String thangHienTai = String.valueOf(now.getMonth());
         String namHienTai = String.valueOf(now.getYear());
-        txtThangHienTai.setText(String.valueOf(Integer.parseInt(thangHienTai) + 1) + "/" + String.valueOf(Integer.parseInt(namHienTai) - 100));
+        txtThangHienTai.setText(String.valueOf(Integer.parseInt(thangHienTai) + 1) + "/ " + String.valueOf(Integer.parseInt(namHienTai) - 100));
         arrHDPT = BLLHoaDon.GetAll();
         for (HoaDonPhongTro hoaDonPhongTro : arrHDPT) {
             Date thang1 = ChuyenDoi.LayNgayDate(String.valueOf(hoaDonPhongTro.getThangTieuThu()));
@@ -4143,15 +4143,6 @@ public class TrangChu extends javax.swing.JFrame {
 
         if (cbbPhongTroHDPT.getSelectedIndex() > 0) {
 
-//            System.out.println(cbbPhongTroHDPT.getSelectedItem().toString());
-//                ArrayList<KhachThue> arrKT = BLL.BLLKhachThue.FindByMangMaOrTen
-//            (cbbPhongTroHDPT.getSelectedItem().toString());
-//                for (KhachThue kt : arrKT) {
-//                if (kt.isDaiDien()==true) {
-//                    System.out.println(kt.getTenNguoiThue());
-//                   
-//                    }
-//            }
             arrCSDN = BLLChiSoDienNuoc.FindByMaPhong(cbbPhongTroHDPT.getSelectedItem() + "");
             BLLChiSoDienNuoc.doComboBox(arrCSDN, cbbChiSoMoiHDPT);
             cbbChiSoMoiHDPT.setSelectedIndex(1);
