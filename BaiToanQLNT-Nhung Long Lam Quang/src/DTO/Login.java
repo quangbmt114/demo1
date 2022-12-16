@@ -22,12 +22,12 @@ public class Login {
         this.Email = Email;
     }
 
-   
-
-    public Login(String usename, String password) {
-        this.usename = usename;
+    public Login(String password, String Email) {
         this.password = password;
+        this.Email = Email;
     }
+
+   
 
     public String getEmail() {
         return Email;

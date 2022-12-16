@@ -4,6 +4,7 @@
  */
 package BLL;
 
+
 import DTO.Login;
 import java.util.ArrayList;
 import java.sql.ResultSet;
@@ -32,5 +33,10 @@ public class BLLLogin {
 
         
         return arr;
+    }
+       public static void Update(Login lg) {
+        
+            DAL.DALLogin.Update(lg);
+        
     }
 }

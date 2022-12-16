@@ -17,4 +17,8 @@ public class DALLogin {
        ResultSet rs = sqlHelper.executeQuery(sql);
        return rs;
     }
+    public static void Update(DTO.Login lg){
+        String sql ="UPDATE [dbo].[TaiKhoan] SET [PassW]=? WHERE [Email]=?";
+        helper.sqlHelper.executeUpdate(sql,lg.getPassword(),lg.getEmail());
+    }
 }

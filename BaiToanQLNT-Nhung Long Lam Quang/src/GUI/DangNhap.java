@@ -374,17 +374,24 @@ public class DangNhap extends javax.swing.JFrame {
     private void btnDangNhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangNhapActionPerformed
         // TODO add your handling code here:
         String password = String.valueOf(txtpassword.getPassword()) ;
+        int index =0;
         if(remember.isSelected()){
                   SAVE(); //Save This UserName and his PassWord     
 }
         ArrayList<Login> arrLG = BLL.BLLLogin.GetAll();
         for (Login login : arrLG) {
             if(txtusername.getText().equals(login.getUsename())&&password.equals(login.getPassword())){
-            System.out.println("oke");
+            JOptionPane.showMessageDialog(this, "Đăng nhập thành công ");
+            index++;
             this.setVisible(false);
             new TrangChu().setVisible(true);
+        
+            }
         }
+        if(index==0){
+             JOptionPane.showMessageDialog(this, "tài khoản or mật khẩu không đúng, vui lòng nhập lại !!","ERROR",JOptionPane.ERROR_MESSAGE);
         }
+        
         
         
     }//GEN-LAST:event_btnDangNhapActionPerformed
@@ -416,8 +423,14 @@ public class DangNhap extends javax.swing.JFrame {
     
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-        if(txtNewPassword.getText().equals(txtVeritfyPassword.getText())){
+        if(txtNewPassword.getText().equals("")||txtVeritfyPassword.getText().equals("")){
+             JOptionPane.showMessageDialog(this, "ô nhập không được để trống !!","ERROR",JOptionPane.ERROR_MESSAGE);
+        }
+        else if(txtNewPassword.getText().equals(txtVeritfyPassword.getText())){
+            Login lg = new Login(txtNewPassword.getText(), txtEmail.getText());
+            BLL.BLLLogin.Update(lg);
             JOptionPane.showMessageDialog(this, "Thay đổi Mật Khẩu thành công !!");
+           
             CardLayout layout = (CardLayout) panelForm.getLayout();
         layout.show(panelForm, "login");
         }else{
@@ -443,7 +456,7 @@ public class DangNhap extends javax.swing.JFrame {
             String checkEmail = "\\w+@\\w+\\.\\w+";
         if(!Email.matches(checkEmail)){
             JOptionPane.showMessageDialog(this, "Không đúng định dạng email");
-        }else{
+        }else if(index==0){
             JOptionPane.showMessageDialog(this, "Email nhập không phù hợp vui lòng nhập lại !!");
             txtCodeEmail.setText("");
         }

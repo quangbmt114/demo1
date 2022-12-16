@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="efa6eb7c-cdf9-49b6-8b71-51d92f1e190e">
 	<property name="ireport.zoom" value="2.143588810000003"/>
-	<property name="ireport.x" value="52"/>
-	<property name="ireport.y" value="329"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
 	<parameter name="MaHoaDon" class="java.lang.String">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
@@ -68,7 +68,7 @@ FROM            dbo.HoaDon INNER JOIN
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Times New Roman"/>
 				</textElement>
-				<textFieldExpression><![CDATA["0"+$F{SDT}.toString()]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{SDT}.toString()]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="0" y="35" width="555" height="20" uuid="dbe4d030-f183-4fa0-a71a-5a3a67a507cb"/>
