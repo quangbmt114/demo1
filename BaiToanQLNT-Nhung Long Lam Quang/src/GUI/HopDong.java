@@ -449,7 +449,7 @@ public class HopDong extends javax.swing.JDialog {
                     } else {
                         BLL.BLLHoatDongThuePhong.Add(hoatDong, 1);
                     }
-//                LamMoi();
+                LamMoi();
                 }
                 ArrayList<DTO.PhongTro> list = BLL.BLLPhongTro.GetAll();
                 BLL.BLLPhongTro.DoVaoTable(list, tblPhongTro);
