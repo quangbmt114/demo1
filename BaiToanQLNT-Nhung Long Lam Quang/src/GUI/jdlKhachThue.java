@@ -40,6 +40,7 @@ public class jdlKhachThue extends javax.swing.JDialog {
         initComponents();
         ImageIcon icon = new ImageIcon("src/images/blue-home-icon.png");
         setIconImage(icon.getImage());
+        JDNgayVao.setDate(new Date());
 //        ArrayList<KhachThue> arrKH = BLL.BLLKhachThue.GetAll();
 
 //        jLabel90.setVisible(false);

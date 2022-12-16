@@ -3077,6 +3077,7 @@ public class TrangChu extends javax.swing.JFrame {
         JLQLHoaDon.setBackground(Color.decode("#33ccff"));
         JLQLDichVu.setBackground(Color.decode("#33ccff"));
         JLQLDienNuoc.setBackground(Color.decode("#33ccff"));
+        JDNgayVao.setDate(new Date());
     }//GEN-LAST:event_panelKhachThueMouseClicked
 
     private void panelHopDongMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelHopDongMouseClicked
@@ -3344,11 +3345,11 @@ public class TrangChu extends javax.swing.JFrame {
                         }
                     }
                 }
-                if (!BLL.BLLHoatDongThuePhong.CheckMaHopDong(hoatDong.getMaHopDong())) {
-                    ThongBao.ThongBaoDonGian("Thông báo", "Mã hợp đồng không hợp lệ!   ");
+                if (!BLL.BLLHoatDongThuePhong.CheckMaHopDong(hoatDong.getMaHopDong(),hoatDong.getMaPhong(),hoatDong.getMaNguoiThue())) {
+                    ThongBao.ThongBaoDonGian("Thông báo", "Mã hợp đồng không hợp lệ hoặc khách đang thuê phòng này!   ");
 
                 } else {
-                    ThongBao.ThongBaoDonGian("Thông báo", "Mã hợp đồng hợp lệ, đã thêm!");
+                    ThongBao.ThongBaoDonGian("Thông báo", "Hợp đồng hợp lệ, đã thêm!");
                     if (hoatDong.getNgayTra() != null) {
                         BLL.BLLHoatDongThuePhong.Add(hoatDong, 0);
                     } else {
@@ -3373,7 +3374,7 @@ public class TrangChu extends javax.swing.JFrame {
         if (cbbMaKhachHang.getSelectedIndex() > 0 && cbbPhong.getSelectedIndex() > 0) {
             HoatDongThuePhong hoatDong = LayDataForm();
             if (hoatDong != null) {
-                if (BLL.BLLHoatDongThuePhong.CheckMaHopDong(hoatDong.getMaHopDong())) {
+                if (BLL.BLLHoatDongThuePhong.CheckMaHopDong(hoatDong.getMaHopDong(),hoatDong.getMaPhong(),hoatDong.getMaNguoiThue())) {
                     ThongBao.ThongBaoDonGian("Thông báo", "Mã hợp đồng không tồn tại!   ");
                 } else {
                     if (!BLLHoatDongThuePhong.FindMaHopDong(txtMaHopDong.getText()).isTinhTrang() && hoatDong.getNgayTra() == null) {

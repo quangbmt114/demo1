@@ -303,11 +303,11 @@ public class BLLHoatDongThuePhong {
 
         return soHoaDon;
     }
-    public static boolean CheckMaHopDong(String MaHopDong){
+    public static boolean CheckMaHopDong(String MaHopDong,String MaPhong,String MaNT){
         ArrayList<HoatDongThuePhong> arr=FindByMaHopDong(MaHopDong);
         for (HoatDongThuePhong hd:arr){
 //            ThongBao.ThongBaoDonGian("", "'"+arr.get(0).getMaHopDong()+"'"+MaHopDong+"'");
-            if(hd.getMaHopDong().equals(MaHopDong)){
+            if(hd.getMaHopDong().equals(MaHopDong) || (hd.getMaPhong().equals(MaPhong)&&hd.getMaNguoiThue().equals(MaNT)&&hd.isTinhTrang())){
                 return false;
             }
         }

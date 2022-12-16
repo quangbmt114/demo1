@@ -445,8 +445,8 @@ public class HopDong extends javax.swing.JDialog {
                         }
                     }
                 }
-                if (!BLL.BLLHoatDongThuePhong.CheckMaHopDong(hoatDong.getMaHopDong())) {
-                    ThongBao.ThongBaoDonGian("Thông báo", "Mã hợp đồng không hợp lệ!   ");
+                if (!BLL.BLLHoatDongThuePhong.CheckMaHopDong(hoatDong.getMaHopDong(),hoatDong.getMaPhong(),hoatDong.getMaNguoiThue())) {
+                    ThongBao.ThongBaoDonGian("Thông báo", "Mã hợp đồng không hợp lệ hoặc khách đang thuê phòng này!   ");
 
                 } else {
                     ThongBao.ThongBaoDonGian("Thông báo", "Mã hợp đồng hợp lệ, đã thêm!");
